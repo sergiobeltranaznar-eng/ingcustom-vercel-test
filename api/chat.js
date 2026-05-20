@@ -1,81 +1,51 @@
-
-const FORM_URL = "https://forms.gle/ZpJv28ZYqySVSSKL9";
-
-exports.handler = async function(event) {
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
-  try {
-    const { messages = [] } = JSON.parse(event.body || "{}");
-    const userTurns = messages.filter(m => m.role === "user").length;
-    const shouldLock = userTurns >= 4;
+  const FORM_URL = "https://forms.gle/ZpJv28ZYqySVSSKL9";
 
-    if (shouldLock) {
-      return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          locked: true,
-          reply: `Para poder valorar tu caso con rigor necesito datos técnicos, ficha y fotos. Rellena este formulario y seguimos desde ahí:\n${FORM_URL}`
-        })
-      };
+  try {
+    const { message, messageCount } = req.body;
+
+    if (messageCount >= 4) {
+      return res.status(200).json({
+        locked: true,
+        reply: `Para valorar tu caso con rigor necesito datos técnicos, ficha y fotos. Rellena este formulario y seguimos desde ahí:\n\n${FORM_URL}`
+      });
     }
 
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) throw new Error("Missing OPENAI_API_KEY");
-
-    const system = `
-Eres Sergio B., ingeniero industrial especializado en homologación y reforma de motocicletas custom en España.
-Responde directo, práctico y profesional.
-No des precios.
-Da solo orientación inicial. No sustituyes proyecto técnico, informe de conformidad ni ITV.
-Pregunta por modelo, año, reforma, fotos, ficha técnica y marcado/homologación de piezas si falta.
-Tras 3-4 intercambios o si faltan datos, deriva al formulario: ${FORM_URL}.
-Una vez derivado al formulario, no sigas dando diagnóstico técnico.
-`;
-
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: process.env.OPENAI_MODEL || "gpt-4.1-mini",
-        input: [
-          { role: "system", content: system },
-          ...messages.slice(-8)
-        ],
-        max_output_tokens: 450
+        model: process.env.OPENAI_MODEL || "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content: "Eres Sergio B., ingeniero especializado en homologación de motos custom en España. Responde breve, claro y técnico. No des precios. Tras varias preguntas deriva al formulario."
+          },
+          {
+            role: "user",
+            content: message
+          }
+        ]
       })
     });
 
-    if (!response.ok) {
-      const txt = await response.text();
-      throw new Error(txt);
-    }
-
     const data = await response.json();
-    const reply =
-      data.output_text ||
-      data.output?.flatMap(o => o.content || []).map(c => c.text || "").join("") ||
-      `Necesito más datos para valorar tu caso. Rellena el formulario: ${FORM_URL}`;
 
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ locked: false, reply })
-    };
+    return res.status(200).json({
+      reply: data.choices?.[0]?.message?.content || `Necesito más datos. Rellena el formulario: ${FORM_URL}`
+    });
+
   } catch (error) {
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        locked: true,
-        reply: `Para avanzar necesito que rellenes el formulario: ${FORM_URL}`
-      })
-    };
+    return res.status(500).json({
+      error: error.message,
+      reply: `Ahora mismo no puedo responder desde el chat. Rellena el formulario y seguimos con datos: ${FORM_URL}`
+    });
   }
-};
-
+}
