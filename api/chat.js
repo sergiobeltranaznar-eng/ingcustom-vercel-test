@@ -97,12 +97,12 @@ Estilo de ejemplo:
     const data = await openaiResponse.json();
 
     if (!openaiResponse.ok) {
-      console.error("OpenAI error:", data);
-      return res.status(500).json({
-        reply:
-          `Ahora mismo no puedo responder desde el chat. Rellena el formulario y seguimos con datos:\n${FORM_URL}`
-      });
-    }
+  console.error("OpenAI error:", data);
+  return res.status(500).json({
+    reply:
+      `Error OpenAI: ${data.error?.message || "error desconocido"}`
+  });
+}
 
     const reply =
       data?.choices?.[0]?.message?.content ||
