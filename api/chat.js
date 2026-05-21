@@ -40,9 +40,10 @@ Responde con criterio técnico, pero de forma sencilla.
 
 Después de responder la primera pregunta, deriva SIEMPRE al formulario.
 
-Mensaje final obligatorio:
-Para revisar tu caso concreto y prepararte presupuesto, rellena este formulario:
-<a href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener noreferrer">Abrir formulario</a>
+Termina SIEMPRE la respuesta exactamente con este texto y no añadas ninguna otra llamada a la acción después:
+
+Para revisar tu caso concreto y prepararte presupuesto,
+<a href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener noreferrer">solicita presupuesto aquí</a>.
           `,
         },
         {
@@ -52,7 +53,16 @@ Para revisar tu caso concreto y prepararte presupuesto, rellena este formulario:
       ],
     });
 
-    const reply = completion.choices[0].message.content;
+    let reply = completion.choices[0].message.content;
+
+// Limpieza por si el modelo duplica llamadas al formulario
+const cierre = `Para revisar tu caso concreto y prepararte presupuesto,
+<a href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener noreferrer">solicita presupuesto aquí</a>.`;
+
+const partes = reply.split("Para revisar tu caso concreto");
+if (partes.length > 1) {
+  reply = partes[0].trim() + "\n\n" + cierre;
+}
 
     return res.status(200).json({
       reply,
