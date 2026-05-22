@@ -262,8 +262,105 @@
       .sidebar-logo{width:150px}
     }
     @media (max-width:760px){
-      .nav{min-height:72px}
-      .nav-links{display:none}
+
+  .nav{
+    min-height:auto;
+    padding:16px 0 20px;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+  }
+
+  .nav-links{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .nav-links a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:10px 8px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:10px;
+    background:rgba(255,255,255,.05);
+    font-size:14px;
+  }
+
+  .brand{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .brand img{
+    width:70px;
+  }
+
+  .brand span{
+    font-size:18px;
+  }
+
+  .section{
+    padding:58px 0;
+  }
+
+  .section-tight{
+    padding:44px 0;
+  }
+
+  .hero-grid{
+    padding:52px 0 62px;
+    min-height:auto;
+    gap:34px;
+  }
+
+  h1{
+    font-size:42px;
+  }
+
+  .lead,
+  .section-copy{
+    font-size:17px;
+  }
+
+  .section-title{
+    font-size:34px;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .service{
+    padding:22px;
+  }
+
+  .service h3{
+    font-size:22px;
+  }
+
+  .sidebar-card{
+    padding:24px;
+  }
+
+  .sidebar-card h2,
+  .feature-panel h2{
+    font-size:30px;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  #ic-chat-box{
+    right:16px;
+    bottom:16px;
+  }
+}
       .brand img{width:60px}
       .brand span{font-size:16px}
       .section{padding:58px 0}
