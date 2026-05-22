@@ -1,1 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ITV y motos custom | Ingeniero Custom</title>
+
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #e5e5e5;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 25px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #d4af37;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-top: 60px;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+    }
+
+    ul {
+      margin-bottom: 30px;
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .highlight {
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    .cta {
+      margin-top: 70px;
+      padding: 35px;
+      border: 1px solid #333;
+      background-color: #171717;
+      border-radius: 12px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d4af37;
+      font-size: 1.8rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #d4af37;
+      color: #000;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      p, li {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ITV y motos custom: los problemas que se repiten una y otra vez</h1>
+
+<p>
+En cualquier foro de motos custom siempre aparecen las mismas dudas y los mismos problemas relacionados con la ITV.
+</p>
+
+<p>
+Da igual que sea una Harley Davidson, una café racer, una bobber o una scrambler.
+Las conversaciones acaban girando casi siempre alrededor de:
+</p>
+
+<ul>
+  <li>escapes,</li>
+  <li>intermitentes,</li>
+  <li>matrículas laterales,</li>
+  <li>manillares,</li>
+  <li>suspensiones,</li>
+  <li>iluminación LED,</li>
+  <li>motos americanas importadas,</li>
+  <li>y reformas que “siempre pasaban ITV hasta ahora”.</li>
+</ul>
+
+<p>
+Y lo curioso es que, la mayoría de veces, el problema no es realmente la moto.
+</p>
+
+<p>
+El problema es que muchos propietarios no saben cuándo una modificación es legal, cuándo necesita homologación y cuándo depende simplemente del criterio de la ITV.
+</p>
+
+<h2>El error más común: pensar que una pieza “homologada” ya es legal</h2>
+
+<p>
+Este es probablemente el mayor malentendido dentro del mundo custom.
+</p>
+
+<p>
+Muchos usuarios compran:
+</p>
+
+<ul>
+  <li>escapes con marcado CE,</li>
+  <li>faros con “E”,</li>
+  <li>amortiguadores de marca,</li>
+  <li>intermitentes homologados,</li>
+  <li>o soportes aftermarket…</li>
+</ul>
+
+<p>
+Y creen que eso automáticamente hace la moto legal.
+</p>
+
+<p>
+Pero no funciona así.
+</p>
+
+<p>
+Una pieza puede estar homologada como componente y aun así requerir legalización en la moto donde se instala.
+</p>
+
+<p>
+Por ejemplo:
+</p>
+
+<ul>
+  <li>un manillar puede modificar geometrías y requerir reforma,</li>
+  <li>unos amortiguadores pueden alterar alturas y comportamiento,</li>
+  <li>un escape homologado puede no ser válido para ese modelo concreto,</li>
+  <li>o un faro americano puede incumplir normativa europea.</li>
+</ul>
+
+<p>
+Y ahí empiezan los problemas en ITV.
+</p>
+
+<h2>“Antes pasaba ITV y ahora no”</h2>
+
+<p>
+Otra frase que aparece constantemente.
+</p>
+
+<p>
+Durante muchos años muchas motos custom pasaron inspecciones:
+</p>
+
+<ul>
+  <li>con criterios más laxos,</li>
+  <li>sin revisión detallada de referencias,</li>
+  <li>sin fotografías históricas,</li>
+  <li>o simplemente porque el inspector no conocía el modelo.</li>
+</ul>
+
+<p>
+Hoy eso ha cambiado mucho.
+</p>
+
+<p>
+Las ITV:
+</p>
+
+<ul>
+  <li>revisan más,</li>
+  <li>documentan más,</li>
+  <li>conocen mejor las motos importadas,</li>
+  <li>y detectan con más facilidad reformas no legalizadas.</li>
+</ul>
+
+<p>
+Por eso muchos propietarios sienten que “ahora persiguen más las custom”.
+</p>
+
+<p>
+En realidad, ahora se inspecciona de forma más técnica.
+</p>
+
+<h2>Las Harley importadas de EEUU son uno de los mayores focos de problemas</h2>
+
+<p>
+Especialmente las motos:
+</p>
+
+<ul>
+  <li>con bastidor 1HD,</li>
+  <li>importadas hace años,</li>
+  <li>o transformadas antes de que existiera el nivel de control actual.</li>
+</ul>
+
+<p>
+Muchos propietarios descubren tiempo después que:
+</p>
+
+<ul>
+  <li>llevan iluminación no válida en Europa,</li>
+  <li>faltan homologaciones de componentes,</li>
+  <li>existen incoherencias documentales,</li>
+  <li>o ciertas reformas nunca quedaron realmente legalizadas.</li>
+</ul>
+
+<p>
+Y normalmente el problema aparece:
+</p>
+
+<ul>
+  <li>al cambiar de ITV,</li>
+  <li>después de una inspección desfavorable,</li>
+  <li>o al comprar una moto usada.</li>
+</ul>
+
+<p>
+Aquí es donde se nota muchísimo la diferencia entre:
+</p>
+
+<ul>
+  <li>un ingeniero generalista,</li>
+  <li>y alguien que realmente conoce homologación de motos custom.</li>
+</ul>
+
+<p>
+Porque muchas veces no basta con cambiar una pieza.
+</p>
+
+<p>
+Hay que entender:
+</p>
+
+<ul>
+  <li>homologación individual,</li>
+  <li>normativa europea,</li>
+  <li>equivalencias,</li>
+  <li>iluminación,</li>
+  <li>emisiones,</li>
+  <li>ruido,</li>
+  <li>y compatibilidades reales del modelo.</li>
+</ul>
+
+<h2>Lo que hace la mayoría de gente para pasar ITV</h2>
+
+<p>
+En el mundo custom hay cuatro estrategias muy habituales.
+</p>
+
+<h2>1. Volver la moto a origen cada dos años</h2>
+
+<p>
+La más común.
+</p>
+
+<p>
+Muchos propietarios desmontan:
+</p>
+
+<ul>
+  <li>escapes,</li>
+  <li>matrículas laterales,</li>
+  <li>intermitentes pequeños,</li>
+  <li>asientos,</li>
+  <li>o manillares,</li>
+</ul>
+
+<p>
+solo para pasar ITV.
+</p>
+
+<p>
+Después vuelven a montar la moto como estaba.
+</p>
+
+<h2>2. Buscar una ITV “menos complicada”</h2>
+
+<p>
+Otra práctica muy habitual.
+</p>
+
+<p>
+El problema es que cada vez funciona menos.
+</p>
+
+<p>
+Las estaciones ITV están más controladas y los criterios son mucho más homogéneos que hace años.
+</p>
+
+<h2>3. Discutir con la ITV</h2>
+
+<p>
+Normalmente sin base técnica real.
+</p>
+
+<p>
+Muchos usuarios conocen:
+</p>
+
+<ul>
+  <li>lo que les dijo otro motero,</li>
+  <li>lo que leyeron en un foro,</li>
+  <li>o lo que “siempre se había hecho”.</li>
+</ul>
+
+<p>
+Pero no conocen realmente:
+</p>
+
+<ul>
+  <li>el Manual de Reformas,</li>
+  <li>el RD 866/2010,</li>
+  <li>ni cuándo una modificación afecta legalmente a la homologación.</li>
+</ul>
+
+<p>
+Y ahí es donde suelen empezar los problemas.
+</p>
+
+<h2>Entonces… ¿merece la pena hacer las cosas bien?</h2>
+
+<p>
+Sí.
+</p>
+
+<p>
+Y además suele ser más barato que desmontar la moto continuamente o acabar solucionando problemas después de una ITV desfavorable.
+</p>
+
+<p>
+La mayoría de reformas habituales en motos custom:
+</p>
+
+<ul>
+  <li>sí pueden legalizarse,</li>
+  <li>sí pueden anotarse en ficha,</li>
+  <li>y sí pueden mantenerse de forma definitiva.</li>
+</ul>
+
+<p>
+Pero hay que plantearlas correctamente desde el principio.
+</p>
+
+<p>
+Porque homologar bien una moto no consiste solo en “hacer papeles”.
+</p>
+
+<p>
+Consiste en entender:
+</p>
+
+<ul>
+  <li>cómo se modifica realmente una custom,</li>
+  <li>qué piezas generan problemas,</li>
+  <li>qué acepta ITV,</li>
+  <li>y cómo mantener la estética de la moto sin comprometer su legalidad.</li>
+</ul>
+
+<div class="cta">
+  <h3>¿Tienes dudas con la ITV de tu moto custom?</h3>
+
+  <p>
+    Puedes enviarme fotos y documentación y revisaré si la reforma es viable antes de pasar ITV.
+  </p>
+
+  <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank">
+    Revisar mi moto
+  </a>
+</div>
+
+</div>
+
+</body>
+</html>
+  
 
