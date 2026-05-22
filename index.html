@@ -569,6 +569,208 @@
       cursor:pointer;
     }
 
+
+    /* =========================================================
+       DINAMISMO HOME — CAPA 1
+       Fondo técnico sutil tipo "blueprint": aporta profundidad sin recargar.
+       ========================================================= */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      opacity:.16;
+      background-image:
+        linear-gradient(rgba(246,181,29,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(246,181,29,.07) 1px, transparent 1px);
+      background-size:54px 54px;
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.85), transparent 78%);
+    }
+
+    /* =========================================================
+       DINAMISMO HOME — CAPA 2
+       Header con estado al hacer scroll: más compacto, con más blur y sombra.
+       El JS añade la clase .is-scrolled automáticamente.
+       ========================================================= */
+    .site-header{
+      transition:background .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+
+    .site-header.is-scrolled{
+      background:rgba(8,8,8,.90);
+      border-bottom-color:rgba(246,181,29,.18);
+      box-shadow:0 12px 34px rgba(0,0,0,.38);
+    }
+
+    .site-header.is-scrolled .nav{
+      min-height:70px;
+    }
+
+    .nav{
+      transition:min-height .35s ease;
+    }
+
+    /* =========================================================
+       DINAMISMO HOME — CAPA 3
+       Glow animado en el hero: da sensación premium y "viva".
+       ========================================================= */
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:620px;
+      height:620px;
+      top:-220px;
+      right:-180px;
+      background:radial-gradient(circle, rgba(246,181,29,.22), rgba(246,181,29,.08) 34%, transparent 70%);
+      filter:blur(2px);
+      animation:icFloatGlow 9s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    @keyframes icFloatGlow{
+      from{transform:translate3d(0,0,0) scale(1);}
+      to{transform:translate3d(-46px,58px,0) scale(1.08);}
+    }
+
+    /* =========================================================
+       DINAMISMO HOME — CAPA 4
+       Botones con microinteracción premium.
+       ========================================================= */
+    .btn{
+      position:relative;
+      overflow:hidden;
+      transition:transform .28s ease, box-shadow .28s ease, background .28s ease, border-color .28s ease;
+    }
+
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(110deg, transparent 0%, rgba(255,255,255,.34) 45%, transparent 70%);
+      transform:translateX(-120%);
+      transition:transform .65s ease;
+      pointer-events:none;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn:hover::after{
+      transform:translateX(120%);
+    }
+
+    .btn-primary{
+      box-shadow:0 18px 45px rgba(246,181,29,.22), var(--shadow);
+    }
+
+    .btn-primary:hover{
+      box-shadow:0 22px 58px rgba(246,181,29,.34), var(--shadow);
+    }
+
+    .btn-secondary:hover{
+      border-color:rgba(246,181,29,.45);
+      background:rgba(246,181,29,.08);
+    }
+
+    /* =========================================================
+       DINAMISMO HOME — CAPA 5
+       Cards y cajas con elevación, borde vivo y brillo sutil.
+       ========================================================= */
+    .card,.service,.process-step,.faq-item,.mini,.sidebar-card,.feature-panel{
+      transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+    }
+
+    .card:hover,.service:hover,.process-step:hover,.faq-item:hover{
+      transform:translateY(-7px);
+      border-color:rgba(246,181,29,.42);
+      box-shadow:0 24px 54px rgba(0,0,0,.42);
+    }
+
+    .mini:hover{
+      border-color:rgba(246,181,29,.32);
+      background:rgba(246,181,29,.07);
+    }
+
+    .sidebar-card:hover,.feature-panel:hover{
+      transform:translateY(-4px);
+      border-color:rgba(246,181,29,.30);
+    }
+
+    /* =========================================================
+       DINAMISMO HOME — CAPA 6
+       Aparición progresiva al hacer scroll.
+       Cualquier elemento con data-animate aparece cuando entra en pantalla.
+       ========================================================= */
+    [data-animate]{
+      opacity:0;
+      transform:translateY(26px);
+      filter:blur(8px);
+      transition:opacity .75s ease, transform .75s ease, filter .75s ease;
+      will-change:opacity, transform, filter;
+    }
+
+    [data-animate].is-visible{
+      opacity:1;
+      transform:translateY(0);
+      filter:blur(0);
+    }
+
+    [data-animate="zoom"]{
+      transform:scale(.96) translateY(18px);
+    }
+
+    [data-animate="zoom"].is-visible{
+      transform:scale(1) translateY(0);
+    }
+
+    [data-delay="100"]{transition-delay:.10s}
+    [data-delay="200"]{transition-delay:.20s}
+    [data-delay="300"]{transition-delay:.30s}
+    [data-delay="400"]{transition-delay:.40s}
+
+    /* =========================================================
+       DINAMISMO HOME — CAPA 7
+       Detalles visuales: subrayado animado en títulos de categoría.
+       ========================================================= */
+    .category-title{
+      position:relative;
+      border-bottom:0;
+    }
+
+    .category-title::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:-8px;
+      width:74px;
+      height:2px;
+      background:var(--accent);
+      transform:translateX(-50%);
+      box-shadow:0 0 18px rgba(246,181,29,.55);
+    }
+
+    /* =========================================================
+       Accesibilidad: si el usuario prefiere menos movimiento,
+       las animaciones quedan prácticamente desactivadas.
+       ========================================================= */
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+      }
+      [data-animate]{
+        opacity:1;
+        transform:none;
+        filter:none;
+      }
+    }
+
     @media (max-width:1100px){
       h1{font-size:54px}
       .hero-grid,.grid-2{grid-template-columns:1fr}
@@ -725,13 +927,13 @@
   <main>
     <section id="inicio" class="hero">
       <div class="container hero-grid">
-        <div>
+        <div data-animate="fade-up">
           <div class="pill">Ingeniería especializada en homologación de motos custom</div>
           <h1>Homologación integral de reformas en motos custom</h1>
           <p class="lead">Nuestro servicio es completo: revisamos la viabilidad de la reforma, coordinamos los trabajos con taller, gestionamos el certificado de conformidad, preparamos toda la documentación necesaria y te guiamos para poder pasar la ITV con tranquilidad y con todas tus reformas legalizadas.</p>
         </div>
 
-        <aside class="sidebar-card" aria-label="Solicitud de presupuesto">
+        <aside class="sidebar-card" aria-label="Solicitud de presupuesto" data-animate="zoom" data-delay="200">
           <img class="sidebar-logo" src="./logo-ingeniero-custom.png" alt="Ingeniero Custom" />
           <div class="eyebrow">Revisión previa</div>
           <h2>Cuéntanos qué quieres modificar</h2>
@@ -747,17 +949,17 @@
       </div>
     </section>
 
-    <section class="intro-strip section-tight">
+    <section class="intro-strip section-tight" data-animate="fade-up">
       <div class="container grid-3">
-        <article class="card">
+        <article class="card" data-animate="zoom">
           <h3>Evita errores antes de gastar dinero</h3>
           <p>Revisamos si la reforma es viable antes de que compres piezas o pases por taller.</p>
         </article>
-        <article class="card">
+        <article class="card" data-animate="zoom" data-delay="100">
           <h3>Especialización real en custom</h3>
           <p>No somos una gestoría genérica. Trabajamos reformas habituales en Harley-Davidson y motos custom.</p>
         </article>
-        <article class="card">
+        <article class="card" data-animate="zoom" data-delay="200">
           <h3>Más claridad, menos vueltas</h3>
           <p>Te explicamos qué conviene hacer, qué no compensa y cómo dejar la moto preparada para ITV.</p>
         </article>
@@ -765,45 +967,45 @@
     </section>
 
     <section id="servicios" class="services-wrap section">
-      <div class="container">
+      <div class="container" data-animate="fade-up">
         <div class="eyebrow">Homologaciones habituales</div>
         <h2 class="section-title">Homologación de reformas en motos custom</h2>
         <p class="section-copy">Nos centramos en modificaciones habituales en motos custom para ofrecer un servicio ágil, técnico y orientado a resultado. Cada reforma se revisa según la moto, el montaje, la documentación de las piezas y los criterios aplicables en ITV.</p>
 
         <h3 class="category-title">Reformas básicas</h3>
         <div class="service-grid">
-          <article class="service"><h3>Faro halógeno a LED</h3><p>Revisión de compatibilidad, marcado y planteamiento correcto de la reforma.</p></article>
-          <article class="service"><h3>Recolocación de intermitentes</h3><p>Validamos posición, visibilidad y enfoque técnico para evitar problemas en ITV.</p></article>
-          <article class="service"><h3>Recolocación de matrícula</h3><p>Importan la posición, la visibilidad y cómo se ejecuta el conjunto.</p></article>
-          <article class="service"><h3>Instalación de sissy bar</h3><p>Revisamos fijación y encaje correcto dentro del proyecto de reforma.</p></article>
-          <article class="service"><h3>Cambio de escape</h3><p>Analizamos homologación del componente y planteamiento global del montaje.</p></article>
-          <article class="service"><h3>Cambio de manillar</h3><p>Una de las reformas estrella en custom por impacto estético y de conducción.</p></article>
+          <article class="service" data-animate="zoom"><h3>Faro halógeno a LED</h3><p>Revisión de compatibilidad, marcado y planteamiento correcto de la reforma.</p></article>
+          <article class="service" data-animate="zoom"><h3>Recolocación de intermitentes</h3><p>Validamos posición, visibilidad y enfoque técnico para evitar problemas en ITV.</p></article>
+          <article class="service" data-animate="zoom"><h3>Recolocación de matrícula</h3><p>Importan la posición, la visibilidad y cómo se ejecuta el conjunto.</p></article>
+          <article class="service" data-animate="zoom"><h3>Instalación de sissy bar</h3><p>Revisamos fijación y encaje correcto dentro del proyecto de reforma.</p></article>
+          <article class="service" data-animate="zoom"><h3>Cambio de escape</h3><p>Analizamos homologación del componente y planteamiento global del montaje.</p></article>
+          <article class="service" data-animate="zoom"><h3>Cambio de manillar</h3><p>Una de las reformas estrella en custom por impacto estético y de conducción.</p></article>
         </div>
 
         <h3 class="category-title">Reformas avanzadas</h3>
         <div class="service-grid">
-          <article class="service"><h3>Cambio de amortiguadores</h3><p>Una modificación habitual que puede afectar la geometría de la moto.</p></article>
-          <article class="service"><h3>Asiento y configuración de plazas</h3><p>Adaptamos la moto a monoplaza o biplaza, o revisamos cambios relevantes en el anclaje y la estructura del asiento.</p></article>
-          <article class="service"><h3>Velocímetro y cuadro de mandos</h3><p>Sustitución por opciones digitales o minimalistas, asegurando encaje normativo y documentación correcta.</p></article>
-          <article class="service"><h3>Mejora del sistema de frenos</h3><p>Evaluamos cambios en pinzas, bombas o discos cuando se montan componentes con distinta medida o prestaciones.</p></article>
-          <article class="service"><h3>Modificación de horquillas o tijas</h3><p>Revisamos alteraciones en la geometría delantera o en el sistema de suspensión para plantear bien la reforma.</p></article>
-          <article class="service"><h3>Llantas y neumáticos no equivalentes</h3><p>Estudiamos cambios de diseño, diámetro o medidas fuera de equivalencia respecto a la homologación de origen.</p></article>
+          <article class="service" data-animate="zoom"><h3>Cambio de amortiguadores</h3><p>Una modificación habitual que puede afectar la geometría de la moto.</p></article>
+          <article class="service" data-animate="zoom"><h3>Asiento y configuración de plazas</h3><p>Adaptamos la moto a monoplaza o biplaza, o revisamos cambios relevantes en el anclaje y la estructura del asiento.</p></article>
+          <article class="service" data-animate="zoom"><h3>Velocímetro y cuadro de mandos</h3><p>Sustitución por opciones digitales o minimalistas, asegurando encaje normativo y documentación correcta.</p></article>
+          <article class="service" data-animate="zoom"><h3>Mejora del sistema de frenos</h3><p>Evaluamos cambios en pinzas, bombas o discos cuando se montan componentes con distinta medida o prestaciones.</p></article>
+          <article class="service" data-animate="zoom"><h3>Modificación de horquillas o tijas</h3><p>Revisamos alteraciones en la geometría delantera o en el sistema de suspensión para plantear bien la reforma.</p></article>
+          <article class="service" data-animate="zoom"><h3>Llantas y neumáticos no equivalentes</h3><p>Estudiamos cambios de diseño, diámetro o medidas fuera de equivalencia respecto a la homologación de origen.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="proceso" class="section">
+    <section id="proceso" class="section" data-animate="fade-up">
       <div class="container grid-2">
         <div>
           <div class="eyebrow">Proceso de trabajo</div>
           <h2 class="section-title">Proceso de homologación de motos paso a paso</h2>
-          <div class="process-step"><h3>1. Nos envías la información</h3><p>Modelo, año, fotos y las modificaciones que quieres hacer.</p></div>
-          <div class="process-step"><h3>2. Revisamos la viabilidad</h3><p>Analizamos si la reforma está bien planteada y qué necesita realmente.</p></div>
-          <div class="process-step"><h3>3. Te damos una propuesta clara</h3><p>Sin lenguaje confuso ni respuestas genéricas. Te indicamos documentación, alcance y pasos.</p></div>
-          <div class="process-step"><h3>4. Preparamos la documentación</h3><p>Según el caso, proyecto técnico, informe de conformidad, certificado de taller y documentación adicional.</p></div>
+          <div class="process-step" data-animate="fade-up"><h3>1. Nos envías la información</h3><p>Modelo, año, fotos y las modificaciones que quieres hacer.</p></div>
+          <div class="process-step" data-animate="fade-up"><h3>2. Revisamos la viabilidad</h3><p>Analizamos si la reforma está bien planteada y qué necesita realmente.</p></div>
+          <div class="process-step" data-animate="fade-up"><h3>3. Te damos una propuesta clara</h3><p>Sin lenguaje confuso ni respuestas genéricas. Te indicamos documentación, alcance y pasos.</p></div>
+          <div class="process-step" data-animate="fade-up"><h3>4. Preparamos la documentación</h3><p>Según el caso, proyecto técnico, informe de conformidad, certificado de taller y documentación adicional.</p></div>
         </div>
 
-        <aside class="feature-panel">
+        <aside class="feature-panel" data-animate="zoom" data-delay="200">
           <div class="eyebrow">Criterio técnico</div>
           <h2>Antes de modificar tu moto, evita problemas en ITV</h2>
           <p class="section-copy" style="max-width:none;">La mayoría de problemas en ITV vienen de hacer modificaciones sin saber si son homologables. Montar piezas sin revisar compatibilidad, marcado o documentación puede acabar en ITV desfavorable, sanciones o problemas con el seguro.</p>
@@ -816,19 +1018,19 @@
       </div>
     </section>
 
-    <section id="faq" class="attention section">
+    <section id="faq" class="attention section" data-animate="fade-up">
       <div class="container">
         <div class="eyebrow">Preguntas frecuentes</div>
         <h2 class="section-title">Preguntas frecuentes sobre homologación de motos</h2>
         <p class="section-copy">Estas respuestas ayudan a entender el proceso. Para preparar presupuesto, necesitamos revisar los datos concretos de tu moto y de la reforma.</p>
         <div class="faq-list">
-          <article class="faq-item"><h3>¿Qué tipo de reformas requieren homologación?</h3><p>Cualquier modificación que altere las características originales del vehículo: suspensión, frenos, iluminación, carrocería, escape, manillar, asiento, matrícula o elementos estructurales.</p></article>
-          <article class="faq-item"><h3>¿Por qué es necesario legalizar las reformas?</h3><p>Porque lo exige la normativa aplicable. Circular con reformas sin legalizar puede suponer ITV desfavorable, sanciones y problemas con el seguro.</p></article>
-          <article class="faq-item"><h3>¿Cuánto cuesta homologar una moto?</h3><p>Depende de la reforma, de la documentación disponible y de si requiere proyecto técnico, informe de conformidad, certificado de taller o ensayos. Para darte presupuesto necesitamos fotos, ficha técnica y descripción de las modificaciones.</p></article>
-          <article class="faq-item"><h3>¿Qué información necesito enviar?</h3><p>Modelo y año de la moto, ficha técnica, modificaciones que quieres hacer, fotografías generales y fotos de las piezas o marcados cuando existan.</p></article>
-          <article class="faq-item"><h3>¿Cuánto tarda el proceso de homologación?</h3><p>Depende de la complejidad. Como orientación: reformas simples, alrededor de una semana; proyecto técnico, entre dos y tres semanas; ensayos o casos especiales, a estudiar.</p></article>
-          <article class="faq-item"><h3>¿Qué tengo que hacer después de la ITV?</h3><p>Una vez superada la ITV, la reforma queda anotada en la ficha técnica. Es recomendable comunicarlo a tu compañía de seguros enviando la nueva ficha técnica para que conste correctamente.</p></article>
-          <article class="faq-item"><h3>¿Puedo montar piezas solo para pasar ITV?</h3><p>No es recomendable. Circular con modificaciones no legalizadas puede implicar sanciones y pérdida de cobertura del seguro.</p></article>
+          <article class="faq-item" data-animate="fade-up"><h3>¿Qué tipo de reformas requieren homologación?</h3><p>Cualquier modificación que altere las características originales del vehículo: suspensión, frenos, iluminación, carrocería, escape, manillar, asiento, matrícula o elementos estructurales.</p></article>
+          <article class="faq-item" data-animate="fade-up"><h3>¿Por qué es necesario legalizar las reformas?</h3><p>Porque lo exige la normativa aplicable. Circular con reformas sin legalizar puede suponer ITV desfavorable, sanciones y problemas con el seguro.</p></article>
+          <article class="faq-item" data-animate="fade-up"><h3>¿Cuánto cuesta homologar una moto?</h3><p>Depende de la reforma, de la documentación disponible y de si requiere proyecto técnico, informe de conformidad, certificado de taller o ensayos. Para darte presupuesto necesitamos fotos, ficha técnica y descripción de las modificaciones.</p></article>
+          <article class="faq-item" data-animate="fade-up"><h3>¿Qué información necesito enviar?</h3><p>Modelo y año de la moto, ficha técnica, modificaciones que quieres hacer, fotografías generales y fotos de las piezas o marcados cuando existan.</p></article>
+          <article class="faq-item" data-animate="fade-up"><h3>¿Cuánto tarda el proceso de homologación?</h3><p>Depende de la complejidad. Como orientación: reformas simples, alrededor de una semana; proyecto técnico, entre dos y tres semanas; ensayos o casos especiales, a estudiar.</p></article>
+          <article class="faq-item" data-animate="fade-up"><h3>¿Qué tengo que hacer después de la ITV?</h3><p>Una vez superada la ITV, la reforma queda anotada en la ficha técnica. Es recomendable comunicarlo a tu compañía de seguros enviando la nueva ficha técnica para que conste correctamente.</p></article>
+          <article class="faq-item" data-animate="fade-up"><h3>¿Puedo montar piezas solo para pasar ITV?</h3><p>No es recomendable. Circular con modificaciones no legalizadas puede implicar sanciones y pérdida de cobertura del seguro.</p></article>
         </div>
       </div>
     </section>
@@ -855,6 +1057,47 @@
       <button id="ic-chat-send" type="submit">Enviar</button>
     </form>
   </div>
+
+
+  <script>
+    /* =========================================================
+       DINAMISMO HOME — JS
+       1) Añade clase al header cuando hay scroll.
+       2) Muestra elementos progresivamente con IntersectionObserver.
+       No depende de librerías externas.
+       ========================================================= */
+    (function(){
+      const header = document.querySelector(".site-header");
+
+      function updateHeader(){
+        if(!header) return;
+        header.classList.toggle("is-scrolled", window.scrollY > 24);
+      }
+
+      updateHeader();
+      window.addEventListener("scroll", updateHeader, {passive:true});
+
+      const animatedItems = document.querySelectorAll("[data-animate]");
+
+      if("IntersectionObserver" in window){
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if(entry.isIntersecting){
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold:.14,
+          rootMargin:"0px 0px -60px 0px"
+        });
+
+        animatedItems.forEach((item) => observer.observe(item));
+      }else{
+        animatedItems.forEach((item) => item.classList.add("is-visible"));
+      }
+    })();
+  </script>
 
   <script>
     (function(){
