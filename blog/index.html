@@ -1,23 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | Ingeniero Custom</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+    }
+
+    .topbar {
+      height: 110px;
+      background: rgba(0,0,0,.94);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 7%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 26px;
+    }
+
+    .logo-img {
+      height: 92px;
+      width: auto;
+    }
+
+    .nav-links a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin-left: 32px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .brand:hover {
+      color: #d49a2a;
+    }
+
+    .hero {
+      min-height: calc(100vh - 110px);
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.88)),
+        url('/moto-custom-fondo.jpg') center/cover no-repeat;
+      padding: 90px 8%;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      margin: 0 0 24px;
+      max-width: 900px;
+      line-height: 1.05;
+    }
+
+    .intro {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 52px;
+    }
+
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
+      padding: 30px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .card h2 {
+      font-size: 28px;
+      margin: 0 0 16px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .card p {
+      color: #ccc;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      text-decoration: none;
+      padding: 13px 20px;
+      border-radius: 10px;
+      font-weight: 800;
+    }
+
+    .card a:hover {
+      background: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+      .topbar {
+        height: auto;
+        padding: 18px 6%;
+        align-items: flex-start;
+        gap: 20px;
+        flex-direction: column;
+      }
+
+      .logo-img {
+        height: 78px;
+      }
+
+      .brand {
+        font-size: 22px;
+      }
+
+      .nav-links a {
+        display: block;
+        margin: 12px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 60px 6%;
+      }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; max-width: 900px; margin: auto; padding: 40px;">
 
-<h1>Blog Ingeniería Custom</h1>
-
-<h2>Artículos</h2>
-
-<ul>
-  <li>
-    <a href="/blog/itv-motos-custom.html">Leer artículo</a>
-      ITV y motos custom: los problemas que se repiten una y otra vez
+<body>
+  <nav class="topbar">
+    <a href="/" class="brand">
+      <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" class="logo-img">
+      <span>Ingeniero Custom</span>
     </a>
-  </li>
-</ul>
 
+    <div class="nav-links">
+      <a href="/#homologaciones">Homologaciones</a>
+      <a href="/#proceso">Proceso</a>
+      <a href="/#faq">Preguntas frecuentes</a>
+      <a href="/blog/index.html">Blog</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <section>
+      <div class="eyebrow">Blog técnico</div>
+
+      <h1>Guías sobre ITV, reformas y homologación de motos custom</h1>
+
+      <p class="intro">
+        Artículos claros sobre documentación, reformas frecuentes, problemas en ITV y criterios técnicos
+        para Harley-Davidson, bobber, café racer, scrambler y motos custom.
+      </p>
+
+      <div class="articles">
+        <article class="card">
+          <h2>ITV y motos custom: los problemas que se repiten una y otra vez</h2>
+          <p>
+            Escapes, intermitentes, matrículas laterales, manillares, iluminación LED,
+            suspensiones y reformas que suelen generar dudas antes de pasar ITV.
+          </p>
+          <a href="/blog/itv-motos-custom.html">Leer artículo</a>
+        </article>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
