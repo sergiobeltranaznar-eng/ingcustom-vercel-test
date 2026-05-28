@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Pago no completado | Ingeniero Custom</title>
+
+  <style>
+    :root{
+      --bg:#0f1115;
+      --card:#171a21;
+      --gold:#c9a24d;
+      --text:#f4f1ea;
+      --muted:#b8b2a7;
+      --line:rgba(201,162,77,.28);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,162,77,.16), transparent 35%),
+        linear-gradient(180deg,#0f1115,#07080b);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px 18px;
+    }
+
+    .card{
+      width:100%;
+      max-width:760px;
+      background:rgba(23,26,33,.92);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:42px 34px;
+      text-align:center;
+      box-shadow:0 24px 80px rgba(0,0,0,.45);
+    }
+
+    .logo{
+      max-width:120px;
+      margin-bottom:24px;
+    }
+
+    .badge{
+      display:inline-block;
+      color:var(--gold);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:13px;
+      margin-bottom:18px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:42px;
+      line-height:1.1;
+      margin:0 0 18px;
+    }
+
+    p{
+      font-size:17px;
+      line-height:1.65;
+      color:var(--muted);
+      margin:0 0 16px;
+    }
+
+    strong{
+      color:var(--text);
+    }
+
+    .next{
+      margin-top:28px;
+      padding:20px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:24px;
+      background:var(--gold);
+      color:#111;
+      text-decoration:none;
+      font-weight:bold;
+      padding:14px 24px;
+      border-radius:10px;
+      transition:.2s;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .brand{
+      margin-top:30px;
+      color:var(--gold);
+      font-weight:bold;
+      letter-spacing:.03em;
+    }
+
+    @media(max-width:600px){
+      .card{
+        padding:34px 22px;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      p{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <img src="/logo-ingeniero-custom.png"
+         alt="Ingeniero Custom"
+         class="logo">
+
+    <div class="badge">
+      Pago no completado
+    </div>
+
+    <h1>No se ha completado el pago</h1>
+
+    <p>
+      No hemos recibido la confirmación del pago asociado a tu expediente.
+    </p>
+
+    <div class="next">
+
+      <p>
+        Es posible que hayas cerrado la ventana de pago o cancelado la operación antes de finalizarla.
+      </p>
+
+      <p>
+        <strong>Tu expediente sigue guardado y no se perderá ninguna información.</strong>
+      </p>
+
+      <p>
+        Cuando desees continuar, podrás utilizar de nuevo el enlace de pago recibido por correo electrónico.
+      </p>
+
+      <p>
+        Si tienes cualquier incidencia o necesitas ayuda, puedes responder directamente a nuestros correos y revisaremos tu caso.
+      </p>
+
+    </div>
+
+    <a href="https://ingenierocustom.es"
+       class="btn">
+      Volver a Ingeniero Custom
+    </a>
+
+    <div class="brand">
+      Ingeniero Custom
+    </div>
+
+  </main>
+
+</body>
+</html>
