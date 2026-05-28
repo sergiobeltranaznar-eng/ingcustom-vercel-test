@@ -92,6 +92,19 @@
       letter-spacing:.03em;
     }
 
+    .home-link{
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:bold;
+  font-size:24px;
+  transition:all .2s ease;
+}
+
+.home-link:hover{
+  opacity:.85;
+  text-decoration:underline;
+}
+
     @media(max-width:600px){
       .card{padding:34px 22px}
       h1{font-size:34px}
@@ -123,7 +136,12 @@
       </p>
     </div>
 
-    <p class="brand">Ingeniero Custom</p>
+    <div class="brand">
+  <a href="https://ingenierocustom.es"
+     class="home-link">
+     Ingeniero Custom →
+  </a>
+</div>
   </main>
 </body>
 </html>
