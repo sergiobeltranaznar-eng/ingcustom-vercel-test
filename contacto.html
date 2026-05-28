@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Ingeniero Custom</title>
+  <meta name="description" content="Contacta con Ingeniero Custom para consultas sobre homologación, ITV y legalización de reformas en motos custom." />
+
+  <style>
+    :root{
+      --bg:#0f1115;
+      --card:#171a21;
+      --gold:#c9a24d;
+      --text:#f4f1ea;
+      --muted:#b8b2a7;
+      --line:rgba(201,162,77,.28);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,162,77,.16), transparent 35%),
+        linear-gradient(180deg,#0f1115,#07080b);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    .wrap{
+      width:min(1120px, calc(100% - 36px));
+      margin:auto;
+    }
+
+    .nav{
+      min-height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+      font-weight:bold;
+      color:var(--text);
+    }
+
+    .brand img{
+      width:62px;
+      height:auto;
+      display:block;
+    }
+
+    .brand span{
+      font-size:18px;
+      letter-spacing:.04em;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:15px;
+      transition:.2s;
+    }
+
+    .nav-links a:hover{
+      color:var(--gold);
+    }
+
+    .hero{
+      padding:70px 0 90px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:34px;
+      align-items:start;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      color:var(--gold);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:13px;
+      margin-bottom:22px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:58px;
+      line-height:1.02;
+      margin:0 0 22px;
+      max-width:780px;
+    }
+
+    .lead{
+      font-size:19px;
+      line-height:1.7;
+      color:var(--muted);
+      max-width:760px;
+      margin:0 0 28px;
+    }
+
+    .card{
+      background:rgba(23,26,33,.92);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 24px 80px rgba(0,0,0,.42);
+    }
+
+    .form-card h2,
+    .info-card h2{
+      margin:0 0 14px;
+      font-size:26px;
+    }
+
+    .form-card p,
+    .info-card p{
+      color:var(--muted);
+      line-height:1.6;
+      margin:0 0 18px;
+    }
+
+    label{
+      display:block;
+      font-size:14px;
+      color:var(--text);
+      margin:16px 0 7px;
+      font-weight:bold;
+    }
+
+    input,
+    textarea{
+      width:100%;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      border-radius:12px;
+      padding:14px 14px;
+      font-size:15px;
+      outline:none;
+      font-family:Arial,sans-serif;
+    }
+
+    input:focus,
+    textarea:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(201,162,77,.12);
+    }
+
+    textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+
+    .btn{
+      display:inline-block;
+      width:100%;
+      margin-top:20px;
+      border:0;
+      background:var(--gold);
+      color:#111;
+      text-decoration:none;
+      font-weight:bold;
+      padding:15px 22px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:16px;
+      transition:.2s;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      opacity:.92;
+    }
+
+    .side{
+      display:grid;
+      gap:18px;
+    }
+
+    .contact-line{
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-line:last-child{
+      border-bottom:0;
+    }
+
+    .contact-label{
+      display:block;
+      color:var(--gold);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      margin-bottom:5px;
+    }
+
+    .contact-value{
+      color:var(--text);
+      font-size:18px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.55;
+      margin-top:14px;
+    }
+
+    .footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:26px 0;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+    }
+
+    @media(max-width:900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:44px;
+      }
+    }
+
+    @media(max-width:680px){
+      .nav{
+        flex-direction:column;
+        justify-content:center;
+      }
+
+      .nav-links{
+        justify-content:center;
+      }
+
+      h1{
+        font-size:36px;
+      }
+
+      .hero{
+        padding:42px 0 70px;
+      }
+
+      .brand{
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="wrap">
+    <nav class="nav">
+      <a href="/" class="brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom">
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/">Inicio</a>
+        <a href="/#servicios">Servicios</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap hero">
+    <div class="grid">
+
+      <section>
+        <span class="eyebrow">Contacto</span>
+
+        <h1>Hablemos de tu moto o de tu expediente</h1>
+
+        <p class="lead">
+          Si tienes una consulta sobre homologación, ITV, reformas, documentación o el estado de un expediente,
+          puedes escribirnos desde este formulario o contactar directamente por teléfono o correo electrónico.
+        </p>
+
+        <div class="card form-card">
+          <h2>Enviar consulta</h2>
+
+          <p>
+            Cuéntanos brevemente qué necesitas y te responderemos lo antes posible.
+          </p>
+
+          <form action="mailto:info@ingenierocustom.es" method="post" enctype="text/plain">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="Nombre" type="text" required>
+
+            <label for="email">Correo electrónico</label>
+            <input id="email" name="Email" type="email" required>
+
+            <label for="mensaje">Comentario</label>
+            <textarea id="mensaje" name="Mensaje" required></textarea>
+
+            <button type="submit" class="btn">Enviar consulta</button>
+          </form>
+
+          <p class="small">
+            Si lo que necesitas es solicitar un presupuesto para una reforma concreta, te recomendamos usar el formulario de presupuesto para agilizar la tramitación.
+          </p>
+
+          <a class="btn" href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank">
+            Solicitar presupuesto
+          </a>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="card info-card">
+          <h2>Datos de contacto</h2>
+
+          <div class="contact-line">
+            <span class="contact-label">Teléfono</span>
+            <a class="contact-value" href="tel:+34687904200">687 904 200</a>
+          </div>
+
+          <div class="contact-line">
+            <span class="contact-label">Correo electrónico</span>
+            <a class="contact-value" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a>
+          </div>
+
+          <div class="contact-line">
+            <span class="contact-label">Especialidad</span>
+            <span class="contact-value">Homologación de motos custom</span>
+          </div>
+
+          <p class="small">
+            Para poder revisar correctamente una reforma, necesitaremos conocer el tipo de motocicleta, las modificaciones realizadas y la documentación disponible.
+          </p>
+        </div>
+
+        <div class="card info-card">
+          <h2>Antes de escribirnos</h2>
+
+          <p>
+            Si tu consulta está relacionada con una reforma concreta, indica marca, modelo, año de la moto y qué elementos has modificado o quieres modificar.
+          </p>
+
+          <p>
+            Esto nos ayudará a darte una orientación más precisa desde el primer contacto.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    Ingeniero Custom · Homologación y legalización de motos custom
+  </footer>
+
+</body>
+</html>
