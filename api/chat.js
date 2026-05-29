@@ -7,8 +7,30 @@ const client = new OpenAI({
 const FORM_URL = "https://forms.gle/4Qh3goXjeUHZA7MD9";
 
 const CIERRE_HTML = `
-Para revisar tu caso concreto y prepararte presupuesto, rellena el formulario aquí:<br>
-<a href="${FORM_URL}" target="_blank" rel="noopener noreferrer">solicitar presupuesto</a>.
+<p>
+Para revisar tu caso concreto y prepararte presupuesto, rellena el formulario aquí:
+</p>
+
+<div style="margin-top:14px;">
+  <a
+    href="${FORM_URL}"
+    target="_blank"
+    rel="noopener noreferrer"
+    style="
+      display:inline-block;
+      background:#f5bf3a;
+      color:#111111;
+      padding:14px 28px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      font-size:15px;
+      box-shadow:0 4px 12px rgba(0,0,0,.25);
+    "
+  >
+    Solicitar presupuesto
+  </a>
+</div>
 `;
 
 function limpiarDerivacionesDuplicadas(texto = "") {
