@@ -894,8 +894,9 @@
       <button id="ic-chat-close" type="button" aria-label="Cerrar chat">×</button>
     </div>
     <div id="ic-chat-messages">
-      <div class="ic-msg ic-bot">¿Tienes una duda sobre la homologación de tu moto? Dime qué moto tienes y qué reforma quieres hacer. Te daré una orientación inicial y, si quieres revisar tu caso concreto, te aconsejo rellenar el formulario de presupuesto.</div>
-    </div>
+      <div class="ic-msg ic-bot">
+¿Tienes una duda sobre la homologación de tu moto? Dime qué moto tienes y qué reforma quieres hacer. Te daré una orientación inicial para ayudarte a entender qué necesitas.
+</div>
     <form id="ic-chat-form">
       <input id="ic-chat-input" autocomplete="off" placeholder="Ej: Harley 883, manillar y escape..." />
       <button id="ic-chat-send" type="submit">Enviar</button>
@@ -990,8 +991,13 @@
 
         const data = await res.json();
         messages.lastChild.remove();
-        const reply = data.reply || "Puedo darte una orientación inicial, pero para valorar correctamente tu caso necesito revisar datos y fotos.";
-        add(reply + '<br><br>Para revisar tu caso concreto y prepararte presupuesto, rellena el formulario aquí: ' + formLink() + '.', "bot");
+        const reply =
+  data.reply ||
+  'Para revisar tu caso concreto y prepararte presupuesto, rellena el formulario aquí: ' +
+  formLink() +
+  '.';
+
+add(reply, "bot");
         locked = true;
         sessionStorage.setItem("ic_locked", "1");
       }catch(err){
