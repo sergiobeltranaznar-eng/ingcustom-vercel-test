@@ -4,6 +4,23 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+const FORM_URL = "https://forms.gle/4Qh3goXjeUHZA7MD9";
+
+const CIERRE_HTML = `
+Para revisar tu caso concreto y prepararte presupuesto, rellena el formulario aquí:<br>
+<a href="${FORM_URL}" target="_blank" rel="noopener noreferrer">solicitar presupuesto</a>.
+`;
+
+function limpiarDerivacionesDuplicadas(texto = "") {
+  return texto
+    .replace(/Para revisar tu caso concreto[\s\S]*$/i, "")
+    .replace(/Para prepararte presupuesto[\s\S]*$/i, "")
+    .replace(/Solicita presupuesto[\s\S]*$/i, "")
+    .replace(/Rellena el formulario[\s\S]*$/i, "")
+    .replace(/<a[\s\S]*?forms\.gle[\s\S]*?<\/a>\.?/gi, "")
+    .trim();
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Método no permitido" });
@@ -11,7 +28,6 @@ export default async function handler(req, res) {
 
   try {
     const { messages } = req.body || {};
-
     const userMessage = messages?.[messages.length - 1]?.content || "";
 
     if (!userMessage.trim()) {
@@ -20,28 +36,26 @@ export default async function handler(req, res) {
 
     const completion = await client.chat.completions.create({
       model: "gpt-4.1-mini",
-      temperature: 0.4,
-      max_tokens: 450,
+      temperature: 0.35,
+      max_tokens: 360,
       messages: [
         {
           role: "system",
           content: `
 Eres Ingeniero Custom, un asistente especializado en homologación de reformas en motos custom en España.
 
-Tu función es responder la duda inicial del usuario de forma profesional, clara y breve, para generar confianza.
+Responde una única duda inicial del usuario de forma profesional, clara, breve y cercana.
 
 No hagas presupuestos.
 No pidas todos los datos por chat.
 No alargues la conversación.
 No sustituyas la revisión técnica de un ingeniero.
 No des una valoración definitiva sin fotos, ficha técnica y datos completos.
+No incluyas enlaces.
+No incluyas llamadas a la acción.
+No escribas frases como "solicita presupuesto", "rellena el formulario" o "para revisar tu caso concreto".
 
-Responde dos preguntas como máximo con criterio técnico, pero de forma sencilla.
-
-Termina SIEMPRE la respuesta exactamente con este texto y no añadas ninguna otra llamada a la acción después:
-
-Para revisar tu caso concreto y prepararte presupuesto,
-<a href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener noreferrer">solicita presupuesto aquí</a>.
+Responde con orientación inicial y, como máximo, dos preguntas útiles si realmente ayudan a encuadrar el caso.
           `,
         },
         {
@@ -51,27 +65,22 @@ Para revisar tu caso concreto y prepararte presupuesto,
       ],
     });
 
-    let reply = completion.choices[0].message.content;
+    let reply = completion.choices[0].message.content || "";
 
-// Limpieza por si el modelo duplica llamadas al formulario
-const cierre = `Para revisar tu caso concreto y prepararte presupuesto,
-<a href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener noreferrer">solicita presupuesto aquí</a>.`;
-
-const partes = reply.split("Para revisar tu caso concreto");
-if (partes.length > 1) {
-  reply = partes[0].trim() + "\n\n" + cierre;
-}
+    reply = limpiarDerivacionesDuplicadas(reply);
+    reply = `${reply}\n\n${CIERRE_HTML}`;
 
     return res.status(200).json({
       reply,
       locked: true,
     });
+
   } catch (error) {
     console.error("Error en /api/chat:", error);
+
     return res.status(500).json({
       error: "Error interno del servidor",
-      reply:
-  'Ahora mismo no puedo responder desde el chat. Para revisar tu caso concreto y prepararte presupuesto, <a href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener noreferrer">rellena este formulario</a>.',
+      reply: CIERRE_HTML,
       locked: true,
     });
   }
