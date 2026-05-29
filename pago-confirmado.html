@@ -45,7 +45,7 @@
 
     .logo{
       max-width:120px;
-      margin-bottom:24px;
+      margin:0 auto 24px;
     }
 
     .badge{
@@ -68,9 +68,12 @@
 
     p{
       font-size:17px;
-      line-height:1.65;
+      line-height:1.75;
       color:var(--muted);
       margin:0 0 16px;
+      max-width:680px;
+      margin-left:auto;
+      margin-right:auto;
     }
 
     strong{
@@ -85,6 +88,14 @@
       border:1px solid rgba(255,255,255,.08);
     }
 
+    .next p{
+      text-align:justify;
+      text-justify:inter-word;
+      hyphens:auto;
+      -webkit-hyphens:auto;
+      -ms-hyphens:auto;
+    }
+
     .brand{
       margin-top:30px;
       color:var(--gold);
@@ -93,22 +104,35 @@
     }
 
     .home-link{
-  color:var(--gold);
-  text-decoration:none;
-  font-weight:bold;
-  font-size:24px;
-  transition:all .2s ease;
-}
+      color:var(--gold);
+      text-decoration:none;
+      font-weight:bold;
+      font-size:24px;
+      transition:all .2s ease;
+    }
 
-.home-link:hover{
-  opacity:.85;
-  text-decoration:underline;
-}
+    .home-link:hover{
+      opacity:.85;
+      text-decoration:underline;
+    }
 
     @media(max-width:600px){
-      .card{padding:34px 22px}
-      h1{font-size:34px}
-      p{font-size:16px}
+
+      .next p{
+        text-align:left;
+      }
+
+      .card{
+        padding:34px 22px;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      p{
+        font-size:16px;
+      }
     }
   </style>
 </head>
@@ -137,11 +161,10 @@
     </div>
 
     <div class="brand">
-  <a href="https://ingenierocustom.es"
-     class="home-link">
-     Ingeniero Custom →
-  </a>
-</div>
+      <a href="https://ingenierocustom.es" class="home-link">
+        Ingeniero Custom →
+      </a>
+    </div>
   </main>
 </body>
 </html>
