@@ -4,7 +4,7 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const FORM_URL = "https://forms.gle/4Qh3goXjeUHZA7MD9";
+const FORM_URL = "https://forms.gle/2VEnWyegVWcKNSwp8";
 
 const CIERRE_HTML = `
 Para revisar tu caso concreto y prepararte presupuesto, rellena el formulario aquí:<br><br>
