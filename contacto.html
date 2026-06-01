@@ -86,6 +86,71 @@
       color:var(--gold);
     }
 
+    .contact-hero-image{
+  position:relative;
+  height:340px;
+  border-radius:24px;
+  overflow:hidden;
+  margin:10px 0 50px;
+  border:1px solid var(--line);
+  box-shadow:0 24px 80px rgba(0,0,0,.45);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.65)
+    ),
+    url('/contacto-cabecera-ingenierocustom.jpg');
+  background-size:cover;
+  background-position:center center;
+}
+
+.contact-hero-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  padding:40px;
+}
+
+.contact-hero-text{
+  max-width:700px;
+}
+
+.contact-hero-text h2{
+  margin:0 0 12px;
+  font-size:52px;
+  line-height:1;
+  color:#fff;
+}
+
+.contact-hero-text p{
+  margin:0;
+  font-size:20px;
+  line-height:1.6;
+  color:rgba(255,255,255,.92);
+}
+
+@media(max-width:680px){
+
+  .contact-hero-image{
+    height:280px;
+    margin-bottom:35px;
+  }
+
+  .contact-hero-overlay{
+    padding:24px;
+  }
+
+  .contact-hero-text h2{
+    font-size:34px;
+  }
+
+  .contact-hero-text p{
+    font-size:16px;
+  }
+}
+
     .hero{
       padding:70px 0 90px;
     }
@@ -323,6 +388,26 @@
       </div>
     </nav>
   </header>
+
+  <div class="wrap">
+
+  <section class="contact-hero-image">
+
+    <div class="contact-hero-overlay">
+
+      <div class="contact-hero-text">
+        <h2>Estamos al otro lado del cristal</h2>
+
+<p>
+Si tu moto tiene una reforma pendiente, una ITV complicada o necesitas ayuda con la documentación, cuéntanos tu caso.
+</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
 
   <main class="wrap hero">
     <div class="grid">
