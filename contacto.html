@@ -16,9 +16,7 @@
       --line:rgba(201,162,77,.28);
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{ box-sizing:border-box; }
 
     body{
       margin:0;
@@ -30,9 +28,7 @@
       min-height:100vh;
     }
 
-    a{
-      color:inherit;
-    }
+    a{ color:inherit; }
 
     .wrap{
       width:min(1120px, calc(100% - 36px));
@@ -82,100 +78,63 @@
       transition:.2s;
     }
 
-    .nav-links a:hover{
-      color:var(--gold);
-    }
+    .nav-links a:hover{ color:var(--gold); }
 
     .contact-hero-image{
-  position:relative;
-  height:420px;
-  border-radius:24px;
-  overflow:hidden;
-  margin:10px 0 50px;
-  border:1px solid var(--line);
-  box-shadow:0 24px 80px rgba(0,0,0,.45);
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.35),
-      rgba(0,0,0,.65)
-    ),
-    url('/contacto-cabecera-ingenierocustom.jpg');
-  background-size:cover;
-  background-position:center center;
-}
+      position:relative;
+      height:340px;
+      border-radius:24px;
+      overflow:hidden;
+      margin:10px 0 34px;
+      border:1px solid var(--line);
+      box-shadow:0 24px 80px rgba(0,0,0,.45);
+      background-image:url('/contacto-cabecera-ingenierocustom.jpg');
+      background-size:cover;
+      background-position:center center;
+    }
 
- .contact-intro{
-  text-align:center;
-  margin:0 0 40px;
-}
+    .contact-hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.72) 0%,
+          rgba(0,0,0,.48) 34%,
+          rgba(0,0,0,.12) 68%,
+          rgba(0,0,0,0) 100%
+        );
+      display:flex;
+      align-items:flex-end;
+    }
 
-.contact-intro p{
-  margin:0;
-  color:var(--gold);
-  font-size:24px;
-  font-weight:700;
-  letter-spacing:.02em;
-}
+    .contact-hero-text{
+      max-width:430px;
+      padding:32px;
+    }
 
-.hero{
-  padding:70px 0 90px;
-}   
+    .contact-hero-text h2{
+      margin:0 0 12px;
+      color:#fff;
+      font-size:42px;
+      line-height:1.05;
+    }
 
-.contact-hero-overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:flex-end;
-  padding:40px;
-}
-
-.contact-hero-text{
-  max-width:700px;
-}
-
-.contact-hero-text h2{
-  margin:0 0 12px;
-  font-size:52px;
-  line-height:1;
-  color:#fff;
-}
-
-.contact-hero-text p{
-  margin:0;
-  font-size:20px;
-  line-height:1.6;
-  color:rgba(255,255,255,.92);
-}
-
-@media(max-width:680px){
-
-  .contact-hero-image{
-    height:280px;
-    margin-bottom:35px;
-  }
-
-  .contact-hero-overlay{
-    padding:24px;
-  }
-
-  .contact-hero-text h2{
-    font-size:34px;
-  }
-
-  .contact-hero-text p{
-    font-size:16px;
-  }
-}
+    .contact-hero-text p{
+      margin:0;
+      color:rgba(255,255,255,.92);
+      font-size:18px;
+      line-height:1.55;
+    }
 
     .hero{
-      padding:70px 0 90px;
+      padding:24px 0 90px;
     }
 
     .grid{
       display:grid;
-      grid-template-columns:1fr 420px;
-      gap:34px;
+      grid-template-columns:minmax(0, 1fr) 380px;
+      gap:28px;
       align-items:start;
     }
 
@@ -192,18 +151,20 @@
     }
 
     h1{
-      font-size:58px;
-      line-height:1.02;
+      font-size:50px;
+      line-height:1.04;
       margin:0 0 22px;
-      max-width:780px;
+      max-width:760px;
     }
 
     .lead{
-      font-size:19px;
+      font-size:18px;
       line-height:1.7;
       color:var(--muted);
       max-width:760px;
       margin:0 0 28px;
+      text-align:justify;
+      text-justify:inter-word;
     }
 
     .card{
@@ -221,10 +182,13 @@
     }
 
     .form-card p,
-    .info-card p{
+    .info-card p,
+    .small{
       color:var(--muted);
       line-height:1.6;
-      margin:0 0 18px;
+      text-align:justify;
+      text-justify:inter-word;
+      hyphens:auto;
     }
 
     label{
@@ -242,7 +206,7 @@
       background:rgba(255,255,255,.05);
       color:var(--text);
       border-radius:12px;
-      padding:14px 14px;
+      padding:14px;
       font-size:15px;
       outline:none;
       font-family:Arial,sans-serif;
@@ -273,6 +237,7 @@
       cursor:pointer;
       font-size:16px;
       transition:.2s;
+      text-align:center;
     }
 
     .btn:hover{
@@ -281,19 +246,17 @@
     }
 
     .side{
-  display:grid;
-  gap:18px;
-  margin-top:330px;
-}
+      display:grid;
+      gap:18px;
+      margin-top:154px;
+    }
 
     .contact-line{
       padding:14px 0;
       border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .contact-line:last-child{
-      border-bottom:0;
-    }
+    .contact-line:last-child{ border-bottom:0; }
 
     .contact-label{
       display:block;
@@ -313,8 +276,6 @@
 
     .small{
       font-size:13px;
-      color:var(--muted);
-      line-height:1.55;
       margin-top:14px;
     }
 
@@ -326,27 +287,13 @@
       text-align:center;
     }
 
-    
-/* =========================================================
-   JUSTIFICACIÓN SELECTIVA
-   Solo textos largos. No títulos, botones ni datos de contacto.
-   ========================================================= */
-
-.lead,
-.form-card p,
-.info-card p,
-.small{
-  text-align:justify;
-  text-justify:inter-word;
-  hyphens:auto;
-  -webkit-hyphens:auto;
-  -ms-hyphens:auto;
-}
-
-
     @media(max-width:900px){
       .grid{
         grid-template-columns:1fr;
+      }
+
+      .side{
+        margin-top:0;
       }
 
       h1{
@@ -356,33 +303,60 @@
 
     @media(max-width:680px){
 
-      .lead,
-      .form-card p,
-      .info-card p,
-      .small{
-        text-align:left;
+      .wrap{
+        width:min(100% - 32px, 1120px);
       }
 
       .nav{
         flex-direction:column;
         justify-content:center;
-      }
-
-      .nav-links{
-        justify-content:center;
-      }
-
-      h1{
-        font-size:36px;
-      }
-
-      .hero{
-        padding:42px 0 70px;
+        gap:16px;
       }
 
       .brand{
         flex-direction:column;
         text-align:center;
+      }
+
+      .nav-links{
+        justify-content:center;
+        gap:18px;
+      }
+
+      .contact-hero-image{
+        height:320px;
+        border-radius:22px;
+        margin:12px 0 34px;
+        background-position:center center;
+      }
+
+      .contact-hero-text{
+        max-width:72%;
+        padding:22px;
+      }
+
+      .contact-hero-text h2{
+        font-size:30px;
+      }
+
+      .contact-hero-text p{
+        font-size:15px;
+        line-height:1.45;
+      }
+
+      .hero{
+        padding:26px 0 70px;
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      .lead,
+      .form-card p,
+      .info-card p,
+      .small{
+        text-align:left;
       }
     }
   </style>
@@ -407,12 +381,16 @@
     </nav>
   </header>
 
-  <div class="contact-hero-text"> <h2>Estamos al otro lado del cristal</h2> 
-    <p> Si tu moto tiene una reforma pendiente, una ITV complicada o necesitas ayuda con la documentación, cuéntanos tu caso. </p> 
-  </div> 
-</div> 
-</section> 
-</div>
+  <div class="wrap">
+    <section class="contact-hero-image">
+      <div class="contact-hero-overlay">
+        <div class="contact-hero-text">
+          <h2>Estamos al otro lado del cristal</h2>
+          <p>Tu moto tiene una historia. Cuéntanos la tuya.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <main class="wrap hero">
     <div class="grid">
