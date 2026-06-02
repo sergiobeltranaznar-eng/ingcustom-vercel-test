@@ -1,221 +1,422 @@
-<!DOCTYPE html>
+sale enorme 
+Editar
+Editar
+el logo es este. en la parte izquierda solo este logo en la derecha lo que has puesto esta bien
+Editar
+Editar
+asi lo tengo en word: y asi sale en el gmail, me ayudas de verdad o vamos a estar aqui perdiendo el tiempo por una firma? 
+no veo ninguna firma: 
+no sale nada mal, aunque algunos iconos no se ven 
+en el movil no sale muy bien, se puede hacer algo al respecto? sale muy alta 
+Se ha pegado el código.js
+JavaScript
+esta aqui tambien:  y en 6 sitios mas
+Se ha pegado el código.js
+JavaScript
+en el correo este no aparece la firma y si tiene lo del bodyfinal: 
+Pegado text.txt
+Documento
+Se ha pegado el código.js
+JavaScript
+Pegado text.txt
+Documento
+no esta adjunta ni la orden ni el anexo
+Pegado text.txt
+Documento
+Editar
+Editar
+Editar
+Editar
+Pegado text.txt
+Documento
+esta es mi pagina de contacto, incluyela: yo la subo con el nombre que le has dado
+Pegado text.txt
+Documento
+asi esta bien? 
+esta bien, pero veo la pagina asimetrica, nose como puestas las cosas de cualquier forma
+mi idea es dejar la derecha Datos de COntacto,  a la misma altura que Enviar Consulta 
+se tapa la foto con las letras, ademas se ve muy oscura, prefiero hacerla como el index de la home, entera 
+la estoy liando, la foto se ha ido y está todo descuadrado. Haz todo el script de contacto para que funcione con la foto completa sin texto que le tape la cara al preso, puede estar dentro el texto pero sin estorbar
+Pegado text.txt
+Documento
+esto no esta en todo el script: <div class="wrap">
+
+  <section class="contact-hero-image">
+
+    <div class="contact-hero-overlay">
+
+      <div class="contact-hero-text">
+veo distintos tipos de letra y tamaños, tambien del logo de la izquierda en los apartados de arriba, lo normal es que todo estuviera igual que en la home. 
+
+Sí, para tu forma de trabajar es mejor así.
+
+A partir de ahora, cuando toquemos una página HTML de Ingeniero Custom, haré esto:
+
+Tú me pegas el HTML actual.
+Yo te devuelvo el archivo completo corregido.
+Tú borras todo el contenido anterior.
+Pegas el nuevo.
+Subes a Vercel/GitHub.
+
+Nada de “busca esta clase y cambia esta línea”, salvo ajustes mínimos.
+
+Para unificar la web, el orden lógico sería:
+
+Home / index.html como referencia visual principal.
+contacto.html adaptarla a esa cabecera.
+blog/index.html adaptarlo igual.
+artículos del blog adaptar cabecera, logo, fuente y menú.
+
+Así toda la web tendrá el mismo aspecto.
+
+Cuando quieras, empezamos por contacto.html: pégame el archivo actual completo y te lo devuelvo ya con la cabecera igual que la home.
+
+Pegado text.txt
+Documento
+Pensó durante 16s
+
+He preparado el contacto.html completo con cabecera más alineada con la home, formulario funcional y foto bien integrada.
+
+Descargar contacto.html
+
+Puedes borrar el contenido actual de contacto.html, pegar este archivo completo y subirlo. Basado en tu archivo actual. 
+
+Pegado text.txt
+Documento
+te paso el index de la home para que lo claves: 
+
+Ahora veo exactamente lo que te pasa.
+
+La home tiene una identidad visual muy marcada y el contacto no la está heredando. El problema no es la foto ni el formulario. Son estas diferencias respecto a la home:
+
+En la Home
+Fuente principal: Inter
+Títulos: Oswald
+Cabecera negra translúcida
+Logo de 78 px
+Menú en MAYÚSCULAS
+Menú tamaño 13 px
+Cabecera sticky
+Fondo con blur
+Anchura máxima 1180 px
+En contacto
+Arial
+Sin Oswald
+Logo 62 px
+Menú minúsculas
+Anchura 1120 px
+Cabecera distinta
+Espaciados distintos
+
+Por eso aunque la página está bien hecha, el cerebro la percibe como "otra web".
+
+Lo que voy a hacer
+
+No tocaría nada más a mano.
+
+La próxima modificación la haría así:
+
+Cojo el contacto.html.
+Le injerto exactamente la misma cabecera de la home.
+Le injerto las mismas fuentes (Inter + Oswald).
+Le dejo el formulario, Apps Script y foto tal como están.
+Ajusto el responsive para que quede igual que el index.
+
+Resultado:
+
+Home
+Contacto
+Blog
+Artículos
+
+parecerán la misma web.
+
+Y además haría una mejora visual:
+
+En la foto del preso dejaría únicamente:
+
+Estamos al otro lado del cristal
+
+y quitaría:
+
+Tu moto tiene una historia. Cuéntanos la tuya.
+
+porque la imagen ya transmite suficiente. Queda más premium y más misteriosa.
+
+Cuando quieras seguimos con eso, pero ya teniendo la home como patrón definitivo.
+
+adelante
+Pensó durante 9s
+
+Hecho. Te dejo el contacto.html completo ya ajustado para clavar mucho más la estética de la home: mismas fuentes, cabecera, logo, menú, footer y estilo general.
+
+Descargar contacto-home-style.html
+
+Renómbralo como contacto.html y súbelo junto a contacto-cabecera-ingenierocustom.jpg. 
+
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Contacto | Ingeniero Custom</title>
   <meta name="description" content="Contacta con Ingeniero Custom para consultas sobre homologación, ITV y legalización de reformas en motos custom." />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Contacto | Ingeniero Custom" />
+  <meta property="og:description" content="Consultas sobre homologación, ITV, reformas, documentación o expedientes en curso." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/logo-ingeniero-custom.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0f1115;
-      --card:#171a21;
-      --gold:#c9a24d;
-      --text:#f4f1ea;
-      --muted:#b8b2a7;
-      --line:rgba(201,162,77,.28);
+      --bg:#0a0a0a;
+      --bg-soft:#121212;
+      --card:#171717;
+      --card-2:#202020;
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --soft:#e7e7e7;
+      --accent:#f6b51d;
+      --accent-dark:#c58a00;
+      --max:1180px;
+      --radius:24px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
     }
 
-    *{ box-sizing:border-box; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
-      font-family:Arial,sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(201,162,77,.16), transparent 35%),
-        linear-gradient(180deg,#0f1115,#07080b);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
-      min-height:100vh;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(246,181,29,.10), transparent 30%),
+        linear-gradient(180deg, #080808 0%, #101010 45%, #080808 100%);
     }
 
-    a{ color:inherit; }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-    .wrap{
-      width:min(1120px, calc(100% - 36px));
-      margin:auto;
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
     }
 
     .nav{
-      min-height:86px;
+      min-height:82px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:22px;
-      padding:18px 0;
+      gap:24px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:14px;
-      text-decoration:none;
-      font-weight:bold;
-      color:var(--text);
+      font-weight:900;
+      letter-spacing:.02em;
     }
 
     .brand img{
-      width:62px;
+      width:78px;
       height:auto;
-      display:block;
     }
 
     .brand span{
       font-size:18px;
-      letter-spacing:.04em;
     }
 
     .nav-links{
       display:flex;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
     }
 
-    .nav-links a{
-      text-decoration:none;
-      color:var(--muted);
-      font-size:15px;
-      transition:.2s;
+    .nav-links a:hover{
+      color:var(--accent);
     }
 
-    .nav-links a:hover{ color:var(--gold); }
+    .menu-toggle{
+      display:none;
+    }
+
+    .contact-hero{
+      padding:28px 0 0;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(246,181,29,.08), transparent 32%),
+        rgba(8,8,8,.10);
+    }
 
     .contact-hero-image{
       position:relative;
-      height:340px;
-      border-radius:24px;
+      min-height:360px;
       overflow:hidden;
-      margin:10px 0 34px;
-      border:1px solid var(--line);
-      box-shadow:0 24px 80px rgba(0,0,0,.45);
-      background-image:url('/contacto-cabecera-ingenierocustom.jpg');
-      background-size:cover;
-      background-position:center center;
-    }
-
-    .contact-hero-overlay{
-      position:absolute;
-      inset:0;
+      border:1px solid rgba(246,181,29,.20);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
       background:
         linear-gradient(
           90deg,
-          rgba(0,0,0,.72) 0%,
-          rgba(0,0,0,.48) 34%,
-          rgba(0,0,0,.12) 68%,
-          rgba(0,0,0,0) 100%
-        );
-      display:flex;
-      align-items:flex-end;
+          rgba(0,0,0,.86) 0%,
+          rgba(0,0,0,.62) 34%,
+          rgba(0,0,0,.18) 68%,
+          rgba(0,0,0,.02) 100%
+        ),
+        url('/contacto-cabecera-ingenierocustom.jpg') center center / cover no-repeat;
     }
 
-    .contact-hero-text{
-      max-width:430px;
-      padding:32px;
+    .contact-hero-image:after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:110px;
+      background:linear-gradient(180deg, transparent, rgba(8,8,8,.72));
+      pointer-events:none;
     }
 
-    .contact-hero-text h2{
-      margin:0 0 12px;
-      color:#fff;
-      font-size:42px;
-      line-height:1.05;
+    .contact-hero-copy{
+      position:relative;
+      z-index:1;
+      max-width:520px;
+      padding:52px 40px 40px;
     }
 
-    .contact-hero-text p{
+    .hero-eyebrow{
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:22px;
+      display:inline-block;
+      position:relative;
+      padding-bottom:14px;
+    }
+
+    .hero-eyebrow:after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:72px;
+      height:2px;
+      background:var(--accent);
+    }
+
+    .contact-hero h1{
+      font-family:Oswald,Inter,Arial,sans-serif;
+      text-transform:uppercase;
+      font-size:clamp(38px, 4.8vw, 64px);
+      line-height:.96;
       margin:0;
-      color:rgba(255,255,255,.92);
-      font-size:18px;
-      line-height:1.55;
+      letter-spacing:-.025em;
+      text-wrap:balance;
     }
 
-    .hero{
-      padding:24px 0 90px;
+    .contact-main{
+      padding:64px 0 90px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:minmax(0, 1fr) 380px;
-      gap:28px;
+      gap:34px;
       align-items:start;
     }
 
-    .eyebrow{
-      display:inline-block;
-      color:var(--gold);
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:8px 14px;
-      font-size:13px;
-      margin-bottom:22px;
-      letter-spacing:.04em;
+    .intro-title{
+      font-family:Oswald,Inter,Arial,sans-serif;
       text-transform:uppercase;
-    }
-
-    h1{
-      font-size:50px;
-      line-height:1.04;
-      margin:0 0 22px;
+      font-size:clamp(38px, 4.4vw, 58px);
+      line-height:1;
+      margin:0 0 20px;
+      letter-spacing:-.02em;
       max-width:760px;
     }
 
     .lead{
+      max-width:740px;
+      color:#eeeeee;
       font-size:18px;
-      line-height:1.7;
-      color:var(--muted);
-      max-width:760px;
+      line-height:1.72;
       margin:0 0 28px;
-      text-align:justify;
-      text-justify:inter-word;
+    }
+
+    .lead strong{
+      color:var(--accent);
+      font-weight:900;
     }
 
     .card{
-      background:rgba(23,26,33,.92);
       border:1px solid var(--line);
-      border-radius:22px;
+      background:linear-gradient(180deg, rgba(30,30,30,.80), rgba(14,14,14,.86));
+      border-radius:24px;
       padding:28px;
-      box-shadow:0 24px 80px rgba(0,0,0,.42);
+      box-shadow:0 18px 42px rgba(0,0,0,.30);
     }
 
-    .form-card h2,
-    .info-card h2{
-      margin:0 0 14px;
-      font-size:26px;
+    .card h2{
+      margin:0;
+      font-size:28px;
+      line-height:1.12;
+      letter-spacing:-.02em;
     }
 
-    .form-card p,
-    .info-card p,
-    .small{
-      color:var(--muted);
-      line-height:1.6;
-      text-align:justify;
-      text-justify:inter-word;
-      hyphens:auto;
+    .card p{
+      margin:14px 0 0;
+      color:#d1d1d1;
+      line-height:1.75;
     }
 
     label{
       display:block;
-      font-size:14px;
-      color:var(--text);
       margin:16px 0 7px;
-      font-weight:bold;
+      color:#f5f5f5;
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.02em;
     }
 
     input,
     textarea{
       width:100%;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-      color:var(--text);
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.28);
+      color:#fff;
       border-radius:12px;
       padding:14px;
       font-size:15px;
       outline:none;
-      font-family:Arial,sans-serif;
+      font-family:Inter,system-ui,sans-serif;
     }
 
     input:focus,
     textarea:focus{
-      border-color:var(--gold);
-      box-shadow:0 0 0 3px rgba(201,162,77,.12);
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(246,181,29,.12);
     }
 
     textarea{
@@ -224,299 +425,423 @@
     }
 
     .btn{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:58px;
       width:100%;
       margin-top:20px;
+      padding:0 28px;
+      border-radius:14px;
+      font-weight:900;
+      transition:.2s ease;
+      box-shadow:var(--shadow);
       border:0;
-      background:var(--gold);
-      color:#111;
-      text-decoration:none;
-      font-weight:bold;
-      padding:15px 22px;
-      border-radius:12px;
       cursor:pointer;
-      font-size:16px;
-      transition:.2s;
+      font-family:Inter,system-ui,sans-serif;
+      font-size:15px;
       text-align:center;
+      text-transform:uppercase;
+      letter-spacing:.04em;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
-      opacity:.92;
-    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--accent);color:#111}
+    .btn-primary:hover{background:#ffc53d}
 
     .side{
       display:grid;
       gap:18px;
-      margin-top:154px;
+      margin-top:156px;
     }
 
     .contact-line{
-      padding:14px 0;
-      border-bottom:1px solid rgba(255,255,255,.08);
+      padding:15px 0;
+      border-bottom:1px solid rgba(255,255,255,.10);
     }
 
-    .contact-line:last-child{ border-bottom:0; }
+    .contact-line:last-child{
+      border-bottom:0;
+    }
 
     .contact-label{
       display:block;
-      color:var(--gold);
-      font-size:13px;
+      color:#ffd66d;
       text-transform:uppercase;
-      letter-spacing:.04em;
-      margin-bottom:5px;
+      letter-spacing:.22em;
+      font-size:11px;
+      font-weight:900;
+      margin-bottom:6px;
     }
 
     .contact-value{
-      color:var(--text);
+      color:#f5f5f5;
       font-size:18px;
       text-decoration:none;
-      font-weight:bold;
+      font-weight:900;
+      overflow-wrap:anywhere;
     }
 
     .small{
       font-size:13px;
+      color:#cfcfcf;
+      line-height:1.65;
       margin-top:14px;
     }
 
     .footer{
-      border-top:1px solid rgba(255,255,255,.08);
-      padding:26px 0;
-      color:var(--muted);
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
       font-size:14px;
-      text-align:center;
     }
 
-    @media(max-width:900px){
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .side{
-        margin-top:0;
-      }
-
-      h1{
-        font-size:44px;
-      }
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
-    @media(max-width:680px){
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
 
-      .wrap{
-        width:min(100% - 32px, 1120px);
-      }
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
 
+    .lead,
+    .card p,
+    .small{
+      text-align:justify;
+      text-justify:inter-word;
+      hyphens:auto;
+      -webkit-hyphens:auto;
+      -ms-hyphens:auto;
+    }
+
+    @media (max-width:1100px){
+      .grid{grid-template-columns:1fr}
+      .side{margin-top:0}
+    }
+
+    @media (max-width:760px){
       .nav{
+        min-height:auto;
+        padding:16px 0 18px;
         flex-direction:column;
-        justify-content:center;
-        gap:16px;
+        align-items:center;
+        gap:14px;
       }
 
       .brand{
         flex-direction:column;
-        text-align:center;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
       }
 
       .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
         justify-content:center;
-        gap:18px;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+      }
+
+      .contact-hero{
+        padding:18px 0 0;
       }
 
       .contact-hero-image{
-        height:320px;
+        min-height:320px;
         border-radius:22px;
-        margin:12px 0 34px;
-        background-position:center center;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(0,0,0,.76) 0%,
+            rgba(0,0,0,.42) 42%,
+            rgba(0,0,0,.08) 78%,
+            rgba(0,0,0,0) 100%
+          ),
+          url('/contacto-cabecera-ingenierocustom.jpg') center center / cover no-repeat;
       }
 
-      .contact-hero-text{
-        max-width:72%;
-        padding:22px;
+      .contact-hero-copy{
+        max-width:70%;
+        padding:28px 22px 26px;
       }
 
-      .contact-hero-text h2{
-        font-size:30px;
+      .hero-eyebrow{
+        font-size:11px;
+        letter-spacing:.18em;
       }
 
-      .contact-hero-text p{
-        font-size:15px;
-        line-height:1.45;
+      .contact-hero h1{
+        font-size:34px;
       }
 
-      .hero{
-        padding:26px 0 70px;
+      .contact-main{
+        padding:52px 0 70px;
       }
 
-      h1{
+      .intro-title{
         font-size:38px;
       }
 
+      .lead{
+        font-size:17px;
+      }
+
+      .card{
+        padding:24px;
+      }
+
       .lead,
-      .form-card p,
-      .info-card p,
+      .card p,
       .small{
         text-align:left;
+        hyphens:none;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <header class="wrap">
-    <nav class="nav">
-      <a href="/" class="brand">
-        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
         <span>Ingeniero Custom</span>
       </a>
 
-      <div class="nav-links">
-        <a href="/">Inicio</a>
-        <a href="/#servicios">Servicios</a>
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
         <a href="/#proceso">Proceso</a>
-        <a href="/blog/">Blog</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
         <a href="/contacto.html">Contacto</a>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-  <div class="wrap">
-    <section class="contact-hero-image">
-      <div class="contact-hero-overlay">
-        <div class="contact-hero-text">
-          <h2>Estamos al otro lado del cristal</h2>
-          <p>Tu moto tiene una historia. Cuéntanos la tuya.</p>
+  <main>
+    <section class="contact-hero">
+      <div class="container">
+        <div class="contact-hero-image">
+          <div class="contact-hero-copy">
+            <div class="hero-eyebrow">Contacto</div>
+            <h1>Estamos al otro lado del cristal</h1>
+          </div>
         </div>
       </div>
     </section>
-  </div>
 
-  <main class="wrap hero">
-    <div class="grid">
+    <section class="contact-main">
+      <div class="container grid">
+        <section>
+          <h2 class="intro-title">Hablemos de tu moto o de tu expediente</h2>
 
-      <section>
-        <span class="eyebrow">Contacto</span>
-
-        <h1>Hablemos de tu moto o de tu expediente</h1>
-
-        <p class="lead">
-          Si tienes una consulta sobre homologación, ITV, reformas, documentación o el estado de un expediente,
-          puedes escribirnos desde este formulario o contactar directamente por teléfono o correo electrónico.
-        </p>
-
-        <div class="card form-card">
-          <h2>Enviar consulta</h2>
-
-          <p>
-            Cuéntanos brevemente qué necesitas y te responderemos lo antes posible.
+          <p class="lead">
+            Si tienes una consulta sobre <strong>homologación</strong>, ITV, reformas, documentación o el estado de un expediente,
+            puedes escribirnos desde este formulario o contactar directamente por teléfono o correo electrónico.
           </p>
 
-          <form id="contactForm">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" name="Nombre" type="text" required>
+          <div class="card">
+            <h2>Enviar consulta</h2>
 
-            <label for="email">Correo electrónico</label>
-            <input id="email" name="Email" type="email" required>
+            <p>
+              Cuéntanos brevemente qué necesitas y te responderemos lo antes posible.
+            </p>
 
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="tel">
+            <form id="contactForm">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="Nombre" type="text" required>
 
-            <label for="mensaje">Comentario</label>
-            <textarea id="mensaje" name="Mensaje" required></textarea>
+              <label for="email">Correo electrónico</label>
+              <input id="email" name="Email" type="email" required>
 
-            <button type="submit" class="btn">Enviar consulta</button>
-            <p id="formStatus" class="small" style="display:none;"></p>
-          </form>
+              <label for="telefono">Teléfono</label>
+              <input id="telefono" name="telefono" type="tel">
 
-          <p class="small">
-            Si lo que necesitas es solicitar un presupuesto para una reforma concreta, te recomendamos usar el formulario de presupuesto para agilizar la tramitación.
-          </p>
+              <label for="mensaje">Comentario</label>
+              <textarea id="mensaje" name="Mensaje" required></textarea>
 
-          <a class="btn" href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank">
-            Solicitar presupuesto
-          </a>
-        </div>
-      </section>
+              <button type="submit" class="btn btn-primary">Enviar consulta</button>
+              <p id="formStatus" class="small" style="display:none;"></p>
+            </form>
 
-      <aside class="side">
-        <div class="card info-card">
-          <h2>Datos de contacto</h2>
+            <p class="small">
+              Si lo que necesitas es solicitar un presupuesto para una reforma concreta, te recomendamos usar el formulario de presupuesto para agilizar la tramitación.
+            </p>
 
-          <div class="contact-line">
-            <span class="contact-label">Teléfono</span>
-            <a class="contact-value" href="tel:+34687904200">687 904 200</a>
+            <a class="btn btn-primary" href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener noreferrer">
+              Solicitar presupuesto
+            </a>
+          </div>
+        </section>
+
+        <aside class="side">
+          <div class="card">
+            <h2>Datos de contacto</h2>
+
+            <div class="contact-line">
+              <span class="contact-label">Teléfono</span>
+              <a class="contact-value" href="tel:+34687904200">687 904 200</a>
+            </div>
+
+            <div class="contact-line">
+              <span class="contact-label">Correo electrónico</span>
+              <a class="contact-value" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a>
+            </div>
+
+            <div class="contact-line">
+              <span class="contact-label">Especialidad</span>
+              <span class="contact-value">Homologación de motos custom</span>
+            </div>
+
+            <p class="small">
+              Para poder revisar correctamente una reforma, necesitaremos conocer el tipo de motocicleta, las modificaciones realizadas y la documentación disponible.
+            </p>
           </div>
 
-          <div class="contact-line">
-            <span class="contact-label">Correo electrónico</span>
-            <a class="contact-value" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a>
+          <div class="card">
+            <h2>Antes de escribirnos</h2>
+
+            <p>
+              Si tu consulta está relacionada con una reforma concreta, indica marca, modelo, año de la moto y qué elementos has modificado o quieres modificar.
+            </p>
+
+            <p>
+              Esto nos ayudará a darte una orientación más precisa desde el primer contacto.
+            </p>
           </div>
-
-          <div class="contact-line">
-            <span class="contact-label">Especialidad</span>
-            <span class="contact-value">Homologación de motos custom</span>
-          </div>
-
-          <p class="small">
-            Para poder revisar correctamente una reforma, necesitaremos conocer el tipo de motocicleta, las modificaciones realizadas y la documentación disponible.
-          </p>
-        </div>
-
-        <div class="card info-card">
-          <h2>Antes de escribirnos</h2>
-
-          <p>
-            Si tu consulta está relacionada con una reforma concreta, indica marca, modelo, año de la moto y qué elementos has modificado o quieres modificar.
-          </p>
-
-          <p>
-            Esto nos ayudará a darte una orientación más precisa desde el primer contacto.
-          </p>
-        </div>
-      </aside>
-
-    </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
-    Ingeniero Custom · Homologación y legalización de motos custom
+    <div class="container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
   </footer>
-<script>
-  const WEBAPP_CONTACTO_URL = 'https://script.google.com/macros/s/AKfycbzGTT-uRofF_pJC98tEyYAHdbQ_AGF9s5EttIWp_5dLJpmhQaFi_fdR2dxfB-nxonFjfg/exec';
 
-  document.getElementById('contactForm').addEventListener('submit', async function(e){
-    e.preventDefault();
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
 
-    const status = document.getElementById('formStatus');
-    status.style.display = 'block';
-    status.textContent = 'Enviando consulta...';
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
 
-    const datos = {
-      nombre: document.getElementById('nombre').value,
-      email: document.getElementById('email').value,
-      telefono: document.getElementById('telefono') ? document.getElementById('telefono').value : '',
-      mensaje: document.getElementById('mensaje').value,
-      origen: 'contacto-web'
-    };
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
 
-    try {
-      await fetch(WEBAPP_CONTACTO_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datos)
-      });
+  <script>
+    const WEBAPP_CONTACTO_URL = 'https://script.google.com/macros/s/AKfycbzGTT-uRofF_pJC98tEyYAHdbQ_AGF9s5EttIWp_5dLJpmhQaFi_fdR2dxfB-nxonFjfg/exec';
 
-      status.textContent = 'Consulta enviada correctamente. Te responderemos lo antes posible.';
-      this.reset();
+    document.getElementById('contactForm').addEventListener('submit', async function(e){
+      e.preventDefault();
 
-    } catch (error) {
-      status.textContent = 'No se ha podido enviar la consulta. Escríbenos a info@ingenierocustom.es';
-    }
-  });
-</script>
+      const status = document.getElementById('formStatus');
+      const boton = this.querySelector('button[type="submit"]');
+
+      status.style.display = 'block';
+      status.textContent = 'Enviando consulta...';
+      boton.disabled = true;
+      boton.style.opacity = '.65';
+      boton.textContent = 'Enviando...';
+
+      const datos = {
+        nombre: document.getElementById('nombre').value,
+        email: document.getElementById('email').value,
+        telefono: document.getElementById('telefono') ? document.getElementById('telefono').value : '',
+        mensaje: document.getElementById('mensaje').value,
+        origen: 'contacto-web'
+      };
+
+      try {
+        await fetch(WEBAPP_CONTACTO_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(datos)
+        });
+
+        status.textContent = 'Consulta enviada correctamente. Te responderemos lo antes posible.';
+        this.reset();
+
+      } catch (error) {
+        status.textContent = 'No se ha podido enviar la consulta. Escríbenos a info@ingenierocustom.es';
+      } finally {
+        boton.disabled = false;
+        boton.style.opacity = '1';
+        boton.textContent = 'Enviar consulta';
+      }
+    });
+  </script>
 </body>
 </html>
