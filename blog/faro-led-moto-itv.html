@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Faro LED en moto: cuándo es legal, ITV y homologación 2026 | Ingeniero Custom</title>
+  <meta name="description" content="¿Es legal montar un faro LED en una moto? Descubre cuándo necesitas homologación, qué revisa la ITV y los errores más frecuentes al instalar iluminación LED en motos custom." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero{
+      background:
+        linear-gradient(
+          rgba(0,0,0,.20),
+          rgba(0,0,0,.55)
+        ),
+        url('./faro-led-blog.jpg')
+        center center / cover no-repeat;
+
+      padding:90px 8% 80px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Iluminación y homologación de motos</div>
+      <h1>Faro LED en moto: cuándo es legal y cuándo no</h1>
+      <p>
+        La historia que se repite una y otra vez: un faro espectacular en las fotos,
+        una moto que parece terminada y una ITV que descubre problemas que nadie
+        había explicado antes.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <h2>El día que un técnico de ITV comparó un faro LED con una vela</h2>
+
+      <p>
+        Hay pocas cosas más satisfactorias para quien disfruta personalizando una moto que terminar una reforma y contemplar el resultado final. Después de semanas buscando piezas, comparando opciones y dedicando tiempo y dinero a un proyecto personal, llega ese momento en el que la moto empieza a parecerse exactamente a la imagen que llevaba meses rondando por la cabeza. En muchas ocasiones, una de las piezas que más transforma el aspecto de una motocicleta es precisamente el faro. Basta cambiar el frontal para que una moto parezca más clásica, más agresiva o simplemente más personal.
+      </p>
+
+      <p>
+        Hace algún tiempo nos llamó un cliente después de salir bastante molesto de una ITV. Había instalado un faro LED que había comprado por internet. Las fotografías del anuncio eran espectaculares, el precio parecía una oportunidad difícil de rechazar y las opiniones de otros compradores daban cierta confianza. Todo apuntaba a una compra inteligente. Sin embargo, durante la inspección, el técnico observó el comportamiento del sistema de iluminación y terminó realizando un comentario que, aunque seguramente exagerado, resume perfectamente una realidad que vemos con demasiada frecuencia: <strong>"eso ilumina menos que una vela"</strong>.
+      </p>
+
+      <p>
+        La anécdota puede resultar graciosa cuando se cuenta con el tiempo suficiente de por medio, pero en aquel momento al propietario no le hizo ninguna gracia. Había invertido dinero, tiempo y esfuerzo en una modificación que consideraba una mejora evidente y, de repente, descubría que aquello que parecía una gran compra no estaba a la altura de lo esperado.
+      </p>
+
+      <h2>El problema no era el LED</h2>
+
+      <p>
+        La experiencia nos ha enseñado que muchas veces el problema no está en que una pieza sea LED, sino en asumir que cualquier producto LED es automáticamente mejor que el sistema original. Durante años se ha instalado la idea de que esta tecnología es sinónimo de calidad, cuando en realidad únicamente describe una forma de generar luz. Como ocurre con cualquier otro componente de una motocicleta, existen productos excelentes y existen productos cuya única virtud es resultar atractivos en una fotografía publicada en internet.
+      </p>
+
+      <p>
+        Tampoco ayuda la enorme cantidad de información contradictoria que circula en foros, redes sociales y plataformas de venta. Es habitual encontrar usuarios afirmando que un determinado faro funciona perfectamente y otros asegurando exactamente lo contrario. El resultado es que muchos propietarios terminan tomando decisiones basándose más en opiniones dispersas que en criterios técnicos o normativos.
+      </p>
+
+      <p>
+        Lo curioso es que el problema tampoco suele resolverse simplemente gastando más dinero. En el mercado existen marcas que ofrecen productos magníficos y otras que parecen más preocupadas por vender exclusividad que por aportar una mejora real. Como ocurre tantas veces, el equilibrio suele encontrarse lejos de ambos extremos. Ni todo lo barato es malo ni todo lo caro es necesariamente mejor. Lo importante es elegir componentes de calidad contrastada, adecuados para el vehículo y compatibles con la normativa aplicable.
+      </p>
+
+      <h2>Entendemos perfectamente lo que significa tu moto</h2>
+
+      <p>
+        Quien nunca ha sentido una conexión especial con una motocicleta probablemente tendrá dificultades para comprender determinadas decisiones. Desde fuera puede parecer exagerado dedicar tantas horas a elegir una pieza concreta o invertir tanto esfuerzo en modificar una moto que ya funciona correctamente. Sin embargo, quienes forman parte de este mundo saben perfectamente que una moto rara vez es simplemente un medio de transporte.
+      </p>
+
+      <p>
+        Detrás de cada preparación suele haber una historia personal, muchas horas de búsqueda, conversaciones con otros aficionados y una enorme cantidad de ilusión depositada en cada detalle. La moto acompaña viajes, rutas, concentraciones y momentos importantes de la vida de su propietario. Por eso una modificación no suele realizarse únicamente para mejorar el aspecto exterior, sino porque forma parte de una visión mucho más amplia de cómo debería ser esa motocicleta.
+      </p>
+
+      <p>
+        Precisamente por esa razón resulta tan frustrante descubrir que una pieza instalada con toda la ilusión del mundo puede terminar generando problemas inesperados. No porque exista intención de incumplir ninguna norma, sino porque muchas veces nadie explica con claridad dónde está el límite entre una modificación aparentemente sencilla y una reforma que necesita ser analizada correctamente.
+      </p>
+
+      <h2>El faro es mucho más importante de lo que parece</h2>
+
+      <p>
+        Entre todas las piezas que pueden modificarse en una motocicleta, el faro ocupa un lugar especial. No solo porque condiciona gran parte de la estética del vehículo, sino porque cumple una función esencial para la seguridad. El faro es, en cierto modo, la voz de la moto. Es el elemento que está comunicando constantemente al resto de usuarios de la vía que esa motocicleta está presente.
+      </p>
+
+      <p>
+        Durante el día ayuda a que otros conductores detecten la presencia del vehículo con mayor facilidad. Durante la noche se convierte en el principal aliado para anticipar curvas, obstáculos y cualquier situación que pueda aparecer en la carretera. Por ese motivo resulta difícil entender cómo algunas personas pueden dedicar tanto cuidado a elementos puramente estéticos y, al mismo tiempo, dejar una parte tan importante en manos de componentes cuya calidad real desconocen.
+      </p>
+
+      <p>
+        La iluminación no consiste únicamente en ver mejor. También consiste en ser visto. Y cualquiera que lleve años conduciendo motocicletas sabe que esa diferencia puede ser determinante.
+      </p>
+
+      <h2>Cuando una modificación bonita termina convirtiéndose en un problema</h2>
+
+      <p>
+        La mayoría de los propietarios que contactan con nosotros no buscan ningún atajo ni pretenden eludir ninguna norma. Al contrario. Suelen ser personas convencidas de haber actuado correctamente porque compraron la pieza en una tienda aparentemente fiable, porque el vendedor les aseguró que no existiría ningún inconveniente o porque habían visto instalaciones similares en otras motocicletas.
+      </p>
+
+      <p>
+        El problema aparece cuando llega el momento de verificar si esa modificación cumple realmente todos los requisitos necesarios. Es entonces cuando surgen las dudas, las contradicciones y, en algunos casos, la desagradable sensación de haber invertido dinero en una pieza que quizá no era la opción adecuada.
+      </p>
+
+      <p>
+        Lo más frustrante de estas situaciones no suele ser la inspección en sí misma. Lo realmente frustrante es descubrir que una de las piezas favoritas de toda la preparación puede convertirse precisamente en el origen del problema.
+      </p>
+
+      <h2>Entonces, ¿cuándo es legal un faro LED?</h2>
+
+      <p>
+        Esta es probablemente la pregunta más habitual y también una de las más difíciles de responder sin analizar cada caso concreto. La legalidad de una modificación relacionada con el sistema de iluminación depende de numerosos factores, entre ellos las características originales de la motocicleta, el tipo de componente instalado y la forma en la que se ha realizado la reforma.
+      </p>
+
+      <p>
+        Por ese motivo desconfiamos bastante de las respuestas universales que abundan en internet. Las motos no siempre se comportan igual y dos vehículos aparentemente idénticos pueden encontrarse en situaciones completamente diferentes cuando llega el momento de pasar una inspección técnica. Lo que en un caso puede ser perfectamente viable, en otro puede requerir documentación adicional o incluso una legalización específica.
+      </p>
+
+      <p>
+        La experiencia nos ha enseñado que la mejor decisión siempre consiste en estudiar cada proyecto antes de realizar la inversión. Resulta mucho más sencillo resolver una duda cuando la pieza todavía no se ha comprado que cuando ya forma parte de una preparación terminada.
+      </p>
+
+      <h2>Una consulta a tiempo siempre sale más barata</h2>
+
+      <p>
+        Después de años viendo casos similares, existe una conclusión que se repite constantemente. La inmensa mayoría de los problemas relacionados con la iluminación podrían haberse evitado con una simple consulta previa. Muchas veces basta revisar unas fotografías, conocer el modelo exacto de motocicleta y analizar el componente elegido para detectar posibles inconvenientes antes de que aparezcan.
+      </p>
+
+      <p>
+        Nadie personaliza una moto pensando en desmontarla unos meses más tarde. Nadie invierte ilusión en una reforma esperando que termine generando problemas. Y precisamente por eso merece la pena dedicar unos minutos a comprobar que todo está correctamente planteado antes de comenzar.
+      </p>
+
+      <p>
+        Porque cuando una moto está terminada, cuando el proyecto por fin tiene el aspecto soñado y cuando uno se siente especialmente orgulloso del resultado, lo último que quiere escuchar es que el espectacular faro LED que acaba de instalar ilumina menos que una vela.
+      </p>
+
+      <div class="cta">
+        <h3>¿Tienes dudas sobre el faro LED de tu moto?</h3>
+
+        <p>
+          Antes de comprar piezas, desmontar media moto o presentarte en la ITV, podemos revisar tu caso concreto y decirte exactamente qué documentación necesitas y cuál es la mejor forma de legalizar la modificación.
+        </p>
+
+        <a href="https://forms.gle/4Qh3goXjeUHZA7MD9" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
