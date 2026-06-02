@@ -20,17 +20,12 @@
   <style>
     :root{
       --bg:#0a0a0a;
-      --bg-soft:#121212;
       --card:#171717;
-      --card-2:#202020;
       --line:rgba(255,255,255,.12);
       --text:#f5f5f5;
       --muted:#c7c7c7;
-      --soft:#e7e7e7;
       --accent:#f6b51d;
-      --accent-dark:#c58a00;
       --max:1180px;
-      --radius:24px;
       --shadow:0 22px 60px rgba(0,0,0,.45);
     }
 
@@ -114,12 +109,12 @@
       background:
         linear-gradient(
           180deg,
-          rgba(0,0,0,.28) 0%,
+          rgba(0,0,0,.34) 0%,
           rgba(0,0,0,.18) 30%,
-          rgba(0,0,0,.04) 58%,
-          rgba(0,0,0,.34) 100%
+          rgba(0,0,0,.06) 62%,
+          rgba(0,0,0,.58) 100%
         ),
-        url('./moto-custom-fondo.jpg') center center / contain no-repeat;
+        url('./moto-custom-fondo.jpg') center center / cover no-repeat;
       background-color:#070707;
     }
 
@@ -127,16 +122,16 @@
       content:"";
       position:absolute;
       inset:auto 0 0;
-      height:130px;
-      background:linear-gradient(180deg, transparent, rgba(8,8,8,.92));
+      height:120px;
+      background:linear-gradient(180deg, transparent, rgba(8,8,8,.94));
       pointer-events:none;
     }
 
     .blog-hero-inner{
       position:relative;
       z-index:1;
-      min-height:650px;
-      padding:34px 0 0;
+      min-height:520px;
+      padding:38px 0 0;
       max-width:var(--max);
     }
 
@@ -169,22 +164,22 @@
     h1{
       font-family:Oswald,Inter,Arial,sans-serif;
       text-transform:uppercase;
-      font-size:clamp(42px, 4.5vw, 66px);
+      font-size:clamp(38px, 3.9vw, 58px);
       line-height:.96;
       margin:0;
       letter-spacing:-.025em;
-      max-width:1160px;
+      max-width:1180px;
       text-wrap:balance;
-      text-shadow:0 8px 22px rgba(0,0,0,.55);
+      text-shadow:0 8px 22px rgba(0,0,0,.62);
     }
 
     .lead{
-      max-width:860px;
+      max-width:820px;
       color:#f1f1f1;
       font-size:19px;
       line-height:1.55;
       margin:18px 0 0;
-      text-shadow:0 5px 16px rgba(0,0,0,.55);
+      text-shadow:0 5px 16px rgba(0,0,0,.60);
     }
 
     .lead strong{
@@ -377,12 +372,8 @@
         grid-template-columns:1fr;
       }
 
-      .blog-hero{
-        background-size:cover;
-      }
-
       .blog-hero-inner{
-        min-height:560px;
+        min-height:500px;
       }
     }
 
@@ -452,20 +443,20 @@
         background:
           linear-gradient(
             180deg,
-            rgba(0,0,0,.28) 0%,
-            rgba(0,0,0,.12) 45%,
-            rgba(0,0,0,.42) 100%
+            rgba(0,0,0,.40) 0%,
+            rgba(0,0,0,.18) 42%,
+            rgba(0,0,0,.58) 100%
           ),
           url('./moto-custom-fondo.jpg') center center / cover no-repeat;
       }
 
       .blog-hero-inner{
-        padding:34px 0 280px;
+        padding:34px 0 250px;
         min-height:auto;
       }
 
       h1{
-        font-size:38px;
+        font-size:36px;
         line-height:.95;
       }
 
@@ -534,7 +525,7 @@
       <div class="container blog-hero-inner">
         <div class="hero-copy">
           <div class="hero-eyebrow">Blog técnico</div>
-          <h1>Guías sobre ITV, reformas y homologación de motos custom</h1>
+          <h1>ITV, reformas y homologación<br>de motos custom</h1>
           <p class="lead">
             Artículos claros sobre documentación, reformas frecuentes, problemas en ITV y criterios técnicos para
             <strong>Harley-Davidson, bobber, café racer, scrambler y motos custom.</strong>
