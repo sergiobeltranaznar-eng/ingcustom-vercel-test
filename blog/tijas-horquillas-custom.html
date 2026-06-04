@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Horquillas y tijas en moto custom: estética, geometría y homologación | Ingeniero Custom</title>
+  <meta name="description" content="Cambiar horquillas o tijas puede transformar la personalidad de una moto custom, pero también afecta a la geometría, la dirección, la estabilidad y la homologación de la reforma." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .brand img{width:78px}
+    .brand span{font-size:18px}
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{color:var(--accent)}
+    .menu-toggle{display:none}
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.62)),
+        url('./tijas-horquillas-header.jpg')
+        center center / cover no-repeat;
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner { max-width: 980px; }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p { color: #e5e5e5; }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover { background: #f0b844; }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .back-blog:hover { color: #f0b844; }
+
+    @media (max-width: 800px) {
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{width:70px}
+      .brand span{font-size:18px}
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{display:grid}
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero { padding: 60px 6%; }
+      .container { padding: 45px 18px; }
+      .article-card { padding: 26px; }
+      p { font-size: 1rem; }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Horquilla · Tijas · Homologación</div>
+      <h1>La horquilla delantera: la reforma que cambia la forma en la que una moto mira la carretera</h1>
+      <p>
+        Modificar horquillas y tijas puede transformar por completo la personalidad
+        de una motocicleta. Una reforma que nace en la estética, pero que también
+        afecta a la geometría, la dirección y el comportamiento dinámico del conjunto.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay piezas que transforman una motocicleta cuando empezamos a conducirla. El asiento modifica la comodidad. El manillar cambia la postura. Los frenos alteran la confianza. Después existen otras que consiguen cambiar la personalidad de la moto incluso antes de arrancar el motor. La horquilla delantera pertenece claramente a esa categoría.
+      </p>
+
+      <p>
+        Basta observar una motocicleta desde unos metros de distancia para entenderlo. La inclinación del frontal, la altura de la rueda delantera, la longitud de las barras o la presencia de unas tijas determinadas son capaces de alterar completamente la imagen que transmite una moto. Es una de esas reformas que se perciben antes con los ojos que con las manos.
+      </p>
+
+      <p>
+        Dentro del mundo custom existen pocas modificaciones tan influyentes desde el punto de vista visual. Una Sportster con una horquilla estándar transmite una sensación concreta. La misma moto equipada con un tren delantero diferente parece contar una historia completamente distinta. Lo mismo ocurre con una Dyna, una Softail o prácticamente cualquier motocicleta susceptible de ser transformada.
+      </p>
+
+      <p>
+        Cambiar la horquilla no consiste únicamente en sustituir una pieza mecánica. Consiste en modificar la forma en que la moto se presenta ante el mundo.
+      </p>
+
+      <div class="quote">
+        La personalidad de una motocicleta empieza muchas veces por la forma en que apoya la rueda delantera sobre el asfalto.
+      </div>
+
+      <h2>Cuando los choppers cambiaron para siempre la imagen de una motocicleta</h2>
+
+      <p>
+        Es imposible hablar de horquillas sin hablar de los choppers. Mucho antes de que internet llenara las pantallas de preparaciones espectaculares, ya existían motocicletas capaces de llamar la atención desde cientos de metros de distancia gracias a una característica muy concreta: sus largas horquillas delanteras.
+      </p>
+
+      <p>
+        Aquellas motos rompieron por completo las proporciones tradicionales que los fabricantes llevaban décadas utilizando. De repente aparecieron motocicletas más largas, más bajas y con una presencia absolutamente diferente a todo lo que circulaba por las carreteras de la época. El tren delantero dejó de ser una simple necesidad mecánica para convertirse en una declaración de intenciones.
+      </p>
+
+      <p>
+        La influencia de aquellos primeros choppers sigue siendo visible hoy en día. Incluso quienes nunca han conducido una motocicleta reconocen inmediatamente la silueta de una moto con una horquilla alargada. Es una imagen que forma parte de la cultura popular y que ha inspirado generaciones enteras de preparadores.
+      </p>
+
+      <p>
+        Lo interesante es que la fascinación por modificar el tren delantero nunca desapareció. Simplemente evolucionó. Lo que en otro tiempo fueron largas horquillas de estilo chopper se transformó posteriormente en conversiones con horquillas invertidas, tijas especiales o combinaciones procedentes de modelos más modernos.
+      </p>
+
+      <h2>La obsesión por cambiar la actitud de una moto</h2>
+
+      <p>
+        Existe una palabra que define perfectamente lo que muchos propietarios buscan cuando modifican el tren delantero de una motocicleta: actitud.
+      </p>
+
+      <p>
+        No hablamos de potencia. Tampoco de velocidad. Ni siquiera de prestaciones puras. Hablamos de presencia. De esa sensación difícil de explicar que transmite una moto cuando la observamos aparcada y que nos permite saber inmediatamente si estamos delante de una cruiser, una bobber, una café racer o una chopper.
+      </p>
+
+      <p>
+        La horquilla juega un papel fundamental en esa percepción. Un pequeño cambio en la altura del frontal puede alterar por completo las proporciones visuales de la motocicleta. Unas tijas diferentes pueden modificar la sensación de robustez. Una horquilla invertida puede aportar una imagen más moderna y agresiva.
+      </p>
+
+      <p>
+        Incluso la simple combinación de distintos componentes puede transformar completamente la personalidad visual del conjunto.
+      </p>
+
+      <div class="quote">
+        Muchas veces no se cambia una horquilla para correr más, sino para que la moto tenga otra actitud.
+      </div>
+
+      <h2>Lo que realmente cambia cuando modificamos el tren delantero</h2>
+
+      <p>
+        Lo curioso de las modificaciones relacionadas con la horquilla es que muchas veces comienzan como una cuestión estética y terminan afectando a aspectos mucho más profundos del comportamiento de la motocicleta.
+      </p>
+
+      <p>
+        Porque una horquilla no es simplemente una estructura destinada a sujetar la rueda delantera.
+      </p>
+
+      <p>
+        Forma parte de la geometría general del vehículo. Influye sobre la dirección. Participa en el reparto de pesos. Condiciona la estabilidad y modifica la forma en que la motocicleta transmite información al conductor. Todo ello ocurre simultáneamente mientras la mayoría de propietarios observa principalmente la estética del conjunto.
+      </p>
+
+      <p>
+        Es una situación bastante habitual dentro del mundo custom. Una reforma nace motivada por una cuestión visual y acaba teniendo consecuencias mucho más amplias de lo previsto inicialmente.
+      </p>
+
+      <p>
+        Precisamente por eso las modificaciones del tren delantero requieren siempre una visión global. No basta con preguntarse si una horquilla encaja físicamente sobre una motocicleta determinada. También es necesario comprender qué ocurre después de instalarla.
+      </p>
+
+      <h2>La diferencia entre una horquilla compatible y una horquilla que simplemente encaja</h2>
+
+      <p>
+        Existe un error muy habitual dentro del mundo de las preparaciones. Consiste en pensar que una pieza es adecuada simplemente porque puede montarse.
+      </p>
+
+      <p>
+        A primera vista parece una conclusión razonable. Si una horquilla puede instalarse físicamente sobre una motocicleta y todos los componentes parecen encajar correctamente, resulta tentador pensar que el trabajo está terminado.
+      </p>
+
+      <p>
+        Sin embargo, la homologación contempla estas reformas desde una perspectiva bastante más amplia.
+      </p>
+
+      <p>
+        Cuando se sustituyen tijas o horquillas no basta con analizar la compatibilidad mecánica. También es necesario estudiar la procedencia de los componentes y comprobar que pertenecen a un vehículo adecuado para asumir las cargas que deberá soportar posteriormente.
+      </p>
+
+      <p>
+        Por eso el criterio utilizado habitualmente se basa en que los componentes procedan de una motocicleta donante con una masa máxima técnicamente admisible sobre el eje delantero igual o superior a la del vehículo reformado.
+      </p>
+
+      <div class="quote">
+        No se trata únicamente de que la pieza encaje. Se trata de que la pieza sea apropiada para el trabajo que va a desempeñar.
+      </div>
+
+      <h2>Cuando una transformación empieza por la rueda delantera</h2>
+
+      <p>
+        Muchos proyectos custom nacen alrededor de una idea muy concreta. Algunos comienzan con un depósito especial. Otros con un asiento artesanal. Sin embargo, existe un grupo de transformaciones que empieza mirando directamente hacia la rueda delantera.
+      </p>
+
+      <p>
+        Es algo especialmente frecuente en motocicletas como las Harley-Davidson Sportster. Basta modificar el aspecto del frontal para que toda la moto parezca diferente. Una rueda distinta, unas tijas específicas o una nueva horquilla pueden alterar las proporciones generales del conjunto de una forma sorprendente.
+      </p>
+
+      <p>
+        Y es precisamente ahí donde reside el atractivo de esta reforma. Porque pocas modificaciones ofrecen un impacto visual tan grande actuando sobre una zona relativamente concreta de la motocicleta.
+      </p>
+
+      <p>
+        Lo que ocurre es que ese impacto visual suele venir acompañado de una responsabilidad proporcional. Cuanto más importante es la transformación, más necesario resulta estudiar correctamente sus implicaciones técnicas.
+      </p>
+
+      <p>
+        Y en el caso del tren delantero, esas implicaciones afectan directamente a uno de los sistemas más importantes para el comportamiento dinámico del vehículo.
+      </p>
+
+      <h2>Una custom no solo se conduce, también transmite carácter cuando está parada</h2>
+
+      <p>
+        La cultura custom siempre ha celebrado las motocicletas con personalidad propia. Motos capaces de transmitir algo incluso cuando permanecen aparcadas. Máquinas que cuentan una historia antes de arrancar el motor.
+      </p>
+
+      <p>
+        La horquilla delantera forma parte de ese lenguaje visual desde hace décadas. Es una de las primeras cosas que percibimos al observar una motocicleta y una de las piezas con mayor capacidad para modificar su carácter. Quizá por eso sigue siendo una de las reformas más deseadas dentro del sector.
+      </p>
+
+      <p>
+        Pero precisamente porque su influencia es tan importante, merece ser abordada con la misma atención que cualquier otro elemento fundamental de la motocicleta. No como una simple cuestión estética, sino como una modificación capaz de alterar tanto la imagen como el comportamiento del conjunto.
+      </p>
+
+      <p>
+        Porque una buena preparación no consiste únicamente en conseguir una moto espectacular en las fotografías. Consiste en construir una motocicleta coherente, equilibrada y capaz de transmitir exactamente aquello que su propietario buscaba desde el primer momento.
+      </p>
+
+      <p>
+        Y pocas piezas tienen tanta capacidad para conseguirlo como una horquilla correctamente elegida e integrada dentro del proyecto.
+      </p>
+
+      <p>
+        Al fin y al cabo, la personalidad de una moto empieza muchas veces por la forma en que mira la carretera.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a cambiar la horquilla o las tijas?</h3>
+
+        <p>
+          Antes de instalar una horquilla diferente, unas tijas especiales o un tren delantero procedente de otro modelo, conviene estudiar la compatibilidad, la geometría resultante y la viabilidad de homologación de la reforma.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
