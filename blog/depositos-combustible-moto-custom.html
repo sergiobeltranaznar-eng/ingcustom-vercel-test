@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Depósitos de combustible en motos custom: estética, seguridad y homologación | Ingeniero Custom</title>
+  <meta name="description" content="Cambiar o elevar el depósito de combustible de una moto custom no es solo una cuestión estética. Debe ser homologado o proceder de una moto donante, justificar su trazabilidad y respetar condiciones de montaje como el tapón y las fijaciones." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.18),
+          rgba(0,0,0,.62)
+        ),
+        url('./depositos-combustible-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Depósitos · Reformas · Homologación</div>
+      <h1>Depósitos de combustible en motos custom: cuando la estética toca gasolina</h1>
+      <p>
+        Cambiar, elevar o adaptar un depósito puede transformar por completo la línea de una moto,
+        pero no sirve cualquier pieza ni cualquier montaje: aquí la estética convive con seguridad,
+        trazabilidad y homologación.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay piezas que definen una motocicleta incluso antes de que arranque. El depósito de combustible es una de ellas. Puede parecer una simple carcasa pintada sobre el motor, pero en una moto custom es mucho más que eso. Es volumen, línea, actitud y memoria visual. Un depósito peanut convierte una Sportster en una máquina más seca y callejera. Un Mustang cambia por completo la presencia de una bobber. Un Fat Bob ensancha la moto y le da una personalidad musculosa. Y un depósito clásico de inspiración Aermacchi puede llevar una preparación hacia un terreno mucho más racing, más europeo y más extraño, de esos que no pasan desapercibidos en ninguna concentración.
+      </p>
+
+      <p>
+        Por eso esta reforma despierta tanta pasión. El propietario no mira un depósito como mira una pieza cualquiera. Lo observa como si estuviera decidiendo el carácter de toda la motocicleta. Y en muchos casos tiene razón. Cambiar el depósito no es solo sustituir un recipiente por otro. Es modificar la silueta que el ojo reconoce desde lejos. Es tocar una de las zonas más fotografiadas de la moto. Es alterar la forma en la que el piloto se sienta, abraza la máquina con las piernas y siente la distancia hasta el manillar. En el mundo custom, el depósito no solo almacena gasolina. También almacena intención.
+      </p>
+
+      <p>
+        El problema llega cuando esa intención se confunde con libertad absoluta. Porque un depósito de combustible no es una tapa decorativa ni un simple accesorio estético. Es un elemento que contiene gasolina, vapores, presión, vibraciones y movimientos constantes. Está situado en una zona crítica, cerca del motor, cerca del piloto y normalmente unido a una parte muy importante del chasis. Por eso, cuando hablamos de homologación, el depósito se analiza con bastante más seriedad de la que muchos imaginan al principio del proyecto.
+      </p>
+
+      <h2>El depósito como firma visual de una moto custom</h2>
+
+      <p>
+        Basta mirar una fila de motos aparcadas para entenderlo. Antes incluso de fijarnos en el escape, en las llantas o en la suspensión, el depósito nos dice mucho sobre lo que tenemos delante. Una chopper con un depósito estrecho y elevado transmite una sensación completamente distinta a una cruiser con un depósito ancho y bajo. Una café racer con un depósito alargado pide otra postura, otra lectura y otra forma de conducir. Una bobber con un depósito pequeño parece haber eliminado todo lo que sobraba para quedarse solo con lo esencial.
+      </p>
+
+      <p>
+        Esa capacidad para cambiar la lectura de una moto explica por qué tantos propietarios empiezan su proyecto precisamente por ahí. A veces la moto funciona perfectamente y no necesita absolutamente nada desde el punto de vista mecánico, pero el dueño siente que el depósito original no cuenta la historia que quiere contar. Puede parecer demasiado grande, demasiado moderno, demasiado turístico o simplemente demasiado alejado de la imagen que lleva años guardando en la cabeza. Y cuando eso ocurre, la tentación de cambiarlo aparece con fuerza.
+      </p>
+
+      <p>
+        En el mundo Harley-Davidson esto se ve con claridad en las Sportster, aunque no es exclusivo de ellas. La moda de elevar el depósito, especialmente en preparaciones más canallas, estrechas y de inspiración chopper urbana, ha crecido muchísimo. El famoso tank lift deja más visible el motor, abre espacio visual bajo la parte delantera del depósito y consigue una línea más agresiva. En fotografía funciona muy bien. En una moto aparcada también. Pero una cosa es que una solución tenga fuerza estética y otra distinta que pueda legalizarse sin estudiar cuidadosamente cómo se ha hecho.
+      </p>
+
+      <div class="quote">
+        Un depósito bonito puede cambiar una moto. Un depósito mal justificado puede bloquear una reforma completa.
+      </div>
+
+      <h2>Homologado o procedente de una moto donante</h2>
+
+      <p>
+        La base técnica es clara. Un depósito de combustible debe ser homologado o proceder de una motocicleta donante cuya documentación permita demostrar su trazabilidad. Esta idea parece sencilla, pero en la práctica separa muchos proyectos viables de otros que nacen torcidos desde el primer día. No basta con que el depósito sea metálico, esté bien soldado o tenga una pintura espectacular. Tampoco basta con que encaje sobre el chasis o con que el taller haya resuelto las fijaciones con buen gusto. Lo importante es poder justificar qué pieza estamos montando y de dónde sale.
+      </p>
+
+      <p>
+        Cuando el depósito procede de una moto donante, la documentación de esa moto resulta fundamental. Nos permite relacionar la pieza con un vehículo real, con unas características conocidas y con una homologación previa. Esa trazabilidad es la que da sentido técnico a la reforma. En cambio, cuando el depósito es de procedencia desconocida, comprado sin documentación o fabricado artesanalmente sin posibilidad de justificar cumplimiento, el proyecto se complica mucho. La estética puede ser perfecta, pero la homologación necesita algo más que una buena fotografía.
+      </p>
+
+      <p>
+        Aquí es donde muchos propietarios se sorprenden. En otros elementos de la moto existe cierto margen artesanal si se cumplen determinadas condiciones de instalación y seguridad. Pero en un depósito de combustible la exigencia es mucho más delicada porque hablamos de un recipiente que contiene un líquido inflamable. La Administración no lo interpreta como un simple elemento de carrocería. Lo interpreta como un componente directamente relacionado con la seguridad del vehículo y de su ocupante.
+      </p>
+
+      <h2>El tank lift y la moda de elevar el depósito</h2>
+
+      <p>
+        Elevar el depósito es una de esas modificaciones que parecen pequeñas hasta que empezamos a analizar sus consecuencias. Visualmente puede cambiar la moto de forma brutal. Deja más aire sobre el motor, endurece la línea lateral y aporta ese punto callejero que muchos propietarios buscan, especialmente en Sportster, Dyna, bobbers modernas y preparaciones de inspiración chopper. El problema es que la reforma no se valora por lo que aparenta, sino por lo que realmente modifica.
+      </p>
+
+      <p>
+        Cuando elevamos un depósito estamos cambiando su posición respecto al chasis, al motor, al piloto, al sistema de alimentación y al resto de componentes próximos. También podemos alterar la inclinación del conjunto, el recorrido de los latiguillos o conductos, la ventilación, el acceso al tapón, la interferencia con el manillar en giro completo y la forma en que se transmiten las vibraciones a sus anclajes. Nada de esto se ve en una foto de Instagram, pero todo importa cuando el proyecto se analiza con criterio técnico.
+      </p>
+
+      <p>
+        Por eso no me gusta responder con un “sí” o un “no” automático cuando alguien pregunta si se puede homologar un depósito elevado. La respuesta honesta es que depende de cómo se haya realizado, de qué depósito sea, de qué moto partimos, de qué fijaciones se mantienen o se modifican y de si podemos justificar correctamente la instalación. Lo que no es razonable es montar elevadores universales sin estudiar interferencias, sin verificar anclajes y sin pensar en cómo se va a defender después en la documentación de reforma.
+      </p>
+
+      <h2>El tapón también cuenta</h2>
+
+      <p>
+        Hay detalles aparentemente menores que en homologación no lo son. Uno de ellos es el tapón del depósito. La referencia práctica que conviene recordar es que el tapón no debe sobresalir más de 15 mm. Puede parecer una cifra pequeña, pero tiene toda la lógica del mundo cuando pensamos en salientes exteriores, seguridad del conductor y comportamiento del vehículo en caso de contacto o caída.
+      </p>
+
+      <p>
+        En las motos custom es muy habitual montar tapones vistosos, cromados, tipo racing, pop-up o piezas especiales que quedan espectaculares sobre una pintura bien trabajada. El problema aparece cuando esa pieza se convierte en un saliente excesivo o cuando se instala sin valorar su posición real respecto al piloto. Un tapón puede parecer un simple detalle de acabado, pero sobre una moto es una pieza situada en una zona sensible, muy próxima al cuerpo y muy expuesta visual y físicamente.
+      </p>
+
+      <p>
+        Esto no significa que haya que renunciar a la estética. Significa que hay que elegir bien. Un buen proyecto custom no se arruina por respetar una cota. Al contrario, se vuelve más sólido. La diferencia entre una moto bonita y una moto bien reformada suele estar precisamente en esos detalles que casi nadie ve hasta que llegan a la ITV.
+      </p>
+
+      <div class="quote">
+        En depósitos, la pregunta no es solo si queda bien. La pregunta es si se puede demostrar qué es, cómo va sujeto y por qué es seguro.
+      </div>
+
+      <h2>Las fijaciones originales y la tentación de improvisar</h2>
+
+      <p>
+        Uno de los puntos más delicados en cualquier cambio de depósito es la fijación. Un depósito no puede quedar sujeto como si fuera un adorno. Debe soportar vibraciones, aceleraciones, frenadas, irregularidades del asfalto y el propio peso del combustible. Además, debe hacerlo durante miles de kilómetros, no solo durante una sesión de fotos. Por eso, cuando se modifican soportes o se crean adaptaciones, el análisis deja de ser puramente estético y entra de lleno en la seguridad estructural del conjunto.
+      </p>
+
+      <p>
+        En muchas preparaciones artesanales se ven soluciones limpias, bien integradas y aparentemente sencillas. Pero detrás de una buena solución debe existir siempre una lógica técnica. La fijación debe ser coherente con la pieza instalada, con las cargas previsibles y con los puntos del vehículo donde se transmite el esfuerzo. Si para montar un depósito se empieza a taladrar, soldar o alterar zonas sensibles del chasis sin criterio, el problema ya no está en el depósito. Está en todo lo que hemos tenido que tocar para colocarlo.
+      </p>
+
+      <p>
+        Y aquí conviene ser contundente. No se debe convertir una reforma de depósito en una reforma estructural improvisada. Si el montaje exige modificar chasis, crear fijaciones sin justificar o comprometer elementos principales, el proyecto puede dejar de ser viable o convertirse en algo mucho más complejo de lo que el propietario imaginaba. La moto puede quedar espectacular, pero la homologación no se gana con espectáculo. Se gana con coherencia.
+      </p>
+
+      <h2>Una pieza emocional que exige cabeza fría</h2>
+
+      <p>
+        Entiendo perfectamente la fascinación por los depósitos. Los he visto colgados en talleres como si fueran obras de arte recién pintadas, brillando al sol antes de volver a una moto. He visto propietarios cambiar de idea tres veces porque un color, una forma o una línea lateral les hacía sentir que por fin habían encontrado la pieza correcta. Y lo entiendo. Pocas partes de una moto custom tienen tanta capacidad para emocionar antes incluso de estar montadas.
+      </p>
+
+      <p>
+        Pero precisamente por eso conviene tomar decisiones con la cabeza fría. Un depósito debe enamorar, sí. Debe encajar con el estilo de la moto, también. Pero además debe poder justificarse. Debe tener origen, documentación, montaje seguro, tapón adecuado y ausencia de interferencias. Debe integrarse en la moto sin convertir una idea estética en un problema técnico.
+      </p>
+
+      <p>
+        Cuando todo eso se hace bien, el resultado merece la pena. La moto cambia de presencia, el propietario siente que por fin la línea encaja y la reforma puede defenderse con argumentos sólidos. Esa es la diferencia entre una custom improvisada y una custom bien construida. La primera busca una foto. La segunda busca una historia que pueda seguir rodando legalmente.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a cambiar o elevar el depósito?</h3>
+
+        <p>
+          Antes de comprar un depósito peanut, Mustang, Fat Bob, Aermacchi o montar un kit para elevarlo, conviene revisar origen, documentación, fijaciones, tapón e interferencias. Envíame fotos de la moto y de la pieza para estudiar la viabilidad real de la reforma.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
