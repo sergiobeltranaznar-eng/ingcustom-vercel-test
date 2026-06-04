@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Velocímetro en moto custom: homologación, ITV y errores habituales | Ingeniero Custom</title>
+  <meta name="description" content="Cambiar, ocultar o sustituir el velocímetro de una moto custom puede afectar a la homologación, la ITV, la compatibilidad electromagnética y la indicación real de velocidad. Te explicamos qué debes tener en cuenta." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.18),
+          rgba(0,0,0,.62)
+        ),
+        url('./velocimetros-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Velocímetro · Reformas · Homologación</div>
+      <h1>El velocímetro: la pieza que nadie valora hasta que deja de funcionar correctamente</h1>
+      <p>
+        Ocultarlo, cambiarlo o sustituirlo por uno digital puede limpiar la estética de una moto custom,
+        pero también puede afectar a la lectura real de velocidad, a la documentación y a la homologación.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Durante décadas, los fabricantes de motocicletas hicieron todo lo posible para que el velocímetro fuese cada vez más visible. Lo colocaron sobre el depósito, delante del piloto, integrado en grandes cuadros de instrumentos e incluso rodeado de indicadores capaces de ofrecer todo tipo de información. El mundo custom, sin embargo, ha pasado los últimos treinta años intentando exactamente lo contrario. En innumerables preparaciones, el velocímetro ha ido desapareciendo poco a poco de la vista. Primero se hizo más pequeño. Después se desplazó a lugares cada vez más discretos. Más tarde llegaron los cuadros digitales minimalistas y las pequeñas pantallas capaces de mostrar toda la información en apenas unos centímetros.
+      </p>
+
+      <p>
+        Es una evolución curiosa porque refleja perfectamente la filosofía de muchas transformaciones custom. El objetivo suele ser simplificar. Limpiar la línea visual de la motocicleta. Eliminar todo aquello que parezca innecesario. Y en ese proceso, el velocímetro suele convertirse en una de las primeras víctimas. Al fin y al cabo, cuando alguien imagina una bobber minimalista o una Sportster radicalmente transformada, rara vez piensa en un gran cuadro de instrumentos dominando la vista desde el puesto de conducción.
+      </p>
+
+      <p>
+        Sin embargo, detrás de esa pequeña pantalla que muchos intentan ocultar existe una realidad que pocas veces se tiene en cuenta. El velocímetro no es únicamente una comodidad. Tampoco es un simple accesorio electrónico. Es uno de los pocos instrumentos que forman parte activa de la homologación del vehículo y uno de los elementos que más directamente influyen sobre la información que recibe el conductor durante la marcha. Y precisamente por eso, cuando desaparece, cuando se sustituye o cuando deja de funcionar correctamente, suele demostrar lo importante que era.
+      </p>
+
+      <h2>La pieza que pasó de ocupar medio depósito a intentar desaparecer</h2>
+
+      <p>
+        Hay una fotografía mental que cualquier aficionado a las Harley-Davidson reconoce inmediatamente. Una gran consola cromada recorriendo la parte superior del depósito y, en el centro, un enorme velocímetro dominando completamente la vista del piloto. Durante años, esa imagen formó parte inseparable de la identidad visual de muchas motocicletas americanas. El velocímetro no se escondía. Todo lo contrario. Se exhibía orgullosamente como una de las piezas principales del conjunto.
+      </p>
+
+      <p>
+        La situación comenzó a cambiar con la llegada de nuevas tendencias dentro del mundo custom. Las preparaciones se hicieron más minimalistas. Los depósitos más pequeños empezaron a ganar protagonismo. Las líneas visuales se simplificaron y, poco a poco, el velocímetro pasó de ser un elemento central a convertirse en algo que muchos propietarios intentaban ocultar.
+      </p>
+
+      <p>
+        Primero aparecieron los velocímetros desplazados lateralmente. Después llegaron las pequeñas unidades digitales instaladas entre las tijas. Más tarde comenzaron a popularizarse soluciones casi invisibles, donde la información quedaba reducida a una pequeña pantalla apenas perceptible desde el exterior. El objetivo siempre era el mismo: liberar visualmente la motocicleta de cualquier elemento que rompiera la pureza de sus líneas.
+      </p>
+
+      <p>
+        Lo curioso es que, mientras la estética evolucionaba en esa dirección, la función del velocímetro seguía siendo exactamente la misma. La moto podía parecer mucho más limpia. Mucho más moderna. Incluso más agresiva. Pero seguía necesitando una referencia fiable para indicar al conductor la velocidad real a la que estaba circulando.
+      </p>
+
+      <div class="quote">
+        El velocímetro puede ser discreto, pequeño o digital. Lo que no puede ser es decorativo: debe informar correctamente.
+      </div>
+
+      <h2>La obsesión por limpiar la vista del piloto</h2>
+
+      <p>
+        Existe una palabra que aparece constantemente cuando hablamos de preparaciones custom: limpieza. No se refiere únicamente a la pintura o al estado de conservación de la moto. Habla de una forma concreta de entender el diseño. Cuanto menos visible sea el cableado, mejor. Cuantos menos elementos interrumpan las líneas principales de la motocicleta, mejor. Cuanto más sencilla parezca la moto, más atractivo suele resultar el resultado final.
+      </p>
+
+      <p>
+        Dentro de esa filosofía, el velocímetro suele considerarse un elemento prescindible desde el punto de vista visual. No porque deje de ser útil, sino porque rara vez aporta personalidad estética. Un escape puede convertirse en una pieza protagonista. Un depósito artesanal también. Un manillar especial tiene carácter propio. El velocímetro, en cambio, suele ser visto simplemente como una herramienta.
+      </p>
+
+      <p>
+        Por eso muchos propietarios buscan soluciones cada vez más discretas. Pequeñas pantallas digitales. Cuadros multifunción compactos. Instrumentación integrada dentro de otras piezas. Sistemas capaces de mostrar únicamente la información imprescindible.
+      </p>
+
+      <p>
+        El problema es que, en ocasiones, esa búsqueda de simplicidad hace que olvidemos algo importante. El velocímetro no forma parte de la motocicleta para decorar el puesto de conducción. Está ahí porque proporciona una información esencial para la conducción. Y cuando empezamos a modificarlo, sustituirlo o reubicarlo, estamos actuando sobre algo mucho más importante que una simple pantalla.
+      </p>
+
+      <h2>Cuando el velocímetro deja de ser solo un velocímetro</h2>
+
+      <p>
+        Una de las cuestiones más interesantes relacionadas con los velocímetros es que los problemas rara vez aparecen cuando alguien decide cambiar únicamente el cuadro de instrumentos. Lo habitual es que aparezcan como consecuencia de otras reformas realizadas previamente.
+      </p>
+
+      <p>
+        Una Sportster recibe una nueva rueda delantera. Una bobber cambia el diámetro de sus neumáticos. Una custom incorpora llantas diferentes o modifica determinados elementos de la transmisión. Visualmente todo parece funcionar correctamente. La moto queda espectacular. Sin embargo, en algún punto del proceso aparece una pregunta que muchos propietarios no se habían planteado al principio.
+      </p>
+
+      <p>
+        ¿Sigue indicando correctamente la velocidad?
+      </p>
+
+      <p>
+        Es una cuestión mucho más importante de lo que parece. La normativa exige que el velocímetro proporcione una información fiable y que nunca indique una velocidad inferior a la velocidad real. Dicho de otra manera, puede existir un pequeño margen de seguridad, pero el conductor no puede circular creyendo que va más despacio de lo que realmente circula.
+      </p>
+
+      <p>
+        Por eso muchas reformas aparentemente ajenas al velocímetro terminan afectándole directamente. Porque el instrumento no trabaja de forma aislada. Depende de parámetros físicos relacionados con la motocicleta y cualquier modificación importante sobre esos parámetros puede alterar la información que recibe.
+      </p>
+
+      <div class="quote">
+        Cambiar llantas, neumáticos o transmisión puede terminar afectando a un elemento que nadie tenía en mente: el velocímetro.
+      </div>
+
+      <h2>La diferencia entre un cuadro bonito y un cuadro legalizable</h2>
+
+      <p>
+        Internet está lleno de velocímetros universales. Algunos son realmente atractivos. Pantallas digitales compactas, cuadros multifunción de diseño minimalista o soluciones capaces de integrarse perfectamente dentro de cualquier proyecto custom. Resulta fácil entender por qué tantos propietarios se sienten atraídos por ellos.
+      </p>
+
+      <p>
+        El problema es que no todos los velocímetros se encuentran en la misma situación desde el punto de vista documental. Cuando sustituimos el cuadro original por otro diferente, la cuestión deja de ser únicamente si funciona o si queda bien instalado. También debemos preguntarnos si el nuevo sistema puede demostrar que cumple los requisitos aplicables.
+      </p>
+
+      <p>
+        En el caso de los velocímetros electrónicos, además de su capacidad para medir correctamente la velocidad, aparece una cuestión que muchos propietarios desconocen completamente: la compatibilidad electromagnética.
+      </p>
+
+      <p>
+        Puede sonar a algo lejano o excesivamente técnico, pero tiene una explicación muy sencilla. Los sistemas electrónicos instalados en una motocicleta deben funcionar correctamente sin provocar interferencias ni verse afectados por ellas. Por ese motivo, los fabricantes de instrumentación deben acreditar el cumplimiento de determinados requisitos y aportar la documentación correspondiente. Cuando esa documentación no existe o resulta insuficiente, puede ser necesario recurrir a ensayos específicos para demostrar que el sistema cumple las condiciones exigidas.
+      </p>
+
+      <p>
+        Y es precisamente aquí donde muchas preparaciones encuentran dificultades inesperadas. Porque el velocímetro funciona. La pantalla se enciende. La velocidad parece correcta. Todo parece estar resuelto. Sin embargo, desde el punto de vista de la homologación, todavía faltan elementos fundamentales para justificar técnicamente la reforma.
+      </p>
+
+      <h2>El error más caro de muchas preparaciones</h2>
+
+      <p>
+        He visto motocicletas extraordinarias detenidas por un detalle aparentemente insignificante. Proyectos donde se han invertido cientos de horas de trabajo, miles de euros en componentes y una enorme cantidad de ilusión. Motos que llaman la atención allá donde aparecen. Preparaciones capaces de competir visualmente con cualquier construcción profesional.
+      </p>
+
+      <p>
+        Y sin embargo, algunas de ellas terminan encontrando problemas precisamente en aquellos elementos que nadie consideraba importantes al principio. El velocímetro suele pertenecer a esa categoría.
+      </p>
+
+      <p>
+        Quizá porque es una pieza pequeña. Quizá porque resulta mucho menos emocionante que un escape artesanal o un depósito modificado. O quizá porque damos por hecho que cualquier dispositivo capaz de mostrar números en una pantalla ya está haciendo correctamente su trabajo.
+      </p>
+
+      <p>
+        Pero la realidad demuestra lo contrario. Muchas veces los problemas más difíciles de resolver no aparecen en las grandes reformas. Aparecen en aquellos pequeños detalles que todos daban por solucionados. Y cuando eso ocurre, el velocímetro suele recordar a todo el mundo que sigue siendo una parte fundamental de la motocicleta.
+      </p>
+
+      <h2>Una moto custom también necesita saber a qué velocidad viaja</h2>
+
+      <p>
+        La cultura custom siempre ha estado asociada a la libertad, a la creatividad y a la búsqueda de una identidad propia. Esa filosofía ha dado lugar a algunas de las motocicletas más espectaculares jamás construidas. Máquinas capaces de expresar la personalidad de su propietario mucho mejor que cualquier vehículo fabricado en serie.
+      </p>
+
+      <p>
+        Pero incluso la motocicleta más radical sigue necesitando ciertas referencias básicas para funcionar correctamente. Saber cuánta gasolina queda en el depósito. Conocer el estado del motor. Y, por supuesto, saber a qué velocidad estamos circulando.
+      </p>
+
+      <p>
+        El velocímetro forma parte de ese grupo de elementos discretos que rara vez protagonizan una conversación y que, sin embargo, resultan imprescindibles cada vez que salimos a la carretera. Quizá por eso merece algo más de atención cuando iniciamos una transformación.
+      </p>
+
+      <p>
+        Porque una moto custom puede ocultar cables, simplificar líneas y eliminar todo aquello que resulte innecesario. Puede reinventarse por completo y convertirse en una máquina única. Pero seguirá necesitando algo tan básico como una referencia fiable de velocidad.
+      </p>
+
+      <p>
+        Y cuando esa referencia funciona correctamente, nadie piensa en ella. Precisamente porque está haciendo exactamente lo que debe hacer.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a cambiar o reubicar el velocímetro?</h3>
+
+        <p>
+          Antes de montar un velocímetro lateral, una pantalla digital minimalista o un cuadro integrado en la tija, conviene revisar documentación, compatibilidad electromagnética, lectura de velocidad y posibles efectos de otras reformas como llantas, neumáticos o transmisión.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
