@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Motor y línea de escape: la reforma que más ilusión hace y más problemas da | Ingeniero Custom</title>
+  <meta name="description" content="Modificar el motor o la línea de escape de una moto custom exige justificar homologación, trazabilidad, emisiones, ruido y compatibilidad técnica. Te explicamos qué debes saber antes de cambiar motor, silenciosos o catalizador." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.22),
+          rgba(0,0,0,.60)
+        ),
+        url('./header_motor_escape_ingeniero_custom.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Homologación de motos custom</div>
+      <h1>Motor y línea de escape: la reforma que más ilusión hace y más problemas da</h1>
+      <p>
+        Cambiar el motor, los silenciosos o el catalizador no afecta solo al sonido de la moto:
+        también entra en juego la trazabilidad, las emisiones, el ruido y la viabilidad real de la reforma.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay reformas que nacen de la razón y otras que nacen directamente del corazón. Dentro del mundo de las motos custom, pocas modificaciones pertenecen tanto al segundo grupo como todo lo relacionado con el motor y el sistema de escape. De hecho, si observamos la evolución de la mayoría de proyectos, veremos que antes de pensar en una pintura especial, antes de cambiar las suspensiones o incluso antes de modificar el asiento, muchos propietarios ya están buscando unos silenciosos diferentes. Es algo completamente lógico. Las motos no se disfrutan únicamente con la vista. También se disfrutan con el oído, con las vibraciones que recorren el manillar y con esa sensación tan difícil de explicar que aparece cada vez que giramos el acelerador y el motor responde exactamente como esperamos.
+      </p>
+
+      <p>
+        Existe una razón por la que determinadas Harley-Davidson son reconocibles incluso antes de aparecer por una esquina. Existe una razón por la que algunos motoristas son capaces de identificar modelos concretos simplemente escuchándolos pasar. El sonido forma parte de la personalidad de una motocicleta. Es una extensión de su carácter y, en cierto modo, también del carácter de quien la conduce. Por eso no resulta extraño que tantos propietarios sientan que su moto no está completamente terminada hasta que suena exactamente como la imaginaban.
+      </p>
+
+      <p>
+        Sin embargo, detrás de esa búsqueda de personalidad existe una realidad técnica que rara vez aparece en las fotografías de internet o en los vídeos de redes sociales. Cuando modificamos el motor o la línea de escape no estamos cambiando únicamente una parte visible de la motocicleta. Estamos actuando sobre uno de los conjuntos más sensibles desde el punto de vista de la homologación. Un sistema donde intervienen emisiones contaminantes, niveles de ruido, limitaciones de potencia, actos reglamentarios y trazabilidad documental. Dicho de otra manera, estamos entrando en un territorio donde la pasión por las motos debe convivir necesariamente con la normativa.
+      </p>
+
+      <h2>El sonido que hizo que muchos nos enamoráramos de las motos</h2>
+
+      <p>
+        Casi todos los aficionados recuerdan la primera motocicleta que les hizo girar la cabeza. Curiosamente, muchas veces ni siquiera recuerdan la matrícula, el año de fabricación o algunas de sus características técnicas. Lo que permanece grabado en la memoria es otra cosa. El sonido. Puede haber ocurrido durante una concentración motera, en una carretera secundaria o simplemente mientras caminábamos por la calle siendo todavía adolescentes. Una motocicleta apareció, aceleró ligeramente y desapareció unos segundos después. Sin embargo, aquella sensación permaneció mucho más tiempo. Porque el sonido de una moto tiene una capacidad extraordinaria para generar emociones.
+      </p>
+
+      <p>
+        Dentro del universo custom esto resulta todavía más evidente. Durante décadas, fabricantes como Harley-Davidson construyeron parte de su identidad alrededor de las sensaciones que transmitían sus motores. No era únicamente una cuestión de prestaciones. Tampoco era una cuestión de velocidad. Era una cuestión de personalidad. Cada golpe de gas transmitía carácter. Cada aceleración tenía una firma propia. Cada trayecto estaba acompañado por una banda sonora mecánica imposible de confundir con la de cualquier otro vehículo.
+      </p>
+
+      <p>
+        Precisamente por eso tantos propietarios sienten la necesidad de intervenir sobre el sistema de escape. No buscan necesariamente más potencia. Muchas veces ni siquiera esperan mejorar las prestaciones. Lo que persiguen es una conexión emocional más intensa con la motocicleta. Quieren que el sonido refleje exactamente la imagen que tienen de ella. Quieren que la moto transmita aquello que sienten cuando la conducen. El problema es que la motocicleta moderna ya no funciona como las motos de hace treinta años. La evolución normativa ha obligado a los fabricantes a desarrollar sistemas cada vez más sofisticados para controlar las emisiones contaminantes y los niveles sonoros. Los escapes actuales incorporan catalizadores, cámaras internas, sistemas de absorción acústica y múltiples soluciones técnicas destinadas a cumplir requisitos ambientales muy estrictos. Todo ello forma parte de una homologación de conjunto que no puede analizarse únicamente desde el punto de vista estético.
+      </p>
+
+      <div class="quote">
+        Una moto custom no solo se ve. También se escucha. Pero el sonido debe poder defenderse técnicamente.
+      </div>
+
+      <h2>Lo que realmente estamos modificando cuando cambiamos un escape</h2>
+
+      <p>
+        Existe una idea bastante extendida entre muchos propietarios que consiste en considerar el escape como un simple accesorio. Algo parecido a un guardabarros, un asiento o unos retrovisores. Una pieza que puede sustituirse libremente sin afectar al resto de la motocicleta. Desde el punto de vista visual es una percepción comprensible. Sin embargo, desde la perspectiva técnica, la realidad es completamente distinta.
+      </p>
+
+      <p>
+        El sistema de escape forma parte de un conjunto mucho más complejo donde intervienen el motor, la admisión, la electrónica y los sistemas destinados a controlar emisiones y ruido. Todos esos elementos trabajan conjuntamente para permitir que la motocicleta cumpla los requisitos que hicieron posible su homologación original. Cuando una marca desarrolla un modelo nuevo no homologa únicamente el motor o únicamente el escape. Homologa el funcionamiento del conjunto completo.
+      </p>
+
+      <p>
+        Por eso una modificación aparentemente sencilla puede tener implicaciones mucho más profundas de lo que parece. Cuando sustituimos un silencioso no estamos cambiando únicamente el sonido. También podemos alterar el comportamiento acústico del vehículo. Cuando eliminamos un catalizador no estamos modificando únicamente el aspecto exterior de la moto. También estamos actuando sobre un elemento relacionado directamente con las emisiones contaminantes. Incluso cuando instalamos un sistema procedente de otra motocicleta, entran en juego cuestiones relacionadas con la trazabilidad de los componentes y con la compatibilidad reglamentaria del conjunto.
+      </p>
+
+      <p>
+        La normativa que regula las reformas de vehículos busca precisamente mantener la coherencia entre la homologación original y las modificaciones realizadas posteriormente, garantizando que continúan preservándose los niveles de seguridad y protección ambiental del vehículo reformado. Esa filosofía está presente en toda la regulación aplicable a las reformas de motocicletas y explica buena parte de los requisitos que aparecen cuando analizamos motores y sistemas de escape.
+      </p>
+
+      <h2>La pieza que nadie ve pero que decide si una reforma llegará a buen puerto</h2>
+
+      <p>
+        Existe una palabra que rara vez aparece en una conversación entre motoristas y que, sin embargo, tiene más importancia para una homologación que muchos componentes visibles de la motocicleta. Esa palabra es trazabilidad. No tiene el atractivo de un escape artesanal ni el magnetismo de un gran motor bicilíndrico, pero es precisamente la que suele marcar la diferencia entre una reforma que puede legalizarse y otra que termina convirtiéndose en un problema.
+      </p>
+
+      <p>
+        Cuando un propietario decide sustituir el motor de su motocicleta o instalar una línea de escape diferente, normalmente piensa en aspectos muy concretos. Busca una respuesta más contundente del acelerador, un sonido más profundo o simplemente una estética que encaje mejor con el proyecto que tiene en mente. Es una forma de pensar completamente lógica. Al fin y al cabo, quien vive el mundo custom desde dentro suele relacionarse con la moto desde una perspectiva emocional mucho antes que administrativa. El problema aparece cuando la reforma llega al momento en que debe justificarse técnicamente.
+      </p>
+
+      <p>
+        Es entonces cuando deja de importar únicamente cómo suena la moto o cómo se comporta en carretera. Lo que pasa a importar es la historia de cada componente. De dónde procede. Qué vehículo lo equipaba originalmente. Qué normativa cumplía cuando fue homologado. Qué niveles de emisiones generaba. Qué nivel sonoro tenía asociado. Dicho de otra manera, la Administración no analiza únicamente la pieza instalada. Analiza también el contexto técnico del que procede y las consecuencias que genera sobre el vehículo reformado.
+      </p>
+
+      <p>
+        Por eso dos motores aparentemente similares pueden tener situaciones completamente distintas desde el punto de vista documental. Y por eso también un escape que parece perfectamente válido puede terminar planteando dificultades inesperadas cuando llega el momento de legalizarlo. La reforma no se juzga únicamente por su aspecto exterior. Se juzga por la capacidad de demostrar que todo aquello que se ha instalado mantiene una coherencia técnica con la motocicleta original y que el resultado final no supone un retroceso en materia de emisiones contaminantes o nivel de ruido.
+      </p>
+
+      <div class="quote">
+        En motor y escape no basta con que una pieza encaje. También hay que poder demostrar de dónde viene y qué cumple.
+      </div>
+
+      <h2>La gran confusión de los escapes homologados</h2>
+
+      <p>
+        Si existe una frase que escucho constantemente cuando un propietario me consulta sobre una reforma relacionada con el escape es esta: <strong>“pero si el escape está homologado”</strong>. Y, en la mayoría de los casos, quien la pronuncia tiene razón. El silencioso suele disponer de su correspondiente marcado reglamentario, el fabricante aporta documentación y, además, se trata de una pieza comercializada legalmente dentro del mercado europeo. Desde el punto de vista del usuario, parece lógico pensar que eso debería ser suficiente para instalarlo sin mayores preocupaciones. Al fin y al cabo, si la pieza ha sido homologada, ¿qué problema podría existir?
+      </p>
+
+      <p>
+        La respuesta está en una diferencia que rara vez se explica con claridad y que genera gran parte de los malentendidos que aparecen posteriormente en las ITV o durante los procesos de homologación. Una cosa es que un componente disponga de una homologación propia y otra muy distinta que su instalación concreta sea válida para cualquier motocicleta. El sistema de homologación europeo no analiza únicamente piezas aisladas; analiza vehículos completos y la forma en que todos sus sistemas interactúan entre sí. Por ese motivo, un escape puede cumplir perfectamente los requisitos exigidos para su fabricación y comercialización y, sin embargo, requerir una justificación adicional cuando se instala en una motocicleta determinada.
+      </p>
+
+      <p>
+        Lo que muchas veces pasa desapercibido es que el escape forma parte de un conjunto mucho más amplio donde intervienen el motor, la gestión electrónica, los sistemas anticontaminación y los niveles de ruido que fueron tenidos en cuenta durante la homologación original del vehículo. Cuando cualquiera de esos elementos cambia, deja de ser suficiente mirar únicamente la pieza instalada. Lo importante pasa a ser el resultado final del conjunto. Es precisamente ahí donde aparecen situaciones que sorprenden a muchos propietarios, especialmente cuando descubren que una pieza perfectamente legal puede necesitar documentación adicional, una comprobación específica o incluso formar parte de una reforma que debe legalizarse.
+      </p>
+
+      <h2>Cuando la limitación de potencia también forma parte del problema</h2>
+
+      <p>
+        Existe otro aspecto que suele permanecer completamente oculto para la mayoría de propietarios y que aparece con relativa frecuencia en determinadas motocicletas limitadas. Me refiero a los sistemas y elementos destinados a impedir manipulaciones de la potencia original del vehículo. Muchos usuarios desconocen incluso su existencia. Ven la limitación como una cuestión puramente administrativa o electrónica. Sin embargo, en numerosos casos existen elementos físicos diseñados para garantizar que esa limitación permanece operativa y que no puede alterarse fácilmente. Cuando se realizan determinadas modificaciones relacionadas con el motor, esos elementos también deben ser tenidos en cuenta.
+      </p>
+
+      <p>
+        Es una situación especialmente habitual en proyectos donde se sustituyen componentes importantes o se realizan modificaciones profundas sobre la mecánica original. La reforma puede estar perfectamente ejecutada desde el punto de vista artesanal y aun así encontrarse con dificultades inesperadas porque nadie analizó previamente cómo afectaba a los sistemas de control asociados a la potencia homologada del vehículo. Y eso resume bastante bien la filosofía que debería acompañar cualquier proyecto relacionado con motores y escapes. En la mayoría de los casos los problemas no aparecen por lo que vemos. Aparecen por aquello que nadie ha comprobado antes de empezar.
+      </p>
+
+      <h2>Una moto custom debe emocionar sin dejar de ser una moto legal</h2>
+
+      <p>
+        Después de muchos años trabajando con homologaciones sigo pensando exactamente lo mismo que el primer día. La normativa no está para impedir que las motos tengan personalidad. Tampoco está para acabar con el espíritu custom ni para convertir todas las motocicletas en vehículos idénticos. La verdadera finalidad de la homologación es otra. Consiste en garantizar que una moto modificada continúa siendo segura, utilizable y compatible con las exigencias legales que le corresponden.
+      </p>
+
+      <p>
+        Por eso las mejores preparaciones no suelen ser las más radicales. Son las que consiguen encontrar el equilibrio. Las que mantienen intacta la esencia emocional de la motocicleta mientras respetan los límites técnicos que permiten disfrutarla durante años sin sobresaltos. Porque una Harley debe seguir sonando como una Harley. Una custom debe seguir transmitiendo carácter. Una bobber debe seguir provocando esa sonrisa cada vez que abrimos la puerta del garaje. Pero también debe ser una motocicleta capaz de superar una ITV, mantener la validez de su seguro y circular con la tranquilidad de saber que todo el trabajo realizado tiene detrás un respaldo técnico sólido.
+      </p>
+
+      <p>
+        Y cuando hablamos de motores y sistemas de escape, pocas cosas diferencian tanto una preparación improvisada de un proyecto verdaderamente bien hecho como esa capacidad para combinar pasión, personalidad y legalidad en una misma motocicleta.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a cambiar motor, escape o catalizador?</h3>
+
+        <p>
+          Antes de comprar una línea de escape, montar un silencioso o sustituir un motor, conviene revisar si la reforma es viable. Envíame los datos de la moto, fotos y documentación de las piezas para estudiar el caso con criterio técnico.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
