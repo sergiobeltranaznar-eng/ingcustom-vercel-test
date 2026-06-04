@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Asiento monoplaza en moto custom: estética, plazas y homologación | Ingeniero Custom</title>
+  <meta name="description" content="Transformar una moto biplaza en monoplaza parece una reforma sencilla, pero afecta a plazas, estriberas, subchasis, matrícula, luces y homologación. Te explicamos qué debes tener en cuenta." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .brand img{width:78px}
+    .brand span{font-size:18px}
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{color:var(--accent)}
+    .menu-toggle{display:none}
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.62)),
+        url('./asiento-monoplaza-header.jpg')
+        center center / cover no-repeat;
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner { max-width: 980px; }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p { color: #e5e5e5; }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover { background: #f0b844; }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .back-blog:hover { color: #f0b844; }
+
+    @media (max-width: 800px) {
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{width:70px}
+      .brand span{font-size:18px}
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{display:grid}
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero { padding: 60px 6%; }
+      .container { padding: 45px 18px; }
+      .article-card { padding: 26px; }
+      p { font-size: 1rem; }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Asiento monoplaza · Reformas · Homologación</div>
+      <h1>El asiento monoplaza: la reforma que parece sencilla hasta que desaparece el pasajero</h1>
+      <p>
+        Pasar una moto de dos plazas a monoplaza transforma por completo su estética,
+        pero también afecta a la configuración del vehículo, al pasajero, al subchasis
+        y a otros elementos que no siempre se ven a primera vista.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay reformas que nacen por necesidad y otras que aparecen por puro deseo. La transformación de una motocicleta de dos plazas en una monoplaza pertenece claramente al segundo grupo. Pocas modificaciones tienen tanta capacidad para cambiar la personalidad de una moto con una intervención aparentemente tan sencilla.
+      </p>
+
+      <p>
+        Basta retirar el asiento original, instalar un pequeño asiento individual y contemplar el resultado para comprender por qué esta transformación lleva décadas formando parte de la cultura custom. De repente la motocicleta parece más ligera, más compacta y más agresiva. La parte trasera gana protagonismo, las líneas parecen más limpias y toda la atención se concentra sobre el piloto y la máquina.
+      </p>
+
+      <p>
+        Sin embargo, precisamente por parecer una modificación sencilla, muchos propietarios terminan descubriendo que detrás de un simple asiento hay bastante más ingeniería, normativa y sentido común de lo que imaginaban al comenzar el proyecto.
+      </p>
+
+      <h2>El día que decidimos que nadie volvería a sentarse detrás</h2>
+
+      <p>
+        Existe una escena que se repite constantemente en talleres y garajes de toda España. Un propietario observa su motocicleta durante unos segundos y llega a una conclusión aparentemente simple: nunca lleva pasajero.
+      </p>
+
+      <p>
+        Da igual que se trate de una Harley-Davidson Softail, una Sportster, una Yamaha DragStar, una Kawasaki Vulcan, una Triumph Bonneville o una Indian Scout. El razonamiento suele ser exactamente el mismo. La plaza trasera apenas se utiliza y además rompe la estética que se busca para la transformación.
+      </p>
+
+      <p>
+        A partir de ese momento comienza una búsqueda que ha acompañado al mundo custom durante más de medio siglo. Fotografías de viejos choppers californianos, bobbers minimalistas y preparaciones artesanales donde la parte trasera parece diseñada exclusivamente para una persona.
+      </p>
+
+      <div class="quote">
+        Una moto monoplaza transmite una idea muy clara: todo gira alrededor del piloto y de la máquina.
+      </div>
+
+      <p>
+        Los primeros choppers entendieron perfectamente este concepto. Durante los años sesenta y setenta, cuando los propietarios comenzaron a desmontar todo aquello que consideraban innecesario, los grandes asientos originales fueron de las primeras piezas en desaparecer.
+      </p>
+
+      <p>
+        Décadas después, las bobber recuperarían esa misma filosofía y la convertirían en una de sus señas de identidad más reconocibles. La moto monoplaza dejó de ser únicamente una cuestión práctica para convertirse en una declaración de intenciones.
+      </p>
+
+      <h2>Cuando una plaza desaparece, desaparecen muchas más cosas</h2>
+
+      <p>
+        Es precisamente en este punto donde aparece una de las confusiones más habituales dentro del mundo de las reformas. La mayoría de propietarios piensa que una motocicleta deja de ser biplaza cuando desaparece el asiento trasero.
+      </p>
+
+      <p>
+        Desde una perspectiva visual resulta lógico. Si no existe un lugar donde sentarse, parece razonable pensar que la plaza también ha desaparecido. Sin embargo, la realidad es bastante más compleja.
+      </p>
+
+      <p>
+        Una plaza homologada no existe únicamente porque exista una superficie acolchada sobre la que apoyar el cuerpo. Una plaza homologada existe porque el vehículo dispone de todos los elementos necesarios para transportar a una segunda persona con seguridad.
+      </p>
+
+      <p>
+        Por eso resulta tan habitual encontrar motos que parecen claramente monoplaza pero que todavía conservan estriberas traseras, asideros u otros elementos asociados al pasajero. La estética transmite una idea, mientras que la configuración del vehículo transmite otra completamente diferente.
+      </p>
+
+      <div class="quote">
+        Reducir plazas no consiste solo en quitar piezas. Consiste en redefinir la configuración completa de la motocicleta.
+      </div>
+
+      <h2>El asiento artesanal no suele ser el problema</h2>
+
+      <p>
+        Existe una vieja creencia dentro del sector según la cual cualquier asiento artesanal supone automáticamente un problema de homologación. Es una idea tan extendida como equivocada. De hecho, en muchos proyectos el asiento es probablemente la parte menos conflictiva de toda la transformación.
+      </p>
+
+      <p>
+        Lo que realmente importa no suele ser el diseño del tapizado, el grosor de la espuma o el tipo de cuero utilizado. Lo importante es cómo se integra esa pieza dentro del conjunto. Cómo se fija. Cómo interactúa con el resto de componentes. Cómo afecta a la seguridad y a las características generales de la motocicleta.
+      </p>
+
+      <p>
+        El asiento puede ser artesanal. Puede ser único. Puede estar fabricado específicamente para esa motocicleta. Lo verdaderamente importante es que su diseño y montaje respeten los criterios necesarios para que la reforma pueda justificarse correctamente.
+      </p>
+
+      <h2>Debajo del asiento vive el verdadero protagonista: el subchasis</h2>
+
+      <p>
+        Pocas palabras generan tantas conversaciones dentro del mundo custom como subchasis. Las redes sociales están llenas de motocicletas espectaculares con líneas traseras imposibles, colines minimalistas y soluciones que parecen invitar a coger una radial y empezar a cortar sin pensarlo demasiado.
+      </p>
+
+      <p>
+        Muchas de las preparaciones que vemos en internet proceden de países donde los criterios de homologación son diferentes o donde simplemente las motos no están destinadas a circular legalmente por la vía pública. Cuando trasladamos esas imágenes al contexto real de una reforma legalizable, aparecen cuestiones mucho más importantes que la simple estética.
+      </p>
+
+      <p>
+        La principal tiene que ver con la función estructural del subchasis. No todas las zonas tienen la misma importancia. No todos los elementos pueden modificarse libremente. Y cuando las suspensiones apoyan sobre esa estructura, la situación cambia por completo.
+      </p>
+
+      <p>
+        En ese momento dejamos de hablar únicamente de diseño para hablar de resistencia estructural, comportamiento dinámico y seguridad. Una modificación que parece visualmente insignificante puede afectar directamente a uno de los elementos fundamentales de la motocicleta.
+      </p>
+
+      <h2>Lo que ocurre detrás del asiento</h2>
+
+      <p>
+        Existe otra consecuencia que suele pasar desapercibida durante las primeras fases del proyecto. Cuando desaparece la plaza trasera, rara vez desaparece únicamente el asiento. Lo habitual es que la transformación continúe hacia atrás afectando a numerosos elementos que forman parte de la estética general de la motocicleta.
+      </p>
+
+      <p>
+        El piloto trasero cambia de posición. La matrícula busca una nueva ubicación. Los soportes originales dejan de encajar dentro del nuevo diseño. Todo parece formar parte de una misma operación destinada a simplificar visualmente la moto.
+      </p>
+
+      <p>
+        Lo que ocurre es que cada uno de esos cambios tiene sus propias implicaciones. La posición de una luz trasera no depende únicamente de dónde quede más bonita. La ubicación de una matrícula no responde exclusivamente a criterios estéticos.
+      </p>
+
+      <p>
+        Existen requisitos relacionados con visibilidad, ángulos de observación y condiciones de montaje que siguen siendo igual de importantes después de la transformación.
+      </p>
+
+      <h2>Mucho más que una moto con menos asiento</h2>
+
+      <p>
+        La historia del mundo custom está llena de motocicletas construidas para expresar la personalidad de quien las conduce. Motos que eliminan todo aquello que consideran innecesario para quedarse únicamente con la esencia. Máquinas que convierten la simplicidad en una forma de entender la conducción.
+      </p>
+
+      <p>
+        Sin embargo, reducir una motocicleta a una sola plaza no consiste simplemente en eliminar un asiento. Consiste en redefinir una parte importante de la identidad del vehículo. Es una transformación que afecta a la estética, a la configuración, a determinados elementos estructurales y a numerosos componentes que muchas veces pasan desapercibidos durante las primeras fases del proyecto.
+      </p>
+
+      <p>
+        Quizá por eso las mejores preparaciones son aquellas que entienden la motocicleta como un conjunto. Las que no se limitan a perseguir una imagen determinada, sino que construyen una solución coherente desde todos los puntos de vista.
+      </p>
+
+      <p>
+        Porque una buena reforma no consiste únicamente en conseguir una moto espectacular cuando está aparcada. Consiste en construir una motocicleta capaz de conservar toda esa personalidad mientras sigue siendo segura, funcional y legalizable.
+      </p>
+
+      <div class="cta">
+        <h3>¿Quieres transformar tu moto en monoplaza?</h3>
+
+        <p>
+          Antes de eliminar la plaza trasera conviene revisar asiento, estriberas, asideros, subchasis, matrícula, piloto trasero y todos los elementos que puedan verse afectados. Envíame fotos de la moto y de la reforma que quieres hacer para estudiar si la transformación es viable.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
