@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Manillar en moto custom: ergonomía, estética y homologación | Ingeniero Custom</title>
+  <meta name="description" content="Cambiar el manillar de una moto custom transforma la postura, los mandos, los retrovisores y la forma de conducir. Te explicamos qué debes tener en cuenta para homologar esta reforma con criterio técnico." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.18),
+          rgba(0,0,0,.62)
+        ),
+        url('./manillares-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Manillar · Reformas · Homologación</div>
+      <h1>El manillar: la reforma que cambia una moto sin tocar el motor</h1>
+      <p>
+        Cambiar el manillar no afecta solo a la estética: también modifica la postura,
+        los mandos, los retrovisores, los cables, los latiguillos y la forma real en la que
+        el piloto se conecta con su moto.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay propietarios que cambian el escape para modificar el sonido de su moto. Otros sustituyen el asiento para mejorar la comodidad o transforman el depósito para conseguir una estética más personal. Sin embargo, quienes llevan años dentro del mundo custom saben que existe una reforma capaz de cambiar una motocicleta de una forma mucho más profunda que muchas modificaciones mecánicas. Esa reforma está justo delante del piloto y se encuentra entre sus dos manos.
+      </p>
+
+      <p>
+        El manillar es una de las piezas más curiosas que existen en una motocicleta. A simple vista parece un elemento sencillo. Un tubo metálico con una forma determinada destinado a sujetar los mandos y permitir dirigir la moto. Sin embargo, basta cambiarlo una sola vez para comprender que su influencia va mucho más allá de la que su apariencia sugiere. Porque el manillar no cambia únicamente la estética de una motocicleta. Cambia la forma en la que nos sentamos sobre ella. Cambia la posición de nuestros brazos. Cambia la manera en que percibimos el peso de la dirección. Cambia incluso la sensación que recibimos de la carretera.
+      </p>
+
+      <p>
+        Por eso resulta tan habitual que un propietario termine obsesionándose con encontrar el manillar perfecto. No hablamos únicamente de una cuestión visual. Hablamos de encontrar el punto exacto donde la motocicleta deja de sentirse como una máquina y empieza a sentirse como una extensión natural del propio cuerpo. Y precisamente por eso el manillar se ha convertido en una de las reformas más populares del mundo custom y, al mismo tiempo, en una de las más incomprendidas cuando llega el momento de hablar de homologación.
+      </p>
+
+      <h2>La pieza que conecta al motorista con la motocicleta</h2>
+
+      <p>
+        Existen tres puntos fundamentales de contacto entre cualquier motorista y su motocicleta. Los pies descansan sobre las estriberas. El cuerpo se apoya en el asiento. Pero las órdenes salen de las manos. Cada aceleración, cada frenada, cada cambio de dirección y cada corrección que realizamos sobre la marcha pasa inevitablemente por el manillar.
+      </p>
+
+      <p>
+        Es una relación tan constante que muchas veces dejamos de ser conscientes de ella. Sin embargo, basta conducir una motocicleta equipada con un manillar que no se adapta a nosotros para descubrir hasta qué punto influye sobre la experiencia de conducción. Unos centímetros de diferencia pueden cambiar completamente la postura. Una ligera variación en la altura modifica la posición de los hombros. Un cambio en la anchura altera la sensación de control a baja velocidad. Son detalles aparentemente insignificantes que, sumados entre sí, transforman por completo la manera en la que sentimos la moto.
+      </p>
+
+      <p>
+        Quizá por eso el mundo custom ha prestado siempre una atención especial a esta pieza. Desde los primeros choppers americanos hasta las preparaciones más modernas, el manillar ha sido utilizado como una herramienta capaz de modificar tanto la estética como las sensaciones de conducción. Mientras otras reformas se centran en cómo se ve la motocicleta, el manillar actúa directamente sobre cómo se vive.
+      </p>
+
+      <div class="quote">
+        El manillar no es solo un tubo: es el punto fino de contacto entre el piloto y la moto.
+      </div>
+
+      <h2>Cuando una Harley deja de sentirse como una Harley</h2>
+
+      <p>
+        Hay algo fascinante que ocurre cuando se instala un manillar diferente en una motocicleta. La moto sigue siendo exactamente la misma. El motor no cambia. Las suspensiones siguen ocupando el mismo lugar. El bastidor permanece intacto. Sin embargo, la sensación al conducirla puede resultar completamente distinta.
+      </p>
+
+      <p>
+        Es algo especialmente evidente en el universo Harley-Davidson. Una Sportster equipada con un manillar plano transmite unas sensaciones radicalmente diferentes a las de la misma moto equipada con un mini ape. Una Dyna con un T-Bar parece pedir una conducción completamente distinta a la que ofrece con un beach bar tradicional. Incluso motocicletas idénticas desde el punto de vista mecánico pueden parecer modelos diferentes simplemente por la forma en que obligan al cuerpo a colocarse sobre ellas.
+      </p>
+
+      <p>
+        Y ahí reside gran parte de la magia del mundo custom. Porque el manillar no actúa únicamente sobre la dirección. Actúa sobre la percepción. Cambia la manera en que observamos la carretera. Modifica la posición de nuestra espalda. Influye sobre la tensión de los brazos y sobre la forma en que nuestro cuerpo absorbe las irregularidades del terreno. Todo ello ocurre sin tocar una sola pieza del motor.
+      </p>
+
+      <h2>La eterna búsqueda del manillar perfecto</h2>
+
+      <p>
+        Si existe algo que caracteriza al mundo custom es la permanente búsqueda de equilibrio entre estética y personalidad. Cada generación ha desarrollado sus propias tendencias y cada estilo ha encontrado una forma particular de interpretar la posición ideal de conducción.
+      </p>
+
+      <p>
+        Durante décadas, los ape hangers se convirtieron en un símbolo de libertad y rebeldía. Los drag bars representaron una estética más agresiva y deportiva. Los beach bars evocaban las grandes cruisers americanas y los largos paseos junto al océano. Más tarde llegaron los T-Bar, los mini ape y multitud de variantes que terminaron formando parte del lenguaje visual de la cultura custom.
+      </p>
+
+      <p>
+        Lo interesante es que ninguna de estas opciones puede considerarse universalmente mejor que otra. Lo que para un propietario resulta perfecto puede ser completamente incómodo para otro. La elección de un manillar tiene mucho más que ver con la personalidad y con la forma de entender la conducción que con cualquier criterio absoluto.
+      </p>
+
+      <div class="quote">
+        El problema no suele ser querer un manillar distinto. El problema es no analizar todo lo que cambia alrededor.
+      </div>
+
+      <h2>Lo que realmente cambia cuando cambiamos un manillar</h2>
+
+      <p>
+        Existe una tendencia bastante habitual a pensar que cambiar un manillar consiste simplemente en desmontar uno y montar otro. Desde fuera puede parecer así. Después de todo, seguimos viendo un tubo metálico ocupando exactamente el mismo lugar. Sin embargo, cualquier preparador con experiencia sabe que la realidad suele ser mucho más compleja.
+      </p>
+
+      <p>
+        Cuando la altura aumenta, cambian los recorridos de los cables y de los latiguillos. Cuando la anchura varía, cambian determinadas sensaciones de conducción. Cuando modificamos la posición de las manos, también modificamos la posición de los mandos, los retrovisores y otros elementos asociados directamente al control de la motocicleta.
+      </p>
+
+      <p>
+        Es una especie de efecto dominó donde una pequeña modificación inicial termina afectando a numerosos componentes relacionados entre sí. Muchas veces estos cambios resultan perfectamente asumibles y forman parte natural de cualquier transformación custom. Sin embargo, otras veces obligan a replantear aspectos que inicialmente parecían completamente resueltos.
+      </p>
+
+      <h2>La diferencia entre un manillar artesanal y un problema en la ITV</h2>
+
+      <p>
+        Uno de los aspectos más interesantes del mundo custom es la enorme creatividad que existe a la hora de fabricar componentes únicos. Los manillares artesanales forman parte de esa tradición desde hace décadas. Algunos son auténticas piezas de artesanía capaces de definir por sí solos toda la personalidad de una motocicleta.
+      </p>
+
+      <p>
+        Sin embargo, la creatividad y la homologación deben convivir dentro de unos límites razonables. Y es precisamente ahí donde aparecen cuestiones que muchos propietarios desconocen hasta que llega el momento de legalizar la reforma.
+      </p>
+
+      <p>
+        La normativa no se preocupa especialmente por si un manillar es más bonito o más feo. Lo que le interesa es que siga cumpliendo determinados requisitos relacionados con la seguridad y con las dimensiones del vehículo. Aspectos como los salientes exteriores, las dimensiones máximas o la posición de elementos asociados como los retrovisores forman parte de un conjunto que debe seguir funcionando correctamente después de la reforma.
+      </p>
+
+      <p>
+        Y aquí aparece una de las confusiones más habituales dentro del sector. Muchas personas creen que el problema es el manillar en sí mismo. En realidad, el problema suele estar en las consecuencias que genera su instalación. Un manillar puede resultar perfectamente viable desde el punto de vista estructural y, sin embargo, provocar situaciones incompatibles con otros requisitos reglamentarios si no se analiza el conjunto completo.
+      </p>
+
+      <h2>Una moto debe adaptarse a su propietario, no al revés</h2>
+
+      <p>
+        Después de muchos años viendo proyectos custom entrar y salir de talleres, sigo pensando que pocas reformas tienen tanta capacidad para mejorar una motocicleta como un manillar correctamente elegido. No porque aumente la potencia. No porque mejore las prestaciones. Sino porque actúa directamente sobre la relación entre el motorista y la máquina.
+      </p>
+
+      <p>
+        Las mejores motos no siempre son las más rápidas ni las más espectaculares. Muchas veces son simplemente aquellas que consiguen que todo parezca natural. Las que permiten recorrer cientos de kilómetros sin pensar en la postura. Las que transmiten exactamente las sensaciones que su propietario buscaba cuando comenzó el proyecto.
+      </p>
+
+      <p>
+        Y ahí es donde el manillar adquiere una importancia enorme. Porque no es únicamente una pieza de acero. Es el punto donde convergen el control, la comodidad, la personalidad y la experiencia de conducción. Es el lugar donde las órdenes del piloto se transforman en movimiento.
+      </p>
+
+      <p>
+        Por eso elegir un manillar nunca debería ser una decisión impulsiva. No se trata únicamente de cómo quedará la moto en una fotografía. Se trata de cómo se sentirá cada vez que salgamos a rodar. Y cuando esa elección se realiza correctamente, ocurre algo que cualquier motorista reconoce inmediatamente. La moto deja de parecer una máquina adaptada a medias y empieza a sentirse exactamente como debería haber sido desde el primer día.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a cambiar el manillar?</h3>
+
+        <p>
+          Antes de montar un ape hanger, drag bar, T-Bar, mini ape o manillar artesanal, conviene revisar dimensiones, mandos, retrovisores, cables, latiguillos y salientes exteriores. Envíame fotos de la moto y de la pieza para estudiar la viabilidad real de la reforma.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
