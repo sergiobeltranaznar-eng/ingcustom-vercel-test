@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Suspensión trasera y amortiguadores en moto custom: estética, altura y homologación | Ingeniero Custom</title>
+  <meta name="description" content="Cambiar los amortiguadores traseros de una moto custom puede modificar la altura, la geometría, el confort y el comportamiento dinámico. Te explicamos cuándo puede considerarse reforma y qué debes tener en cuenta." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.20),
+          rgba(0,0,0,.62)
+        ),
+        url('./amortiguadores-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .feature-list {
+      margin: 34px 0 42px;
+      padding: 30px 34px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+    }
+
+    .feature-list p {
+      margin: 0 0 14px;
+      color: #f1f1f1;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .feature-list p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+
+      .feature-list {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Amortiguadores · Suspensión · Homologación</div>
+      <h1>La suspensión trasera: la reforma que puede cambiar una moto sin que nadie la vea</h1>
+      <p>
+        Cambiar los amortiguadores traseros puede modificar la altura, la geometría,
+        el confort y la forma en que la motocicleta transmite confianza al circular.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay modificaciones que llaman la atención desde el otro lado de la calle. Un escape artesanal, unas llantas diferentes o un depósito transformado consiguen que cualquier aficionado gire la cabeza inmediatamente. Después existen otras reformas mucho más discretas. Cambios que apenas se perciben a simple vista pero que transforman profundamente la forma en que una motocicleta se comporta, se siente y transmite información a quien la conduce. La suspensión trasera pertenece a esa categoría.
+      </p>
+
+      <p>
+        Resulta curioso porque pocas piezas trabajan tanto y reciben tan poco reconocimiento. La mayoría de propietarios apenas piensa en sus amortiguadores hasta que empiezan a funcionar mal o hasta que descubre una fotografía de una motocicleta cuya postura parece exactamente la que siempre había imaginado para la suya. Es entonces cuando aparece una de las reformas más habituales dentro del mundo custom. La búsqueda de una suspensión diferente.
+      </p>
+
+      <p>
+        Algunos buscan una moto más baja. Otros quieren mejorar el comportamiento dinámico. Hay quienes intentan conseguir una estética más agresiva y quienes simplemente desean una conducción más confortable. Lo interesante es que, aunque las motivaciones sean muy distintas, todas terminan conduciendo hacia el mismo lugar. La suspensión trasera.
+      </p>
+
+      <p>
+        Y es precisamente ahí donde muchos propietarios descubren que una reforma aparentemente sencilla tiene bastante más profundidad de la que imaginaban.
+      </p>
+
+      <h2>La eterna obsesión por bajar la moto</h2>
+
+      <p>
+        Si existe una modificación que se repite constantemente dentro del universo custom es la reducción de altura. Ha ocurrido durante décadas en Harley-Davidson, Indian, Triumph, Yamaha, Kawasaki y prácticamente cualquier motocicleta susceptible de personalización. Existe algo especialmente atractivo en una moto que parece abrazar el asfalto. Una postura más baja transmite sensación de contundencia, de estabilidad y de presencia visual.
+      </p>
+
+      <p>
+        Las bobber modernas han contribuido enormemente a popularizar esta tendencia. También las grandes cruiser americanas y muchas preparaciones artesanales que buscan una línea visual más horizontal y estilizada. El resultado suele ser espectacular. La motocicleta parece más larga, más compacta y más cercana a esa imagen que muchos propietarios tienen en la cabeza cuando imaginan la custom perfecta.
+      </p>
+
+      <p>
+        Sin embargo, cuando hablamos de suspensión trasera, la estética y la dinámica de conducción están mucho más relacionadas de lo que parece. Cada centímetro que modificamos en la parte trasera afecta también a la forma en que la moto reparte pesos, absorbe irregularidades y responde a los movimientos del conductor.
+      </p>
+
+      <div class="quote">
+        Bajar una moto puede cambiar su presencia visual, pero también cambia la forma en que trabaja sobre el asfalto.
+      </div>
+
+      <p>
+        Por eso esta reforma siempre merece algo más de atención que una simple cuestión de apariencia.
+      </p>
+
+      <h2>Mucho más que dos amortiguadores</h2>
+
+      <p>
+        Existe una tendencia bastante habitual a considerar la suspensión trasera como un simple accesorio intercambiable. Quitamos unos amortiguadores y colocamos otros. Desde fuera parece una operación relativamente sencilla. Sin embargo, la realidad es mucho más interesante.
+      </p>
+
+      <p>
+        Los amortiguadores forman parte de uno de los sistemas más importantes de toda la motocicleta. Son responsables de mantener la rueda en contacto con el asfalto, de absorber irregularidades y de gestionar una parte fundamental del comportamiento dinámico del vehículo. Cada aceleración, cada frenada y cada curva están influidas de una forma u otra por su funcionamiento.
+      </p>
+
+      <p>
+        Quizá por eso una misma motocicleta puede transmitir sensaciones completamente diferentes simplemente cambiando sus amortiguadores. La moto sigue teniendo el mismo motor. Sigue utilizando el mismo chasis. Pero la forma en que responde a la carretera puede cambiar de manera notable.
+      </p>
+
+      <p>
+        Y precisamente ahí reside el atractivo de esta reforma. Porque permite modificar la experiencia de conducción sin alterar la esencia de la motocicleta.
+      </p>
+
+      <h2>Cuando la mejor reforma es la que no se nota</h2>
+
+      <p>
+        Dentro del mundo custom existe una cierta tendencia a valorar únicamente aquello que resulta visible. Sin embargo, algunos de los mejores cambios que pueden realizarse sobre una motocicleta son precisamente los que pasan desapercibidos.
+      </p>
+
+      <p>
+        Una suspensión correctamente ajustada no genera fotografías espectaculares para redes sociales. No atrae miradas en una concentración. Nadie se acerca a preguntar por ella cuando la moto está aparcada. Pero basta recorrer unos cuantos kilómetros por una carretera irregular para comprender su importancia.
+      </p>
+
+      <p>
+        Es una de esas reformas que se disfrutan conduciendo.
+      </p>
+
+      <p>
+        La motocicleta transmite más confianza. La rueda permanece mejor conectada al asfalto. El comportamiento resulta más predecible. Todo parece funcionar con una naturalidad que muchas veces solo se aprecia cuando se compara directamente con la configuración anterior.
+      </p>
+
+      <div class="quote">
+        Algunas reformas se hacen para la foto. Otras se entienden cuando empiezas a rodar.
+      </div>
+
+      <p>
+        Y quizá por eso tantos propietarios terminan considerando esta modificación una de las más satisfactorias que han realizado.
+      </p>
+
+      <h2>El detalle que muchos desconocen sobre la homologación</h2>
+
+      <p>
+        Existe una cuestión muy interesante relacionada con la suspensión trasera que sorprende a muchos aficionados. No todas las sustituciones de amortiguadores tienen el mismo tratamiento desde el punto de vista de las reformas.
+      </p>
+
+      <p>
+        Cuando la suspensión se sustituye por componentes de recambio o reposición que utilizan los anclajes originales y no modifican la altura máxima del vehículo, esa actuación no suele considerarse una reforma. Es una situación relativamente frecuente cuando el objetivo consiste simplemente en reemplazar elementos desgastados o mejorar la calidad de los componentes manteniendo las características fundamentales de la motocicleta.
+      </p>
+
+      <p>
+        Sin embargo, la situación cambia cuando la modificación altera parámetros que afectan a la configuración original del vehículo. Porque entonces dejamos de hablar únicamente de un recambio para entrar en el terreno de las reformas.
+      </p>
+
+      <p>
+        Y es precisamente aquí donde muchos propietarios descubren una diferencia fundamental. El verdadero protagonista de la suspensión trasera no suele ser el amortiguador en sí mismo. Lo importante es el efecto que produce sobre la motocicleta.
+      </p>
+
+      <div class="feature-list">
+        <p>La altura final.</p>
+        <p>La geometría.</p>
+        <p>La posición de funcionamiento.</p>
+        <p>La configuración resultante del conjunto.</p>
+      </div>
+
+      <h2>Los anclajes: la línea que no debemos cruzar</h2>
+
+      <p>
+        Si existe una idea que conviene entender cuando hablamos de suspensión trasera es que los anclajes originales tienen una importancia enorme dentro del vehículo. Son los puntos donde las fuerzas generadas por la suspensión se transmiten al resto de la motocicleta. Son, en cierto modo, los lugares donde la dinámica de conducción se encuentra con la estructura.
+      </p>
+
+      <p>
+        Por eso las modificaciones relacionadas con los anclajes requieren una atención especial. No estamos hablando de simples soportes destinados a sujetar una pieza. Estamos hablando de elementos directamente relacionados con la integridad estructural y con el comportamiento dinámico de la motocicleta.
+      </p>
+
+      <p>
+        La experiencia demuestra que muchas de las transformaciones más problemáticas nacen precisamente cuando se intenta alterar aquello que originalmente no estaba pensado para ser modificado. Lo que parecía una solución sencilla termina generando consecuencias mucho más amplias de lo esperado.
+      </p>
+
+      <p>
+        Y como ocurre tantas veces en el mundo de las reformas, la diferencia entre una modificación bien planteada y una fuente constante de problemas suele encontrarse precisamente en estos pequeños detalles.
+      </p>
+
+      <h2>Una moto debe verse bien, pero también comportarse bien</h2>
+
+      <p>
+        La cultura custom siempre ha celebrado la libertad creativa. Cada propietario busca una personalidad diferente para su motocicleta. Algunos priorizan la estética. Otros las sensaciones. Otros simplemente quieren construir una máquina que refleje exactamente su forma de entender las motos.
+      </p>
+
+      <p>
+        La suspensión trasera ocupa un lugar muy especial dentro de esa búsqueda porque tiene la capacidad de influir simultáneamente sobre todos esos aspectos. Puede cambiar la postura visual de la motocicleta. Puede alterar las sensaciones de conducción. Puede mejorar el confort. Puede aumentar la confianza.
+      </p>
+
+      <p>
+        Pero precisamente porque afecta a tantos aspectos diferentes, merece ser tratada con el mismo respeto que cualquier otro sistema importante del vehículo.
+      </p>
+
+      <p>
+        Porque una buena custom no es únicamente una motocicleta que llama la atención cuando está aparcada. Es una moto que transmite personalidad cuando circula. Una moto que inspira confianza. Una moto capaz de convertir cada kilómetro en una experiencia agradable.
+      </p>
+
+      <p>
+        Y pocas reformas tienen tanta capacidad para influir sobre esa experiencia como una suspensión trasera correctamente elegida e integrada dentro del proyecto.
+      </p>
+
+      <p>
+        Al fin y al cabo, la verdadera calidad de una motocicleta no siempre se aprecia cuando la observamos. Muchas veces se descubre cuando empezamos a rodar con ella.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a cambiar los amortiguadores?</h3>
+
+        <p>
+          Antes de montar una suspensión más baja, sustituir amortiguadores o modificar la geometría de la moto, conviene revisar altura final, anclajes, compatibilidad, comportamiento del conjunto y viabilidad de homologación.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
