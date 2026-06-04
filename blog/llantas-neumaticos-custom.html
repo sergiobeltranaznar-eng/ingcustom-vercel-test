@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Llantas y neumáticos en moto custom: medidas, estética y homologación | Ingeniero Custom</title>
+  <meta name="description" content="Cambiar llantas y neumáticos puede transformar por completo una moto custom. Te explicamos el famoso margen del 3%, cómo afecta a la geometría, al velocímetro, a la frenada y a la homologación." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+    }
+
+    .brand img{width:78px}
+    .brand span{font-size:18px}
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{color:var(--accent)}
+    .menu-toggle{display:none}
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.62)),
+        url('./llantas-neumaticos-header.jpg')
+        center center / cover no-repeat;
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner { max-width: 980px; }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p { color: #e5e5e5; }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover { background: #f0b844; }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .back-blog:hover { color: #f0b844; }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    @media (max-width: 800px) {
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{width:70px}
+      .brand span{font-size:18px}
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{display:grid}
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero { padding: 60px 6%; }
+      .container { padding: 45px 18px; }
+      .article-card { padding: 26px; }
+      p { font-size: 1rem; }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Llantas · Neumáticos · Homologación</div>
+      <h1>Llantas y neumáticos: la reforma que cambia una moto sin tocar el motor</h1>
+      <p>
+        Cambiar las ruedas puede transformar por completo la estética, la presencia,
+        la geometría y el comportamiento de una moto custom. Y sí, aquí aparece el famoso club del 3%.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay propietarios que buscan más potencia. Otros persiguen un sonido diferente. Algunos dedican meses a encontrar el depósito perfecto o el manillar ideal. Sin embargo, existe una modificación capaz de transformar por completo una motocicleta sin tocar una sola pieza del motor. Basta cambiar las ruedas para que una moto parezca otra completamente distinta.
+      </p>
+
+      <p>
+        Es una de las reformas más antiguas del mundo custom y también una de las más influyentes. Porque pocas piezas tienen tanta capacidad para modificar la personalidad de una motocicleta como las que la conectan con el asfalto.
+      </p>
+
+      <p>
+        Es algo que cualquier aficionado reconoce de forma casi instintiva. Una Harley-Davidson Fat Boy transmite una sensación completamente diferente a una Softail Standard. Una Triumph Bonneville Bobber proyecta una personalidad distinta a una Speed Twin. Una Indian Scout Bobber no parece la misma moto que una Scout convencional.
+      </p>
+
+      <p>
+        Y en muchos casos, buena parte de esa diferencia nace precisamente de las llantas y neumáticos que utilizan.
+      </p>
+
+      <h2>La primera impresión empieza por las ruedas</h2>
+
+      <p>
+        Existe una razón por la que las ruedas tienen tanto protagonismo en el diseño de una motocicleta. Son una de las primeras cosas que percibimos cuando observamos una moto por primera vez. Incluso antes de fijarnos en el motor o en los detalles del depósito, nuestro cerebro ya ha interpretado las proporciones generales del conjunto.
+      </p>
+
+      <p>
+        Una rueda delantera estrecha y de gran diámetro transmite una imagen completamente distinta a la de una rueda ancha y musculosa. Un neumático trasero de gran sección genera una sensación de contundencia que difícilmente pasa desapercibida. Una llanta de radios proyecta una personalidad clásica mientras que una llanta de aleación suele acercarse más a un lenguaje visual contemporáneo.
+      </p>
+
+      <div class="quote">
+        Las ruedas no solo sostienen la moto. También definen cómo se presenta ante el mundo.
+      </div>
+
+      <p>
+        Precisamente por eso tantas transformaciones comienzan aquí. Porque modificar llantas y neumáticos significa alterar las proporciones visuales de toda la motocicleta. Significa cambiar la forma en que ocupa el espacio. Significa transformar su presencia incluso antes de arrancar el motor.
+      </p>
+
+      <h2>Cuando una rueda cambia por completo la personalidad de una moto</h2>
+
+      <p>
+        Pocas reformas ofrecen una relación tan directa entre el trabajo realizado y el resultado obtenido. Basta observar algunos modelos históricos para comprenderlo.
+      </p>
+
+      <p>
+        La Harley-Davidson Fat Boy construyó buena parte de su identidad alrededor de unas ruedas capaces de transmitir una sensación de robustez única. Las grandes cruiser americanas han utilizado tradicionalmente neumáticos traseros generosos para reforzar su presencia visual. Por el contrario, muchas preparaciones inspiradas en el mundo chopper han recurrido durante décadas a ruedas delanteras estrechas y de gran diámetro para conseguir una imagen más estilizada.
+      </p>
+
+      <p>
+        Lo mismo ocurre fuera del universo Harley. Una BMW R nineT equipada con neumáticos de perfil más clásico transmite una sensación muy diferente a la de una versión preparada con un enfoque más agresivo. Una Triumph Bonneville puede acercarse visualmente al mundo café racer o al universo bobber simplemente modificando la combinación de llantas y neumáticos.
+      </p>
+
+      <p>
+        Lo fascinante es que el motor sigue siendo exactamente el mismo. El bastidor sigue ocupando el mismo lugar. Sin embargo, la personalidad visual del conjunto cambia radicalmente.
+      </p>
+
+      <h2>La obsesión por llenar el guardabarros</h2>
+
+      <p>
+        Existe una imagen que se repite constantemente dentro del mundo custom. Un neumático ocupando prácticamente todo el espacio disponible bajo el guardabarros. Una rueda que parece diseñada específicamente para integrarse dentro de la carrocería como si ambas piezas formasen parte de un mismo conjunto.
+      </p>
+
+      <p>
+        Es una obsesión que lleva décadas acompañando a preparadores y fabricantes. La búsqueda de proporciones perfectas. La sensación de que cada elemento ocupa exactamente el espacio que le corresponde.
+      </p>
+
+      <p>
+        Lo curioso es que esta tendencia aparece en estilos muy diferentes. Podemos encontrarla en una Harley-Davidson Road King, en una Indian Chief, en determinadas preparaciones bobber o incluso en algunas cruiser japonesas transformadas. El objetivo siempre es parecido. Conseguir una presencia visual más contundente.
+      </p>
+
+      <p>
+        Y es precisamente en ese momento cuando muchos propietarios empiezan a investigar medidas diferentes. Diámetros distintos. Perfiles más altos. Neumáticos más anchos.
+      </p>
+
+      <div class="quote">
+        Lo que empieza como una cuestión estética termina entrando, casi siempre, en el terreno de la ingeniería.
+      </div>
+
+      <h2>Lo que realmente cambia cuando cambiamos una rueda</h2>
+
+      <p>
+        Existe una tendencia bastante habitual a pensar que una rueda únicamente afecta al aspecto de la motocicleta. Desde fuera parece lógico. Después de todo, seguimos viendo una llanta y un neumático ocupando exactamente el mismo lugar.
+      </p>
+
+      <p>
+        Sin embargo, cuando modificamos las dimensiones del conjunto neumático-llanta ocurren muchas más cosas de las que parecen.
+      </p>
+
+      <p>
+        La altura de la motocicleta puede variar. Determinadas geometrías se modifican ligeramente. La información que recibe el velocímetro puede dejar de ser exactamente la misma. El comportamiento dinámico cambia. Incluso la frenada puede verse afectada cuando las diferencias alcanzan determinados valores.
+      </p>
+
+      <p>
+        Son cambios que muchas veces pasan desapercibidos para quien observa la motocicleta desde el exterior. Pero siguen existiendo.
+      </p>
+
+      <h2>El club del 3%: la cifra que todo motorista ha escuchado alguna vez</h2>
+
+      <p>
+        Hay pocas expresiones tan conocidas dentro del sector como el famoso tres por ciento. Cualquier propietario que haya investigado alguna vez la posibilidad de cambiar neumáticos habrá escuchado esa cifra tarde o temprano. Se repite en talleres, foros y grupos de motoristas como una especie de regla universal.
+      </p>
+
+      <p>
+        Lo curioso es que muchas personas conocen el número, pero pocas saben realmente qué significa.
+      </p>
+
+      <p>
+        Cuando hablamos del tres por ciento no estamos hablando de la anchura del neumático ni del diámetro de la llanta por separado. Hablamos del diámetro exterior total del conjunto formado por neumático y llanta. Es decir, de la medida final que determina cuánto avanza la motocicleta cada vez que la rueda completa una vuelta.
+      </p>
+
+      <p>
+        Esa dimensión influye directamente sobre múltiples aspectos del vehículo. Afecta a la altura general, modifica determinados parámetros geométricos y condiciona la información que recibe el velocímetro.
+      </p>
+
+      <div class="quote">
+        El famoso 3% no habla de estética. Habla del diámetro exterior total de la rueda.
+      </div>
+
+      <p>
+        Lo que muchas veces se interpreta como una autorización para montar cualquier combinación posible es en realidad una tolerancia técnica destinada a absorber pequeñas diferencias dimensionales sin alterar significativamente el comportamiento del vehículo.
+      </p>
+
+      <h2>Cuando el tres por ciento deja de ser suficiente</h2>
+
+      <p>
+        La realidad del mundo custom es que muchas de las transformaciones más espectaculares nacen precisamente de superar esos márgenes. Porque quien busca una imagen determinada rara vez está pensando en porcentajes. Está pensando en personalidad.
+      </p>
+
+      <p>
+        Y es precisamente ahí donde empiezan a aparecer nuevas variables.
+      </p>
+
+      <p>
+        Cuando las diferencias respecto a la configuración original aumentan, el velocímetro puede dejar de interpretar correctamente la velocidad real del vehículo. A partir de determinadas variaciones, superiores al ocho por ciento respecto a las dimensiones originales, puede resultar necesario actuar también sobre el sistema de indicación de velocidad.
+      </p>
+
+      <p>
+        Y cuando las diferencias se acercan o superan el diez por ciento, la cuestión deja de centrarse únicamente en la estética o en la lectura del cuadro de instrumentos. También puede ser necesario justificar técnicamente el comportamiento dinámico del conjunto mediante ensayos relacionados con la frenada.
+      </p>
+
+      <p>
+        Es una realidad que sorprende a muchos propietarios. Lo que comenzó como una simple búsqueda de personalidad termina afectando a sistemas que aparentemente no tenían ninguna relación con las ruedas.
+      </p>
+
+      <h2>La única parte de la moto que toca el asfalto</h2>
+
+      <p>
+        A veces olvidamos un detalle extraordinariamente simple. Todo lo que ocurre sobre una motocicleta depende de una superficie de contacto sorprendentemente pequeña.
+      </p>
+
+      <p>
+        Podemos invertir miles de euros en mejorar el motor. Podemos instalar las mejores suspensiones del mercado. Podemos dedicar meses a diseñar la estética perfecta. Pero al final toda esa maquinaria se relaciona con la carretera a través de unas pocas superficies de goma que apenas ocupan unos centímetros.
+      </p>
+
+      <p>
+        Quizá por eso las ruedas tienen una importancia tan especial. No solo porque transforman la apariencia de una motocicleta. También porque determinan la forma en que acelera, gira, frena y transmite confianza a quien la conduce.
+      </p>
+
+      <p>
+        Y cuando una reforma consigue mejorar la personalidad de una moto sin comprometer ese equilibrio, ocurre algo que cualquier aficionado reconoce inmediatamente. La motocicleta no solo parece mejor. También se siente mejor.
+      </p>
+
+      <p>
+        Y pocas reformas tienen tanta capacidad para conseguir ambas cosas al mismo tiempo como unas llantas y unos neumáticos correctamente elegidos.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a cambiar llantas o neumáticos?</h3>
+
+        <p>
+          Antes de montar una medida diferente, conviene revisar el diámetro exterior, la equivalencia, la geometría, el velocímetro, la frenada y la viabilidad real de homologación.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
