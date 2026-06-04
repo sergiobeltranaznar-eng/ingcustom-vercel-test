@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Modificar el chasis de una moto custom: el límite que no deberías cruzar nunca | Ingeniero Custom</title>
+  <meta name="description" content="Modificar el chasis o subchasis de una moto custom es una de las reformas más delicadas. Te explicamos cuándo es viable, qué riesgos existen y por qué no conviene cortar sin criterio técnico." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.22),
+          rgba(0,0,0,.58)
+        ),
+        url('./header_chasis_subchasis_ingeniero_custom.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Homologación de motos custom</div>
+      <h1>Modificar el chasis de una moto custom: el límite que no deberías cruzar nunca</h1>
+      <p>
+        Cortar el chasis o el subchasis de una moto puede parecer una simple decisión estética,
+        pero es una de las reformas más delicadas en una preparación custom.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay una escena que se repite constantemente en el mundo de las motos custom. Un propietario llega al taller con una idea muy clara en la cabeza. Lleva semanas viendo fotografías de preparaciones en internet, guardando imágenes de bobbers americanas, café racers británicas o transformaciones radicales que parecen sacadas de una exposición. Ha imaginado cada detalle de su futura moto. Quiere una línea más limpia, una parte trasera más corta, una silueta más agresiva y una presencia que haga girar cabezas en cada semáforo. Entonces señala la zona posterior del bastidor y pronuncia una frase que cualquier profesional del sector ha escuchado cientos de veces: <strong>“Aquí cortamos un poco y ya está”</strong>.
+      </p>
+
+      <p>
+        Es una frase aparentemente inocente. El problema es que, en muchas ocasiones, detrás de esas pocas palabras se encuentra la reforma más delicada que puede realizarse sobre una motocicleta. Porque cuando hablamos del chasis no estamos hablando de un accesorio, ni de una pieza estética, ni de un elemento secundario. Estamos hablando de la propia columna vertebral de la moto. De la estructura que soporta el motor, la suspensión, la dirección y, en definitiva, cada kilómetro que recorrerá durante toda su vida.
+      </p>
+
+      <p>
+        Precisamente por eso, pocas reformas generan tantas dudas, tantos errores y tantas decepciones como las modificaciones estructurales del bastidor.
+      </p>
+
+      <h2>La pieza más importante de una motocicleta es también la más incomprendida</h2>
+
+      <p>
+        Resulta curioso que el componente más importante de una motocicleta sea también uno de los menos valorados por la mayoría de propietarios. Cuando alguien contempla una Harley-Davidson aparcada frente a una cafetería, normalmente se fija en el depósito, en las llantas, en el brillo del motor o en el sonido que emana de los escapes. Nadie se queda admirando el bastidor. Sin embargo, si retirásemos todas esas piezas y dejásemos únicamente la estructura desnuda, seguiríamos viendo la esencia de la motocicleta.
+      </p>
+
+      <p>
+        Desde un punto de vista técnico, el chasis es el elemento encargado de unir la dirección delantera con el conjunto trasero de la moto y soportar todas las fuerzas que aparecen durante la conducción. Cada aceleración, cada frenada, cada curva y cada irregularidad del asfalto generan esfuerzos que recorren continuamente la estructura. No hablamos de algo puntual. Hablamos de miles y miles de ciclos de carga durante años de uso. El bastidor trabaja constantemente, incluso cuando el conductor no es consciente de ello.
+      </p>
+
+      <p>
+        Por eso los fabricantes dedican enormes recursos al desarrollo de esta parte de la motocicleta. Antes de que una moto llegue a un concesionario, su estructura ha pasado por simulaciones, cálculos, ensayos de resistencia y pruebas de fatiga destinadas a garantizar que podrá soportar las condiciones más exigentes imaginables. Cada tubo tiene una función concreta. Cada refuerzo ocupa exactamente el lugar donde debe estar. Cada soldadura responde a una necesidad estructural.
+      </p>
+
+      <p>
+        Nada está colocado por casualidad.
+      </p>
+
+      <p>
+        Y es precisamente ahí donde comienza el conflicto entre la pasión por la personalización y las exigencias de la ingeniería.
+      </p>
+
+      <div class="quote">
+        En una moto custom puedes cambiar muchas cosas, pero el chasis no es una pieza más: es la estructura que mantiene viva y segura toda la motocicleta.
+      </div>
+
+      <h2>Cuando una radial puede cambiar el comportamiento de toda una moto</h2>
+
+      <p>
+        En el mundo custom existe una cierta tendencia a pensar que cualquier tubo que no encaja visualmente con el diseño deseado puede eliminarse sin mayores consecuencias. Es una idea comprensible. Al fin y al cabo, la cultura custom nació precisamente para transformar motocicletas de serie en máquinas únicas, adaptadas al gusto de cada propietario.
+      </p>
+
+      <p>
+        El problema es que una motocicleta no es una escultura estática.
+      </p>
+
+      <p>
+        Una moto se inclina, acelera, frena, absorbe baches y transmite fuerzas continuamente. Todo eso ocurre mientras el bastidor soporta esfuerzos que cambian de intensidad y dirección a cada instante. Cuando se elimina una parte de la estructura sin comprender realmente cuál es su función, el comportamiento global del conjunto puede verse alterado de formas que no siempre resultan evidentes a simple vista.
+      </p>
+
+      <p>
+        En muchas ocasiones, el propietario observa únicamente el resultado visual. Ve una línea más limpia, una silueta más ligera o una trasera más agresiva. Sin embargo, desde el punto de vista técnico, la pregunta importante no es cómo ha quedado la moto. La pregunta importante es qué ha ocurrido con las cargas que antes absorbía la parte eliminada.
+      </p>
+
+      <p>
+        Ese es precisamente el motivo por el que las modificaciones estructurales requieren un análisis mucho más profundo que otras reformas habituales. Mientras que un cambio de manillar, un asiento o unos intermitentes afectan principalmente a aspectos funcionales o estéticos, una alteración del bastidor puede modificar directamente la forma en la que la motocicleta responde ante las solicitaciones mecánicas.
+      </p>
+
+      <p>
+        Y cuando hablamos de seguridad, los detalles importan mucho más de lo que la mayoría imagina.
+      </p>
+
+      <h2>El gran error de muchas transformaciones bobber</h2>
+
+      <p>
+        Si existe una tendencia que ha marcado el mundo custom durante la última década, esa es sin duda la estética bobber. Las líneas minimalistas, los asientos flotantes y las traseras despejadas han conquistado talleres de toda Europa. El resultado puede ser espectacular. Algunas preparaciones transmiten personalidad incluso cuando están aparcadas.
+      </p>
+
+      <p>
+        Sin embargo, muchas de esas transformaciones tienen un enemigo común: el desconocimiento de la función real del subchasis.
+      </p>
+
+      <p>
+        Para muchos propietarios, el subchasis parece simplemente una prolongación de la estructura principal destinada a soportar el asiento o el guardabarros. En algunos modelos esto es parcialmente cierto. Pero en otros muchos casos esa zona forma parte activa de la resistencia estructural del conjunto y participa directamente en la transmisión de esfuerzos.
+      </p>
+
+      <p>
+        La situación se vuelve especialmente delicada cuando los amortiguadores traseros se anclan sobre el subchasis. En ese momento ya no estamos hablando únicamente de una estructura auxiliar. Estamos hablando de una zona sometida constantemente a cargas dinámicas. Cada bache, cada aceleración y cada movimiento de la suspensión generan esfuerzos que recorren esos elementos.
+      </p>
+
+      <p>
+        Por eso no basta con observar un tubo y decidir que sobra.
+      </p>
+
+      <p>
+        Lo que para un propietario puede parecer un simple soporte innecesario, para un ingeniero puede ser una pieza fundamental dentro del equilibrio estructural de la motocicleta. Y esa diferencia de perspectiva suele ser la que separa una reforma viable de un proyecto imposible de legalizar.
+      </p>
+
+      <h2>Lo que no se ve en las fotografías de internet</h2>
+
+      <p>
+        Las redes sociales han cambiado radicalmente la forma en la que se desarrollan muchos proyectos custom. Hoy resulta posible acceder en segundos a miles de preparaciones procedentes de Estados Unidos, Japón, Australia o cualquier otro rincón del mundo. El problema es que una fotografía muestra únicamente el resultado final. Nunca muestra el proceso.
+      </p>
+
+      <p>
+        No sabemos qué normativa se aplica en el país de origen. No sabemos si la moto está homologada. No sabemos si circula legalmente. Tampoco sabemos qué modificaciones estructurales permanecen ocultas bajo la pintura o si existen refuerzos que no aparecen en las imágenes.
+      </p>
+
+      <p>
+        Y, sin embargo, muchos propietarios utilizan esas fotografías como referencia directa para transformar sus motocicletas.
+      </p>
+
+      <p>
+        Es una situación que genera falsas expectativas constantemente. He visto proyectos comenzar con la intención de replicar una moto publicada en internet y terminar descubriendo que la reforma deseada no era compatible con la normativa aplicable en España o que requería modificaciones mucho más complejas de lo que parecía inicialmente.
+      </p>
+
+      <p>
+        La realidad es que las mejores preparaciones no suelen ser las más radicales. Las mejores son aquellas que entienden las limitaciones del vehículo y trabajan inteligentemente dentro de ellas. Son las que respetan aquello que no debe tocarse y transforman todo lo demás.
+      </p>
+
+      <div class="quote">
+        Que una moto quede espectacular en una foto no significa que sea viable en una ITV española.
+      </div>
+
+      <h2>La diferencia entre una preparación artesanal y una reforma bien diseñada</h2>
+
+      <p>
+        Existe una enorme diferencia entre modificar una moto y diseñar una transformación.
+      </p>
+
+      <p>
+        Modificar es relativamente sencillo. Diseñar requiere conocimiento.
+      </p>
+
+      <p>
+        Una radial puede eliminar un tubo en cuestión de segundos. Comprender qué consecuencias tendrá ese corte sobre la estructura puede requerir horas de análisis. Ahí es donde aparece el verdadero valor de la ingeniería.
+      </p>
+
+      <p>
+        Cuando una reforma se plantea correctamente desde el principio, todas las decisiones responden a una lógica. Se estudian los puntos de anclaje, se evalúan las cargas, se analizan los elementos afectados y se anticipan los posibles problemas antes de que aparezcan. El resultado no solo suele ser más seguro. También suele ser más limpio, más coherente y mucho más fácil de legalizar.
+      </p>
+
+      <p>
+        Después de miles de proyectos, sigo observando el mismo patrón. Las preparaciones que mejor envejecen son aquellas que nacieron de una planificación adecuada. No necesariamente son las más extremas ni las más costosas. Simplemente son las que se construyeron entendiendo cómo funciona realmente una motocicleta.
+      </p>
+
+      <h2>Personalizar una moto no significa destruir su esencia</h2>
+
+      <p>
+        Quizá la mayor equivocación que puede cometer un propietario es pensar que la homologación y la personalización son conceptos enfrentados. Nada más lejos de la realidad.
+      </p>
+
+      <p>
+        Las motos custom nacieron para expresar individualidad. Para romper moldes. Para convertir una máquina fabricada en serie en algo único. Esa filosofía sigue tan viva hoy como hace décadas. Pero personalizar una moto no significa ignorar la ingeniería que existe detrás de ella.
+      </p>
+
+      <p>
+        De hecho, las mejores transformaciones suelen ser precisamente las que consiguen respetar la esencia mecánica del vehículo mientras desarrollan una personalidad completamente nueva.
+      </p>
+
+      <p>
+        Porque una motocicleta puede cambiar de depósito, de asiento, de ruedas, de manillar o de iluminación. Puede adoptar una estética radicalmente distinta y convertirse en una máquina irrepetible. Pero existe una pieza que continúa soportando cada viaje, cada curva y cada recuerdo asociado a ella.
+      </p>
+
+      <p>
+        Esa pieza es el chasis.
+      </p>
+
+      <p>
+        Y precisamente por eso merece mucho más respeto que cualquier otra reforma que podamos imaginar. Cortar un tubo puede llevar apenas unos segundos. Diseñar una transformación que conserve la seguridad, la legalidad y el carácter de una motocicleta puede requerir semanas de trabajo. Sin embargo, cuando el resultado final permite disfrutar de la moto con total tranquilidad durante años, la diferencia entre ambas formas de actuar resulta evidente.
+      </p>
+
+      <p>
+        Porque al final, una auténtica moto custom no es la que más piezas ha eliminado. Es la que mejor combina personalidad, funcionalidad y seguridad. Y cuando hablamos del chasis, esa diferencia lo cambia absolutamente todo.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a modificar el chasis o subchasis de tu moto?</h3>
+
+        <p>
+          Antes de cortar, soldar o fabricar soportes nuevos, conviene revisar si la reforma es viable. Envíame los datos de la moto, fotos y la lista de modificaciones previstas para estudiar el caso con criterio técnico.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
