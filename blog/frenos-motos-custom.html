@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Frenos y ABS en moto custom: seguridad, confianza y homologación | Ingeniero Custom</title>
+  <meta name="description" content="Modificar los frenos de una moto custom puede mejorar la confianza, pero también afecta a uno de los sistemas de seguridad más importantes. Te explicamos qué debes tener en cuenta antes de homologar discos, pinzas, bombas, latiguillos o ABS." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .brand img{width:78px}
+    .brand span{font-size:18px}
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{color:var(--accent)}
+    .menu-toggle{display:none}
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.62)),
+        url('./frenos-abs-header.jpg')
+        center center / cover no-repeat;
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner { max-width: 980px; }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p { color: #e5e5e5; }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover { background: #f0b844; }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .back-blog:hover { color: #f0b844; }
+
+    @media (max-width: 800px) {
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{width:70px}
+      .brand span{font-size:18px}
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{display:grid}
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero { padding: 60px 6%; }
+      .container { padding: 45px 18px; }
+      .article-card { padding: 26px; }
+      p { font-size: 1rem; }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Frenos · ABS · Homologación</div>
+      <h1>Los frenos: la reforma que separa una moto bonita de una moto en la que confías</h1>
+      <p>
+        Mejorar la frenada puede cambiar por completo la confianza sobre una moto,
+        pero también afecta a uno de los sistemas de seguridad más importantes del vehículo.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay piezas que admiramos cuando la moto está aparcada. El depósito. El escape. Las llantas. El manillar. Después existen otras que apenas reciben atención hasta el momento exacto en que las necesitamos. Los frenos pertenecen a esa segunda categoría.
+      </p>
+
+      <p>
+        Nadie se acerca a una Harley-Davidson durante una concentración para contemplar la pinza delantera. Nadie publica fotografías de una custom artesanal porque sus latiguillos sean especialmente atractivos. Sin embargo, cuando aparece una curva cerrada, un coche invade nuestro carril o el asfalto deja de comportarse como esperábamos, todas las emociones desaparecen y solo queda una pregunta.
+      </p>
+
+      <p>
+        ¿Confiamos realmente en que la moto se detendrá cuando se lo pidamos?
+      </p>
+
+      <p>
+        Es una cuestión mucho más importante de lo que parece. Dentro del mundo custom dedicamos horas a hablar de estética, de sonido, de acabados y de personalidad. Es normal. Son precisamente esos detalles los que convierten una motocicleta corriente en una moto especial.
+      </p>
+
+      <p>
+        Pero cuando las cosas se complican, cuando la carretera nos exige una respuesta inmediata, hay un sistema que pasa por delante de cualquier otro. El sistema de frenos.
+      </p>
+
+      <div class="quote">
+        Los frenos no suelen ser protagonistas cuando la moto está parada, pero lo son cuando realmente importa.
+      </div>
+
+      <h2>La pieza más importante de una moto aparece cuando algo sale mal</h2>
+
+      <p>
+        Lo curioso de los frenos es que su éxito consiste precisamente en pasar desapercibidos. Cuando funcionan correctamente nadie piensa en ellos. No protagonizan conversaciones durante una ruta. No generan admiración cuando la moto está aparcada. Simplemente están ahí, esperando el momento en que los necesitemos.
+      </p>
+
+      <p>
+        Sin embargo, basta una frenada de emergencia para recordar hasta qué punto dependemos de ellos.
+      </p>
+
+      <p>
+        La mayoría de los motoristas experimentados coinciden en algo. La confianza que sentimos sobre una motocicleta tiene mucho más que ver con la capacidad de detenerla que con la capacidad de acelerarla.
+      </p>
+
+      <p>
+        Podemos convivir perfectamente con una moto modesta en prestaciones. Podemos acostumbrarnos a un motor poco potente. Incluso podemos aceptar determinadas limitaciones dinámicas. Pero resulta muy difícil disfrutar realmente de una motocicleta cuando no confiamos plenamente en sus frenos.
+      </p>
+
+      <p>
+        Y esa confianza es precisamente la razón por la que tantos propietarios deciden intervenir sobre el sistema original.
+      </p>
+
+      <h2>Cuando una Harley de los noventa intenta frenar como una moto actual</h2>
+
+      <p>
+        Cualquiera que haya conducido una Harley-Davidson moderna y una Harley de hace varias décadas entiende perfectamente de qué estamos hablando. La evolución de los sistemas de frenado durante los últimos años ha sido enorme. No únicamente en las motocicletas americanas. También en las japonesas, europeas y prácticamente en cualquier segmento del mercado.
+      </p>
+
+      <p>
+        Discos de mayor rendimiento, pinzas más eficientes, mejores materiales de fricción, sistemas ABS y soluciones que hace apenas unos años parecían reservadas a motocicletas deportivas forman hoy parte de la normalidad.
+      </p>
+
+      <p>
+        Por eso resulta habitual que muchos propietarios de motos custom clásicas empiecen a plantearse mejoras en la frenada. Una Sportster de finales de los noventa. Una Dyna de primera generación. Una custom japonesa utilizada habitualmente en carretera. Todas ellas pueden beneficiarse de determinados avances desarrollados durante las últimas décadas.
+      </p>
+
+      <p>
+        La intención suele ser completamente razonable. No se busca una frenada de competición. Tampoco transformar la moto en algo radicalmente diferente. Lo que se busca es ganar confianza. Conseguir una respuesta más precisa. Reducir el esfuerzo necesario sobre la maneta. Mejorar las sensaciones cuando llega el momento de detener la motocicleta.
+      </p>
+
+      <div class="quote">
+        Muchas mejoras de frenos no buscan radicalizar la moto. Buscan que el piloto confíe más en ella.
+      </div>
+
+      <h2>La obsesión por frenar mejor</h2>
+
+      <p>
+        A diferencia de otras modificaciones habituales dentro del mundo custom, las reformas relacionadas con los frenos rara vez nacen por motivos puramente estéticos. Es cierto que determinadas pinzas o discos pueden aportar personalidad visual al conjunto, pero en la mayoría de los casos existe una motivación mucho más práctica detrás de la decisión.
+      </p>
+
+      <p>
+        El propietario quiere que la moto frene mejor.
+      </p>
+
+      <p>
+        Es una aspiración completamente lógica. De hecho, pocas reformas generan una sensación tan inmediata como una mejora bien ejecutada sobre el sistema de frenado. La respuesta cambia. El tacto cambia. La confianza cambia. Todo parece funcionar de una manera más precisa.
+      </p>
+
+      <p>
+        Sin embargo, existe una idea muy extendida que conviene analizar con calma. La creencia de que una mejora de frenada nunca puede generar problemas desde el punto de vista de la homologación.
+      </p>
+
+      <p>
+        Y precisamente ahí aparece una de las cuestiones más interesantes de este tipo de reformas.
+      </p>
+
+      <h2>El error de pensar que más freno siempre significa menos problemas</h2>
+
+      <p>
+        Desde el punto de vista del usuario resulta fácil entender la lógica. Si una motocicleta frena más, debería ser automáticamente mejor. Y si es mejor, debería ser más fácil de legalizar.
+      </p>
+
+      <p>
+        La realidad es bastante más compleja.
+      </p>
+
+      <p>
+        Porque la homologación no analiza únicamente la potencia de frenado. Analiza el comportamiento global del sistema. Lo que importa no es únicamente cuánto frena una moto. También importa cómo lo hace.
+      </p>
+
+      <p>
+        Una pinza más potente modifica las fuerzas que actúan sobre el conjunto. Un disco de mayor diámetro altera determinadas características del sistema. Una bomba distinta cambia la respuesta de la maneta. Incluso una combinación de componentes procedentes de diferentes modelos puede generar comportamientos que originalmente no existían.
+      </p>
+
+      <p>
+        Por eso el Manual de Reformas trata estas modificaciones con especial atención. Cuando se sustituyen elementos fundamentales del sistema de frenado, la cuestión deja de ser simplemente si las piezas instaladas son de buena calidad. Lo importante pasa a ser demostrar que la motocicleta resultante sigue frenando correctamente como conjunto.
+      </p>
+
+      <div class="quote">
+        En frenos no basta con montar piezas mejores. Hay que demostrar que el sistema funciona correctamente como conjunto.
+      </div>
+
+      <h2>Los latiguillos metálicos y la excepción que casi todo el mundo conoce</h2>
+
+      <p>
+        Dentro del sector existe una reforma que prácticamente cualquier aficionado ha escuchado alguna vez. La sustitución de los latiguillos originales por latiguillos metálicos.
+      </p>
+
+      <p>
+        Es una modificación tremendamente popular porque permite mejorar determinadas sensaciones de frenada sin alterar significativamente el funcionamiento global del sistema. Precisamente por esa razón recibe un tratamiento diferente respecto a otras intervenciones más profundas.
+      </p>
+
+      <p>
+        Mientras que muchas modificaciones relacionadas con discos, pinzas, bombas o configuraciones de frenado exigen justificar técnicamente el comportamiento del sistema mediante los procedimientos correspondientes, la sustitución por latiguillos metálicos equivalentes suele considerarse una actuación mucho más sencilla desde el punto de vista de la tramitación.
+      </p>
+
+      <p>
+        Lo interesante no es la excepción en sí misma. Lo interesante es lo que nos enseña sobre la filosofía que existe detrás de la normativa.
+      </p>
+
+      <p>
+        No todas las reformas afectan de la misma manera al comportamiento del vehículo. Y precisamente por eso no todas se analizan igual.
+      </p>
+
+      <h2>La diferencia entre montar piezas y diseñar un sistema</h2>
+
+      <p>
+        Una de las lecciones que más veces se repite en el mundo de la preparación de motocicletas es que las mejores piezas del mercado no garantizan necesariamente el mejor resultado.
+      </p>
+
+      <p>
+        Puede parecer una contradicción, pero no lo es.
+      </p>
+
+      <p>
+        Una pinza extraordinaria instalada dentro de un conjunto mal planteado no convierte automáticamente una motocicleta en una moto mejor. Del mismo modo, un disco de gran diámetro o una bomba de altas prestaciones tampoco garantizan por sí solos una frenada equilibrada.
+      </p>
+
+      <p>
+        Porque un sistema de frenos no es una colección de componentes independientes.
+      </p>
+
+      <p>
+        Es un equilibrio.
+      </p>
+
+      <p>
+        Todos los elementos trabajan conjuntamente para producir un resultado concreto. Cuando uno de ellos cambia, el resto también se ve afectado de una forma u otra. Por eso los fabricantes dedican miles de horas a desarrollar y ajustar estos sistemas antes de poner una motocicleta en el mercado.
+      </p>
+
+      <div class="quote">
+        Un sistema de frenos no es una suma de piezas. Es un equilibrio entre todos sus componentes.
+      </div>
+
+      <p>
+        Y por eso las reformas relacionadas con la frenada deben analizarse siempre desde una perspectiva global.
+      </p>
+
+      <p>
+        No se trata únicamente de instalar piezas. Se trata de entender cómo interactúan entre sí.
+      </p>
+
+      <h2>Una moto debe acelerar con personalidad, pero también detenerse con seguridad</h2>
+
+      <p>
+        La cultura custom siempre ha celebrado la individualidad. Cada moto cuenta una historia diferente. Cada propietario busca una personalidad distinta. Cada proyecto intenta reflejar una forma concreta de entender la motocicleta.
+      </p>
+
+      <p>
+        Esa libertad creativa es precisamente lo que hace tan atractivo este mundo.
+      </p>
+
+      <p>
+        Pero también existe una responsabilidad inevitable. Porque una motocicleta no es una escultura. No es una pieza de exposición destinada únicamente a ser observada. Es una máquina diseñada para circular, compartir espacio con otros usuarios y enfrentarse a situaciones imprevistas cada vez que sale a la carretera.
+      </p>
+
+      <p>
+        Por eso los frenos ocupan un lugar tan especial dentro de cualquier proyecto.
+      </p>
+
+      <p>
+        Podemos debatir durante horas sobre depósitos, escapes o manillares. Podemos discutir sobre estilos, tendencias y acabados. Pero cuando llega el momento de confiar nuestra seguridad a una motocicleta, todo termina reduciéndose a una cuestión mucho más simple.
+      </p>
+
+      <p>
+        Saber que responderá exactamente como esperamos.
+      </p>
+
+      <p>
+        Y pocas cosas generan más confianza que una moto capaz de acelerar con personalidad y detenerse con absoluta seguridad cuando realmente lo necesitamos.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a modificar los frenos de tu moto?</h3>
+
+        <p>
+          Antes de cambiar discos, pinzas, bomba, latiguillos o cualquier elemento del sistema de frenado, conviene estudiar la compatibilidad, el comportamiento del conjunto y la viabilidad real de homologación.
+        </p>
+
+        <a href="https://forms.gle/uzZpzvMdjp7ai93v7" target="_blank" rel="noopener">
+          Rellenar formulario de reforma
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
