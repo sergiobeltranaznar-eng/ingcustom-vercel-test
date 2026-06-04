@@ -632,6 +632,23 @@
       cursor:pointer;
     }
 
+    .service-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  border-radius:26px;
+}
+
+.service{
+  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease, background .25s ease;
+}
+
+.service-link:hover .service{
+  border-color:var(--accent);
+  box-shadow:0 0 28px rgba(246,181,29,.30);
+  transform:translateY(-4px);
+}
+
     @media (max-width:1100px){
       h1{font-size:54px}
       .hero-grid,.grid-2{grid-template-columns:1fr}
@@ -873,34 +890,102 @@
         </article>
       </div>
     </section>
+<section id="servicios" class="services-wrap section">
+  <div class="container">
+    <div class="eyebrow">Homologaciones habituales</div>
+    <h2 class="section-title">Homologación de reformas en motos custom</h2>
+    <p class="section-copy">Nos centramos en modificaciones habituales en motos custom para ofrecer un servicio ágil, técnico y orientado a resultado. Cada reforma se revisa según la moto, el montaje, la documentación de las piezas y los criterios aplicables en ITV.</p>
 
-    <section id="servicios" class="services-wrap section">
-      <div class="container">
-        <div class="eyebrow">Homologaciones habituales</div>
-        <h2 class="section-title">Homologación de reformas en motos custom</h2>
-        <p class="section-copy">Nos centramos en modificaciones habituales en motos custom para ofrecer un servicio ágil, técnico y orientado a resultado. Cada reforma se revisa según la moto, el montaje, la documentación de las piezas y los criterios aplicables en ITV.</p>
+    <h3 class="category-title">Reformas básicas</h3>
+    <div class="service-grid">
 
-        <h3 class="category-title">Reformas básicas</h3>
-        <div class="service-grid">
-          <article class="service"><h3>Faro halógeno a LED</h3><p>Revisión de compatibilidad, marcado y planteamiento correcto de la reforma.</p></article>
-          <article class="service"><h3>Recolocación de intermitentes</h3><p>Validamos posición, visibilidad y enfoque técnico para evitar problemas en ITV.</p></article>
-          <article class="service"><h3>Recolocación de matrícula</h3><p>Importan la posición, la visibilidad y cómo se ejecuta el conjunto.</p></article>
-          <article class="service"><h3>Instalación de sissy bar</h3><p>Revisamos fijación y encaje correcto dentro del proyecto de reforma.</p></article>
-          <article class="service"><h3>Cambio de escape</h3><p>Analizamos homologación del componente y planteamiento global del montaje.</p></article>
-          <article class="service"><h3>Cambio de manillar</h3><p>Una de las reformas estrella en custom por impacto estético y de conducción.</p></article>
-        </div>
+      <a class="service-link" href="/blog/faro-led-moto-itv.html">
+        <article class="service">
+          <h3>Faro halógeno a LED</h3>
+          <p>Revisión de compatibilidad, marcado y planteamiento correcto de la reforma.</p>
+        </article>
+      </a>
 
-        <h3 class="category-title">Reformas avanzadas</h3>
-        <div class="service-grid">
-          <article class="service"><h3>Cambio de amortiguadores</h3><p>Una modificación habitual que puede afectar la geometría de la moto.</p></article>
-          <article class="service"><h3>Asiento y configuración de plazas</h3><p>Adaptamos la moto a monoplaza o biplaza, o revisamos cambios relevantes en el anclaje y la estructura del asiento.</p></article>
-          <article class="service"><h3>Velocímetro y cuadro de mandos</h3><p>Sustitución por opciones digitales o minimalistas, asegurando encaje normativo y documentación correcta.</p></article>
-          <article class="service"><h3>Mejora del sistema de frenos</h3><p>Evaluamos cambios en pinzas, bombas o discos cuando se montan componentes con distinta medida o prestaciones.</p></article>
-          <article class="service"><h3>Modificación de horquillas o tijas</h3><p>Revisamos alteraciones en la geometría delantera o en el sistema de suspensión para plantear bien la reforma.</p></article>
-          <article class="service"><h3>Llantas y neumáticos no equivalentes</h3><p>Estudiamos cambios de diseño, diámetro o medidas fuera de equivalencia respecto a la homologación de origen.</p></article>
-        </div>
-      </div>
-    </section>
+      <article class="service">
+        <h3>Recolocación de intermitentes</h3>
+        <p>Validamos posición, visibilidad y enfoque técnico para evitar problemas en ITV.</p>
+      </article>
+
+      <article class="service">
+        <h3>Recolocación de matrícula</h3>
+        <p>Importan la posición, la visibilidad y cómo se ejecuta el conjunto.</p>
+      </article>
+
+      <article class="service">
+        <h3>Instalación de sissy bar</h3>
+        <p>Revisamos fijación y encaje correcto dentro del proyecto de reforma.</p>
+      </article>
+
+      <a class="service-link" href="/blog/motor-linea-escape-moto-custom.html">
+        <article class="service">
+          <h3>Cambio de escape</h3>
+          <p>Analizamos homologación del componente y planteamiento global del montaje.</p>
+        </article>
+      </a>
+
+      <a class="service-link" href="/blog/manillar-moto-custom-homologacion.html">
+        <article class="service">
+          <h3>Cambio de manillar</h3>
+          <p>Una de las reformas estrella en custom por impacto estético y de conducción.</p>
+        </article>
+      </a>
+
+    </div>
+
+    <h3 class="category-title">Reformas avanzadas</h3>
+    <div class="service-grid">
+
+      <a class="service-link" href="/blog/amortiguadores-custom.html">
+        <article class="service">
+          <h3>Cambio de amortiguadores</h3>
+          <p>Una modificación habitual que puede afectar la geometría de la moto.</p>
+        </article>
+      </a>
+
+      <a class="service-link" href="/blog/asientos-motos-custom.html">
+        <article class="service">
+          <h3>Asiento y configuración de plazas</h3>
+          <p>Adaptamos la moto a monoplaza o biplaza, o revisamos cambios relevantes en el anclaje y la estructura del asiento.</p>
+        </article>
+      </a>
+
+      <a class="service-link" href="/blog/velocimetro-moto-custom-homologacion.html">
+        <article class="service">
+          <h3>Velocímetro y cuadro de mandos</h3>
+          <p>Sustitución por opciones digitales o minimalistas, asegurando encaje normativo y documentación correcta.</p>
+        </article>
+      </a>
+
+      <a class="service-link" href="/blog/frenos-motos-custom.html">
+        <article class="service">
+          <h3>Mejora del sistema de frenos</h3>
+          <p>Evaluamos cambios en pinzas, bombas o discos cuando se montan componentes con distinta medida o prestaciones.</p>
+        </article>
+      </a>
+
+      <a class="service-link" href="/blog/tijas-horquillas-custom.html">
+        <article class="service">
+          <h3>Modificación de horquillas o tijas</h3>
+          <p>Revisamos alteraciones en la geometría delantera o en el sistema de suspensión para plantear bien la reforma.</p>
+        </article>
+      </a>
+
+      <a class="service-link" href="/blog/llantas-neumaticos-custom.html">
+        <article class="service">
+          <h3>Llantas y neumáticos no equivalentes</h3>
+          <p>Estudiamos cambios de diseño, diámetro o medidas fuera de equivalencia respecto a la homologación de origen.</p>
+        </article>
+      </a>
+
+    </div>
+  </div>
+</section>
+    
 
     <section id="proceso" class="section">
       <div class="container">
