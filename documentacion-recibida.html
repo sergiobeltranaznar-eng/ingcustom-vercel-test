@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Documentación recibida | Ingeniero Custom</title>
+
+  <style>
+    :root{
+      --bg:#0f1115;
+      --card:#171a21;
+      --gold:#c9a24d;
+      --text:#f4f1ea;
+      --muted:#b8b2a7;
+      --line:rgba(201,162,77,.28);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(201,162,77,.16), transparent 35%),
+        linear-gradient(180deg,#0f1115,#07080b);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px 18px;
+    }
+
+    .card{
+      width:100%;
+      max-width:760px;
+      background:rgba(23,26,33,.92);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:42px 34px;
+      text-align:center;
+      box-shadow:0 24px 80px rgba(0,0,0,.45);
+    }
+
+    .logo{
+      max-width:120px;
+      margin:0 auto 24px;
+      display:block;
+    }
+
+    .badge{
+      display:inline-block;
+      color:var(--gold);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:13px;
+      margin-bottom:18px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:42px;
+      line-height:1.1;
+      margin:0 0 18px;
+    }
+
+    p{
+      font-size:17px;
+      line-height:1.75;
+      color:var(--muted);
+      margin:0 0 16px;
+      max-width:680px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    strong{
+      color:var(--text);
+    }
+
+    .next{
+      margin-top:28px;
+      padding:20px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .next p{
+      text-align:justify;
+      text-justify:inter-word;
+      hyphens:auto;
+      -webkit-hyphens:auto;
+      -ms-hyphens:auto;
+    }
+
+    .brand{
+      margin-top:30px;
+      color:var(--gold);
+      font-weight:bold;
+      letter-spacing:.03em;
+    }
+
+    .home-link{
+      color:var(--gold);
+      text-decoration:none;
+      font-weight:bold;
+      font-size:24px;
+      transition:all .2s ease;
+    }
+
+    .home-link:hover{
+      opacity:.85;
+      text-decoration:underline;
+    }
+
+    @media(max-width:600px){
+      .next p{
+        text-align:left;
+      }
+
+      .card{
+        padding:34px 22px;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      p{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" class="logo">
+
+    <div class="badge">Documentación recibida</div>
+
+    <h1>Hemos recibido tu documentación correctamente</h1>
+
+    <p>
+      Gracias. La información y documentación asociada a tu expediente se ha recibido correctamente.
+    </p>
+
+    <div class="next">
+      <p>
+        Nuestro equipo revisará ahora la documentación aportada, comprobará que toda la información necesaria está disponible y continuará con la preparación técnica del expediente.
+      </p>
+
+      <p>
+        Si fuera necesario aportar algún dato adicional o aclarar cualquier aspecto de la reforma, nos pondremos en contacto contigo por correo electrónico.
+      </p>
+
+      <p>
+        Mientras tanto, no es necesario realizar ninguna acción adicional por tu parte.
+      </p>
+    </div>
+
+    <div class="brand">
+      <a href="https://ingenierocustom.es" class="home-link">
+        Volver a Ingeniero Custom →
+      </a>
+    </div>
+  </main>
+</body>
+</html>
