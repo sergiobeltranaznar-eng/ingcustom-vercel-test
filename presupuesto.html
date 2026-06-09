@@ -241,9 +241,8 @@
     .reform-card{
       position:relative;
       display:flex;
-      gap:14px;
-      align-items:flex-start;
-      min-height:94px;
+      align-items:center;
+      min-height:72px;
       padding:18px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.055);
@@ -264,43 +263,27 @@
       pointer-events:none;
     }
 
-    .icon{
-      width:42px;
-      height:42px;
-      flex:0 0 42px;
-      border-radius:14px;
-      background:rgba(246,181,29,.12);
-      border:1px solid rgba(246,181,29,.24);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:22px;
-    }
-
     .reform-title{
       font-weight:900;
       color:#fff;
-      font-size:16px;
-    }
-
-    .reform-desc{
-      color:#c7c7c7;
-      font-size:13px;
-      line-height:1.45;
-      margin-top:5px;
+      font-size:15px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      padding-right:34px;
     }
 
     .reform-card.selected{
       border-color:var(--accent);
-      background:linear-gradient(180deg, rgba(246,181,29,.16), rgba(255,255,255,.06));
+      background:rgba(246,181,29,.08);
       box-shadow:0 0 0 3px rgba(246,181,29,.10);
     }
 
     .reform-card.selected:after{
       content:"✓";
       position:absolute;
-      top:12px;
-      right:12px;
+      top:50%;
+      right:14px;
+      transform:translateY(-50%);
       width:24px;
       height:24px;
       border-radius:50%;
@@ -586,7 +569,7 @@
           </div>
 
           <div class="block">
-            <h2>Datos de la motocicleta</h2>
+            <h2>Tu motocicleta</h2>
 
             <div class="field-grid">
               <div class="field">
@@ -608,117 +591,69 @@
 
           <div class="block">
             <div class="reform-header">
-              <h2>Reformas a homologar</h2>
+              <h2>¿Qué quieres homologar?</h2>
               <div class="counter" id="counter">0 reformas seleccionadas</div>
             </div>
 
             <div class="reform-grid">
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Faro LED">
-                <span class="icon">💡</span>
-                <span>
-                  <span class="reform-title">Faro LED</span>
-                  <span class="reform-desc">Cambio de faro halógeno a LED.</span>
-                </span>
+                <span class="reform-title">Faro LED</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Intermitentes">
-                <span class="icon">↔</span>
-                <span>
-                  <span class="reform-title">Intermitentes</span>
-                  <span class="reform-desc">Sustitución o recolocación.</span>
-                </span>
+                <span class="reform-title">Intermitentes</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Manillar">
-                <span class="icon">🏍️</span>
-                <span>
-                  <span class="reform-title">Manillar</span>
-                  <span class="reform-desc">Cambio de altura, anchura o geometría.</span>
-                </span>
+                <span class="reform-title">Manillar</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Matrícula lateral">
-                <span class="icon">▣</span>
-                <span>
-                  <span class="reform-title">Matrícula lateral</span>
-                  <span class="reform-desc">Reubicación del soporte de placa.</span>
-                </span>
+                <span class="reform-title">Matrícula lateral</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Sissy Bar">
-                <span class="icon">▥</span>
-                <span>
-                  <span class="reform-title">Sissy Bar</span>
-                  <span class="reform-desc">Instalación o modificación trasera.</span>
-                </span>
+                <span class="reform-title">Sissy Bar</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Colas de escape">
-                <span class="icon">☁</span>
-                <span>
-                  <span class="reform-title">Colas de escape</span>
-                  <span class="reform-desc">Silenciadores o terminales.</span>
-                </span>
+                <span class="reform-title">Colas de escape</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Escape completo">
-                <span class="icon">⚙</span>
-                <span>
-                  <span class="reform-title">Escape completo</span>
-                  <span class="reform-desc">Línea completa o modificación relevante.</span>
-                </span>
+                <span class="reform-title">Escape completo</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Amortiguadores">
-                <span class="icon">↕</span>
-                <span>
-                  <span class="reform-title">Amortiguadores</span>
-                  <span class="reform-desc">Cambio de longitud o características.</span>
-                </span>
+                <span class="reform-title">Amortiguadores</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Horquillas / Tijas">
-                <span class="icon">⫶</span>
-                <span>
-                  <span class="reform-title">Horquillas / Tijas</span>
-                  <span class="reform-desc">Modificación de la geometría delantera.</span>
-                </span>
+                <span class="reform-title">Horquillas / Tijas</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Frenos">
-                <span class="icon">◉</span>
-                <span>
-                  <span class="reform-title">Frenos</span>
-                  <span class="reform-desc">Discos, pinzas, bomba o latiguillos.</span>
-                </span>
+                <span class="reform-title">Frenos</span>
               </label>
 
               <label class="reform-card">
                 <input type="checkbox" name="reformas" value="Llantas / Neumáticos">
-                <span class="icon">◎</span>
-                <span>
-                  <span class="reform-title">Llantas / Neumáticos</span>
-                  <span class="reform-desc">Medidas no equivalentes o cambio de llanta.</span>
-                </span>
+                <span class="reform-title">Llantas / Neumáticos</span>
               </label>
 
               <label class="reform-card">
                 <input id="otraReformaCheck" type="checkbox" name="reformas" value="Otra reforma">
-                <span class="icon">＋</span>
-                <span>
-                  <span class="reform-title">Otra reforma</span>
-                  <span class="reform-desc">Modificación no incluida en la lista.</span>
-                </span>
+                <span class="reform-title">Otra reforma</span>
               </label>
             </div>
 
