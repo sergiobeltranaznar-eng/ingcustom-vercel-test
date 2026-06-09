@@ -189,6 +189,18 @@
       outline:none;
       font:inherit;
     }
+    
+    input[type="date"]{
+    background:#0b0b0b;
+    color:#f5f5f5;
+    border:1px solid rgba(246,181,29,.35);
+    color-scheme:dark;
+    }  
+
+    input[type="date"]::-webkit-calendar-picker-indicator{
+    filter: invert(73%) sepia(90%) saturate(500%) hue-rotate(360deg);
+    cursor:pointer;
+    }
 
     input:focus,
     textarea:focus{
