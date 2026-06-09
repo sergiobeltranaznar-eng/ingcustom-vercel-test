@@ -799,7 +799,7 @@
 
       otrasReformas.addEventListener("input", validate);
 
-      form.addEventListener("submit", function(e){
+      form.addEventListener("submit", async function(e){
         e.preventDefault();
 
         const reformas = getSelectedReformas();
@@ -818,12 +818,28 @@
           origen: "WEB"
         };
 
-        console.log("Solicitud presupuesto Ingeniero Custom:", datos);
+        const URL_WEBAPP = "PEGA_AQUI_TU_URL_DE_WEB_APP";
 
-        form.classList.add("hidden");
-        successScreen.classList.add("open");
-        successScreen.scrollIntoView({behavior:"smooth", block:"center"});
-      });
+console.log("Solicitud presupuesto Ingeniero Custom:", datos);
+
+try {
+  await fetch(URL_WEBAPP, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    body: JSON.stringify(datos)
+  });
+
+  form.classList.add("hidden");
+  successScreen.classList.add("open");
+  successScreen.scrollIntoView({behavior:"smooth", block:"center"});
+
+} catch (error) {
+  alert("No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta con info@ingenierocustom.es");
+  console.error(error);
+}
 
       updateCards();
       updateCounter();
