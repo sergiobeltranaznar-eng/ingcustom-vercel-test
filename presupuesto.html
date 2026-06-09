@@ -86,7 +86,6 @@
     }
 
     .nav-links a:hover{color:var(--accent)}
-
     .menu-toggle{display:none}
 
     .hero{
@@ -139,9 +138,7 @@
       box-shadow:var(--shadow);
     }
 
-    .form-card{
-      padding:32px;
-    }
+    .form-card{padding:32px}
 
     .side-card{
       padding:28px;
@@ -179,9 +176,7 @@
       gap:8px;
     }
 
-    .field.full{
-      grid-column:1 / -1;
-    }
+    .field.full{grid-column:1 / -1}
 
     label{
       font-size:14px;
@@ -218,35 +213,104 @@
       line-height:1.55;
     }
 
+    .reform-header{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:center;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .counter{
+      border:1px solid rgba(246,181,29,.35);
+      background:rgba(246,181,29,.10);
+      color:#ffd66d;
+      border-radius:999px;
+      padding:9px 14px;
+      font-size:13px;
+      font-weight:900;
+    }
+
     .reform-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:12px;
+      gap:13px;
     }
 
-    .check-card{
+    .reform-card{
+      position:relative;
       display:flex;
-      align-items:center;
-      gap:12px;
-      padding:15px 16px;
+      gap:14px;
+      align-items:flex-start;
+      min-height:94px;
+      padding:18px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.055);
-      border-radius:16px;
+      border-radius:18px;
       cursor:pointer;
-      transition:.2s ease;
-      font-weight:800;
-      color:#efefef;
+      transition:.22s ease;
     }
 
-    .check-card:hover{
+    .reform-card:hover{
       border-color:rgba(246,181,29,.75);
-      transform:translateY(-1px);
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,0,0,.28);
     }
 
-    .check-card input{
-      width:18px;
-      height:18px;
-      accent-color:var(--accent);
+    .reform-card input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .icon{
+      width:42px;
+      height:42px;
+      flex:0 0 42px;
+      border-radius:14px;
+      background:rgba(246,181,29,.12);
+      border:1px solid rgba(246,181,29,.24);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+    }
+
+    .reform-title{
+      font-weight:900;
+      color:#fff;
+      font-size:16px;
+    }
+
+    .reform-desc{
+      color:#c7c7c7;
+      font-size:13px;
+      line-height:1.45;
+      margin-top:5px;
+    }
+
+    .reform-card.selected{
+      border-color:var(--accent);
+      background:linear-gradient(180deg, rgba(246,181,29,.16), rgba(255,255,255,.06));
+      box-shadow:0 0 0 3px rgba(246,181,29,.10);
+    }
+
+    .reform-card.selected:after{
+      content:"✓";
+      position:absolute;
+      top:12px;
+      right:12px;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      background:var(--accent);
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:14px;
     }
 
     .other-box{
@@ -254,9 +318,7 @@
       margin-top:18px;
     }
 
-    .other-box.open{
-      display:block;
-    }
+    .other-box.open{display:block}
 
     .help{
       color:#bdbdbd;
@@ -292,6 +354,13 @@
       background:#ffc53d;
     }
 
+    .btn:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
+
     .trust{
       display:grid;
       gap:12px;
@@ -319,20 +388,41 @@
       line-height:1.7;
     }
 
-    .success{
-      display:none;
+    .notice{
       margin-top:22px;
-      padding:18px;
-      border:1px solid rgba(246,181,29,.38);
-      background:rgba(246,181,29,.10);
-      color:#ffe6a1;
+      padding:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.055);
+      color:#d7d7d7;
       border-radius:18px;
       line-height:1.6;
-      font-weight:700;
+      font-size:14px;
     }
 
-    .success.open{
-      display:block;
+    .success-screen{
+      display:none;
+      border:1px solid rgba(246,181,29,.38);
+      background:linear-gradient(180deg, rgba(246,181,29,.14), rgba(18,18,18,.96));
+      border-radius:28px;
+      padding:36px;
+      box-shadow:var(--shadow);
+    }
+
+    .success-screen.open{display:block}
+    .form-card.hidden{display:none}
+
+    .success-screen h2{
+      font-family:Oswald,Inter,Arial,sans-serif;
+      text-transform:uppercase;
+      font-size:44px;
+      margin:0;
+      color:#fff;
+    }
+
+    .success-screen p{
+      color:#e6e6e6;
+      line-height:1.7;
+      font-size:17px;
     }
 
     .footer{
@@ -363,13 +453,8 @@
     .contact-link{color:#ffd66d;font-weight:800}
 
     @media (max-width:980px){
-      .form-shell{
-        grid-template-columns:1fr;
-      }
-
-      .side-card{
-        position:static;
-      }
+      .form-shell{grid-template-columns:1fr}
+      .side-card{position:static}
     }
 
     @media (max-width:760px){
@@ -386,9 +471,7 @@
         gap:10px;
       }
 
-      .brand img{
-        width:70px;
-      }
+      .brand img{width:70px}
 
       .menu-toggle{
         display:block;
@@ -411,9 +494,7 @@
         gap:10px;
       }
 
-      .nav-links.open{
-        display:grid;
-      }
+      .nav-links.open{display:grid}
 
       .nav-links a{
         display:flex;
@@ -424,26 +505,23 @@
         background:rgba(255,255,255,.06);
       }
 
-      .hero{
-        padding:56px 0 28px;
-      }
-
-      h1{
-        font-size:40px;
-      }
-
-      .lead{
-        font-size:17px;
-      }
+      .hero{padding:56px 0 28px}
+      h1{font-size:40px}
+      .lead{font-size:17px}
 
       .form-card,
-      .side-card{
+      .side-card,
+      .success-screen{
         padding:22px;
       }
 
       .field-grid,
       .reform-grid{
         grid-template-columns:1fr;
+      }
+
+      .success-screen h2{
+        font-size:34px;
       }
     }
   </style>
@@ -492,17 +570,17 @@
             <div class="field-grid">
               <div class="field">
                 <label for="nombre">Nombre <span class="required">* Obligatorio</span></label>
-                <input id="nombre" name="nombre" type="text" required />
+                <input id="nombre" name="nombre" type="text" autocomplete="name" required />
               </div>
 
               <div class="field">
                 <label for="telefono">Teléfono <span class="required">* Obligatorio</span></label>
-                <input id="telefono" name="telefono" type="tel" required />
+                <input id="telefono" name="telefono" type="tel" autocomplete="tel" required />
               </div>
 
               <div class="field full">
                 <label for="email">Email <span class="required">* Obligatorio</span></label>
-                <input id="email" name="email" type="email" required />
+                <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
           </div>
@@ -529,21 +607,119 @@
           </div>
 
           <div class="block">
-            <h2>Reformas a homologar</h2>
+            <div class="reform-header">
+              <h2>Reformas a homologar</h2>
+              <div class="counter" id="counter">0 reformas seleccionadas</div>
+            </div>
 
             <div class="reform-grid">
-              <label class="check-card"><input type="checkbox" name="reformas" value="Faro LED"> Faro LED</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Intermitentes"> Intermitentes</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Manillar"> Manillar</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Matrícula lateral"> Matrícula lateral</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Sissy Bar"> Sissy Bar</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Colas de escape"> Colas de escape</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Escape completo"> Escape completo</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Amortiguadores"> Amortiguadores</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Horquillas / Tijas"> Horquillas / Tijas</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Frenos"> Frenos</label>
-              <label class="check-card"><input type="checkbox" name="reformas" value="Llantas / Neumáticos"> Llantas / Neumáticos</label>
-              <label class="check-card"><input id="otraReformaCheck" type="checkbox" name="reformas" value="Otra reforma"> Otra reforma no incluida en la lista</label>
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Faro LED">
+                <span class="icon">💡</span>
+                <span>
+                  <span class="reform-title">Faro LED</span>
+                  <span class="reform-desc">Cambio de faro halógeno a LED.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Intermitentes">
+                <span class="icon">↔</span>
+                <span>
+                  <span class="reform-title">Intermitentes</span>
+                  <span class="reform-desc">Sustitución o recolocación.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Manillar">
+                <span class="icon">🏍️</span>
+                <span>
+                  <span class="reform-title">Manillar</span>
+                  <span class="reform-desc">Cambio de altura, anchura o geometría.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Matrícula lateral">
+                <span class="icon">▣</span>
+                <span>
+                  <span class="reform-title">Matrícula lateral</span>
+                  <span class="reform-desc">Reubicación del soporte de placa.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Sissy Bar">
+                <span class="icon">▥</span>
+                <span>
+                  <span class="reform-title">Sissy Bar</span>
+                  <span class="reform-desc">Instalación o modificación trasera.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Colas de escape">
+                <span class="icon">☁</span>
+                <span>
+                  <span class="reform-title">Colas de escape</span>
+                  <span class="reform-desc">Silenciadores o terminales.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Escape completo">
+                <span class="icon">⚙</span>
+                <span>
+                  <span class="reform-title">Escape completo</span>
+                  <span class="reform-desc">Línea completa o modificación relevante.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Amortiguadores">
+                <span class="icon">↕</span>
+                <span>
+                  <span class="reform-title">Amortiguadores</span>
+                  <span class="reform-desc">Cambio de longitud o características.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Horquillas / Tijas">
+                <span class="icon">⫶</span>
+                <span>
+                  <span class="reform-title">Horquillas / Tijas</span>
+                  <span class="reform-desc">Modificación de la geometría delantera.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Frenos">
+                <span class="icon">◉</span>
+                <span>
+                  <span class="reform-title">Frenos</span>
+                  <span class="reform-desc">Discos, pinzas, bomba o latiguillos.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input type="checkbox" name="reformas" value="Llantas / Neumáticos">
+                <span class="icon">◎</span>
+                <span>
+                  <span class="reform-title">Llantas / Neumáticos</span>
+                  <span class="reform-desc">Medidas no equivalentes o cambio de llanta.</span>
+                </span>
+              </label>
+
+              <label class="reform-card">
+                <input id="otraReformaCheck" type="checkbox" name="reformas" value="Otra reforma">
+                <span class="icon">＋</span>
+                <span>
+                  <span class="reform-title">Otra reforma</span>
+                  <span class="reform-desc">Modificación no incluida en la lista.</span>
+                </span>
+              </label>
             </div>
 
             <div class="other-box" id="otraReformaBox">
@@ -555,12 +731,25 @@
             </div>
           </div>
 
-          <button class="btn" type="submit">Solicitar presupuesto gratuito</button>
+          <button class="btn" id="submitBtn" type="submit" disabled>
+            Solicitar presupuesto gratuito
+          </button>
 
-          <div class="success" id="successBox">
-            Solicitud preparada correctamente. En esta fase de prueba todavía no se ha enviado a Apps Script. Revisa la consola del navegador para ver los datos capturados.
+          <div class="notice">
+            Para poder enviarte una valoración útil necesitamos al menos tus datos de contacto, los datos básicos de la moto y una reforma seleccionada.
           </div>
         </form>
+
+        <div class="success-screen" id="successScreen">
+          <div class="eyebrow">Solicitud recibida</div>
+          <h2>Gracias, hemos recibido tu solicitud</h2>
+          <p>
+            Hemos registrado los datos de tu moto y las reformas seleccionadas. Revisaremos tu caso y te responderemos con una valoración técnica y económica.
+          </p>
+          <p>
+            En esta fase de prueba todavía no se ha enviado a Apps Script. Los datos capturados aparecen en la consola del navegador.
+          </p>
+        </div>
 
         <aside class="side-card">
           <h3>¿Qué recibirás?</h3>
@@ -618,33 +807,67 @@
       const otraCheck = document.getElementById("otraReformaCheck");
       const otraBox = document.getElementById("otraReformaBox");
       const otrasReformas = document.getElementById("otrasReformas");
-      const successBox = document.getElementById("successBox");
+      const counter = document.getElementById("counter");
+      const submitBtn = document.getElementById("submitBtn");
+      const successScreen = document.getElementById("successScreen");
 
-      otraCheck.addEventListener("change", function(){
-        if(otraCheck.checked){
-          otraBox.classList.add("open");
-        }else{
-          otraBox.classList.remove("open");
-          otrasReformas.value = "";
-        }
+      const requiredFields = ["nombre", "telefono", "email", "marca", "modelo", "anio"];
+
+      function getSelectedReformas(){
+        return Array.from(document.querySelectorAll('input[name="reformas"]:checked'))
+          .map(input => input.value);
+      }
+
+      function updateCards(){
+        document.querySelectorAll(".reform-card").forEach(card => {
+          const input = card.querySelector("input");
+          card.classList.toggle("selected", input.checked);
+        });
+      }
+
+      function updateCounter(){
+        const total = getSelectedReformas().length;
+        counter.textContent = total === 1 ? "1 reforma seleccionada" : total + " reformas seleccionadas";
+      }
+
+      function validate(){
+        const requiredOk = requiredFields.every(id => {
+          const el = document.getElementById(id);
+          return el && el.value.trim();
+        });
+
+        const reformas = getSelectedReformas();
+        const reformasOk = reformas.length > 0;
+        const otraOk = !otraCheck.checked || otrasReformas.value.trim();
+
+        submitBtn.disabled = !(requiredOk && reformasOk && otraOk);
+      }
+
+      document.querySelectorAll('input[name="reformas"]').forEach(input => {
+        input.addEventListener("change", function(){
+          if(otraCheck.checked){
+            otraBox.classList.add("open");
+          }else{
+            otraBox.classList.remove("open");
+            otrasReformas.value = "";
+          }
+
+          updateCards();
+          updateCounter();
+          validate();
+        });
       });
+
+      requiredFields.forEach(id => {
+        document.getElementById(id).addEventListener("input", validate);
+      });
+
+      otrasReformas.addEventListener("input", validate);
 
       form.addEventListener("submit", function(e){
         e.preventDefault();
 
-        const reformas = Array.from(document.querySelectorAll('input[name="reformas"]:checked'))
-          .map(input => input.value);
-
-        if(reformas.length === 0){
-          alert("Selecciona al menos una reforma.");
-          return;
-        }
-
-        if(otraCheck.checked && !otrasReformas.value.trim()){
-          alert("Describe la reforma no incluida en la lista.");
-          otrasReformas.focus();
-          return;
-        }
+        const reformas = getSelectedReformas();
 
         const datos = {
           accion: "FORMULARIO_1_WEB",
@@ -662,9 +885,14 @@
 
         console.log("Solicitud presupuesto Ingeniero Custom:", datos);
 
-        successBox.classList.add("open");
-        successBox.scrollIntoView({behavior:"smooth", block:"center"});
+        form.classList.add("hidden");
+        successScreen.classList.add("open");
+        successScreen.scrollIntoView({behavior:"smooth", block:"center"});
       });
+
+      updateCards();
+      updateCounter();
+      validate();
     })();
   </script>
 </body>
