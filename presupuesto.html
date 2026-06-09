@@ -14,11 +14,8 @@
 
   <style>
     :root{
-      --bg:#0a0a0a;
-      --card:#171717;
       --line:rgba(255,255,255,.12);
       --text:#f5f5f5;
-      --muted:#c7c7c7;
       --accent:#f6b51d;
       --max:1180px;
       --shadow:0 22px 60px rgba(0,0,0,.45);
@@ -67,14 +64,8 @@
       font-weight:900;
     }
 
-    .brand img{
-      width:78px;
-      height:auto;
-    }
-
-    .brand span{
-      font-size:18px;
-    }
+    .brand img{width:78px;height:auto}
+    .brand span{font-size:18px}
 
     .nav-links{
       display:flex;
@@ -119,9 +110,7 @@
       margin:24px 0 0;
     }
 
-    .wrap{
-      padding:48px 0 86px;
-    }
+    .wrap{padding:48px 0 86px}
 
     .form-shell{
       display:grid;
@@ -196,7 +185,7 @@
       background:#0b0b0b;
       color:#fff;
       border-radius:14px;
-      padding:15px 15px;
+      padding:15px;
       outline:none;
       font:inherit;
     }
@@ -249,6 +238,7 @@
       border-radius:18px;
       cursor:pointer;
       transition:.22s ease;
+      user-select:none;
     }
 
     .reform-card:hover{
@@ -258,9 +248,7 @@
     }
 
     .reform-card input{
-      position:absolute;
-      opacity:0;
-      pointer-events:none;
+      display:none;
     }
 
     .reform-title{
@@ -503,9 +491,7 @@
         grid-template-columns:1fr;
       }
 
-      .success-screen h2{
-        font-size:34px;
-      }
+      .success-screen h2{font-size:34px}
     }
   </style>
 </head>
@@ -596,65 +582,18 @@
             </div>
 
             <div class="reform-grid">
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Faro LED">
-                <span class="reform-title">Faro LED</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Intermitentes">
-                <span class="reform-title">Intermitentes</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Manillar">
-                <span class="reform-title">Manillar</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Matrícula lateral">
-                <span class="reform-title">Matrícula lateral</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Sissy Bar">
-                <span class="reform-title">Sissy Bar</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Colas de escape">
-                <span class="reform-title">Colas de escape</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Escape completo">
-                <span class="reform-title">Escape completo</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Amortiguadores">
-                <span class="reform-title">Amortiguadores</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Horquillas / Tijas">
-                <span class="reform-title">Horquillas / Tijas</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Frenos">
-                <span class="reform-title">Frenos</span>
-              </label>
-
-              <label class="reform-card">
-                <input type="checkbox" name="reformas" value="Llantas / Neumáticos">
-                <span class="reform-title">Llantas / Neumáticos</span>
-              </label>
-
-              <label class="reform-card">
-                <input id="otraReformaCheck" type="checkbox" name="reformas" value="Otra reforma">
-                <span class="reform-title">Otra reforma</span>
-              </label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Faro LED"><span class="reform-title">Faro LED</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Intermitentes"><span class="reform-title">Intermitentes</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Manillar"><span class="reform-title">Manillar</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Matrícula lateral"><span class="reform-title">Matrícula lateral</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sissy Bar"><span class="reform-title">Sissy Bar</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Colas de escape"><span class="reform-title">Colas de escape</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Escape completo"><span class="reform-title">Escape completo</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Amortiguadores"><span class="reform-title">Amortiguadores</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Horquillas / Tijas"><span class="reform-title">Horquillas / Tijas</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Frenos"><span class="reform-title">Frenos</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Llantas / Neumáticos"><span class="reform-title">Llantas / Neumáticos</span></label>
+              <label class="reform-card"><input id="otraReformaCheck" type="checkbox" name="reformas" value="Otra reforma"><span class="reform-title">Otra reforma</span></label>
             </div>
 
             <div class="other-box" id="otraReformaBox">
@@ -680,9 +619,6 @@
           <h2>Gracias, hemos recibido tu solicitud</h2>
           <p>
             Hemos registrado los datos de tu moto y las reformas seleccionadas. Revisaremos tu caso y te responderemos con una valoración técnica y económica.
-          </p>
-          <p>
-            En esta fase de prueba todavía no se ha enviado a Apps Script. Los datos capturados aparecen en la consola del navegador.
           </p>
         </div>
 
@@ -734,6 +670,7 @@
         });
       }
     })();
+  </script>
 
   <script>
     (function(){
@@ -745,6 +682,8 @@
       const submitBtn = document.getElementById("submitBtn");
       const successScreen = document.getElementById("successScreen");
 
+      const URL_WEBAPP = "PEGA_AQUI_TU_URL_DE_WEB_APP";
+
       const requiredFields = ["nombre", "telefono", "email", "marca", "modelo", "anio"];
 
       function getSelectedReformas(){
@@ -752,51 +691,52 @@
           .map(input => input.value);
       }
 
-      function updateCards(){
+      function refreshForm(){
+        const reformas = getSelectedReformas();
+
         document.querySelectorAll(".reform-card").forEach(card => {
-          const input = card.querySelector("input");
+          const input = card.querySelector('input[type="checkbox"]');
           card.classList.toggle("selected", input.checked);
         });
-      }
 
-      function updateCounter(){
-        const total = getSelectedReformas().length;
-        counter.textContent = total === 1 ? "1 reforma seleccionada" : total + " reformas seleccionadas";
-      }
+        counter.textContent =
+          reformas.length === 1
+            ? "1 reforma seleccionada"
+            : reformas.length + " reformas seleccionadas";
 
-      function validate(){
+        if (otraCheck.checked) {
+          otraBox.classList.add("open");
+        } else {
+          otraBox.classList.remove("open");
+          otrasReformas.value = "";
+        }
+
         const requiredOk = requiredFields.every(id => {
           const el = document.getElementById(id);
           return el && el.value.trim();
         });
 
-        const reformas = getSelectedReformas();
-        const reformasOk = reformas.length > 0;
         const otraOk = !otraCheck.checked || otrasReformas.value.trim();
 
-        submitBtn.disabled = !(requiredOk && reformasOk && otraOk);
+        submitBtn.disabled = !(requiredOk && reformas.length > 0 && otraOk);
       }
 
-      document.querySelectorAll('input[name="reformas"]').forEach(input => {
-        input.addEventListener("change", function(){
-          if(otraCheck.checked){
-            otraBox.classList.add("open");
-          }else{
-            otraBox.classList.remove("open");
-            otrasReformas.value = "";
-          }
+      document.querySelectorAll(".reform-card").forEach(card => {
+        card.addEventListener("click", function(e){
+          e.preventDefault();
 
-          updateCards();
-          updateCounter();
-          validate();
+          const input = card.querySelector('input[type="checkbox"]');
+          input.checked = !input.checked;
+
+          refreshForm();
         });
       });
 
       requiredFields.forEach(id => {
-        document.getElementById(id).addEventListener("input", validate);
+        document.getElementById(id).addEventListener("input", refreshForm);
       });
 
-      otrasReformas.addEventListener("input", validate);
+      otrasReformas.addEventListener("input", refreshForm);
 
       form.addEventListener("submit", async function(e){
         e.preventDefault();
@@ -817,32 +757,27 @@
           origen: "WEB"
         };
 
-        const URL_WEBAPP = "PEGA_AQUI_TU_URL_DE_WEB_APP";
+        try {
+          await fetch(URL_WEBAPP, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "text/plain"
+            },
+            body: JSON.stringify(datos)
+          });
 
-console.log("Solicitud presupuesto Ingeniero Custom:", datos);
+          form.classList.add("hidden");
+          successScreen.classList.add("open");
+          successScreen.scrollIntoView({behavior:"smooth", block:"center"});
 
-try {
-  await fetch(URL_WEBAPP, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    body: JSON.stringify(datos)
-  });
+        } catch (error) {
+          alert("No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta con info@ingenierocustom.es");
+          console.error(error);
+        }
+      });
 
-  form.classList.add("hidden");
-  successScreen.classList.add("open");
-  successScreen.scrollIntoView({behavior:"smooth", block:"center"});
-
-} catch (error) {
-  alert("No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta con info@ingenierocustom.es");
-  console.error(error);
-}
-
-      updateCards();
-      updateCounter();
-      validate();
+      refreshForm();
     })();
   </script>
 </body>
