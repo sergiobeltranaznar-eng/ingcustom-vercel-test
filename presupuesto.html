@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Solicitar presupuesto | Ingeniero Custom</title>
+  <meta name="description" content="Solicita presupuesto para homologar reformas en tu moto custom. Indica tu moto, las modificaciones y te prepararemos una valoración técnica sin compromiso." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --card:#171717;
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(246,181,29,.10), transparent 30%),
+        linear-gradient(180deg, #080808 0%, #101010 45%, #080808 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    .nav-links a:hover{color:var(--accent)}
+
+    .menu-toggle{display:none}
+
+    .hero{
+      padding:86px 0 42px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .eyebrow{
+      color:#ffd66d;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    h1{
+      font-family:Oswald,Inter,Arial,sans-serif;
+      text-transform:uppercase;
+      font-size:clamp(42px, 5.8vw, 78px);
+      line-height:.95;
+      margin:16px 0 0;
+      max-width:860px;
+      letter-spacing:-.025em;
+    }
+
+    .lead{
+      max-width:780px;
+      color:#eeeeee;
+      font-size:19px;
+      line-height:1.65;
+      margin:24px 0 0;
+    }
+
+    .wrap{
+      padding:48px 0 86px;
+    }
+
+    .form-shell{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .form-card,
+    .side-card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(30,30,30,.84), rgba(12,12,12,.94));
+      border-radius:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .form-card{
+      padding:32px;
+    }
+
+    .side-card{
+      padding:28px;
+      position:sticky;
+      top:106px;
+    }
+
+    .block{
+      padding:0 0 30px;
+      margin:0 0 30px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .block:last-child{
+      border-bottom:0;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+
+    h2{
+      margin:0 0 18px;
+      font-size:28px;
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+
+    .field-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+
+    .field{
+      display:grid;
+      gap:8px;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    label{
+      font-size:14px;
+      color:#f1f1f1;
+      font-weight:800;
+    }
+
+    .required{
+      color:var(--accent);
+      font-weight:900;
+    }
+
+    input,
+    textarea{
+      width:100%;
+      border:1px solid rgba(255,255,255,.16);
+      background:#0b0b0b;
+      color:#fff;
+      border-radius:14px;
+      padding:15px 15px;
+      outline:none;
+      font:inherit;
+    }
+
+    input:focus,
+    textarea:focus{
+      border-color:rgba(246,181,29,.75);
+      box-shadow:0 0 0 3px rgba(246,181,29,.14);
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+      line-height:1.55;
+    }
+
+    .reform-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+
+    .check-card{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:15px 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.055);
+      border-radius:16px;
+      cursor:pointer;
+      transition:.2s ease;
+      font-weight:800;
+      color:#efefef;
+    }
+
+    .check-card:hover{
+      border-color:rgba(246,181,29,.75);
+      transform:translateY(-1px);
+    }
+
+    .check-card input{
+      width:18px;
+      height:18px;
+      accent-color:var(--accent);
+    }
+
+    .other-box{
+      display:none;
+      margin-top:18px;
+    }
+
+    .other-box.open{
+      display:block;
+    }
+
+    .help{
+      color:#bdbdbd;
+      font-size:14px;
+      line-height:1.55;
+      margin:8px 0 0;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:58px;
+      padding:0 28px;
+      border-radius:14px;
+      font-weight:900;
+      transition:.2s ease;
+      box-shadow:var(--shadow);
+      border:0;
+      cursor:pointer;
+      font-family:Inter,system-ui,sans-serif;
+      font-size:15px;
+      text-align:center;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      background:var(--accent);
+      color:#111;
+      width:100%;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      background:#ffc53d;
+    }
+
+    .trust{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+      color:#d8d8d8;
+      font-size:15px;
+      line-height:1.45;
+    }
+
+    .trust div{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.055);
+      border-radius:14px;
+      padding:13px 14px;
+    }
+
+    .side-card h3{
+      margin:0;
+      color:#ffd66d;
+      font-size:22px;
+    }
+
+    .side-card p{
+      color:#d2d2d2;
+      line-height:1.7;
+    }
+
+    .success{
+      display:none;
+      margin-top:22px;
+      padding:18px;
+      border:1px solid rgba(246,181,29,.38);
+      background:rgba(246,181,29,.10);
+      color:#ffe6a1;
+      border-radius:18px;
+      line-height:1.6;
+      font-weight:700;
+    }
+
+    .success.open{
+      display:block;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    @media (max-width:980px){
+      .form-shell{
+        grid-template-columns:1fr;
+      }
+
+      .side-card{
+        position:static;
+      }
+    }
+
+    @media (max-width:760px){
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+      }
+
+      .hero{
+        padding:56px 0 28px;
+      }
+
+      h1{
+        font-size:40px;
+      }
+
+      .lead{
+        font-size:17px;
+      }
+
+      .form-card,
+      .side-card{
+        padding:22px;
+      }
+
+      .field-grid,
+      .reform-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="./logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Presupuesto gratuito</div>
+        <h1>Solicita presupuesto para homologar tu moto</h1>
+        <p class="lead">
+          Indícanos qué moto tienes y qué reformas quieres legalizar. Revisaremos tu caso y te enviaremos una valoración clara, técnica y sin compromiso.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="container form-shell">
+
+        <form class="form-card" id="presupuestoForm">
+          <div class="block">
+            <h2>Datos de contacto</h2>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="nombre">Nombre <span class="required">* Obligatorio</span></label>
+                <input id="nombre" name="nombre" type="text" required />
+              </div>
+
+              <div class="field">
+                <label for="telefono">Teléfono <span class="required">* Obligatorio</span></label>
+                <input id="telefono" name="telefono" type="tel" required />
+              </div>
+
+              <div class="field full">
+                <label for="email">Email <span class="required">* Obligatorio</span></label>
+                <input id="email" name="email" type="email" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <h2>Datos de la motocicleta</h2>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="marca">Marca <span class="required">* Obligatorio</span></label>
+                <input id="marca" name="marca" type="text" placeholder="Ej: Harley-Davidson" required />
+              </div>
+
+              <div class="field">
+                <label for="modelo">Modelo <span class="required">* Obligatorio</span></label>
+                <input id="modelo" name="modelo" type="text" placeholder="Ej: Sportster 883" required />
+              </div>
+
+              <div class="field full">
+                <label for="anio">Año de fabricación <span class="required">* Obligatorio</span></label>
+                <input id="anio" name="anio" type="number" min="1950" max="2035" placeholder="Ej: 2006" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <h2>Reformas a homologar</h2>
+
+            <div class="reform-grid">
+              <label class="check-card"><input type="checkbox" name="reformas" value="Faro LED"> Faro LED</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Intermitentes"> Intermitentes</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Manillar"> Manillar</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Matrícula lateral"> Matrícula lateral</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Sissy Bar"> Sissy Bar</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Colas de escape"> Colas de escape</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Escape completo"> Escape completo</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Amortiguadores"> Amortiguadores</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Horquillas / Tijas"> Horquillas / Tijas</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Frenos"> Frenos</label>
+              <label class="check-card"><input type="checkbox" name="reformas" value="Llantas / Neumáticos"> Llantas / Neumáticos</label>
+              <label class="check-card"><input id="otraReformaCheck" type="checkbox" name="reformas" value="Otra reforma"> Otra reforma no incluida en la lista</label>
+            </div>
+
+            <div class="other-box" id="otraReformaBox">
+              <div class="field">
+                <label for="otrasReformas">Describe la modificación</label>
+                <textarea id="otrasReformas" name="otrasReformas" placeholder="Indica únicamente las reformas que no aparecen en la lista anterior."></textarea>
+                <p class="help">Si indicas otra reforma, revisaremos manualmente el caso antes de preparar presupuesto.</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn" type="submit">Solicitar presupuesto gratuito</button>
+
+          <div class="success" id="successBox">
+            Solicitud preparada correctamente. En esta fase de prueba todavía no se ha enviado a Apps Script. Revisa la consola del navegador para ver los datos capturados.
+          </div>
+        </form>
+
+        <aside class="side-card">
+          <h3>¿Qué recibirás?</h3>
+          <p>
+            Revisaremos la información de tu moto y las reformas seleccionadas para prepararte una valoración técnica clara.
+          </p>
+
+          <div class="trust">
+            <div>✓ Presupuesto personalizado</div>
+            <div>✓ Te indicamos si la reforma es homologable</div>
+            <div>✓ Sin compromiso</div>
+            <div>✓ Respuesta en menos de 24 horas laborables</div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="./logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const form = document.getElementById("presupuestoForm");
+      const otraCheck = document.getElementById("otraReformaCheck");
+      const otraBox = document.getElementById("otraReformaBox");
+      const otrasReformas = document.getElementById("otrasReformas");
+      const successBox = document.getElementById("successBox");
+
+      otraCheck.addEventListener("change", function(){
+        if(otraCheck.checked){
+          otraBox.classList.add("open");
+        }else{
+          otraBox.classList.remove("open");
+          otrasReformas.value = "";
+        }
+      });
+
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const reformas = Array.from(document.querySelectorAll('input[name="reformas"]:checked'))
+          .map(input => input.value);
+
+        if(reformas.length === 0){
+          alert("Selecciona al menos una reforma.");
+          return;
+        }
+
+        if(otraCheck.checked && !otrasReformas.value.trim()){
+          alert("Describe la reforma no incluida en la lista.");
+          otrasReformas.focus();
+          return;
+        }
+
+        const datos = {
+          accion: "FORMULARIO_1_WEB",
+          nombre: document.getElementById("nombre").value.trim(),
+          telefono: document.getElementById("telefono").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          marca: document.getElementById("marca").value.trim(),
+          modelo: document.getElementById("modelo").value.trim(),
+          anio: document.getElementById("anio").value.trim(),
+          reformas: reformas,
+          otrasReformas: otrasReformas.value.trim(),
+          revisionManual: otraCheck.checked ? "SI" : "NO",
+          origen: "WEB"
+        };
+
+        console.log("Solicitud presupuesto Ingeniero Custom:", datos);
+
+        successBox.classList.add("open");
+        successBox.scrollIntoView({behavior:"smooth", block:"center"});
+      });
+    })();
+  </script>
+</body>
+</html>
