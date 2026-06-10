@@ -740,6 +740,9 @@
 
       form.addEventListener("submit", async function(e){
         e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando...";
+        submitBtn.style.opacity = "0.7";
 
         const reformas = getSelectedReformas();
 
@@ -772,6 +775,10 @@
           successScreen.scrollIntoView({behavior:"smooth", block:"center"});
 
         } catch (error) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Solicitar presupuesto gratuito";
+          submitBtn.style.opacity = "1";
+
           alert("No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta con info@ingenierocustom.es");
           console.error(error);
         }
