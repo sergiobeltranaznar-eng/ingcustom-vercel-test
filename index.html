@@ -124,6 +124,25 @@
       position:relative;
       overflow:hidden;
       border-bottom:1px solid var(--line);
+      background:url('./ingeniero-custom-home-hero.jpg') center center / cover no-repeat;
+      isolation:isolate;
+    }
+
+    .hero-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      z-index:1;
       background:
         linear-gradient(
           90deg,
@@ -131,8 +150,8 @@
           rgba(0,0,0,.78) 32%,
           rgba(0,0,0,.36) 66%,
           rgba(0,0,0,.06) 100%
-        ),
-        url('./ingeniero-custom-home-hero.jpg') center center / cover no-repeat;
+        );
+      pointer-events:none;
     }
 
     .hero:after{
@@ -140,13 +159,14 @@
       position:absolute;
       inset:auto 0 0;
       height:160px;
+      z-index:2;
       background:linear-gradient(180deg, transparent, rgba(8,8,8,.96));
       pointer-events:none;
     }
 
     .hero-grid{
       position:relative;
-      z-index:1;
+      z-index:3;
       display:block;
       min-height:740px;
       padding:120px 0 120px;
@@ -797,6 +817,13 @@
       }
     }
 
+
+    @media (prefers-reduced-motion: reduce){
+      .hero-video{
+        display:none;
+      }
+    }
+
     /* =========================================================
        JUSTIFICACIÓN SELECTIVA DE TEXTOS
        Solo se justifican bloques largos de lectura.
@@ -868,6 +895,11 @@
 
   <main>
     <section id="inicio" class="hero">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./ingeniero-custom-home-hero.jpg" aria-hidden="true">
+        <source src="./video_home.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
       <div class="container hero-grid">
         <div class="hero-copy">
           <div class="hero-eyebrow">Ingeniero Custom</div>
