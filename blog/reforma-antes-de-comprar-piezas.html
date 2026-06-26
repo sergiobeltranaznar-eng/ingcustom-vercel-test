@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>La reforma empieza mucho antes de comprar la primera pieza | Ingeniero Custom</title>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L001FVEVFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L001FVEVFS');
+</script>
+  
+  <meta name="description" content="Una buena reforma de moto no empieza cuando compras la primera pieza. Empieza mucho antes: planificando el conjunto, revisando compatibilidades, orden de montaje, documentación y viabilidad técnica." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.20),
+          rgba(0,0,0,.62)
+        ),
+        url('./reforma-antes-de-comprar-piezas-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .feature-list {
+      margin: 34px 0 42px;
+      padding: 30px 34px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+    }
+
+    .feature-list p {
+      margin: 0 0 14px;
+      color: #f1f1f1;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .feature-list p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+
+      .feature-list {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Ingeniería · Planificación · Reformas</div>
+      <h1>La reforma empieza mucho antes de comprar la primera pieza</h1>
+      <p>
+        La mayoría de transformaciones no se complican por una mala soldadura o por una pieza defectuosa. Empiezan a torcerse mucho antes: cuando se compra el primer componente sin haber pensado en el conjunto.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Existe un momento que casi todos los propietarios conocen. Empiezas a imaginar cómo te gustaría que fuese tu moto. Abres Internet. Guardas fotografías. Comparas piezas. Ves un faro que encaja con la idea que tienes en la cabeza. Después aparece un manillar. Luego unos amortiguadores. Más tarde, unos intermitentes, un asiento, unos neumáticos o cualquier otro detalle que parece acercarte un poco más a la moto que quieres construir.
+      </p>
+
+      <p>
+        Es una parte bonita del proceso. La ilusión de transformar una motocicleta suele comenzar precisamente ahí. En esa mezcla de referencias, ideas, capturas de pantalla, vídeos, recomendaciones y piezas que empiezan a acumularse en una carpeta o en una cesta de compra.
+      </p>
+
+      <p>
+        Lo curioso es que muchas transformaciones empiezan justo por donde no deberían.
+      </p>
+
+      <p>
+        Porque una buena reforma rara vez comienza comprando una pieza. Empieza bastante antes. Empieza cuando alguien se detiene a pensar qué quiere conseguir, qué consecuencias tendrá cada decisión y cómo va a funcionar todo cuando las modificaciones dejen de ser ideas sueltas y pasen a formar parte de una misma motocicleta.
+      </p>
+
+      <h2>Todos pensamos primero en las piezas</h2>
+
+      <p>
+        Es normal que ocurra. Las piezas son visibles, concretas y fáciles de imaginar. Una fotografía de un componente instalado sobre otra moto puede hacer que parezca evidente que también funcionará en la nuestra. Además, el mundo de la personalización está lleno de imágenes sugerentes. Motos terminadas, ángulos perfectos, talleres con buena iluminación y preparaciones donde todo parece sencillo.
+      </p>
+
+      <p>
+        Pero una fotografía no explica casi nada de lo importante. No cuenta si esa pieza encaja sin adaptar. No muestra si obliga a cambiar cableados, latiguillos, soportes o geometrías. No indica si respeta las condiciones necesarias para circular legalmente. Tampoco explica si la moto de la imagen tiene la misma base, las mismas medidas, el mismo uso o las mismas limitaciones técnicas que la tuya.
+      </p>
+
+      <div class="quote">
+        La pieza puede ser buena. La idea puede ser buena. El problema aparece cuando nadie ha pensado todavía en el conjunto.
+      </div>
+
+      <p>
+        Ahí empieza una de las diferencias más importantes entre una transformación bien planteada y una acumulación de cambios que terminan generando dudas, retrasos y trabajos repetidos.
+      </p>
+
+      <h2>Una moto no es una suma de piezas</h2>
+
+      <p>
+        Este es probablemente el error que más se repite. Muchos propietarios piensan en cada modificación como si fuese un proyecto independiente. Hoy cambio una cosa. Dentro de unos meses montaré otra. Más adelante ya veremos qué hacemos con el resto.
+      </p>
+
+      <p>
+        Sobre el papel parece una forma lógica de avanzar. Permite repartir el gasto, tomar decisiones poco a poco y disfrutar del proceso sin tener que hacerlo todo de golpe. El problema es que, desde un punto de vista técnico, una motocicleta no funciona así.
+      </p>
+
+      <p>
+        Cada modificación influye sobre las demás. La postura condiciona los mandos. Los mandos condicionan el cableado. El cableado condiciona recorridos y fijaciones. La altura condiciona la geometría. La geometría afecta al comportamiento. Una pieza puede obligar a modificar otra que todavía ni siquiera estaba prevista.
+      </p>
+
+      <p>
+        Y cuando todo eso se descubre tarde, el proyecto empieza a encarecerse.
+      </p>
+
+      <div class="feature-list">
+        <p>La moto debe entenderse como un conjunto.</p>
+        <p>Las piezas deben ser compatibles entre sí.</p>
+        <p>El orden de montaje importa.</p>
+        <p>La documentación debe conservarse desde el primer día.</p>
+        <p>La viabilidad técnica conviene revisarla antes de comprar.</p>
+      </div>
+
+      <h2>El dinero que nadie calcula</h2>
+
+      <p>
+        Existe un coste del que casi nunca se habla. No aparece en el precio de las piezas. No aparece claramente en la factura del taller. Ni siquiera aparece cuando el propietario hace números antes de empezar. Es el coste de improvisar.
+      </p>
+
+      <p>
+        Ese coste aparece cuando hay que desmontar dos veces. Cuando se pinta una pieza antes de comprobar si finalmente servirá. Cuando se monta un componente que después obliga a cambiar otro. Cuando un soporte queda bien estéticamente pero no resuelve correctamente la instalación. Cuando una reforma que parecía aislada termina arrastrando tres trabajos adicionales.
+      </p>
+
+      <p>
+        En muchas ocasiones, corregir decisiones tomadas demasiado pronto termina costando más que haber planificado el proyecto desde el principio.
+      </p>
+
+      <p>
+        Lo peor es que ese gasto suele llegar en el peor momento. Cuando la moto ya está desmontada, cuando el propietario ya ha invertido dinero, cuando el taller ya ha avanzado trabajo y cuando cada cambio empieza a sentirse como un paso atrás.
+      </p>
+
+      <div class="quote">
+        La improvisación rara vez se paga al principio. Normalmente se paga al final.
+      </div>
+
+      <h2>La mejor transformación es la que parece inevitable</h2>
+
+      <p>
+        Cuando observamos una moto bien transformada, muchas veces pensamos simplemente que queda bien. Parece natural. Nada chirría. Las proporciones funcionan. La postura tiene sentido. Los elementos no parecen añadidos uno detrás de otro, sino parte de una misma idea.
+      </p>
+
+      <p>
+        Esa sensación no suele aparecer por casualidad. Detrás hay decisiones. Algunas visibles y otras completamente invisibles. Qué mantener. Qué cambiar. Qué no tocar. Qué pieza encaja con el resto. Qué modificación conviene hacer primero. Qué solución permite llegar al resultado final sin comprometer la funcionalidad ni la legalización.
+      </p>
+
+      <p>
+        Una buena transformación no es la que incorpora más piezas. Es aquella en la que todas parecen haber nacido juntas.
+      </p>
+
+      <p>
+        Por eso algunas motos transmiten una sensación de coherencia difícil de explicar. No destacan por un elemento concreto. Destacan porque todo parece estar en su sitio.
+      </p>
+
+      <h2>La diferencia entre modificar y diseñar</h2>
+
+      <p>
+        Modificar una moto consiste en cambiar piezas. Diseñar una transformación consiste en imaginar primero el resultado final y recorrer el camino adecuado para llegar hasta él.
+      </p>
+
+      <p>
+        Puede parecer una diferencia pequeña. En realidad lo cambia todo. Cuando conoces el destino, cada decisión tiene sentido. Cuando no lo conoces, cada compra se convierte en una apuesta.
+      </p>
+
+      <p>
+        Diseñar una transformación no significa hacer un proyecto complejo desde el primer día ni convertir una afición en algo frío o burocrático. Significa tener criterio. Saber qué se quiere conseguir. Entender qué piezas pueden convivir entre sí. Valorar si el orden de montaje es correcto. Anticipar qué documentación será necesaria y qué problemas pueden aparecer cuando llegue el momento de legalizar la reforma.
+      </p>
+
+      <p>
+        En otras palabras, significa evitar que la moto avance por impulsos inconexos.
+      </p>
+
+      <h2>La ingeniería empieza antes que las herramientas</h2>
+
+      <p>
+        Muchas personas imaginan el trabajo de un ingeniero delante de planos, cálculos o normativa. Y sí, todo eso forma parte del proceso cuando corresponde. Pero en una reforma bien planteada, la ingeniería empieza bastante antes.
+      </p>
+
+      <p>
+        Empieza con preguntas sencillas que suelen ahorrar muchos problemas.
+      </p>
+
+      <div class="feature-list">
+        <p>¿Qué quieres conseguir realmente?</p>
+        <p>¿La moto será cómoda para el uso que le vas a dar?</p>
+        <p>¿Las piezas elegidas son compatibles entre sí?</p>
+        <p>¿Qué trabajos conviene hacer primero?</p>
+        <p>¿Qué documentación debe pedirse al comprar cada componente?</p>
+        <p>¿La reforma se podrá justificar correctamente cuando llegue la ITV?</p>
+      </div>
+
+      <p>
+        Responder bien a esas preguntas no elimina la parte creativa del proceso. Al contrario. La protege. Permite que la idea llegue más lejos sin convertirse por el camino en una fuente de dudas, retrasos o gastos innecesarios.
+      </p>
+
+      <h2>Las mejores decisiones son las que nadie llega a notar</h2>
+
+      <p>
+        Cuando una transformación está bien planificada, casi nadie aprecia el trabajo previo. El resultado simplemente funciona. La moto mantiene una línea coherente. La conducción resulta natural. Las piezas no se pelean entre sí. El taller trabaja con más claridad. La documentación se prepara con menos sobresaltos. La ITV deja de ser una amenaza y pasa a ser el último paso de un proceso que ya venía bien encaminado.
+      </p>
+
+      <p>
+        Esa es la parte menos visible y, al mismo tiempo, una de las más importantes. Porque la calidad de una reforma no se mide únicamente por lo que se ve cuando la moto está aparcada. También se mide por lo que no falla cuando empieza a rodar, por lo que no hay que desmontar de nuevo y por lo que no genera dudas cuando llega el momento de legalizarla.
+      </p>
+
+      <div class="quote">
+        Una reforma bien pensada no siempre llama más la atención. Pero casi siempre da menos problemas.
+      </div>
+
+      <h2>Antes de comprar, conviene mirar el proyecto completo</h2>
+
+      <p>
+        Comprar piezas es probablemente una de las partes más divertidas de cualquier transformación. Forma parte de la ilusión y no tiene sentido negarlo. Pero cuanto más ambicioso sea el cambio, más importante resulta detenerse antes de empezar.
+      </p>
+
+      <p>
+        No para frenar el proyecto. No para hacerlo más complicado. Justo al contrario. Para evitar que una buena idea termine dependiendo de decisiones tomadas con demasiada prisa.
+      </p>
+
+      <p>
+        Una motocicleta bien transformada no nace de una cesta de compra llena de componentes atractivos. Nace de una idea clara, de un orden razonable y de una visión de conjunto.
+      </p>
+
+      <p>
+        Porque las mejores reformas no son las que montan más piezas. Son las que parecen haber estado siempre ahí.
+      </p>
+
+      <div class="cta">
+        <h3>¿Estás pensando en transformar tu moto?</h3>
+
+        <p>
+          Antes de comprar la primera pieza, revisamos contigo la viabilidad del proyecto, el orden más adecuado para realizar las modificaciones y la documentación que podrías necesitar durante el proceso.
+        </p>
+
+        <a href="/presupuesto.html" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
