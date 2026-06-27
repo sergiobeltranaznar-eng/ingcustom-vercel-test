@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Alforjas en moto custom: viaje, equipaje y homologación | Ingeniero Custom</title>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L001FVEVFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L001FVEVFS');
+</script>
+  
+  <meta name="description" content="Instalar alforjas en una moto custom puede parecer una decisión práctica, pero afecta a intermitentes, soportes, anchura, carga, estabilidad y preparación para ITV." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.18),
+          rgba(0,0,0,.62)
+        ),
+        url('./alforjas-ruta-66.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Alforjas · Viaje · Homologación</div>
+      <h1>Las alforjas: la reforma que convierte una salida en un viaje</h1>
+      <p>
+        La primera escapada larga cambia la forma de mirar una moto. De pronto ya no basta con
+        que sea bonita: también tiene que cargar equipaje, mantener estabilidad y llegar a ITV
+        sin sorpresas.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay un momento en el que una moto deja de ser solo una máquina para salir el domingo. Ocurre casi sin avisar. Primero haces una ruta corta. Luego una escapada de todo el día. Después llega el primer fin de semana fuera y aparece una pregunta que cambia por completo la forma de mirar la moto: ¿dónde meto todo?
+      </p>
+
+      <p>
+        Una chaqueta de agua, unas herramientas, ropa limpia, documentación, cargadores, guantes de repuesto y alguna cosa más que siempre aparece a última hora. La moto que parecía perfecta cuando estaba aparcada en el garaje empieza a revelar una verdad muy sencilla: las motos bonitas suelen tener muy poco sitio.
+      </p>
+
+      <p>
+        Ahí aparecen las alforjas.
+      </p>
+
+      <p>
+        Y lo que al principio parece una decisión práctica termina afectando a muchas más cosas de las que se imaginan. Porque instalar unas alforjas no es simplemente colgar dos bolsas en los laterales. Es modificar la forma en la que la parte trasera de la moto trabaja, se ve y se relaciona con el resto de elementos.
+      </p>
+
+      <h2>La primera escapada cambia las reglas</h2>
+
+      <p>
+        Mientras la moto se usa para rutas cortas, casi todo cabe en los bolsillos. Pero cuando llega el primer viaje real, la situación cambia. Ya no se trata solo de disfrutar de la carretera. También hay que llevar equipaje, sujetarlo bien y hacerlo sin que la moto pierda estabilidad, seguridad o coherencia.
+      </p>
+
+      <p>
+        Las alforjas tienen precisamente esa magia. No transforman la moto como un escape, un manillar o una matrícula lateral. La transforman de otra manera. La convierten en una herramienta para seguir rodando más lejos.
+      </p>
+
+      <p>
+        Por eso gustan tanto. Una moto con alforjas parece preparada para marcharse. Parece que ha dejado de pensar en la próxima terraza y empieza a pensar en la próxima provincia.
+      </p>
+
+      <div class="quote">
+        Las alforjas no solo añaden capacidad. Cambian la intención de la moto.
+      </div>
+
+      <h2>Lo que dice el Manual de Reformas</h2>
+
+      <p>
+        El Manual de Reformas trata las alforjas, maletas, baúles, bolsas y portaequipajes desmontables de una forma muy interesante. Cuando se instalan utilizando los anclajes previstos por el fabricante y no afectan a las dimensiones ni a otros requisitos reglamentarios, pueden no tener consideración de reforma.
+      </p>
+
+      <p>
+        Este punto es importante porque desmonta una idea muy extendida: las alforjas no son automáticamente un problema de homologación. El problema suele aparecer cuando dejan de ser un accesorio desmontable bien integrado y empiezan a exigir modificaciones adicionales.
+      </p>
+
+      <p>
+        Si para montarlas hay que fabricar soportes permanentes, modificar anclajes, desplazar intermitentes, cambiar la matrícula, alterar luces o interferir con otros elementos de la moto, el asunto deja de ser tan simple.
+      </p>
+
+      <div class="quote">
+        No suelen ser las alforjas el problema. El problema es todo lo que hay que mover para que las alforjas quepan.
+      </div>
+
+      <h2>Rígidas, blandas, de cuero o de plástico</h2>
+
+      <p>
+        No todas las alforjas plantean el mismo escenario. Unas alforjas blandas de cuero desmontables, sujetas correctamente y sin interferencias, no tienen nada que ver con unas maletas rígidas instaladas sobre soportes permanentes. Tampoco es lo mismo una solución ligera para una escapada que un conjunto pensado para viajar cargado durante muchos kilómetros.
+      </p>
+
+      <p>
+        Las alforjas rígidas de plástico o material compuesto suelen tener más volumen, mejor protección frente al agua y una fijación más definida. Las rígidas de cuero aportan una estética más clásica y una presencia muy marcada. Las blandas de cuero o textil suelen resultar más flexibles, pero también exigen prestar atención a cómo se sujetan y a si pueden moverse, rozar o acercarse demasiado a zonas calientes.
+      </p>
+
+      <p>
+        En todos los casos conviene pensar menos en el material y más en el conjunto: posición, anclaje, carga, distancia a la rueda, distancia al escape, visibilidad de luces y compatibilidad con el pasajero.
+      </p>
+
+      <h2>El conflicto con los intermitentes</h2>
+
+      <p>
+        Si hay una consecuencia que se repite una y otra vez cuando se instalan alforjas, es esta: los intermitentes traseros empiezan a molestar.
+      </p>
+
+      <p>
+        En muchas motos custom, los indicadores ocupan justo el espacio donde debería caer la alforja. Entonces aparecen soluciones aparentemente sencillas: retrasarlos, subirlos, colocarlos junto a la matrícula o instalar unos más pequeños. Pero cada una de esas decisiones debe revisarse técnicamente.
+      </p>
+
+      <p>
+        Un intermitente no puede quedar oculto por la bolsa. Tampoco debe perder visibilidad lateral ni quedar demasiado cerca de otros elementos. Si además se montan intermitentes LED, puede aparecer otro detalle: la frecuencia de parpadeo y la adaptación eléctrica.
+      </p>
+
+      <p>
+        Por eso muchas instalaciones de alforjas terminan convirtiéndose también en una reforma de señalización.
+      </p>
+
+      <h2>Matrícula, piloto y catadióptrico</h2>
+
+      <p>
+        Las alforjas también pueden condicionar otros elementos de la parte trasera. La matrícula puede quedar demasiado cerca de la carga. El piloto trasero puede perder protagonismo visual. El catadióptrico puede quedar oculto o mal situado. La luz de matrícula puede verse afectada si se modifica el soporte posterior.
+      </p>
+
+      <p>
+        Esto es especialmente habitual cuando la moto ya venía de otra reforma previa: guardabarros recortado, matrícula lateral, intermitentes recolocados, asiento monoplaza o sissy bar instalado. Cada modificación por separado puede tener sentido, pero cuando se juntan todas en la misma zona, la parte trasera se convierte en un pequeño puzzle.
+      </p>
+
+      <p>
+        Y ese puzzle conviene resolverlo antes de comprar piezas, no cuando la moto ya está desmontada.
+      </p>
+
+      <h2>La carga también importa</h2>
+
+      <p>
+        Una alforja vacía no plantea el mismo escenario que una alforja llena. Parece obvio, pero muchas veces se olvida. Cuando cargamos ambos lados de la moto, estamos añadiendo peso en una zona baja y trasera del vehículo. Eso puede ser positivo si se hace de forma equilibrada, pero también puede generar problemas si se sobrecarga un lado, si la fijación vibra o si la bolsa se desplaza durante la marcha.
+      </p>
+
+      <p>
+        También hay que prestar atención a la distancia respecto al escape. Una alforja demasiado próxima a una zona caliente puede deteriorarse, deformarse o incluso convertirse en un problema de seguridad. Lo mismo ocurre si queda cerca de la rueda o de elementos móviles de la suspensión.
+      </p>
+
+      <div class="quote">
+        Una alforja bien elegida no solo tiene que caber. Tiene que mantenerse firme, lejos del calor y sin interferir con nada importante.
+      </div>
+
+      <h2>Lo que se comenta en los foros</h2>
+
+      <p>
+        En los foros de propietarios el debate casi nunca empieza por la homologación. Empieza por preguntas mucho más reales: qué alforjas caben, qué soporte vibra menos, si hay que mover los intermitentes, si se pueden quitar para pasar ITV o si unas maletas rígidas cuentan como reforma.
+      </p>
+
+      <p>
+        Esa conversación es muy útil porque muestra la realidad del usuario. Nadie instala alforjas pensando en complicarse la vida. Las instala porque quiere viajar, llevar equipaje o hacer la moto más útil. El problema aparece cuando la pieza que parecía resolver un problema práctico obliga a replantear media parte trasera.
+      </p>
+
+      <p>
+        Por eso este artículo no debería leerse como una advertencia contra las alforjas. Todo lo contrario. Las alforjas son una solución magnífica cuando están bien elegidas, bien sujetas y bien integradas.
+      </p>
+
+      <h2>Una moto preparada para viajar se piensa como conjunto</h2>
+
+      <p>
+        Las alforjas suelen llegar acompañadas. A veces con un sissy bar. Otras con un portaequipajes. Muchas veces con asiento de pasajero, respaldo, intermitentes recolocados o amortiguadores preparados para soportar más carga.
+      </p>
+
+      <p>
+        Ahí está la clave. Una moto preparada para viajar no se construye sumando accesorios. Se construye entendiendo cómo conviven todos esos elementos.
+      </p>
+
+      <p>
+        El equipaje debe tener sitio. El pasajero, si existe, debe ir cómodo y seguro. Las luces deben verse. Los intermitentes deben cumplir su función. La matrícula debe quedar correctamente instalada. La suspensión debe trabajar con criterio. Y todo el conjunto debe seguir teniendo sentido cuando llegue la ITV.
+      </p>
+
+      <h2>Conclusión</h2>
+
+      <p>
+        Las alforjas son una de esas modificaciones que parecen sencillas porque responden a una necesidad muy humana: llevar cosas. Pero en una moto custom, cada pieza que toca la parte trasera puede afectar al resto.
+      </p>
+
+      <p>
+        Si se instalan bien, convierten la moto en una compañera de viaje. Permiten escapadas, rutas largas y paradas en carretera donde la moto espera cargada, lista para seguir tragando kilómetros después del descanso.
+      </p>
+
+      <p>
+        Si se improvisan, pueden tapar intermitentes, rozar con el escape, interferir con la matrícula, vibrar, desplazarse o convertir una solución práctica en un problema técnico.
+      </p>
+
+      <p>
+        Como ocurre con casi todas las buenas reformas, la diferencia no está solo en la pieza. Está en cómo se integra dentro del proyecto.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a instalar alforjas en tu moto?</h3>
+
+        <p>
+          Antes de comprar soportes, maletas o alforjas, revisamos contigo anclajes, interferencias, intermitentes, matrícula, escape, carga y viabilidad técnica para evitar problemas en ITV.
+        </p>
+
+        <a href="/presupuesto.html" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
