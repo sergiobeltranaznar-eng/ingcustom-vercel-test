@@ -661,7 +661,26 @@
       cursor:pointer;
     }
 
-    .service-link{
+    
+.card-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  border-radius:18px;
+}
+
+.card-link .card{
+  height:100%;
+  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.card-link:hover .card{
+  border-color:var(--accent);
+  box-shadow:0 0 28px rgba(246,181,29,.30);
+  transform:translateY(-4px);
+}
+
+.service-link{
   display:block;
   color:inherit;
   text-decoration:none;
@@ -914,17 +933,15 @@
         </div>
       </div>
     </section>
-      <a class="service-link" href="/blog/reforma-antes-de-comprar-piezas.html">
-        <article class="service">
-          <h3>Evita errores antes de gastar dinero</h3>
-          <p>
-            Descubre por qué las mejores reformas empiezan mucho antes de comprar la primera pieza y cómo una buena planificación puede ahorrarte tiempo, dinero y problemas en ITV.
-          </p>
-        </article>
-      </a>
+
     <section class="intro-strip section-tight">
       <div class="container grid-3">
-        
+        <a class="card-link" href="/blog/reforma-antes-de-comprar-piezas.html">
+        <article class="card">
+          <h3>Evita errores antes de gastar dinero</h3>
+          <p>Revisamos si la reforma es viable antes de que compres piezas o pases por taller.</p>
+        </article>
+      </a>
         <article class="card">
           <h3>Tú disfrutas de la moto</h3>
           <p>Nosotros nos ocupamos del camino técnico: documentación, criterios de reforma y preparación para ITV.</p>
