@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Los intermitentes: la reforma que nunca estaba prevista | Ingeniero Custom</title>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L001FVEVFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L001FVEVFS');
+</script>
+
+  <meta name="description" content="Recolocar los intermitentes de una moto suele ser consecuencia de otras reformas: guardabarros recortado, alforjas, matrícula o cambio de piloto trasero. Te explicamos qué revisar antes de montar." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.20),
+          rgba(0,0,0,.62)
+        ),
+        url('./intermitentes-reforma-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .feature-list {
+      margin: 34px 0 42px;
+      padding: 30px 34px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+    }
+
+    .feature-list p {
+      margin: 0 0 14px;
+      color: #f1f1f1;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .feature-list p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    @media (max-width: 800px) {
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+
+      .feature-list {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Intermitentes · Reformas · Homologación</div>
+      <h1>Los intermitentes: la reforma que nunca estaba prevista</h1>
+      <p>
+        Recortas el guardabarros o decides instalar unas alforjas. Todo parece encajar hasta que descubres que los intermitentes originales ya no tienen dónde ir.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay reformas que aparecen en el plan desde el primer día. Un cambio de manillar, un escape diferente, una suspensión más baja o una nueva configuración de asiento suelen formar parte de la idea inicial del propietario. Son modificaciones buscadas, imaginadas y muchas veces decididas antes incluso de comprar la moto.
+      </p>
+
+      <p>
+        Pero existen otras reformas que llegan sin haber sido invitadas. No estaban en la lista. Nadie las había calculado. No parecían importantes hasta que, de pronto, bloquean el avance del proyecto.
+      </p>
+
+      <p>
+        La recolocación de intermitentes pertenece a esa segunda categoría.
+      </p>
+
+      <p>
+        Muchas veces no empieza porque alguien quiera cambiar unos indicadores por otros. Empieza porque el guardabarros trasero se ha recortado, porque se quieren montar unas alforjas o porque se ha limpiado la parte trasera de la moto hasta el punto de que los intermitentes originales simplemente ya no tienen sitio.
+      </p>
+
+      <h2>Todo iba según el plan</h2>
+
+      <p>
+        La escena se repite más de lo que parece. La moto empieza a transformarse. El guardabarros trasero se acorta para dejar la rueda más visible. La parte posterior gana ligereza. El conjunto parece más bajo, más limpio y mucho más agresivo.
+      </p>
+
+      <p>
+        O tal vez el objetivo no sea estético, sino práctico. El propietario quiere instalar unas alforjas para viajar con más comodidad. La moto gana capacidad de carga, utilidad y presencia. Sobre el papel, todo encaja.
+      </p>
+
+      <p>
+        Hasta que aparecen los intermitentes.
+      </p>
+
+      <div class="quote">
+        Los intermitentes casi nunca cambian por estética. Cambian porque otra reforma los ha dejado sin sitio.
+      </div>
+
+      <p>
+        Lo que parecía una modificación secundaria se convierte entonces en una pregunta bastante incómoda: ¿dónde los coloco ahora?
+      </p>
+
+      <h2>El problema casi nunca son los intermitentes</h2>
+
+      <p>
+        Cuando se analiza una reforma de este tipo, conviene entender algo importante. El intermitente no suele ser el origen del problema. Es la consecuencia.
+      </p>
+
+      <p>
+        Si se recorta el guardabarros, puede desaparecer el soporte original. Si se instalan alforjas, estas pueden ocupar exactamente el espacio donde antes estaban los indicadores. Si se modifica la matrícula o el piloto trasero, la zona completa empieza a reorganizarse. La moto cambia por detrás y todo lo que vivía en esa zona tiene que encontrar un nuevo lugar.
+      </p>
+
+      <p>
+        Por eso la recolocación de intermitentes no debería tratarse como un detalle aislado. Forma parte de una decisión más amplia sobre la trasera de la motocicleta.
+      </p>
+
+      <h2>Entonces empieza la verdadera reforma</h2>
+
+      <p>
+        Mover un intermitente parece sencillo desde fuera. Se suelta una pieza, se busca otro punto de fijación y se vuelve a conectar el cableado. Pero una moto no funciona como una fotografía estática.
+      </p>
+
+      <p>
+        Hay que pensar si el indicador se verá correctamente desde atrás. Si quedará oculto por la alforja. Si lo tapará el pasajero. Si estará demasiado cerca de la matrícula. Si el soporte vibrará. Si el cableado quedará protegido. Si al montar LED habrá que resolver la frecuencia de parpadeo.
+      </p>
+
+      <p>
+        La pregunta deja de ser dónde queda más bonito y pasa a ser dónde cumple mejor su función.
+      </p>
+
+      <div class="feature-list">
+        <p>Visibilidad desde atrás y desde los ángulos necesarios.</p>
+        <p>Separación suficiente entre indicadores.</p>
+        <p>Altura y posición coherentes.</p>
+        <p>Marcado de homologación del componente.</p>
+        <p>Cableado protegido y bien ejecutado.</p>
+        <p>Frecuencia correcta de parpadeo si se montan LED.</p>
+      </div>
+
+      <h2>La pieza homologada no legaliza la instalación</h2>
+
+      <p>
+        Este es uno de los errores más repetidos. El propietario compra unos intermitentes pequeños, normalmente LED, comprueba que llevan marcado de homologación y piensa que con eso es suficiente.
+      </p>
+
+      <p>
+        Pero una cosa es que el componente esté homologado y otra muy distinta que la instalación concreta quede correctamente legalizada en una motocicleta determinada.
+      </p>
+
+      <p>
+        El marcado del intermitente habla de la pieza. La ITV mira también cómo está colocada, cómo funciona, si se ve, si respeta la separación, si queda a una altura razonable, si no la oculta ningún elemento y si la reforma se ha tratado correctamente dentro del conjunto.
+      </p>
+
+      <div class="quote">
+        La homologación de la pieza no sustituye al estudio de la reforma.
+      </div>
+
+      <p>
+        Por eso una instalación puede dar problemas aunque el intermitente elegido sea correcto. El fallo no está necesariamente en la pieza. Puede estar en dónde se ha colocado.
+      </p>
+
+      <h2>Cuando las alforjas mandan</h2>
+
+      <p>
+        Las alforjas son uno de los motivos más habituales para recolocar intermitentes. En muchas motos, los indicadores traseros ocupan justo la zona que necesita la maleta para quedar bien instalada.
+      </p>
+
+      <p>
+        Entonces aparecen soluciones muy distintas. Retrasar los intermitentes. Subirlos. Llevarlos junto a la matrícula. Cambiar el soporte. Instalar indicadores más compactos. Cada opción puede parecer válida desde la estética, pero no todas funcionan igual desde el punto de vista técnico.
+      </p>
+
+      <p>
+        Una alforja puede ocultar parcialmente el intermitente. También puede cambiar la percepción del vehículo desde atrás o interferir con la visibilidad lateral. Por eso conviene revisar el conjunto completo antes de montar.
+      </p>
+
+      <h2>Una reforma lleva a otra</h2>
+
+      <p>
+        Esta es probablemente la lección más importante. En una moto transformada, pocas decisiones viven solas.
+      </p>
+
+      <div class="feature-list">
+        <p>Recortar guardabarros.</p>
+        <p>Mover intermitentes.</p>
+        <p>Replantear matrícula.</p>
+        <p>Reubicar luz de matrícula.</p>
+        <p>Revisar catadióptrico.</p>
+        <p>Modificar cableado.</p>
+        <p>Adaptar relé o resistencias si se montan LED.</p>
+        <p>Legalizar el conjunto cuando corresponda.</p>
+      </div>
+
+      <p>
+        Lo que empezó como una reforma estética puede terminar afectando a varios elementos de señalización e identificación del vehículo. Y si todo eso se descubre tarde, el proyecto se vuelve más lento, más caro y más incómodo.
+      </p>
+
+      <p>
+        Por eso insistimos tanto en una idea que parece sencilla: una buena transformación empieza antes de comprar la primera pieza. Pensar la moto como un conjunto evita muchas de estas sorpresas.
+      </p>
+
+      <h2>La diferencia entre improvisar y diseñar</h2>
+
+      <p>
+        Improvisar consiste en resolver cada problema cuando aparece. Diseñar consiste en entender desde el principio qué consecuencias tendrá cada modificación.
+      </p>
+
+      <p>
+        Si el guardabarros se va a recortar, conviene saber antes qué ocurrirá con los intermitentes, la matrícula, la luz trasera, la luz de matrícula y el catadióptrico. Si se van a montar alforjas, conviene comprobar antes si taparán algún elemento o si exigirán una nueva ubicación.
+      </p>
+
+      <p>
+        No se trata de complicar el proyecto. Se trata precisamente de lo contrario: evitar que una decisión aparentemente sencilla obligue después a desmontar, rehacer o justificar soluciones que no estaban previstas.
+      </p>
+
+      <div class="quote">
+        La mayoría de proyectos no se complican por una gran reforma. Se complican por muchas pequeñas reformas que nadie había previsto.
+      </div>
+
+      <h2>Conclusión</h2>
+
+      <p>
+        La recolocación de intermitentes es una de esas reformas que casi nunca estaba en el plan inicial. Aparece cuando la moto empieza a cambiar de verdad. Cuando se recorta el guardabarros. Cuando se montan alforjas. Cuando se limpia la trasera. Cuando se busca una estética más ligera y agresiva.
+      </p>
+
+      <p>
+        Por eso conviene tratarla con más importancia de la que parece. Los intermitentes no solo tienen que quedar bien. Tienen que verse, funcionar correctamente y poder justificarse dentro del conjunto de la reforma.
+      </p>
+
+      <p>
+        Muchas veces el problema no está en los intermitentes. Está en no haber previsto dónde iban a ir después.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a modificar la parte trasera de tu moto?</h3>
+
+        <p>
+          Antes de recortar el guardabarros, instalar alforjas o recolocar intermitentes, revisamos contigo la viabilidad de la reforma, la posición de los elementos y la documentación necesaria para evitar problemas en ITV.
+        </p>
+
+        <a href="/presupuesto.html" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
