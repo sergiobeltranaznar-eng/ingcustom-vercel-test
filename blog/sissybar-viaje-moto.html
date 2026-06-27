@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sissy bar en moto custom: respaldo, equipaje y homologación | Ingeniero Custom</title>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L001FVEVFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L001FVEVFS');
+</script>
+  
+  <meta name="description" content="Instalar un sissy bar en una moto custom puede parecer un simple respaldo, pero cuando empieza a cargar equipaje entran en juego fijaciones, portaequipajes, anclajes, carga y homologación." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    .brand img{width:78px}
+    .brand span{font-size:18px}
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{color:var(--accent)}
+    .menu-toggle{display:none}
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.62)),
+        url('./sissybar-viaje-moto-header.jpg')
+        center center / cover no-repeat;
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner { max-width: 980px; }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p { color: #e5e5e5; }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover { background: #f0b844; }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .back-blog:hover { color: #f0b844; }
+
+    @media (max-width: 800px) {
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{width:70px}
+      .brand span{font-size:18px}
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{display:grid}
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero { padding: 60px 6%; }
+      .container { padding: 45px 18px; }
+      .article-card { padding: 26px; }
+      p { font-size: 1rem; }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Sissy bar · Equipaje · Homologación</div>
+      <h1>El sissy bar: cuando una moto deja de ser para pasear y empieza a ser para viajar</h1>
+      <p>
+        Un respaldo puede parecer una pieza sencilla, pero cuando empieza a sujetar equipaje
+        se convierte en algo más: un punto de apoyo, de carga y de responsabilidad dentro
+        del conjunto de la motocicleta.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay piezas que se instalan por estética y terminan cambiando por completo la forma de usar una motocicleta. El sissy bar es una de ellas. Desde fuera parece un respaldo. Una barra cromada o negra que se eleva detrás del asiento y que encaja perfectamente con la estética de muchas motos custom.
+      </p>
+
+      <p>
+        Pero basta hacer el primer viaje largo para entender que esa pieza tiene otra dimensión. De pronto ya no hablamos solo de apoyar la espalda del pasajero. Hablamos de sujetar una bolsa, llevar equipaje, montar un pequeño portaequipajes y preparar la moto para salir más lejos de lo habitual.
+      </p>
+
+      <p>
+        Ahí es donde el sissy bar deja de ser un simple accesorio y empieza a formar parte real del proyecto de reforma.
+      </p>
+
+      <h2>El respaldo que acabó sujetando una vida de viaje</h2>
+
+      <p>
+        La escena es fácil de imaginar. Amanecer en un motel de carretera, la moto aparcada delante de la habitación, el casco apoyado sobre el asiento y una bolsa de viaje esperando a ser atada antes de salir.
+      </p>
+
+      <p>
+        El propietario pasa una cincha alrededor del equipaje, la tensa con cuidado y comprueba que todo queda firme contra el sissy bar. La moto ya no parece preparada para una vuelta de domingo. Parece lista para cruzar kilómetros.
+      </p>
+
+      <p>
+        Esa es la fuerza de esta pieza. Visualmente puede ser muy sencilla, pero cambia la relación con la moto. Donde antes había una salida corta, ahora aparece la posibilidad de viajar. Donde antes había una mochila incómoda, ahora hay una bolsa bien sujeta. Donde antes faltaba apoyo para el pasajero, ahora existe un elemento pensado para acompañar rutas más largas.
+      </p>
+
+      <div class="quote">
+        El sissy bar empieza siendo un respaldo, pero muchas veces termina siendo el primer paso para convertir una moto en compañera de viaje.
+      </div>
+
+      <h2>Lo que el Manual no llama sissy bar</h2>
+
+      <p>
+        Desde el punto de vista técnico conviene tener clara una idea: el Manual de Reformas no suele hablar con el lenguaje del taller o del mundo custom. No busca la palabra “sissy bar” como tal. Analiza qué se ha incorporado al vehículo, cómo se fija, si utiliza anclajes previstos, si sobresale, si modifica elementos originales y si puede afectar a la configuración o a la seguridad.
+      </p>
+
+      <p>
+        Por eso no todos los casos son iguales. Un respaldo desmontable que utiliza anclajes previstos por el fabricante no plantea el mismo escenario que una barra artesanal soldada, un soporte modificado o un conjunto que incorpora portaequipajes y carga.
+      </p>
+
+      <p>
+        El nombre de la pieza importa menos que su función real dentro de la moto.
+      </p>
+
+      <h2>Cuando no es reforma y cuando empieza a serlo</h2>
+
+      <p>
+        Hay accesorios que pueden instalarse sin que necesariamente estemos ante una reforma. El Manual contempla determinados elementos desmontables como maletas, baúles, alforjas, bolsas o portaequipajes cuando utilizan anclajes previstos y no sobresalen de la anchura máxima del vehículo.
+      </p>
+
+      <p>
+        Ese matiz es muy importante. Porque un sissy bar sencillo, desmontable y montado sobre puntos previstos puede estar mucho más cerca de un accesorio que de una gran reforma estructural. Pero la situación cambia cuando aparecen adaptaciones, soportes no previstos, modificaciones sobre el guardabarros, soldaduras, portaequipajes integrados o cambios que afectan al conjunto trasero.
+      </p>
+
+      <p>
+        En otras palabras: no se puede responder correctamente solo mirando la pieza en una foto de catálogo. Hay que ver cómo queda instalada en esa moto concreta.
+      </p>
+
+      <div class="quote">
+        La pregunta no es solo si el sissy bar es bonito. La pregunta es cómo se fija, qué soporta y qué cambia en la motocicleta.
+      </div>
+
+      <h2>El mito de la altura del manillar</h2>
+
+      <p>
+        En el mundo custom se repite con frecuencia que un respaldo no debe superar la altura del manillar. Es una frase que aparece en conversaciones, talleres y foros, pero conviene tratarla con cuidado.
+      </p>
+
+      <p>
+        No debe presentarse como una regla universal escrita para todos los casos. Lo razonable es entenderla como una alerta técnica. Cuando un respaldo es muy alto, muy cargado o muy integrado dentro de la estructura trasera, conviene revisar con más detalle los anclajes, los salientes, la estabilidad, las vibraciones y la compatibilidad con el conjunto.
+      </p>
+
+      <p>
+        Un sissy bar proporcionado, desmontable y bien fijado no plantea el mismo escenario que una barra excesivamente alta, artesanal, con equipaje pesado y sin documentación clara.
+      </p>
+
+      <h2>El peso cambia la conversación</h2>
+
+      <p>
+        La mayoría de dudas reales no aparecen por el respaldo en sí, sino por lo que se cuelga o se apoya sobre él. Una bolsa pequeña para una escapada no es lo mismo que una carga grande, alta y colocada por detrás del eje trasero.
+      </p>
+
+      <p>
+        Ese peso influye en la moto. No hace falta convertirlo en una clase de dinámica, pero sí entender la lógica. Cuanto más alto y más retrasado queda el equipaje, más importante es que el soporte sea firme, que las cinchas trabajen bien y que el conjunto no genere movimientos extraños.
+      </p>
+
+      <p>
+        También conviene recordar que el fabricante de la moto y el fabricante del accesorio pueden establecer limitaciones de carga. Ignorarlas es una mala idea, especialmente si el viaje es largo o si además se montan alforjas laterales.
+      </p>
+
+      <div class="quote">
+        El problema no suele ser llevar equipaje. El problema es llevarlo mal sujeto, demasiado alto o sobre un soporte que nunca estuvo pensado para esa carga.
+      </div>
+
+      <h2>Cuando el sissy bar se combina con alforjas</h2>
+
+      <p>
+        El sissy bar rara vez llega solo. Muchas veces aparece junto a alforjas, portaequipajes, asiento de pasajero, respaldo acolchado o soportes auxiliares. Y cuando eso ocurre, la parte trasera de la moto empieza a llenarse de elementos que deben convivir entre sí.
+      </p>
+
+      <p>
+        Las alforjas pueden interferir con los intermitentes. El portaequipajes puede condicionar la posición de la bolsa. La matrícula puede quedar demasiado cerca de la carga. El piloto trasero o el catadióptrico pueden perder visibilidad si el conjunto no se piensa correctamente.
+      </p>
+
+      <p>
+        Por eso esta reforma enlaza tan bien con otras modificaciones habituales. Una moto preparada para viajar no se resuelve sumando piezas una detrás de otra. Se resuelve pensando la parte trasera como un conjunto.
+      </p>
+
+      <h2>Qué conviene revisar antes de instalarlo</h2>
+
+      <p>
+        Antes de montar un sissy bar, especialmente si va a usarse para equipaje, merece la pena revisar varios puntos técnicos básicos.
+      </p>
+
+      <div class="quote">
+        Anclajes, anchura, salientes, carga, vibraciones, compatibilidad con alforjas, posición de luces, matrícula e intermitentes.
+      </div>
+
+      <p>
+        También es recomendable conservar documentación del accesorio, instrucciones de montaje y cualquier dato relativo a carga máxima o compatibilidad. Muchas veces esos papeles parecen irrelevantes cuando se compra la pieza, pero se vuelven importantes cuando hay que justificar el montaje o resolver dudas en una inspección.
+      </p>
+
+      <h2>Una pieza que cambia la forma de disfrutar la moto</h2>
+
+      <p>
+        Lo interesante del sissy bar es que no solo modifica la estética. Modifica el uso. Una moto sin capacidad de carga invita a salidas cortas. Una moto con equipaje bien resuelto invita a rutas largas, escapadas y viajes improvisados.
+      </p>
+
+      <p>
+        Por eso esta reforma tiene una parte emocional muy fuerte. No se trata únicamente de instalar una barra detrás del asiento. Se trata de abrir la puerta a otro tipo de experiencia.
+      </p>
+
+      <p>
+        La moto deja de ser una máquina para pasear cerca de casa y empieza a parecer preparada para desaparecer por una carretera secundaria con una bolsa bien amarrada y varios cientos de kilómetros por delante.
+      </p>
+
+      <h2>Conclusión</h2>
+
+      <p>
+        El sissy bar parece una reforma sencilla, pero puede tener muchas lecturas. Puede ser un respaldo. Puede ser un punto de apoyo para el pasajero. Puede ser la base de un portaequipajes. Puede ser el lugar donde sujetar una bolsa de viaje. Y según cómo se instale, puede ser un simple accesorio o una modificación que conviene estudiar con más detalle.
+      </p>
+
+      <p>
+        La clave está en no quedarse solo con la imagen. Hay que revisar la fijación, los anclajes, la carga, la altura, los salientes y la compatibilidad con el resto de la moto.
+      </p>
+
+      <p>
+        Porque cuando una moto empieza a prepararse para viajar, cada pieza deja de ser decorativa y empieza a formar parte de una historia mucho más larga.
+      </p>
+
+      <div class="cta">
+        <h3>¿Quieres instalar un sissy bar o preparar tu moto para viajar?</h3>
+
+        <p>
+          Antes de montar respaldo, portaequipajes, alforjas o bolsa de viaje, revisamos contigo la fijación, la compatibilidad con el conjunto y la viabilidad técnica para evitar problemas en ITV.
+        </p>
+
+        <a href="/presupuesto.html" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
