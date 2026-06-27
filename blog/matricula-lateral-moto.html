@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>La matrícula lateral: la reforma que cambió de prohibida a posible | Ingeniero Custom</title>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L001FVEVFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L001FVEVFS');
+</script>
+
+  <meta name="description" content="La matrícula lateral en motos ha sido una de las reformas más discutidas. Te explicamos qué cambió en 2025, qué dice el Manual de Reformas y por qué posible no significa automático." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.20),
+          rgba(0,0,0,.64)
+        ),
+        url('./matricula-lateral-moto-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .feature-list {
+      margin: 34px 0 42px;
+      padding: 30px 34px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+    }
+
+    .feature-list p {
+      margin: 0 0 14px;
+      color: #f1f1f1;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .feature-list p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        font-weight:800;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+
+      .feature-list {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Matrícula · ITV · Homologación</div>
+      <h1>La matrícula lateral: la reforma que cambió de prohibida a posible</h1>
+      <p>
+        Durante años fue una de las modificaciones más deseadas y más discutidas entre los aficionados. Ahora el escenario ha cambiado, pero una matrícula lateral sigue sin ser una pieza que pueda montarse de cualquier manera.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay reformas que llaman la atención por su tamaño, por su sonido o por la forma en que transforman una motocicleta entera. Y luego está la matrícula lateral. Una pieza pequeña, casi secundaria a simple vista, capaz de generar más dudas, debates y discusiones que muchas modificaciones bastante más complejas.
+      </p>
+
+      <p>
+        Durante años fue una de esas ideas que aparecía una y otra vez en conversaciones de taller, grupos de aficionados y foros de motos. El propietario veía una trasera limpia, un guardabarros despejado, una línea más baja y compacta, y pensaba exactamente lo mismo que tantos otros antes que él: aquí la matrícula quedaría mucho mejor en un lateral.
+      </p>
+
+      <p>
+        El problema es que durante mucho tiempo esa idea chocaba con una realidad normativa bastante clara. La estética podía ser evidente. La solución podía parecer sencilla. Incluso podían existir soportes perfectamente fabricados, iluminados y preparados para su montaje. Pero en España la posición de la placa de matrícula en motocicletas tenía una limitación que convertía esta reforma en una de las más frustrantes.
+      </p>
+
+      <p>
+        Y precisamente por eso la matrícula lateral se ganó esa fama tan particular: deseada por muchos, discutida por casi todos y aceptada solo en casos muy concretos.
+      </p>
+
+      <h2>La pieza pequeña que cambia toda la trasera</h2>
+
+      <p>
+        La matrícula trasera tiene una presencia enorme en una moto. No por su tamaño, sino por el lugar que ocupa. Está justo en el cierre visual del vehículo. En la parte donde termina la línea del guardabarros, donde se percibe la anchura del neumático, donde se define la silueta posterior de la motocicleta.
+      </p>
+
+      <p>
+        Por eso, cuando se reubica a un lateral, la moto cambia mucho más de lo que podría parecer. El guardabarros queda visualmente más limpio. La rueda trasera gana protagonismo. La moto parece más baja, más compacta y más cercana a esa imagen que muchos propietarios tienen en la cabeza cuando piensan en una preparación cuidada.
+      </p>
+
+      <p>
+        Es una modificación con una fuerza estética muy clara. No hace falta explicar demasiado por qué gusta. Basta ver una moto desde atrás con el conjunto bien resuelto para entenderlo.
+      </p>
+
+      <div class="quote">
+        La matrícula lateral no se busca porque sea invisible. Se busca porque deja respirar la trasera de la moto.
+      </div>
+
+      <p>
+        Pero también es precisamente esa posición tan visible la que la convierte en una reforma delicada. Porque una matrícula no es un elemento decorativo. Es un elemento de identificación del vehículo. Debe verse, leerse, iluminarse correctamente y mantenerse en una posición adecuada durante la circulación.
+      </p>
+
+      <h2>Por qué durante años fue una reforma tan problemática</h2>
+
+      <p>
+        La discusión no nacía de si la matrícula lateral quedaba bien o mal. Casi todo el mundo entendía el motivo estético. La dificultad estaba en la redacción normativa que durante años reguló la posición de la placa en motocicletas.
+      </p>
+
+      <p>
+        La interpretación práctica era sencilla: la placa debía ir en la parte posterior de la moto y asociada al plano longitudinal medio del vehículo. Dicho de forma más clara, debía ir centrada. Esa exigencia chocaba directamente con el concepto de matrícula lateral.
+      </p>
+
+      <p>
+        Por eso muchos propietarios se encontraban con una respuesta que sonaba casi absurda desde fuera. El soporte podía ser sólido. La placa podía estar iluminada. La matrícula podía verse. La instalación podía parecer limpia. Pero si la posición no encajaba con lo exigido, la reforma no era viable en condiciones normales.
+      </p>
+
+      <p>
+        Ahí nació una parte importante de la frustración. Porque no hablamos de una pieza improvisada con mala calidad. Hablamos de una modificación que, en muchos casos, estaba bien fabricada y aun así no encontraba encaje sencillo dentro del marco español.
+      </p>
+
+      <h2>La pregunta que aparecía siempre: ¿y por qué algunas motos sí?</h2>
+
+      <p>
+        Durante años hubo una comparación que se repitió una y otra vez: si algunas motos podían venir con la matrícula montada lateralmente de fábrica, ¿por qué no podía hacerse lo mismo en cualquier otra?
+      </p>
+
+      <p>
+        La pregunta tenía todo el sentido desde el punto de vista del usuario. Si una motocicleta nueva se comercializaba con una matrícula lateral y podía circular legalmente, parecía lógico pensar que el problema no podía estar simplemente en el hecho de que la placa estuviera desplazada.
+      </p>
+
+      <p>
+        Pero la respuesta técnica era distinta. Una cosa es que una moto haya sido homologada de origen con esa configuración dentro de su homologación de tipo, y otra muy diferente es modificar después una motocicleta concreta que originalmente no fue aprobada así.
+      </p>
+
+      <p>
+        Esa diferencia es fundamental. Cuando un fabricante comercializa un modelo con una determinada solución de origen, esa configuración forma parte del vehículo aprobado. No es una modificación posterior realizada por el propietario. No es una reforma individual. Es una característica del modelo tal y como fue autorizado para circular.
+      </p>
+
+      <div class="quote">
+        Que una moto venga así de fábrica no significa que cualquier moto pueda copiar esa solución sin más.
+      </div>
+
+      <p>
+        Este punto explica gran parte de la confusión que durante años rodeó a la matrícula lateral. La comparación visual era sencilla. La situación legal, no tanto.
+      </p>
+
+      <h2>Lo que cambió en 2025</h2>
+
+      <p>
+        El punto de inflexión llegó con la modificación del Anexo XVIII del Reglamento General de Vehículos mediante la Orden PJC/780/2025. La nueva redacción eliminó una parte clave de la limitación anterior y pasó a establecer que los ciclomotores, motocicletas, vehículos de tres ruedas y cuatriciclos llevarán una sola placa en la parte posterior, colocada en posición vertical o casi vertical.
+      </p>
+
+      <p>
+        Puede parecer un cambio pequeño. En realidad, para este tipo de reforma, es enorme. Porque desaparece la exigencia expresa que durante años cerraba la puerta a muchas instalaciones laterales.
+      </p>
+
+      <p>
+        Eso no significa que de repente cualquier soporte lateral sea válido. Significa algo más interesante y, al mismo tiempo, más serio: la matrícula lateral deja de estar bloqueada por aquella redacción anterior y pasa a ser una modificación que puede estudiarse técnicamente.
+      </p>
+
+      <p>
+        La diferencia es importante. Antes, en la práctica, muchas propuestas nacían ya con un problema de base. Ahora se abre la posibilidad de analizarlas, siempre que el conjunto cumpla los requisitos aplicables.
+      </p>
+
+      <div class="feature-list">
+        <p>La placa sigue teniendo que ir en la parte posterior.</p>
+        <p>Debe quedar vertical o casi vertical.</p>
+        <p>Debe poder leerse correctamente.</p>
+        <p>Debe estar iluminada cuando corresponda.</p>
+        <p>No puede quedar oculta por la rueda, el guardabarros, el pasajero o los accesorios.</p>
+        <p>La instalación debe ser fija, segura y coherente con el vehículo.</p>
+      </div>
+
+      <h2>Qué dice el Manual de Reformas</h2>
+
+      <p>
+        El Manual de Reformas de Vehículos no crea una categoría llamada “matrícula lateral”. Lo que recoge es el cambio de emplazamiento de la placa de matrícula como una reforma identificada dentro del grupo de identificación del vehículo.
+      </p>
+
+      <p>
+        Esto es importante porque evita una interpretación demasiado simple. No estamos hablando de comprar un portamatrículas y montarlo como si fuese un accesorio decorativo. Estamos modificando el emplazamiento de un elemento de identificación del vehículo, y esa modificación debe analizarse dentro del marco de reformas aplicable.
+      </p>
+
+      <p>
+        Además, el Manual remite a la reglamentación vigente. Y aquí es donde el cambio del Reglamento General de Vehículos cobra tanta importancia. La reforma no se estudia aislada de la normativa de placas. Se estudia teniendo en cuenta cómo debe ir instalada la matrícula, cómo debe verse, cómo debe iluminarse y qué condiciones debe cumplir el vehículo tras la modificación.
+      </p>
+
+      <p>
+        En otras palabras, el Manual no convierte la matrícula lateral en automática. Lo que hace es ordenar cómo debe tratarse el cambio de emplazamiento cuando se modifica la posición de la placa.
+      </p>
+
+      <div class="quote">
+        El cambio normativo abre la puerta. El estudio técnico decide si esa puerta se puede cruzar en una moto concreta.
+      </div>
+
+      <h2>Por qué “posible” no significa “monta cualquiera”</h2>
+
+      <p>
+        Este es el punto que conviene dejar muy claro. La matrícula lateral puede haber pasado de ser una reforma prácticamente bloqueada a una posibilidad real, pero eso no convierte todos los soportes del mercado en soluciones válidas.
+      </p>
+
+      <p>
+        Hay soportes demasiado bajos. Otros quedan demasiado inclinados. Algunos sitúan la placa en zonas donde puede quedar parcialmente tapada por el neumático, por la suspensión, por el escape o por accesorios posteriores. Otros resuelven mal la iluminación. También existen instalaciones que, aunque visualmente resulten atractivas, generan dudas por rigidez, vibraciones, aristas, fijación o posición final.
+      </p>
+
+      <p>
+        En una motocicleta, además, todo se mueve más de lo que parece. La rueda sube y baja. La suspensión trabaja. El basculante modifica posiciones relativas. El piloto, el pasajero o el equipaje pueden afectar a la visibilidad del conjunto. Un montaje que parece correcto en parado puede no ser tan evidente cuando se analiza con algo más de criterio.
+      </p>
+
+      <p>
+        Por eso la pregunta no debería ser únicamente si se puede montar matrícula lateral. La pregunta correcta es otra: si esa matrícula lateral, en esa moto concreta, con ese soporte concreto y en esa posición concreta, puede justificarse correctamente.
+      </p>
+
+      <h2>Los errores más habituales</h2>
+
+      <p>
+        La mayoría de problemas con las matrículas laterales no aparecen por una única causa. Suelen aparecer por una combinación de pequeños detalles que, juntos, convierten una buena idea estética en una instalación difícil de defender.
+      </p>
+
+      <div class="feature-list">
+        <p>Comprar un soporte sin comprobar su posición final en la moto.</p>
+        <p>Montar la placa demasiado baja o demasiado próxima a la rueda.</p>
+        <p>No prever correctamente la iluminación de matrícula.</p>
+        <p>Olvidar el catadióptrico trasero cuando resulta necesario.</p>
+        <p>Utilizar soluciones abatibles, débiles o con exceso de vibración.</p>
+        <p>No conservar documentación del componente instalado.</p>
+        <p>Confundir “pieza homologada” con “reforma legalizada”.</p>
+      </div>
+
+      <p>
+        Este último punto merece especial atención. Que un soporte se venda como homologado o que incorpore iluminación con marcado no significa necesariamente que la reforma quede legalizada al instalarlo. La pieza puede ser correcta y, aun así, la instalación concreta requerir tramitación.
+      </p>
+
+      <h2>La ITV no mira la foto que tenías en la cabeza</h2>
+
+      <p>
+        Cuando llega el momento de pasar ITV, la moto deja de ser una idea estética y pasa a ser un vehículo concreto con unas características concretas. Ya no importa cómo quedaba en la fotografía de referencia. Importa cómo está instalada la placa, si se ve, si se ilumina, si cumple posición, si se ha documentado correctamente y si la reforma está legalizada cuando corresponde.
+      </p>
+
+      <p>
+        Por eso esta modificación exige algo más que buen gusto. Exige previsión. No basta con que la trasera quede limpia. No basta con que la matrícula se vea en una fotografía hecha desde el ángulo correcto. Debe cumplir en condiciones reales.
+      </p>
+
+      <p>
+        Y aquí aparece la verdadera diferencia entre una reforma improvisada y una reforma bien planteada. En la primera, el propietario descubre los problemas cuando alguien se los señala. En la segunda, esos problemas se han revisado antes de comprar, antes de montar y antes de llegar a la inspección.
+      </p>
+
+      <h2>Una reforma pequeña con mucha historia detrás</h2>
+
+      <p>
+        La matrícula lateral es una de esas modificaciones que explican muy bien cómo evoluciona el mundo de las reformas. Durante años fue un símbolo de conflicto entre estética, normativa e interpretación técnica. Muchos la querían. Pocos podían justificarla. Algunos modelos la llevaban de origen. Otros propietarios no entendían por qué no podían hacer lo mismo.
+      </p>
+
+      <p>
+        Con el cambio normativo de 2025, el escenario se vuelve más razonable. Ya no se trata de una idea automáticamente descartada por la exigencia de ir centrada. Ahora puede estudiarse. Puede plantearse. Puede formar parte de un proyecto. Pero precisamente por eso conviene hacerla bien.
+      </p>
+
+      <p>
+        Porque cuando una reforma pasa de imposible a posible, aumenta también la responsabilidad de no convertir esa posibilidad en una chapuza.
+      </p>
+
+      <div class="quote">
+        La matrícula lateral ya no debe entenderse como una prohibición absoluta, pero tampoco como una invitación a improvisar.
+      </div>
+
+      <h2>Conclusión</h2>
+
+      <p>
+        La matrícula lateral ha dejado de ser una de esas reformas condenadas casi desde el primer momento. El cambio del Reglamento General de Vehículos abre una posibilidad real para muchas motos, siempre que la instalación cumpla las condiciones técnicas necesarias y se legalice correctamente cuando proceda.
+      </p>
+
+      <p>
+        Pero la idea principal sigue siendo la misma que en cualquier buena transformación: no basta con que quede bien. Tiene que funcionar, verse, mantenerse correctamente, cumplir la normativa y poder justificarse técnicamente.
+      </p>
+
+      <p>
+        En una moto bien planteada, la matrícula lateral puede limpiar la trasera y reforzar mucho la personalidad del conjunto. En una moto mal planteada, puede convertirse en el detalle que complica una ITV o una inspección en carretera.
+      </p>
+
+      <p>
+        Como casi siempre, la diferencia no está en la pieza. Está en cómo se integra dentro del proyecto.
+      </p>
+
+      <div class="cta">
+        <h3>¿Quieres montar una matrícula lateral?</h3>
+
+        <p>
+          Antes de comprar el soporte o modificar la trasera de la moto, revisamos contigo la posición, visibilidad, iluminación, compatibilidad y viabilidad de homologación para evitar problemas en ITV.
+        </p>
+
+        <a href="/presupuesto.html" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
