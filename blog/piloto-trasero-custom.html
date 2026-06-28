@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Piloto trasero en moto custom: estilo, iluminación y homologación | Ingeniero Custom</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L001FVEVFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L001FVEVFS');
+</script>
+  <meta name="description" content="Cambiar el piloto trasero de una moto custom no es solo una cuestión de iluminación. El piloto debe encajar con el estilo de la moto, mantener visibilidad y cumplir criterios técnicos de homologación." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+    }
+
+    .brand img{width:78px}
+    .brand span{font-size:18px}
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a:hover{color:var(--accent)}
+    .menu-toggle{display:none}
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.62)),
+        url('./pilotos-traseros-custom-header.jpg')
+        center center / cover no-repeat;
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner { max-width: 980px; }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p { color: #e5e5e5; }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover { background: #f0b844; }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .back-blog:hover { color: #f0b844; }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    @media (max-width: 800px) {
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{width:70px}
+      .brand span{font-size:18px}
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{display:grid}
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero { padding: 60px 6%; }
+      .container { padding: 45px 18px; }
+      .article-card { padding: 26px; }
+      p { font-size: 1rem; }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Iluminación · Estilo · Homologación</div>
+      <h1>El piloto trasero: una pequeña pieza que dice mucho sobre tu moto</h1>
+      <p>
+        No todos los pilotos cuentan la misma historia. Una Bobber, una Chopper, una Club Style
+        o una Scrambler pueden llevar pilotos completamente distintos. La clave no es solo que iluminen bien,
+        sino que encajen con la personalidad de la moto y cumplan la normativa.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay piezas que transforman una moto y otras que terminan de darle personalidad. El piloto trasero pertenece a ese segundo grupo. No suele ser la primera decisión de una preparación, ni la pieza que más conversaciones provoca al principio del proyecto, pero cuando llega el momento de elegirlo casi siempre aparece la misma duda: cuál encaja de verdad con la moto que se está construyendo.
+      </p>
+
+      <p>
+        Cuando una transformación está llegando a su fin, todo parece bastante claro. El depósito ya tiene la línea buscada, el guardabarros trasero empieza a enseñar la rueda como queríamos, el asiento queda donde debe y el escape ya no parece una pieza ajena. La moto empieza a tener carácter.
+      </p>
+
+      <p>
+        Entonces alguien coloca un piloto sobre la mesa del taller y, de repente, vuelven todas las preguntas.
+      </p>
+
+      <p>
+        Porque un piloto puede medir apenas unos centímetros y, aun así, cambiar completamente la forma en que una moto transmite su personalidad.
+      </p>
+
+      <h2>No existe el piloto perfecto</h2>
+
+      <p>
+        Una de las trampas más habituales es buscar el piloto perfecto como si existiera una única respuesta válida para todas las motos. No funciona así. Un piloto puede ser espectacular en una preparación y quedar completamente fuera de lugar en otra.
+      </p>
+
+      <p>
+        La cuestión no es únicamente si el piloto es bonito, si es pequeño, si es LED o si tiene una carcasa cromada. La cuestión es si habla el mismo idioma que el resto de la moto.
+      </p>
+
+      <p>
+        Una pieza puede estar bien fabricada, tener un acabado excelente y cumplir su función, pero si no encaja con la filosofía de la preparación terminará llamando la atención por el motivo equivocado.
+      </p>
+
+      <div class="quote">
+        No existe el piloto perfecto. Existe el piloto adecuado para la moto que estás construyendo.
+      </div>
+
+      <h2>Cada estilo tiene su propia firma</h2>
+
+      <p>
+        En una Chopper, el piloto puede permitirse una libertad que en otros estilos resultaría excesiva. Puede ser un Bates clásico, un Lucas, un bullet cromado, una cruz iluminada o incluso una pieza artesanal con sabor antiguo. La Chopper siempre ha estado ligada a la creatividad, a las soluciones personales y a una cierta teatralidad. En ese contexto, un piloto con presencia no solo puede funcionar, sino que puede formar parte de la identidad de la moto.
+      </p>
+
+      <p>
+        En una Bobber ocurre casi lo contrario. Todo tiende a desaparecer. La rueda trasera gana protagonismo, el guardabarros acompaña la curva del neumático, el asiento se reduce a lo esencial y cualquier pieza demasiado grande puede romper el equilibrio. Aquí suelen funcionar mejor pilotos pequeños, redondos, limpios e integrados. No buscan ser el centro de atención. Buscan no molestar.
+      </p>
+
+      <p>
+        La Club Style tiene otro lenguaje. Prima la funcionalidad, la posición de conducción, la eficacia y una estética mucho más compacta. En este tipo de moto, un piloto LED discreto, visible y bien integrado puede tener todo el sentido del mundo. No pretende contar una historia vintage. Pretende funcionar con claridad.
+      </p>
+
+      <p>
+        En una Scrambler la conversación vuelve a cambiar. El piloto debe acompañar una estética más robusta, más práctica y más preparada para el uso real. No necesita parecer delicado ni excesivamente ornamentado. Tiene que encajar con una moto que acepta polvo, caminos, neumáticos mixtos y una imagen menos pulida.
+      </p>
+
+      <p>
+        Y luego están las Rat Bike, donde lo aparentemente incorrecto puede ser exactamente lo que hace que la moto tenga sentido. Un piloto envejecido, una carcasa marcada por el tiempo o una solución que parecería absurda en una moto recién pintada puede encajar perfectamente si la preparación busca contar una historia de uso, desgaste y carácter.
+      </p>
+
+      <h2>Cuando el piloto no encaja</h2>
+
+      <p>
+        Todos hemos visto alguna vez una moto bien trabajada que, sin embargo, no termina de convencer. No sabes explicar exactamente qué falla, pero algo no está en su sitio.
+      </p>
+
+      <p>
+        Muchas veces no es el depósito. No es el manillar. No es el asiento. Es una pequeña pieza que parece pertenecer a otra motocicleta.
+      </p>
+
+      <p>
+        Una Bobber minimalista con un piloto enorme puede perder toda la ligereza que había conseguido con el guardabarros. Una Chopper clásica con un LED ultramoderno puede parecer que ha mezclado dos épocas sin intención. Una Scrambler con un piloto demasiado delicado puede resultar poco creíble. Una Club Style con un piloto ornamental puede parecer menos funcional de lo que pretende.
+      </p>
+
+      <p>
+        Las piezas, por separado, pueden ser buenas. El problema aparece cuando dejan de hablar el mismo idioma.
+      </p>
+
+      <div class="quote">
+        Un piloto no convierte una moto en Bobber, Chopper o Club Style. Pero un piloto equivocado puede hacer que deje de parecerlo.
+      </div>
+
+      <h2>El piloto vive en una zona complicada</h2>
+
+      <p>
+        La parte trasera de una moto custom suele ser uno de los lugares más difíciles de resolver. Allí conviven el guardabarros, la matrícula, los intermitentes, el catadióptrico, la luz de matrícula, el asiento, el posible sissy bar, las alforjas y, por supuesto, el piloto.
+      </p>
+
+      <p>
+        Por eso cambiar un piloto rara vez consiste únicamente en sustituir una luz por otra. Si el guardabarros se ha recortado, el soporte original puede haber desaparecido. Si la matrícula se ha recolocado, la posición del piloto puede quedar condicionada. Si los intermitentes se han movido, la composición completa de la trasera cambia. Y si además hay alforjas o portaequipajes, la visibilidad debe revisarse todavía con más cuidado.
+      </p>
+
+      <p>
+        Esta es la razón por la que tantos proyectos que empiezan con una pieza pequeña acaban replanteando toda la trasera. No porque nadie quiera complicarlo, sino porque todas esas piezas comparten el mismo espacio.
+      </p>
+
+      <h2>La estética llega hasta donde empieza la seguridad</h2>
+
+      <p>
+        El piloto trasero tiene una carga estética importante, pero no deja de ser un dispositivo de iluminación. Debe verse, debe funcionar correctamente y debe integrarse con el resto de elementos obligatorios del vehículo.
+      </p>
+
+      <p>
+        En la práctica, esto significa que no basta con elegir un modelo que quede bien en una fotografía. Hay que comprobar que cumple las funciones necesarias, que su luz de posición y freno resultan visibles, que el componente está homologado cuando corresponde y que la instalación no queda oculta por otros elementos de la moto.
+      </p>
+
+      <p>
+        También conviene prestar atención a su ubicación. Un piloto demasiado bajo puede perder eficacia. Uno demasiado escondido puede verse mal. Uno integrado en una zona poco adecuada puede quedar bonito con la moto parada, pero no cumplir correctamente su función cuando circula.
+      </p>
+
+      <p>
+        En una buena preparación, la estética no debería pelearse con la seguridad. Deberían reforzarse mutuamente.
+      </p>
+
+      <h2>La luz de matrícula y el catadióptrico también entran en juego</h2>
+
+      <p>
+        Cuando se cambia el piloto trasero, muchas veces se aprovecha para modificar también el soporte de matrícula. Y cuando se toca la matrícula, aparece inmediatamente otra pieza: la luz que debe iluminarla.
+      </p>
+
+      <p>
+        Algunos pilotos incorporan luz de matrícula. Otros no. Algunos soportes resuelven el conjunto de forma limpia y otros obligan a añadir componentes adicionales. Si además el catadióptrico original iba montado en la misma zona, hay que buscarle una nueva ubicación adecuada.
+      </p>
+
+      <p>
+        Este es uno de esos puntos donde una moto puede parecer terminada y, sin embargo, no estarlo. La parte trasera debe resolverse como un conjunto. El piloto no vive solo. La matrícula no vive sola. Los intermitentes tampoco. Todo debe funcionar visual y técnicamente al mismo tiempo.
+      </p>
+
+      <div class="quote">
+        La trasera de una moto custom no se remata con una pieza. Se remata con equilibrio.
+      </div>
+
+      <h2>La diferencia entre accesorio y proyecto</h2>
+
+      <p>
+        Comprar un piloto es fácil. Integrarlo bien es otra cosa.
+      </p>
+
+      <p>
+        Un catálogo puede mostrar cientos de modelos, pero no puede decir cuál tendrá sentido en una moto concreta. No sabe qué guardabarros llevas, dónde está la matrícula, qué intermitentes se han montado, si la moto llevará alforjas o si el asiento ha cambiado. Tampoco sabe qué estilo estás buscando.
+      </p>
+
+      <p>
+        Por eso conviene mirar el piloto dentro del proyecto completo. No como una compra aislada, sino como una decisión más dentro de una cadena de modificaciones.
+      </p>
+
+      <p>
+        Cuando todo se decide con criterio, la moto no parece una suma de accesorios. Parece una preparación pensada de principio a fin.
+      </p>
+
+      <h2>Conclusión</h2>
+
+      <p>
+        El piloto trasero es una pieza pequeña, pero puede decir mucho sobre una moto. Puede reforzar su estilo, completar una línea, aportar carácter o romper una preparación que hasta ese momento funcionaba perfectamente.
+      </p>
+
+      <p>
+        Una Chopper puede pedir un piloto con presencia. Una Bobber puede necesitar justo lo contrario. Una Club Style suele agradecer soluciones compactas y funcionales. Una Scrambler pide robustez. Una Rat Bike puede encontrar belleza en lo imperfecto.
+      </p>
+
+      <p>
+        Lo importante no es elegir el piloto más llamativo ni el más pequeño. Lo importante es elegir el que tenga sentido con la moto que estás construyendo.
+      </p>
+
+      <p>
+        Porque al final, en una buena preparación custom, las piezas no compiten entre sí. Se entienden.
+      </p>
+
+      <div class="cta">
+        <h3>¿Estás pensando en cambiar el piloto trasero?</h3>
+
+        <p>
+          Antes de elegir un modelo, revisamos contigo el estilo de la moto, la posición del guardabarros, la matrícula, los intermitentes, la luz de matrícula, el catadióptrico y la viabilidad técnica de la reforma para evitar problemas en ITV.
+        </p>
+
+        <a href="/presupuesto.html" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand">
+        <img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" />
+        Ingeniero Custom
+      </div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
