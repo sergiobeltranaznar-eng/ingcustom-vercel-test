@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Guardabarros trasero en moto custom: estética, rueda y homologación | Ingeniero Custom</title>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L001FVEVFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L001FVEVFS');
+</script>
+  
+  <meta name="description" content="Recortar o modificar el guardabarros trasero de una moto custom puede transformar su estética, pero también afecta a piloto, intermitentes, matrícula, catadióptrico, asiento y homologación." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.8;
+    }
+
+    :root{
+      --line:rgba(255,255,255,.12);
+      --text:#f5f5f5;
+      --muted:#c7c7c7;
+      --accent:#f6b51d;
+      --max:1180px;
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 22px;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,6,6,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(246,181,29,.16);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:78px;
+      height:auto;
+    }
+
+    .brand span{
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:#e4e4e4;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .nav-links a{
+      color:inherit;
+      text-decoration:none;
+      margin-left:0;
+      font-weight:inherit;
+    }
+
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+
+    .menu-toggle{
+      display:none;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0;
+      background:#060606;
+      color:#bdbdbd;
+      font-size:14px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#f5f5f5;
+      font-weight:900;
+    }
+
+    .footer-brand img{width:54px}
+    .contact-link{color:#ffd66d;font-weight:800}
+
+    .hero {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.18),
+          rgba(0,0,0,.62)
+        ),
+        url('./guardabarros-trasero-header.jpg')
+        center center / cover no-repeat;
+
+      padding: 90px 8% 80px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-inner {
+      max-width: 980px;
+    }
+
+    .eyebrow {
+      color: #d49a2a;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin: 0 0 24px;
+      line-height: 1.05;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      color: #ffffff;
+      margin-top: 70px;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+      color: #d6d6d6;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    strong,
+    .highlight {
+      color: #d49a2a;
+      font-weight: 800;
+    }
+
+    .article-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .quote {
+      margin: 42px 0;
+      padding: 30px 34px;
+      border-left: 5px solid #d49a2a;
+      background: rgba(212,154,42,.10);
+      color: #f1f1f1;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      padding: 42px;
+      border: 1px solid rgba(212,154,42,.45);
+      background: linear-gradient(135deg, rgba(212,154,42,.14), rgba(255,255,255,.04));
+      border-radius: 20px;
+    }
+
+    .cta h3 {
+      margin-top: 0;
+      color: #d49a2a;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      color: #e5e5e5;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #d49a2a;
+      color: #111;
+      padding: 14px 24px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #f0b844;
+    }
+
+    .back-blog {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: #d49a2a;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-blog:hover {
+      color: #f0b844;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav{
+        min-height:auto;
+        padding:16px 0 18px;
+        flex-direction:column;
+        align-items:center;
+        gap:14px;
+      }
+
+      .brand{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        width:70px;
+      }
+
+      .brand span{
+        font-size:18px;
+      }
+
+      .menu-toggle{
+        display:block;
+        width:100%;
+        max-width:260px;
+        padding:12px 18px;
+        background:var(--accent);
+        color:#111;
+        border:0;
+        border-radius:10px;
+        font-weight:900;
+        font-size:16px;
+        cursor:pointer;
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+      }
+
+      .nav-links{
+        display:none;
+        width:100%;
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .nav-links.open{
+        display:grid;
+      }
+
+      .nav-links a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
+        background:rgba(255,255,255,.06);
+        color:#fff;
+        text-decoration:none;
+        font-weight:800;
+        margin-left:0;
+      }
+
+      .hero p,
+      .article-card p,
+      .cta p{
+        text-align:left;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .article-card {
+        padding: 26px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="site-container nav">
+      <a class="brand" href="/" aria-label="Ingeniero Custom">
+        <img src="/logo-ingeniero-custom.png" alt="Logo Ingeniero Custom" />
+        <span>Ingeniero Custom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menú ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="/#servicios">Homologaciones</a>
+        <a href="/#proceso">Proceso</a>
+        <a href="/#faq">Preguntas frecuentes</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Guardabarros · Trasera · Homologación</div>
+      <h1>El guardabarros trasero: la reforma que cambia por completo la personalidad de una moto</h1>
+      <p>
+        Recortar el guardabarros trasero puede dejar la rueda como protagonista,
+        pero detrás de una trasera más limpia aparecen nuevas decisiones sobre matrícula,
+        piloto, intermitentes, catadióptrico y homologación.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="/blog/index.html" class="back-blog">← Volver al blog</a>
+
+    <article class="article-card">
+
+      <p>
+        Hay reformas que empiezan con una pieza nueva. Otras empiezan quitando algo. El guardabarros trasero pertenece a ese segundo grupo. No se cambia para añadir presencia, sino para dejar que aparezca lo que ya estaba ahí: la rueda.
+      </p>
+
+      <p>
+        Cualquiera que haya pasado tiempo mirando motos custom sabe lo que ocurre. Ves una preparación bien proporcionada, una rueda trasera poderosa, una línea limpia y una trasera que parece terminar justo donde debe. Después miras tu moto y piensas que el guardabarros original tapa demasiado.
+      </p>
+
+      <p>
+        Ahí nace una de las reformas más antiguas y más repetidas del mundo custom. Recortar, sustituir o replantear el guardabarros trasero para que la moto parezca más ligera, más agresiva y más cercana a esa imagen que el propietario tiene en la cabeza.
+      </p>
+
+      <h2>La rueda siempre estuvo ahí</h2>
+
+      <p>
+        Muchas veces el atractivo de una preparación no está en una pieza concreta. Está en la proporción. En cómo se ve la rueda trasera. En la distancia entre asiento, guardabarros y neumático. En la forma en que la moto parece asentarse sobre el asfalto.
+      </p>
+
+      <p>
+        Por eso el guardabarros tiene tanta importancia visual. Una pieza aparentemente sencilla puede hacer que una moto parezca pesada o ligera, clásica o agresiva, de serie o transformada. No es solo una chapa que cubre una rueda. Es una de las líneas que define cómo termina la motocicleta.
+      </p>
+
+      <p>
+        En el mundo custom se ha repetido durante décadas una idea muy simple: menos guardabarros, más rueda. Es una frase fácil, pero detrás hay bastante criterio. No se trata de cortar por cortar. Se trata de dejar visible lo justo para que la rueda gane protagonismo sin que el conjunto pierda sentido.
+      </p>
+
+      <div class="quote">
+        Una buena trasera no parece recortada. Parece diseñada así desde el principio.
+      </div>
+
+      <h2>Una reforma con mucha historia</h2>
+
+      <p>
+        Mucho antes de que existieran las redes sociales, los preparadores americanos ya reducían guardabarros. Las primeras bobber nacieron precisamente de esa filosofía: quitar lo que sobraba, simplificar la moto y dejar una máquina más directa, más seca y más personal.
+      </p>
+
+      <p>
+        En aquellos años no se buscaba solo una estética. También se buscaba aligerar, limpiar y diferenciar la moto. El guardabarros trasero era una de las primeras piezas en perder longitud porque visualmente cambiaba muchísimo el conjunto.
+      </p>
+
+      <p>
+        Décadas después seguimos persiguiendo una idea parecida, aunque el contexto sea distinto. Hoy no basta con que la moto quede bien en una fotografía. También tiene que conservar luces, matrícula, señalización, catadióptrico y una configuración que pueda defenderse técnicamente.
+      </p>
+
+      <h2>El corte es solo el principio</h2>
+
+      <p>
+        La conversación en un taller rara vez empieza con una frase técnica. Suele empezar con algo mucho más sencillo: quiero que se vea más rueda.
+      </p>
+
+      <p>
+        El problema es que, cuando el guardabarros original se recorta o se sustituye por uno más corto, desaparece algo más que material. Muchas veces desaparecen también los puntos donde iban fijados el piloto trasero, la matrícula, los intermitentes o el catadióptrico.
+      </p>
+
+      <p>
+        Entonces aparece el efecto dominó.
+      </p>
+
+      <div class="quote">
+        Primero se corta el guardabarros. Después hay que decidir dónde viven todos los elementos que antes dependían de él.
+      </div>
+
+      <p>
+        Y ahí es donde una reforma que parecía sencilla empieza a convertirse en un proyecto de verdad.
+      </p>
+
+      <h2>Piloto, matrícula e intermitentes</h2>
+
+      <p>
+        Cuando se modifica la parte trasera de una moto, el piloto trasero suele ser uno de los primeros afectados. Puede que el soporte original ya no exista, que quede demasiado alto, demasiado bajo o que no encaje con la nueva línea de la moto.
+      </p>
+
+      <p>
+        La matrícula suele ser el siguiente problema. Si antes iba integrada en el guardabarros, al reducirlo hay que buscar una nueva posición. Puede ir más retrasada, más baja, en un soporte específico o, en determinados casos, plantearse una ubicación lateral si el proyecto lo permite y se justifica correctamente.
+      </p>
+
+      <p>
+        Con los intermitentes ocurre algo parecido. En muchas motos iban sujetos al guardabarros o a soportes asociados a esa zona. Cuando la trasera se limpia, los indicadores empiezan a estorbar o directamente se quedan sin sitio. Por eso tantas reformas de guardabarros terminan arrastrando también una recolocación de intermitentes.
+      </p>
+
+      <h2>El catadióptrico no desaparece porque moleste</h2>
+
+      <p>
+        Otro elemento que suele caer en el olvido es el catadióptrico trasero. Visualmente puede parecer secundario, pero forma parte del conjunto de señalización del vehículo. Si se elimina el soporte donde estaba montado, hay que prever una nueva ubicación correcta.
+      </p>
+
+      <p>
+        Este es uno de esos detalles que separan una preparación bien pensada de una moto terminada a medias. Cuando el proyecto está bien planteado, cada elemento encuentra su lugar. Cuando se improvisa, empiezan las soluciones de última hora.
+      </p>
+
+      <h2>El guardabarros guarda del barro, pero también define la moto</h2>
+
+      <p>
+        Todo el que ha rodado bajo la lluvia sabe perfectamente para qué sirve un guardabarros. Su propio nombre lo dice todo. Protege al piloto, al pasajero y a la propia motocicleta de agua, barro y pequeñas piedras.
+      </p>
+
+      <p>
+        Lo que ocurre es que en el mundo custom siempre ha existido una tensión entre funcionalidad y línea visual. Enseñar más rueda puede mejorar muchísimo la presencia de la moto, pero también reduce parte de esa protección original.
+      </p>
+
+      <p>
+        Ahí está el equilibrio. No se trata de fingir que el guardabarros solo era decoración. Tampoco se trata de conservarlo siempre tal y como salió de fábrica. Se trata de encontrar una solución proporcionada, funcional y coherente con el uso real que va a tener la moto.
+      </p>
+
+      <div class="quote">
+        La mejor reforma no es la que corta más. Es la que consigue que la moto parezca más limpia sin perder sentido.
+      </div>
+
+      <h2>El subchasis cambia la conversación</h2>
+
+      <p>
+        En muchos proyectos el guardabarros puede modificarse sin tocar elementos estructurales importantes. Pero no siempre es así. Algunas transformaciones buscan una trasera mucho más radical y empiezan a acercarse al subchasis, a los soportes del asiento o a zonas donde la suspensión y la estructura tienen mucho que decir.
+      </p>
+
+      <p>
+        En ese momento la reforma deja de ser una simple cuestión estética. Si hay que cortar, soldar, fabricar soportes o alterar puntos relevantes de la estructura, el análisis técnico debe ser mucho más cuidadoso.
+      </p>
+
+      <p>
+        Una cosa es recortar o sustituir un guardabarros. Otra muy distinta es modificar aquello que sostiene, transmite esfuerzos o condiciona la configuración del vehículo.
+      </p>
+
+      <h2>La proporción lo es todo</h2>
+
+      <p>
+        Las mejores motos custom no parecen una suma de piezas. Parecen inevitables. Como si siempre hubieran tenido esa forma. Eso ocurre especialmente en la parte trasera.
+      </p>
+
+      <p>
+        Un guardabarros demasiado largo puede apagar una rueda espectacular. Uno demasiado corto puede dejar la moto visualmente incompleta o hacer que todo lo demás parezca recolocado sin criterio. Entre ambos extremos está la preparación que funciona.
+      </p>
+
+      <p>
+        La curva del guardabarros, la separación respecto al neumático, la posición del asiento, el piloto, la matrícula y los intermitentes deben hablar el mismo idioma. Cuando cada pieza parece estar peleando por su sitio, la moto lo transmite. Cuando todo encaja, la trasera parece sencilla aunque detrás haya muchas decisiones.
+      </p>
+
+      <h2>Lo que conviene revisar antes de cortar</h2>
+
+      <p>
+        Antes de modificar el guardabarros trasero, conviene mirar la moto completa por detrás y hacerse varias preguntas. No solo dónde queremos cortar, sino qué consecuencias tendrá ese corte.
+      </p>
+
+      <div class="quote">
+        Piloto, intermitentes, matrícula, luz de matrícula, catadióptrico, asiento, soportes, suspensión y recorrido de rueda.
+      </div>
+
+      <p>
+        También conviene pensar en el uso real. No es lo mismo una moto pensada para rutas cortas en seco que una moto con pasajero, alforjas o viajes largos. La estética importa, pero el uso también.
+      </p>
+
+      <p>
+        Si el proyecto se piensa antes de coger la radial, se evitan muchas compras repetidas, soportes improvisados y soluciones que después resultan difíciles de justificar.
+      </p>
+
+      <h2>Conclusión</h2>
+
+      <p>
+        El guardabarros trasero es una de esas piezas que parecen simples hasta que se modifican. Su longitud, su forma y su posición cambian por completo la personalidad de una moto. Puede hacer que una rueda gane protagonismo, que la trasera parezca más limpia y que toda la preparación tenga una presencia mucho más contundente.
+      </p>
+
+      <p>
+        Pero también es una pieza alrededor de la cual viven muchos elementos importantes. Piloto, intermitentes, matrícula, catadióptrico, asiento y soportes suelen depender de esa zona más de lo que parece al principio.
+      </p>
+
+      <p>
+        Cortar un guardabarros lleva unos minutos. Conseguir que todo lo demás siga teniendo sentido lleva bastante más tiempo.
+      </p>
+
+      <p>
+        Por eso las mejores transformaciones no empiezan con una herramienta. Empiezan con un proyecto.
+      </p>
+
+      <div class="cta">
+        <h3>¿Vas a recortar o modificar el guardabarros trasero?</h3>
+
+        <p>
+          Antes de tocar la parte trasera de la moto, revisamos contigo piloto, intermitentes, matrícula, catadióptrico, soportes, asiento, recorrido de rueda y viabilidad de homologación para evitar problemas en ITV.
+        </p>
+
+        <a href="/presupuesto.html" target="_blank" rel="noopener">
+          Solicitar presupuesto
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="site-container footer-inner">
+      <div class="footer-brand"><img src="/logo-ingeniero-custom.png" alt="Ingeniero Custom" /> Ingeniero Custom</div>
+      <div>Ingeniería especializada en homologación de motos custom.</div>
+      <div><a class="contact-link" href="mailto:info@ingenierocustom.es">info@ingenierocustom.es</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector(".menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      if(toggle && navLinks){
+        toggle.addEventListener("click", function(){
+          const isOpen = navLinks.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function(link){
+          link.addEventListener("click", function(){
+            navLinks.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
