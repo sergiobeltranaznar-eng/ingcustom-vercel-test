@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Aceptar orden | Ingeniero Custom</title>
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <p>Abriendo aceptación de orden...</p>
+
+  <script>
+    const WEBAPP = 'https://script.google.com/macros/s/AKfycbzRu0AlVDULQg2MEb0be2Yfm4K5X_IHWb66WpCRIFfNG_OEmZGP2hcgTsl20We7HV2F/exec';
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id') || '';
+    const token = params.get('token') || '';
+
+    window.location.replace(
+      WEBAPP +
+      '?tipo=aceptar_taller' +
+      '&id=' + encodeURIComponent(id) +
+      '&token=' + encodeURIComponent(token)
+    );
+  </script>
+</body>
+</html>
