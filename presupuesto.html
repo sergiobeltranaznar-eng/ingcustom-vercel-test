@@ -909,25 +909,76 @@
       }
 
       function refreshForm(){
-        const reformas = getSelectedReformas();
+  const reformas = getSelectedReformas();
 
-        document.querySelectorAll(".reform-card").forEach(card => {
-          const input = card.querySelector('input[type="checkbox"]');
-          card.classList.toggle("selected", Boolean(input && input.checked));
-        });
+  document
+    .querySelectorAll(".reform-card")
+    .forEach(card => {
+      const input = card.querySelector(
+        'input[type="checkbox"]'
+      );
 
-        counter.textContent =
-          reformas.length === 1
-            ? "1 reforma seleccionada"
-            : reformas.length + " reformas seleccionadas";
+      card.classList.toggle(
+        "selected",
+        Boolean(input && input.checked)
+      );
+    });
 
-        const requiredOk = requiredFields.every(id => {
-          const el = document.getElementById(id);
-          return el && String(el.value || "").trim();
-        });
+  counter.textContent =
+    reformas.length === 1
+      ? "1 reforma seleccionada"
+      : reformas.length + " reformas seleccionadas";
 
-        submitBtn.disabled = !(requiredOk && reformas.length > 0);
-      }
+  const nombre = document
+    .getElementById("nombre")
+    .value
+    .trim();
+
+  const telefono = document
+    .getElementById("telefono")
+    .value
+    .trim();
+
+  const email = document
+    .getElementById("email")
+    .value
+    .trim();
+
+  const marca = document
+    .getElementById("marca")
+    .value
+    .trim();
+
+  const modelo = document
+    .getElementById("modelo")
+    .value
+    .trim();
+
+  const anio = document
+    .getElementById("anio")
+    .value
+    .trim();
+
+  const formularioCompleto =
+    nombre !== "" &&
+    telefono !== "" &&
+    email !== "" &&
+    marca !== "" &&
+    modelo !== "" &&
+    anio !== "" &&
+    reformas.length > 0;
+
+  if (formularioCompleto) {
+    submitBtn.disabled = false;
+    submitBtn.removeAttribute("disabled");
+  } else {
+    submitBtn.disabled = true;
+    submitBtn.setAttribute(
+      "disabled",
+      "disabled"
+    );
+  }
+}
 
       function abrirModalCupula(){
         respuestaAltura = "";
