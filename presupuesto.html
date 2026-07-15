@@ -472,6 +472,116 @@
     .footer-brand img{width:54px}
     .contact-link{color:#ffd66d;font-weight:800}
 
+    .modal-cupula{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+}
+
+.modal-cupula.open{
+  display:flex;
+}
+
+.modal-cupula-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(8px);
+}
+
+.modal-cupula-card{
+  position:relative;
+  z-index:1;
+  width:min(620px, 100%);
+  max-height:calc(100vh - 44px);
+  overflow:auto;
+  border:1px solid rgba(246,181,29,.32);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(30,30,30,.98),
+      rgba(10,10,10,.99)
+    );
+  border-radius:26px;
+  padding:30px;
+  box-shadow:0 28px 80px rgba(0,0,0,.68);
+}
+
+.modal-cupula-card h2{
+  margin:12px 0 0;
+}
+
+.modal-cupula-text{
+  color:#d8d8d8;
+  line-height:1.65;
+  margin:16px 0 0;
+}
+
+.modal-cupula-field{
+  display:grid;
+  gap:10px;
+  margin-top:24px;
+}
+
+.modal-cupula-field select{
+  width:100%;
+  border:1px solid rgba(255,255,255,.16);
+  background:#0b0b0b;
+  color:#fff;
+  border-radius:14px;
+  padding:15px;
+  outline:none;
+  font:inherit;
+}
+
+.modal-cupula-options{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:12px;
+}
+
+.modal-option{
+  min-height:52px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.055);
+  color:#fff;
+  border-radius:14px;
+  cursor:pointer;
+  font:inherit;
+  font-weight:900;
+}
+
+.modal-option:hover{
+  border-color:rgba(246,181,29,.75);
+}
+
+.modal-option.selected{
+  border-color:var(--accent);
+  background:rgba(246,181,29,.12);
+  color:#ffd66d;
+  box-shadow:0 0 0 3px rgba(246,181,29,.10);
+}
+
+.modal-cupula-preguntas{
+  display:none;
+}
+
+.modal-cupula-preguntas.open{
+  display:block;
+}
+
+.modal-cupula-resultado{
+  display:none;
+}
+
+.modal-cupula-resultado.open{
+  display:block;
+}
+
     @media (max-width:980px){
       .form-shell{grid-template-columns:1fr}
       .side-card{position:static}
@@ -702,6 +812,121 @@
     </section>
   </main>
 
+ <div class="modal-cupula" id="modalCupula" aria-hidden="true">
+  <div class="modal-cupula-backdrop"></div>
+
+  <div
+    class="modal-cupula-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalCupulaTitulo"
+  >
+    <div id="modalCupulaPasoPreguntas">
+      <div class="eyebrow">Comprobación previa</div>
+
+      <h2 id="modalCupulaTitulo">
+        Antes de continuar
+      </h2>
+
+      <p class="modal-cupula-text">
+        Necesitamos comprobar si la instalación de la cúpula tiene consideración de reforma.
+      </p>
+
+      <div class="modal-cupula-field">
+        <label for="tipoElementoCupula">
+          ¿Qué elemento has instalado?
+        </label>
+
+        <select id="tipoElementoCupula">
+          <option value="">Selecciona una opción</option>
+          <option value="CUPULA">Cúpula</option>
+          <option value="PARABRISAS">Parabrisas</option>
+          <option value="CARENADO">Carenado / Bat fairing</option>
+        </select>
+      </div>
+
+      <div
+        class="modal-cupula-preguntas"
+        id="preguntasCupula"
+      >
+        <div class="modal-cupula-field">
+          <label>
+            ¿La cúpula supera la altura máxima de la motocicleta?
+          </label>
+
+          <div class="modal-cupula-options">
+            <button
+              type="button"
+              class="modal-option"
+              data-grupo="altura"
+              data-valor="SI"
+            >
+              Sí
+            </button>
+
+            <button
+              type="button"
+              class="modal-option"
+              data-grupo="altura"
+              data-valor="NO"
+            >
+              No
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-cupula-field">
+          <label>
+            ¿Puede desmontarse completamente sin utilizar ninguna herramienta?
+          </label>
+
+          <div class="modal-cupula-options">
+            <button
+              type="button"
+              class="modal-option"
+              data-grupo="desmontable"
+              data-valor="SI"
+            >
+              Sí
+            </button>
+
+            <button
+              type="button"
+              class="modal-option"
+              data-grupo="desmontable"
+              data-valor="NO"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modalCupulaResultado"
+      class="modal-cupula-resultado"
+    >
+      <div class="eyebrow">Resultado</div>
+
+      <h2 id="modalCupulaResultadoTitulo"></h2>
+
+      <p
+        class="modal-cupula-text"
+        id="modalCupulaResultadoTexto"
+      ></p>
+
+      <button
+        type="button"
+        class="btn"
+        id="cerrarModalCupula"
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div> 
+
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
@@ -741,6 +966,37 @@
       const submitBtn = document.getElementById("submitBtn");
       const successScreen = document.getElementById("successScreen");
 
+      const cupulaCheck =
+  document.getElementById("cupulaCarenadoCheck");
+
+const modalCupula =
+  document.getElementById("modalCupula");
+
+const tipoElementoCupula =
+  document.getElementById("tipoElementoCupula");
+
+const preguntasCupula =
+  document.getElementById("preguntasCupula");
+
+const modalCupulaPasoPreguntas =
+  document.getElementById("modalCupulaPasoPreguntas");
+
+const modalCupulaResultado =
+  document.getElementById("modalCupulaResultado");
+
+const modalCupulaResultadoTitulo =
+  document.getElementById("modalCupulaResultadoTitulo");
+
+const modalCupulaResultadoTexto =
+  document.getElementById("modalCupulaResultadoTexto");
+
+const cerrarModalCupula =
+  document.getElementById("cerrarModalCupula");
+
+let respuestaAltura = "";
+let respuestaDesmontable = "";
+let cupulaEsReforma = true;
+
       const URL_WEBAPP = "https://script.google.com/macros/s/AKfycbzRu0AlVDULQg2MEb0be2Yfm4K5X_IHWb66WpCRIFfNG_OEmZGP2hcgTsl20We7HV2F/exec";
 
       const requiredFields = ["nombre", "telefono", "email", "marca", "modelo", "anio"];
@@ -752,6 +1008,65 @@
 
       function refreshForm(){
         const reformas = getSelectedReformas();
+
+     function abrirModalCupula(){
+  respuestaAltura = "";
+  respuestaDesmontable = "";
+  cupulaEsReforma = true;
+
+  tipoElementoCupula.value = "";
+
+  preguntasCupula.classList.remove("open");
+
+  modalCupulaPasoPreguntas.style.display = "block";
+  modalCupulaResultado.classList.remove("open");
+
+  document
+    .querySelectorAll(".modal-option")
+    .forEach(button => {
+      button.classList.remove("selected");
+    });
+
+  modalCupula.classList.add("open");
+  modalCupula.setAttribute("aria-hidden", "false");
+}
+
+function mostrarResultadoCupula(esReforma){
+  cupulaEsReforma = esReforma;
+
+  modalCupulaPasoPreguntas.style.display = "none";
+  modalCupulaResultado.classList.add("open");
+
+  if (esReforma) {
+    modalCupulaResultadoTitulo.textContent =
+      "Esta instalación tiene consideración de reforma";
+
+    modalCupulaResultadoTexto.textContent =
+      "Según las características indicadas, la instalación de la cúpula se incluirá en tu solicitud de homologación.";
+
+  } else {
+    modalCupulaResultadoTitulo.textContent =
+      "Esta instalación no tiene consideración de reforma";
+
+    modalCupulaResultadoTexto.textContent =
+      "Según las características indicadas, la cúpula instalada no tiene consideración de reforma y no es necesario incluirla en tu solicitud de homologación. Esta conclusión se refiere únicamente a la instalación de la cúpula indicada.";
+  }
+}
+
+function comprobarResultadoCupula(){
+  if (
+    !respuestaAltura ||
+    !respuestaDesmontable
+  ) {
+    return;
+  }
+
+  const esReforma =
+    respuestaAltura === "SI" &&
+    respuestaDesmontable === "NO";
+
+  mostrarResultadoCupula(esReforma);
+}   
 
         document.querySelectorAll(".reform-card").forEach(card => {
           const input = card.querySelector('input[type="checkbox"]');
@@ -772,15 +1087,101 @@
       }
 
       document.querySelectorAll(".reform-card").forEach(card => {
-        card.addEventListener("click", function(e){
-          e.preventDefault();
+  card.addEventListener("click", function(e){
+    e.preventDefault();
 
-          const input = card.querySelector('input[type="checkbox"]');
-          input.checked = !input.checked;
+    const input =
+      card.querySelector(
+        'input[type="checkbox"]'
+      );
 
-          refreshForm();
-        });
-      });
+    const seVaASeleccionar =
+      !input.checked;
+
+    input.checked =
+      seVaASeleccionar;
+
+    refreshForm();
+
+    if (
+      input.id === "cupulaCarenadoCheck" &&
+      seVaASeleccionar
+    ) {
+      abrirModalCupula();
+    }
+  });
+});
+
+      tipoElementoCupula.addEventListener(
+  "change",
+  function(){
+    const tipo = tipoElementoCupula.value;
+
+    if (!tipo) {
+      preguntasCupula.classList.remove("open");
+      return;
+    }
+
+    if (tipo === "CUPULA") {
+      preguntasCupula.classList.add("open");
+      return;
+    }
+
+    mostrarResultadoCupula(true);
+  }
+);
+
+document
+  .querySelectorAll(".modal-option")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        const grupo = button.dataset.grupo;
+        const valor = button.dataset.valor;
+
+        document
+          .querySelectorAll(
+            '.modal-option[data-grupo="' +
+            grupo +
+            '"]'
+          )
+          .forEach(opcion => {
+            opcion.classList.remove("selected");
+          });
+
+        button.classList.add("selected");
+
+        if (grupo === "altura") {
+          respuestaAltura = valor;
+        }
+
+        if (grupo === "desmontable") {
+          respuestaDesmontable = valor;
+        }
+
+        comprobarResultadoCupula();
+      }
+    );
+
+  });
+
+cerrarModalCupula.addEventListener(
+  "click",
+  function(){
+
+    if (!cupulaEsReforma) {
+      cupulaCheck.checked = false;
+    }
+
+    modalCupula.classList.remove("open");
+    modalCupula.setAttribute("aria-hidden", "true");
+
+    refreshForm();
+  }
+);
 
       requiredFields.forEach(id => {
         document.getElementById(id).addEventListener("input", refreshForm);
