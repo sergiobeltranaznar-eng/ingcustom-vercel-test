@@ -1090,9 +1090,20 @@
       });
 
       requiredFields.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener("input", refreshForm);
-      });
+  const el = document.getElementById(id);
+
+  if (!el) return;
+
+  el.addEventListener(
+    "input",
+    refreshForm
+  );
+
+  el.addEventListener(
+    "change",
+    refreshForm
+  );
+});
 
       form.addEventListener("submit", async function(e){
         e.preventDefault();
