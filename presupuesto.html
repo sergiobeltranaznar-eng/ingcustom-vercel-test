@@ -232,6 +232,50 @@
       font-weight:900;
     }
 
+
+    .category-title{
+      margin:32px auto 18px;
+      color:var(--accent);
+      border-bottom:2px solid var(--accent);
+      padding-bottom:8px;
+      display:block;
+      text-align:center;
+      width:fit-content;
+      font-size:21px;
+    }
+
+    .category-title:first-of-type{margin-top:8px}
+
+    .special-project{
+      margin-top:26px;
+      padding:22px;
+      border:1px solid rgba(246,181,29,.28);
+      background:rgba(246,181,29,.07);
+      border-radius:18px;
+    }
+
+    .special-project h3{margin:0;color:#ffd66d;font-size:20px;line-height:1.3}
+    .special-project p{margin:10px 0 0;color:#d7d7d7;line-height:1.6;font-size:14px}
+
+    .special-project a{
+      display:inline-flex;
+      margin-top:16px;
+      min-height:46px;
+      padding:0 20px;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      transition:.2s ease;
+    }
+
+    .special-project a:hover{border-color:var(--accent);color:#ffd66d;transform:translateY(-1px)}
+
     .reform-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -295,12 +339,6 @@
       font-size:14px;
     }
 
-    .other-box{
-      display:none;
-      margin-top:18px;
-    }
-
-    .other-box.open{display:block}
 
     .help{
       color:#bdbdbd;
@@ -592,27 +630,40 @@
               <div class="counter" id="counter">0 reformas seleccionadas</div>
             </div>
 
+            <h3 class="category-title">Reformas básicas</h3>
+
             <div class="reform-grid">
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Faro LED"><span class="reform-title">Faro LED</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Intermitentes"><span class="reform-title">Intermitentes</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Manillar"><span class="reform-title">Manillar</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Matrícula lateral"><span class="reform-title">Matrícula lateral</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Sissy Bar"><span class="reform-title">Sissy Bar</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Colas de escape"><span class="reform-title">Colas de escape</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Escape completo"><span class="reform-title">Escape completo</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Amortiguadores"><span class="reform-title">Amortiguadores</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Horquillas / Tijas"><span class="reform-title">Horquillas / Tijas</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Frenos"><span class="reform-title">Frenos</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Llantas / Neumáticos"><span class="reform-title">Llantas / Neumáticos</span></label>
-              <label class="reform-card"><input id="otraReformaCheck" type="checkbox" name="reformas" value="Otra reforma"><span class="reform-title">Otra reforma</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Cambiar Faro Halógeno por LED"><span class="reform-title">Faro LED</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Recolocación de Intermitentes"><span class="reform-title">Intermitentes</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Cambio de Manillar"><span class="reform-title">Manillar</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Recolocación de Matrícula"><span class="reform-title">Matrícula lateral</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Instalación de Sissy Bar"><span class="reform-title">Sissy Bar</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de silenciadores de Escape (Sólo Colas de Escape)"><span class="reform-title">Colas de escape</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución del Sistema de Escape (Tubo de Escape Completo)"><span class="reform-title">Escape completo</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de llantas y/o Neumáticos"><span class="reform-title">Llantas / Neumáticos</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Reducción del Número de Plazas"><span class="reform-title">Reducción de plazas</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Aumento de Cilindrada del Motor"><span class="reform-title">Aumento de cilindrada</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Instalación de Mandos Avanzados"><span class="reform-title">Mandos avanzados</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución o Modificación del Depósito de Combustible"><span class="reform-title">Depósito de combustible</span></label>
+              <label class="reform-card"><input id="cupulaCarenadoCheck" type="checkbox" name="reformas" value="Instalación de Cúpula, Parabrisas o Carenado"><span class="reform-title">Cúpula / Parabrisas / Carenado</span></label>
             </div>
 
-            <div class="other-box" id="otraReformaBox">
-              <div class="field">
-                <label for="otrasReformas">Describe la modificación</label>
-                <textarea id="otrasReformas" name="otrasReformas" placeholder="Indica únicamente las reformas que no aparecen en la lista anterior."></textarea>
-                <p class="help">Si indicas otra reforma, revisaremos manualmente el caso antes de preparar presupuesto.</p>
-              </div>
+            <h3 class="category-title">Reformas avanzadas</h3>
+
+            <div class="reform-grid">
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de Amortiguadores Traseros"><span class="reform-title">Amortiguadores</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de Horquillas y/o Tijas"><span class="reform-title">Horquillas / Tijas</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución del sistema de frenos"><span class="reform-title">Frenos</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Modificación o Recorte de Subchasis"><span class="reform-title">Subchasis</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Modificación de la Transmisión Secundaria"><span class="reform-title">Transmisión secundaria</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución o Modificación de Guardabarros"><span class="reform-title">Guardabarros</span></label>
+            </div>
+
+            <div class="special-project">
+              <h3>¿No encuentras la reforma que quieres hacer o es un proyecto de construcción completo?</h3>
+              <p>Cuéntanos tu proyecto. Revisaremos el caso de forma personalizada antes de preparar una propuesta.</p>
+              <a href="/contacto.html">Cuéntanos tu proyecto</a>
+            </div>
             </div>
           </div>
 
@@ -686,9 +737,6 @@
   <script>
     (function(){
       const form = document.getElementById("presupuestoForm");
-      const otraCheck = document.getElementById("otraReformaCheck");
-      const otraBox = document.getElementById("otraReformaBox");
-      const otrasReformas = document.getElementById("otrasReformas");
       const counter = document.getElementById("counter");
       const submitBtn = document.getElementById("submitBtn");
       const successScreen = document.getElementById("successScreen");
@@ -715,21 +763,12 @@
             ? "1 reforma seleccionada"
             : reformas.length + " reformas seleccionadas";
 
-        if (otraCheck.checked) {
-          otraBox.classList.add("open");
-        } else {
-          otraBox.classList.remove("open");
-          otrasReformas.value = "";
-        }
-
         const requiredOk = requiredFields.every(id => {
           const el = document.getElementById(id);
           return el && el.value.trim();
         });
 
-        const otraOk = !otraCheck.checked || otrasReformas.value.trim();
-
-        submitBtn.disabled = !(requiredOk && reformas.length > 0 && otraOk);
+        submitBtn.disabled = !(requiredOk && reformas.length > 0);
       }
 
       document.querySelectorAll(".reform-card").forEach(card => {
@@ -746,8 +785,6 @@
       requiredFields.forEach(id => {
         document.getElementById(id).addEventListener("input", refreshForm);
       });
-
-      otrasReformas.addEventListener("input", refreshForm);
 
       form.addEventListener("submit", async function(e){
         e.preventDefault();
@@ -766,8 +803,8 @@
           modelo: document.getElementById("modelo").value.trim(),
           anio: document.getElementById("anio").value.trim(),
           reformas: reformas,
-          otrasReformas: otrasReformas.value.trim(),
-          revisionManual: otraCheck.checked ? "SI" : "NO",
+          otrasReformas: "",
+          revisionManual: "NO",
           origen: "WEB"
         };
 
