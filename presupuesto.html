@@ -995,21 +995,19 @@
 }
 
       function abrirModalCupula(){
-        respuestaAltura = "";
-        respuestaDesmontable = "";
-        cupulaEsReforma = true;
-        tipoElementoCupula.value = "";
-        preguntasCupula.classList.remove("open");
-        modalCupulaPasoPreguntas.style.display = "block";
-        modalCupulaResultado.classList.remove("open");
 
-        document.querySelectorAll(".modal-option").forEach(button => {
-          button.classList.remove("selected");
-        });
+    renderizarPrueba();
 
-        modalCupula.classList.add("open");
-        modalCupula.setAttribute("aria-hidden", "false");
-      }
+    modalAsistentePasoPreguntas.style.display = "block";
+    modalAsistenteResultado.classList.remove("open");
+
+    resultadoAsistenteEsReforma = true;
+    respuestasAsistente = {};
+
+    modalCupula.classList.add("open");
+    modalCupula.setAttribute("aria-hidden","false");
+
+}
 
       function mostrarResultadoCupula(esReforma){
         cupulaEsReforma = esReforma;
