@@ -1008,6 +1008,42 @@
     modalCupula.setAttribute("aria-hidden","false");
 
 }
+     function renderizarPrueba(){
+
+    contenidoAsistente.innerHTML = `
+
+        <div class="modal-cupula-field">
+
+            <label>¿Qué elemento has instalado?</label>
+
+            <select id="pregunta1">
+
+                <option value="">Selecciona una opción</option>
+                <option value="CUPULA">Cúpula</option>
+                <option value="PARABRISAS">Parabrisas</option>
+                <option value="CARENADO">Carenado</option>
+
+            </select>
+
+        </div>
+
+        <div class="modal-cupula-field">
+
+            <label>¿La instalación supera la altura máxima?</label>
+
+            <div class="modal-cupula-options">
+
+                <button type="button" class="modal-option">Sí</button>
+
+                <button type="button" class="modal-option">No</button>
+
+            </div>
+
+        </div>
+
+    `;
+
+} 
 
       function mostrarResultadoCupula(esReforma){
         cupulaEsReforma = esReforma;
