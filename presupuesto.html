@@ -817,50 +817,53 @@
   </main>
 
   <div class="modal-cupula" id="modalCupula" aria-hidden="true">
-    <div class="modal-cupula-backdrop"></div>
-    <div class="modal-cupula-card" role="dialog" aria-modal="true" aria-labelledby="modalCupulaTitulo">
-      <div id="modalCupulaPasoPreguntas">
-        <div class="eyebrow">Comprobación previa</div>
-        <h2 id="modalCupulaTitulo">Antes de continuar</h2>
-        <p class="modal-cupula-text">Necesitamos comprobar si la instalación tiene consideración de reforma.</p>
+  <div class="modal-cupula-backdrop"></div>
 
-        <div class="modal-cupula-field">
-          <label for="tipoElementoCupula">¿Qué elemento has instalado?</label>
-          <select id="tipoElementoCupula">
-            <option value="">Selecciona una opción</option>
-            <option value="CUPULA">Cúpula</option>
-            <option value="PARABRISAS">Parabrisas</option>
-            <option value="CARENADO">Carenado / Bat fairing</option>
-          </select>
-        </div>
+  <div
+    class="modal-cupula-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalAsistenteTitulo"
+  >
+    <div id="modalAsistentePasoPreguntas">
+      <div class="eyebrow">Comprobación previa</div>
 
-        <div class="modal-cupula-preguntas" id="preguntasCupula">
-          <div class="modal-cupula-field">
-            <label>¿La cúpula supera la altura máxima de la motocicleta?</label>
-            <div class="modal-cupula-options">
-              <button type="button" class="modal-option" data-grupo="altura" data-valor="SI">Sí</button>
-              <button type="button" class="modal-option" data-grupo="altura" data-valor="NO">No</button>
-            </div>
-          </div>
+      <h2 id="modalAsistenteTitulo">
+        Antes de continuar
+      </h2>
 
-          <div class="modal-cupula-field">
-            <label>¿Puede desmontarse completamente sin utilizar ninguna herramienta?</label>
-            <div class="modal-cupula-options">
-              <button type="button" class="modal-option" data-grupo="desmontable" data-valor="SI">Sí</button>
-              <button type="button" class="modal-option" data-grupo="desmontable" data-valor="NO">No</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="modal-cupula-text" id="modalAsistenteTexto">
+        Necesitamos comprobar si la instalación tiene consideración de reforma.
+      </p>
 
-      <div id="modalCupulaResultado" class="modal-cupula-resultado">
-        <div class="eyebrow">Resultado</div>
-        <h2 id="modalCupulaResultadoTitulo"></h2>
-        <p class="modal-cupula-text" id="modalCupulaResultadoTexto"></p>
-        <button type="button" class="btn" id="cerrarModalCupula">Cerrar</button>
+      <div id="contenidoAsistente">
+        <!-- Las preguntas se generarán dinámicamente aquí -->
       </div>
     </div>
+
+    <div
+      id="modalAsistenteResultado"
+      class="modal-cupula-resultado"
+    >
+      <div class="eyebrow">Resultado</div>
+
+      <h2 id="modalAsistenteResultadoTitulo"></h2>
+
+      <p
+        class="modal-cupula-text"
+        id="modalAsistenteResultadoTexto"
+      ></p>
+
+      <button
+        type="button"
+        class="btn"
+        id="cerrarModalAsistente"
+      >
+        Cerrar
+      </button>
+    </div>
   </div>
+</div>
 
   <footer class="footer">
     <div class="container footer-inner">
