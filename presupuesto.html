@@ -899,32 +899,28 @@
 
   <script>
     (function(){
-      const form = document.getElementById("presupuestoForm");
-      const counter = document.getElementById("counter");
-      const submitBtn = document.getElementById("submitBtn");
-      const successScreen = document.getElementById("successScreen");
+  const form = document.getElementById("presupuestoForm");
+  const counter = document.getElementById("counter");
+  const submitBtn = document.getElementById("submitBtn");
+  const successScreen = document.getElementById("successScreen");
 
-      const cupulaCheck = document.getElementById("cupulaCarenadoCheck");
-      const modalCupula = document.getElementById("modalCupula");
-      const tipoElementoCupula = document.getElementById("tipoElementoCupula");
-      const preguntasCupula = document.getElementById("preguntasCupula");
-      const modalCupulaPasoPreguntas = document.getElementById("modalCupulaPasoPreguntas");
-      const modalCupulaResultado = document.getElementById("modalCupulaResultado");
-      const modalCupulaResultadoTitulo = document.getElementById("modalCupulaResultadoTitulo");
-      const modalCupulaResultadoTexto = document.getElementById("modalCupulaResultadoTexto");
-      const cerrarModalCupula = document.getElementById("cerrarModalCupula");
+  const cupulaCheck = document.getElementById("cupulaCarenadoCheck");
+  const modalCupula = document.getElementById("modalCupula");
 
-      const URL_WEBAPP = "https://script.google.com/macros/s/AKfycbzRu0AlVDULQg2MEb0be2Yfm4K5X_IHWb66WpCRIFfNG_OEmZGP2hcgTsl20We7HV2F/exec";
-      const requiredFields = ["nombre", "telefono", "email", "marca", "modelo", "anio"];
+  const contenidoAsistente = document.getElementById("contenidoAsistente");
+  const modalAsistentePasoPreguntas = document.getElementById("modalAsistentePasoPreguntas");
+  const modalAsistenteResultado = document.getElementById("modalAsistenteResultado");
+  const modalAsistenteResultadoTitulo = document.getElementById("modalAsistenteResultadoTitulo");
+  const modalAsistenteResultadoTexto = document.getElementById("modalAsistenteResultadoTexto");
+  const cerrarModalAsistente = document.getElementById("cerrarModalAsistente");
 
-      let respuestaAltura = "";
-      let respuestaDesmontable = "";
-      let cupulaEsReforma = true;
+  const URL_WEBAPP = "https://script.google.com/macros/s/AKfycbzRu0AlVDULQg2MEb0be2Yfm4K5X_IHWb66WpCRIFfNG_OEmZGP2hcgTsl20We7HV2F/exec";
+  const requiredFields = ["nombre", "telefono", "email", "marca", "modelo", "anio"];
 
-      function getSelectedReformas(){
-        return Array.from(document.querySelectorAll('input[name="reformas"]:checked'))
-          .map(input => input.value);
-      }
+  let asistenteActual = null;
+  let reformaActualInput = null;
+  let respuestasAsistente = {};
+  let resultadoAsistenteEsReforma = true;
 
       function refreshForm(){
   const reformas = getSelectedReformas();
