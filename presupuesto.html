@@ -896,314 +896,770 @@
       }
     })();
   </script>
-
-  <script>
-    (function(){
+<script>
+(function () {
   const form = document.getElementById("presupuestoForm");
   const counter = document.getElementById("counter");
   const submitBtn = document.getElementById("submitBtn");
   const successScreen = document.getElementById("successScreen");
 
-  const cupulaCheck = document.getElementById("cupulaCarenadoCheck");
-  const modalCupula = document.getElementById("modalCupula");
-
+  const modalAsistente = document.getElementById("modalCupula");
   const contenidoAsistente = document.getElementById("contenidoAsistente");
-  const modalAsistentePasoPreguntas = document.getElementById("modalAsistentePasoPreguntas");
-  const modalAsistenteResultado = document.getElementById("modalAsistenteResultado");
-  const modalAsistenteResultadoTitulo = document.getElementById("modalAsistenteResultadoTitulo");
-  const modalAsistenteResultadoTexto = document.getElementById("modalAsistenteResultadoTexto");
-  const cerrarModalAsistente = document.getElementById("cerrarModalAsistente");
 
-  const URL_WEBAPP = "https://script.google.com/macros/s/AKfycbzRu0AlVDULQg2MEb0be2Yfm4K5X_IHWb66WpCRIFfNG_OEmZGP2hcgTsl20We7HV2F/exec";
-  const requiredFields = ["nombre", "telefono", "email", "marca", "modelo", "anio"];
+  const modalAsistentePasoPreguntas =
+    document.getElementById("modalAsistentePasoPreguntas");
+
+  const modalAsistenteResultado =
+    document.getElementById("modalAsistenteResultado");
+
+  const modalAsistenteResultadoTitulo =
+    document.getElementById("modalAsistenteResultadoTitulo");
+
+  const modalAsistenteResultadoTexto =
+    document.getElementById("modalAsistenteResultadoTexto");
+
+  const cerrarModalAsistente =
+    document.getElementById("cerrarModalAsistente");
+
+  const URL_WEBAPP =
+    "https://script.google.com/macros/s/AKfycbzRu0AlVDULQg2MEb0be2Yfm4K5X_IHWb66WpCRIFfNG_OEmZGP2hcgTsl20We7HV2F/exec";
+
+  const requiredFields = [
+    "nombre",
+    "telefono",
+    "email",
+    "marca",
+    "modelo",
+    "anio"
+  ];
 
   let asistenteActual = null;
   let reformaActualInput = null;
   let respuestasAsistente = {};
-  let resultadoAsistenteEsReforma = true;
+  let resultadoAsistente = null;
 
-      function refreshForm(){
-  const reformas = getSelectedReformas();
+  /*
+   * CONFIGURACIÓN TEMPORAL DEL MOTOR
+   *
+   * Después sustituiremos este objeto por la información
+   * obtenida desde Google Apps Script y las BBDD V4.
+   */
+  const ASISTENTES = {
+    "Instalación de Cúpula, Parabrisas o Carenado": {
+      idAsistente: "ASI_CUPULA_PARABRISAS",
 
-  document
-    .querySelectorAll(".reform-card")
-    .forEach(card => {
-      const input = card.querySelector(
-        'input[type="checkbox"]'
-      );
+      titulo: "Cúpula, parabrisas o carenado",
 
-      card.classList.toggle(
-        "selected",
-        Boolean(input && input.checked)
-      );
+      texto:
+        "Responde estas preguntas para comprobar si la instalación tiene consideración de reforma.",
+
+      preguntas: [
+        {
+          idPregunta: "TIPO_ELEMENTO",
+          orden: 1,
+          texto: "¿Qué tipo de elemento has instalado?",
+          tipoRespuesta: "SELECT",
+          obligatoria: true,
+          opciones: [
+            {
+              valor: "CUPULA",
+              texto: "Cúpula"
+            },
+            {
+              valor: "PARABRISAS",
+              texto: "Parabrisas"
+            },
+            {
+              valor: "CARENADO",
+              texto: "Carenado"
+            }
+          ]
+        },
+
+        {
+          idPregunta: "SUPERA_ALTURA",
+          orden: 2,
+          texto:
+            "¿La cúpula supera la altura máxima original de la motocicleta?",
+          tipoRespuesta: "BOTONES",
+          obligatoria: true,
+          condicionVisibilidad: {
+            pregunta: "TIPO_ELEMENTO",
+            operador: "IGUAL",
+            valor: "CUPULA"
+          },
+          opciones: [
+            {
+              valor: "SI",
+              texto: "Sí"
+            },
+            {
+              valor: "NO",
+              texto: "No"
+            }
+          ]
+        },
+
+        {
+          idPregunta: "DESMONTABLE_SIN_HERRAMIENTAS",
+          orden: 3,
+          texto:
+            "¿La cúpula puede desmontarse sin utilizar herramientas?",
+          tipoRespuesta: "BOTONES",
+          obligatoria: true,
+          condicionVisibilidad: {
+            pregunta: "TIPO_ELEMENTO",
+            operador: "IGUAL",
+            valor: "CUPULA"
+          },
+          opciones: [
+            {
+              valor: "SI",
+              texto: "Sí"
+            },
+            {
+              valor: "NO",
+              texto: "No"
+            }
+          ]
+        }
+      ],
+
+      evaluar: function (respuestas) {
+        const tipo = respuestas.TIPO_ELEMENTO;
+
+        if (!tipo) {
+          return null;
+        }
+
+        if (tipo === "PARABRISAS" || tipo === "CARENADO") {
+          return {
+            esReforma: true,
+            titulo:
+              "Esta instalación tiene consideración de reforma",
+            texto:
+              "La instalación se incluirá en tu solicitud de homologación."
+          };
+        }
+
+        if (tipo === "CUPULA") {
+          const altura = respuestas.SUPERA_ALTURA;
+          const desmontable =
+            respuestas.DESMONTABLE_SIN_HERRAMIENTAS;
+
+          if (!altura || !desmontable) {
+            return null;
+          }
+
+          const esReforma =
+            altura === "SI" &&
+            desmontable === "NO";
+
+          if (esReforma) {
+            return {
+              esReforma: true,
+              titulo:
+                "Esta instalación tiene consideración de reforma",
+              texto:
+                "Según las características indicadas, la instalación se incluirá en tu solicitud de homologación."
+            };
+          }
+
+          return {
+            esReforma: false,
+            titulo:
+              "Esta instalación no tiene consideración de reforma",
+            texto:
+              "Según las características indicadas, no es necesario incluir esta cúpula en la solicitud de homologación."
+          };
+        }
+
+        return null;
+      }
+    }
+  };
+
+  function getSelectedReformas() {
+    return Array.from(
+      document.querySelectorAll(
+        'input[name="reformas"]:checked'
+      )
+    ).map(function (input) {
+      return input.value;
     });
-
-  counter.textContent =
-    reformas.length === 1
-      ? "1 reforma seleccionada"
-      : reformas.length + " reformas seleccionadas";
-
-  const nombre = document
-    .getElementById("nombre")
-    .value
-    .trim();
-
-  const telefono = document
-    .getElementById("telefono")
-    .value
-    .trim();
-
-  const email = document
-    .getElementById("email")
-    .value
-    .trim();
-
-  const marca = document
-    .getElementById("marca")
-    .value
-    .trim();
-
-  const modelo = document
-    .getElementById("modelo")
-    .value
-    .trim();
-
-  const anio = document
-    .getElementById("anio")
-    .value
-    .trim();
-
-  const formularioCompleto =
-    nombre !== "" &&
-    telefono !== "" &&
-    email !== "" &&
-    marca !== "" &&
-    modelo !== "" &&
-    anio !== "" &&
-    reformas.length > 0;
-
-  if (formularioCompleto) {
-    submitBtn.disabled = false;
-    submitBtn.removeAttribute("disabled");
-  } else {
-    submitBtn.disabled = true;
-    submitBtn.setAttribute(
-      "disabled",
-      "disabled"
-    );
   }
-}
 
-      function abrirModalCupula(){
+  function refreshForm() {
+    const reformas = getSelectedReformas();
 
-    renderizarPrueba();
+    document
+      .querySelectorAll(".reform-card")
+      .forEach(function (card) {
+        const input = card.querySelector(
+          'input[type="checkbox"]'
+        );
+
+        card.classList.toggle(
+          "selected",
+          Boolean(input && input.checked)
+        );
+      });
+
+    counter.textContent =
+      reformas.length === 1
+        ? "1 reforma seleccionada"
+        : reformas.length + " reformas seleccionadas";
+
+    const formularioCompleto =
+      requiredFields.every(function (id) {
+        const elemento = document.getElementById(id);
+
+        return (
+          elemento &&
+          elemento.value.trim() !== ""
+        );
+      }) && reformas.length > 0;
+
+    submitBtn.disabled = !formularioCompleto;
+  }
+
+  function obtenerAsistentePorReforma(input) {
+    if (!input) {
+      return null;
+    }
+
+    return ASISTENTES[input.value] || null;
+  }
+
+  function abrirAsistente(input) {
+    const asistente = obtenerAsistentePorReforma(input);
+
+    if (!asistente) {
+      return;
+    }
+
+    asistenteActual = asistente;
+    reformaActualInput = input;
+    respuestasAsistente = {};
+    resultadoAsistente = null;
+
+    const titulo =
+      document.getElementById("modalAsistenteTitulo");
+
+    const texto =
+      document.getElementById("modalAsistenteTexto");
+
+    titulo.textContent =
+      asistente.titulo || "Antes de continuar";
+
+    texto.textContent =
+      asistente.texto ||
+      "Necesitamos comprobar si la instalación tiene consideración de reforma.";
 
     modalAsistentePasoPreguntas.style.display = "block";
     modalAsistenteResultado.classList.remove("open");
 
-    resultadoAsistenteEsReforma = true;
+    renderizarAsistente();
+
+    modalAsistente.classList.add("open");
+    modalAsistente.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+  }
+
+  function cerrarAsistente() {
+    modalAsistente.classList.remove("open");
+
+    modalAsistente.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    contenidoAsistente.innerHTML = "";
+
+    asistenteActual = null;
+    reformaActualInput = null;
     respuestasAsistente = {};
+    resultadoAsistente = null;
 
-    modalCupula.classList.add("open");
-    modalCupula.setAttribute("aria-hidden","false");
+    refreshForm();
+  }
 
-}
-     function renderizarPrueba(){
+  function cancelarAsistente() {
+    if (reformaActualInput) {
+      reformaActualInput.checked = false;
+    }
 
-    contenidoAsistente.innerHTML = `
+    cerrarAsistente();
+  }
 
-        <div class="modal-cupula-field">
+  function preguntaVisible(pregunta) {
+    const condicion =
+      pregunta.condicionVisibilidad;
 
-            <label>¿Qué elemento has instalado?</label>
+    if (!condicion) {
+      return true;
+    }
 
-            <select id="pregunta1">
+    const respuestaDependencia =
+      respuestasAsistente[condicion.pregunta];
 
-                <option value="">Selecciona una opción</option>
-                <option value="CUPULA">Cúpula</option>
-                <option value="PARABRISAS">Parabrisas</option>
-                <option value="CARENADO">Carenado</option>
+    if (condicion.operador === "IGUAL") {
+      return (
+        respuestaDependencia === condicion.valor
+      );
+    }
 
-            </select>
+    if (condicion.operador === "DISTINTO") {
+      return (
+        respuestaDependencia !== condicion.valor
+      );
+    }
 
+    return true;
+  }
+
+  function escaparHtml(valor) {
+    return String(valor)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function renderizarAsistente() {
+    if (!asistenteActual) {
+      return;
+    }
+
+    const preguntas =
+      [...asistenteActual.preguntas]
+        .sort(function (a, b) {
+          return Number(a.orden) - Number(b.orden);
+        })
+        .filter(preguntaVisible);
+
+    contenidoAsistente.innerHTML =
+      preguntas
+        .map(renderizarPregunta)
+        .join("");
+
+    comprobarResultadoAsistente();
+  }
+
+  function renderizarPregunta(pregunta) {
+    const id = escaparHtml(pregunta.idPregunta);
+    const texto = escaparHtml(pregunta.texto);
+
+    if (pregunta.tipoRespuesta === "SELECT") {
+      const opciones = pregunta.opciones
+        .map(function (opcion) {
+          const seleccionada =
+            respuestasAsistente[pregunta.idPregunta] ===
+            opcion.valor;
+
+          return `
+            <option
+              value="${escaparHtml(opcion.valor)}"
+              ${seleccionada ? "selected" : ""}
+            >
+              ${escaparHtml(opcion.texto)}
+            </option>
+          `;
+        })
+        .join("");
+
+      return `
+        <div
+          class="modal-cupula-field"
+          data-pregunta="${id}"
+        >
+          <label for="asistente_${id}">
+            ${texto}
+          </label>
+
+          <select
+            id="asistente_${id}"
+            data-id-pregunta="${id}"
+          >
+            <option value="">
+              Selecciona una opción
+            </option>
+
+            ${opciones}
+          </select>
         </div>
+      `;
+    }
 
-        <div class="modal-cupula-field">
+    if (pregunta.tipoRespuesta === "BOTONES") {
+      const botones = pregunta.opciones
+        .map(function (opcion) {
+          const seleccionada =
+            respuestasAsistente[pregunta.idPregunta] ===
+            opcion.valor;
 
-            <label>¿La instalación supera la altura máxima?</label>
+          return `
+            <button
+              type="button"
+              class="modal-option ${
+                seleccionada ? "selected" : ""
+              }"
+              data-id-pregunta="${id}"
+              data-valor="${escaparHtml(opcion.valor)}"
+            >
+              ${escaparHtml(opcion.texto)}
+            </button>
+          `;
+        })
+        .join("");
 
-            <div class="modal-cupula-options">
+      return `
+        <div
+          class="modal-cupula-field"
+          data-pregunta="${id}"
+        >
+          <label>
+            ${texto}
+          </label>
 
-                <button type="button" class="modal-option">Sí</button>
-
-                <button type="button" class="modal-option">No</button>
-
-            </div>
-
+          <div class="modal-cupula-options">
+            ${botones}
+          </div>
         </div>
+      `;
+    }
 
-    `;
+    return "";
+  }
 
-} 
+  function registrarRespuesta(
+    idPregunta,
+    valor
+  ) {
+    respuestasAsistente[idPregunta] = valor;
 
-      function mostrarResultadoCupula(esReforma){
-        cupulaEsReforma = esReforma;
-        modalCupulaPasoPreguntas.style.display = "none";
-        modalCupulaResultado.classList.add("open");
+    limpiarRespuestasOcultas();
 
-        if (esReforma) {
-          modalCupulaResultadoTitulo.textContent = "Esta instalación tiene consideración de reforma";
-          modalCupulaResultadoTexto.textContent = "Según las características indicadas, la instalación se incluirá en tu solicitud de homologación.";
-        } else {
-          modalCupulaResultadoTitulo.textContent = "Esta instalación no tiene consideración de reforma";
-          modalCupulaResultadoTexto.textContent = "Según las características indicadas, la cúpula instalada no tiene consideración de reforma y no es necesario incluirla en tu solicitud de homologación. Esta conclusión se refiere únicamente a la instalación de la cúpula indicada.";
+    renderizarAsistente();
+  }
+
+  function limpiarRespuestasOcultas() {
+    if (!asistenteActual) {
+      return;
+    }
+
+    asistenteActual.preguntas.forEach(
+      function (pregunta) {
+        if (
+          !preguntaVisible(pregunta) &&
+          Object.prototype.hasOwnProperty.call(
+            respuestasAsistente,
+            pregunta.idPregunta
+          )
+        ) {
+          delete respuestasAsistente[
+            pregunta.idPregunta
+          ];
         }
       }
+    );
+  }
 
-      function comprobarResultadoCupula(){
-        if (!respuestaAltura || !respuestaDesmontable) return;
+  function respuestasObligatoriasCompletas() {
+    if (!asistenteActual) {
+      return false;
+    }
 
-        const esReforma =
-          respuestaAltura === "SI" &&
-          respuestaDesmontable === "NO";
+    return asistenteActual.preguntas
+      .filter(preguntaVisible)
+      .filter(function (pregunta) {
+        return pregunta.obligatoria;
+      })
+      .every(function (pregunta) {
+        const valor =
+          respuestasAsistente[pregunta.idPregunta];
 
-        mostrarResultadoCupula(esReforma);
-      }
+        return (
+          valor !== undefined &&
+          valor !== null &&
+          String(valor).trim() !== ""
+        );
+      });
+  }
 
-      document.querySelectorAll(".reform-card").forEach(card => {
-        card.addEventListener("click", function(e){
-          e.preventDefault();
+  function comprobarResultadoAsistente() {
+    if (!asistenteActual) {
+      return;
+    }
 
-          const input = card.querySelector('input[type="checkbox"]');
-          if (!input) return;
+    if (!respuestasObligatoriasCompletas()) {
+      return;
+    }
 
-          const seVaASeleccionar = !input.checked;
-          input.checked = seVaASeleccionar;
-          refreshForm();
+    const resultado =
+      asistenteActual.evaluar(
+        respuestasAsistente
+      );
 
-          if (input.id === "cupulaCarenadoCheck" && seVaASeleccionar) {
-            abrirModalCupula();
+    if (!resultado) {
+      return;
+    }
+
+    mostrarResultadoAsistente(resultado);
+  }
+
+  function mostrarResultadoAsistente(resultado) {
+    resultadoAsistente = resultado;
+
+    modalAsistentePasoPreguntas.style.display =
+      "none";
+
+    modalAsistenteResultado.classList.add("open");
+
+    modalAsistenteResultadoTitulo.textContent =
+      resultado.titulo;
+
+    modalAsistenteResultadoTexto.textContent =
+      resultado.texto;
+
+    cerrarModalAsistente.textContent =
+      resultado.esReforma
+        ? "Continuar"
+        : "Cerrar";
+  }
+
+  document
+    .querySelectorAll(".reform-card")
+    .forEach(function (card) {
+      card.addEventListener(
+        "click",
+        function (event) {
+          event.preventDefault();
+
+          const input = card.querySelector(
+            'input[type="checkbox"]'
+          );
+
+          if (!input) {
+            return;
           }
-        });
-      });
 
-      tipoElementoCupula.addEventListener("change", function(){
-        const tipo = tipoElementoCupula.value;
+          const seVaASeleccionar =
+            !input.checked;
 
-        respuestaAltura = "";
-        respuestaDesmontable = "";
+          input.checked =
+            seVaASeleccionar;
 
-        document.querySelectorAll(".modal-option").forEach(button => {
-          button.classList.remove("selected");
-        });
+          refreshForm();
 
-        if (!tipo) {
-          preguntasCupula.classList.remove("open");
-          return;
+          if (!seVaASeleccionar) {
+            return;
+          }
+
+          const asistente =
+            obtenerAsistentePorReforma(input);
+
+          if (asistente) {
+            abrirAsistente(input);
+          }
         }
+      );
+    });
 
-        if (tipo === "CUPULA") {
-          preguntasCupula.classList.add("open");
-          return;
-        }
-
-        preguntasCupula.classList.remove("open");
-        mostrarResultadoCupula(true);
-      });
-
-      document.querySelectorAll(".modal-option").forEach(button => {
-        button.addEventListener("click", function(){
-          const grupo = button.dataset.grupo;
-          const valor = button.dataset.valor;
-
-          document.querySelectorAll('.modal-option[data-grupo="' + grupo + '"]')
-            .forEach(opcion => opcion.classList.remove("selected"));
-
-          button.classList.add("selected");
-
-          if (grupo === "altura") respuestaAltura = valor;
-          if (grupo === "desmontable") respuestaDesmontable = valor;
-
-          comprobarResultadoCupula();
-        });
-      });
-
-      cerrarModalCupula.addEventListener("click", function(){
-        if (!cupulaEsReforma) {
-          cupulaCheck.checked = false;
-        }
-
-        modalCupula.classList.remove("open");
-        modalCupula.setAttribute("aria-hidden", "true");
-        refreshForm();
-      });
-
-      requiredFields.forEach(id => {
-  const el = document.getElementById(id);
-
-  if (!el) return;
-
-  el.addEventListener(
-    "input",
-    refreshForm
-  );
-
-  el.addEventListener(
+  contenidoAsistente.addEventListener(
     "change",
-    refreshForm
+    function (event) {
+      const elemento = event.target;
+
+      if (
+        elemento.matches(
+          "select[data-id-pregunta]"
+        )
+      ) {
+        registrarRespuesta(
+          elemento.dataset.idPregunta,
+          elemento.value
+        );
+      }
+    }
   );
-});
 
-      form.addEventListener("submit", async function(e){
-        e.preventDefault();
+  contenidoAsistente.addEventListener(
+    "click",
+    function (event) {
+      const boton = event.target.closest(
+        "button[data-id-pregunta]"
+      );
 
-        const reformas = getSelectedReformas();
-        if (reformas.length === 0) {
-          refreshForm();
-          return;
-        }
+      if (!boton) {
+        return;
+      }
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Enviando...";
-        submitBtn.style.opacity = "0.7";
+      registrarRespuesta(
+        boton.dataset.idPregunta,
+        boton.dataset.valor
+      );
+    }
+  );
 
-        const datos = {
-          accion: "FORMULARIO_1_WEB",
-          nombre: document.getElementById("nombre").value.trim(),
-          telefono: document.getElementById("telefono").value.trim(),
-          email: document.getElementById("email").value.trim(),
-          marca: document.getElementById("marca").value.trim(),
-          modelo: document.getElementById("modelo").value.trim(),
-          anio: document.getElementById("anio").value.trim(),
-          reformas: reformas,
-          otrasReformas: "",
-          revisionManual: "NO",
-          origen: "WEB"
-        };
+  cerrarModalAsistente.addEventListener(
+    "click",
+    function () {
+      if (
+        resultadoAsistente &&
+        resultadoAsistente.esReforma === false &&
+        reformaActualInput
+      ) {
+        reformaActualInput.checked = false;
+      }
 
-        try {
-          await fetch(URL_WEBAPP, {
-            method: "POST",
-            mode: "no-cors",
-            headers: {"Content-Type": "text/plain"},
-            body: JSON.stringify(datos)
-          });
+      cerrarAsistente();
+    }
+  );
 
-          form.classList.add("hidden");
-          successScreen.classList.add("open");
-          successScreen.scrollIntoView({behavior:"smooth", block:"center"});
+  const fondoModal =
+    modalAsistente.querySelector(
+      ".modal-cupula-backdrop"
+    );
 
-        } catch (error) {
-          submitBtn.textContent = "Solicitar presupuesto gratuito";
-          submitBtn.style.opacity = "1";
-          refreshForm();
+  fondoModal.addEventListener(
+    "click",
+    cancelarAsistente
+  );
 
-          alert("No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta con info@ingenierocustom.es");
-          console.error(error);
-        }
-      });
+  document.addEventListener(
+    "keydown",
+    function (event) {
+      if (
+        event.key === "Escape" &&
+        modalAsistente.classList.contains("open")
+      ) {
+        cancelarAsistente();
+      }
+    }
+  );
 
-      refreshForm();
-    })();
-  </script>
+  requiredFields.forEach(function (id) {
+    const elemento =
+      document.getElementById(id);
+
+    if (!elemento) {
+      return;
+    }
+
+    elemento.addEventListener(
+      "input",
+      refreshForm
+    );
+
+    elemento.addEventListener(
+      "change",
+      refreshForm
+    );
+  });
+
+  form.addEventListener(
+    "submit",
+    async function (event) {
+      event.preventDefault();
+
+      const reformas =
+        getSelectedReformas();
+
+      if (reformas.length === 0) {
+        refreshForm();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
+      submitBtn.style.opacity = "0.7";
+
+      const datos = {
+        accion: "FORMULARIO_1_WEB",
+
+        nombre:
+          document
+            .getElementById("nombre")
+            .value
+            .trim(),
+
+        telefono:
+          document
+            .getElementById("telefono")
+            .value
+            .trim(),
+
+        email:
+          document
+            .getElementById("email")
+            .value
+            .trim(),
+
+        marca:
+          document
+            .getElementById("marca")
+            .value
+            .trim(),
+
+        modelo:
+          document
+            .getElementById("modelo")
+            .value
+            .trim(),
+
+        anio:
+          document
+            .getElementById("anio")
+            .value
+            .trim(),
+
+        reformas: reformas,
+        otrasReformas: "",
+        revisionManual: "NO",
+        origen: "WEB"
+      };
+
+      try {
+        await fetch(URL_WEBAPP, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain"
+          },
+          body: JSON.stringify(datos)
+        });
+
+        form.classList.add("hidden");
+        successScreen.classList.add("open");
+
+        successScreen.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      } catch (error) {
+        submitBtn.textContent =
+          "Solicitar presupuesto gratuito";
+
+        submitBtn.style.opacity = "1";
+
+        refreshForm();
+
+        alert(
+          "No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta con info@ingenierocustom.es"
+        );
+
+        console.error(error);
+      }
+    }
+  );
+
+  refreshForm();
+})();
+</script>
+ 
 </body>
 </html>
