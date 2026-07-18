@@ -991,6 +991,15 @@ async function cargarAsistentes() {
     );
 
     const datos = await respuesta.json();
+    console.log(
+      "RAW CÚPULA:",
+      JSON.stringify(
+        datos.asistentes?.REF_CUPULA_CARENADO?.preguntas,
+        null,
+        2
+      )
+    );
+    
 
     if (!datos.ok) {
       throw new Error(
