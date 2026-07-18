@@ -1713,7 +1713,9 @@ async function cargarAsistentes() {
     }
   );
 
+  cargarAsistentes().then(function () {
   refreshForm();
+});
 })();
 </script>
  
