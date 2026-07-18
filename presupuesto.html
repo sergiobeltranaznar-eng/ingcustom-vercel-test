@@ -961,6 +961,29 @@
    */
   let ASISTENTES = {};
 
+  async function evaluarAsistenteServidor(idReforma, respuestas) {
+
+  const respuesta = await fetch(URL_WEBAPP, {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    body: JSON.stringify({
+      accion: "EVALUAR_ASISTENTE",
+      idReforma: idReforma,
+      respuestas: respuestas
+    })
+  });
+
+  const datos = await respuesta.json();
+
+  if (!datos.ok) {
+    throw new Error("Error evaluando asistente");
+  }
+
+  return datos.resultado;
+}
+
   function getSelectedReformas() {
     return Array.from(
       document.querySelectorAll(
@@ -1278,7 +1301,7 @@
       });
   }
 
-  function comprobarResultadoAsistente() {
+  async function comprobarResultadoAsistente() {
     if (!asistenteActual) {
       return;
     }
@@ -1287,16 +1310,25 @@
       return;
     }
 
-    const resultado =
-      asistenteActual.evaluar(
-        respuestasAsistente
-      );
+    try {
 
-    if (!resultado) {
-      return;
-    }
+  const resultado =
+    await evaluarAsistenteServidor(
+      asistenteActual.idReforma,
+      respuestasAsistente
+    );
 
-    mostrarResultadoAsistente(resultado);
+  if (!resultado) {
+    return;
+  }
+
+  mostrarResultadoAsistente(resultado);
+
+} catch (error) {
+
+  console.error(error);
+
+}
   }
 
   function mostrarResultadoAsistente(resultado) {
