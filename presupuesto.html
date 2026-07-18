@@ -985,118 +985,202 @@
 }
 
 async function cargarAsistentes() {
-  try {
-    const respuesta = await fetch(
-      URL_WEBAPP + "?action=OBTENER_ASISTENTES"
-    );
-
-    const datos = await respuesta.json();
-    console.log(
-      "RAW CÚPULA:",
-      JSON.stringify(
-        datos.asistentes?.REF_CUPULA_CARENADO?.preguntas,
-        null,
-        2
-      )
-    );
-    
-
-    if (!datos.ok) {
-      throw new Error(
-        datos.error || "No se pudieron cargar los asistentes"
+    try {
+      const respuesta = await fetch(
+        URL_WEBAPP + "?action=OBTENER_ASISTENTES"
       );
-    }
 
-    ASISTENTES = {};
+      const datos = await respuesta.json();
 
-    Object.entries(datos.asistentes || {}).forEach(
-      function ([idReforma, datosAsistente]) {
-        const configuracion =
-          datosAsistente.configuracion || {};
+      if (!datos.ok) {
+        throw new Error(
+          datos.error || "No se pudieron cargar los asistentes"
+        );
+      }
 
-        ASISTENTES[idReforma] = {
-          idReforma: idReforma,
+      ASISTENTES = {};
 
-          titulo:
-            configuracion.titulo ||
-            configuracion.TITULO ||
-            "Antes de continuar",
+      Object.entries(datos.asistentes || {}).forEach(
+        function ([idReforma, datosAsistente]) {
+          const configuracion =
+            datosAsistente.configuracion || {};
 
-          texto:
-            configuracion.texto ||
-            configuracion.TEXTO ||
-            configuracion.descripcion ||
-            configuracion.DESCRIPCION ||
-            "Necesitamos comprobar si la instalación tiene consideración de reforma.",
+          ASISTENTES[idReforma] = {
+            idReforma:
+              datosAsistente.idReforma ||
+              datosAsistente.ID_REFORMA ||
+              idReforma,
 
-          preguntas:
-            (datosAsistente.preguntas || []).map(
-              function (pregunta) {
-                return {
-                  idPregunta:
-                    pregunta.idPregunta ||
-                    pregunta.ID_PREGUNTA,
+            titulo:
+              datosAsistente.titulo ||
+              datosAsistente.TITULO ||
+              configuracion.titulo ||
+              configuracion.TITULO ||
+              "Antes de continuar",
 
-                  texto:
-                    pregunta.texto ||
-                    pregunta.TEXTO ||
-                    pregunta.pregunta ||
-                    pregunta.PREGUNTA,
+            texto:
+              datosAsistente.texto ||
+              datosAsistente.TEXTO ||
+              datosAsistente.descripcion ||
+              datosAsistente.DESCRIPCION ||
+              configuracion.texto ||
+              configuracion.TEXTO ||
+              configuracion.descripcion ||
+              configuracion.DESCRIPCION ||
+              "Necesitamos comprobar si la instalación tiene consideración de reforma.",
 
-                  tipoRespuesta: String(
+            preguntas:
+              (datosAsistente.preguntas || [])
+                .map(function (pregunta) {
+                  let tipo = String(
                     pregunta.tipoRespuesta ||
                     pregunta.TIPO_RESPUESTA ||
                     ""
-                  ).toUpperCase(),
+                  )
+                    .trim()
+                    .toUpperCase();
 
-                  opciones:
-                    normalizarOpcionesAsistente(
-                      pregunta.opciones ||
-                      pregunta.OPCIONES ||
-                      []
+                  if (tipo === "SELECCION") {
+                    tipo = "SELECT";
+                  }
+
+                  if (tipo === "SI_NO") {
+                    tipo = "BOTONES";
+                  }
+
+                  const opcionesOriginales =
+                    pregunta.opciones !== undefined
+                      ? pregunta.opciones
+                      : pregunta.OPCIONES;
+
+                  const opciones = Array.isArray(opcionesOriginales)
+                    ? opcionesOriginales
+                    : String(opcionesOriginales || "")
+                        .split("|")
+                        .map(function (opcion) {
+                          return opcion.trim();
+                        })
+                        .filter(Boolean);
+
+                  return {
+                    idPregunta:
+                      pregunta.idPregunta ||
+                      pregunta.ID_PREGUNTA ||
+                      pregunta.variable ||
+                      pregunta.VARIABLE ||
+                      "",
+
+                    texto:
+                      pregunta.texto ||
+                      pregunta.TEXTO_PREGUNTA ||
+                      pregunta.TEXTO ||
+                      pregunta.PREGUNTA ||
+                      "",
+
+                    tipoRespuesta: tipo,
+
+                    opciones:
+                      normalizarOpcionesAsistente(opciones),
+
+                    obligatoria:
+                      pregunta.obligatoria === true ||
+                      esValorSi(
+                        pregunta.obligatoria !== undefined
+                          ? pregunta.obligatoria
+                          : pregunta.OBLIGATORIA
+                      ),
+
+                    condicionVisibilidad:
+                      normalizarCondicionVisibilidad(
+                        pregunta.condicionVisibilidad !== undefined
+                          ? pregunta.condicionVisibilidad
+                          : pregunta.CONDICION_VISIBILIDAD
+                      ),
+
+                    orden: Number(
+                      pregunta.orden ||
+                      pregunta.ORDEN ||
+                      0
                     ),
 
-                  obligatoria:
-                    pregunta.obligatoria === true ||
-                    String(
-                      pregunta.obligatoria ||
-                      pregunta.OBLIGATORIA ||
+                    ayuda:
+                      pregunta.ayuda ||
+                      pregunta.AYUDA ||
                       ""
-                    ).toUpperCase() === "SI",
+                  };
+                })
+                .filter(function (pregunta) {
+                  return Boolean(pregunta.idPregunta);
+                })
+          };
+        }
+      );
 
-                  condicionVisibilidad:
-                    pregunta.condicionVisibilidad ||
-                    pregunta.CONDICION_VISIBILIDAD ||
-                    null,
+      console.log("Asistentes cargados:", ASISTENTES);
 
-                  orden: Number(
-                    pregunta.orden ||
-                    pregunta.ORDEN ||
-                    0
-                  )
-                };
-              }
-            )
-        };
-      }
-    );
-
-    console.log("===== ASISTENTES =====");
-console.dir(ASISTENTES);
-
-console.log("===== CUPULA =====");
-console.dir(ASISTENTES["REF_CUPULA_CARENADO"]);
-
-console.log("===== PREGUNTAS =====");
-console.dir(ASISTENTES["REF_CUPULA_CARENADO"].preguntas);
-
-  } catch (error) {
-    console.error(
-      "Error cargando asistentes:",
-      error
-    );
+    } catch (error) {
+      console.error(
+        "Error cargando asistentes:",
+        error
+      );
+    }
   }
-}
+
+  function esValorSi(valor) {
+    return String(valor || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") === "si";
+  }
+
+  function normalizarCondicionVisibilidad(condicion) {
+    if (!condicion) {
+      return null;
+    }
+
+    if (typeof condicion === "object") {
+      return {
+        pregunta:
+          condicion.pregunta ||
+          condicion.PREGUNTA ||
+          condicion.idPregunta ||
+          condicion.ID_PREGUNTA ||
+          "",
+
+        operador: String(
+          condicion.operador ||
+          condicion.OPERADOR ||
+          "IGUAL"
+        ).toUpperCase(),
+
+        valor:
+          condicion.valor !== undefined
+            ? condicion.valor
+            : condicion.VALOR
+      };
+    }
+
+    const texto = String(condicion).trim();
+
+    if (!texto) {
+      return null;
+    }
+
+    const operadorDistinto = texto.includes("!=");
+    const separador = operadorDistinto ? "!=" : "=";
+    const posicion = texto.indexOf(separador);
+
+    if (posicion === -1) {
+      return null;
+    }
+
+    return {
+      pregunta: texto.slice(0, posicion).trim(),
+      operador: operadorDistinto ? "DISTINTO" : "IGUAL",
+      valor: texto.slice(posicion + separador.length).trim()
+    };
+  }
 
   function normalizarOpcionesAsistente(opciones) {
   if (!Array.isArray(opciones)) {
@@ -1481,7 +1565,38 @@ console.dir(ASISTENTES["REF_CUPULA_CARENADO"].preguntas);
   }
 
   function mostrarResultadoAsistente(resultado) {
-    resultadoAsistente = resultado;
+    const esReformaOriginal =
+      resultado.esReforma !== undefined
+        ? resultado.esReforma
+        : resultado.ES_REFORMA;
+
+    const esReforma =
+      esReformaOriginal === true ||
+      esValorSi(esReformaOriginal);
+
+    resultadoAsistente = {
+      esReforma: esReforma,
+
+      titulo:
+        resultado.titulo ||
+        resultado.TITULO ||
+        resultado.tituloResultado ||
+        resultado.TITULO_RESULTADO ||
+        (esReforma
+          ? "Esta instalación tiene consideración de reforma"
+          : "Esta instalación no tiene consideración de reforma"),
+
+      texto:
+        resultado.texto ||
+        resultado.TEXTO ||
+        resultado.textoResultado ||
+        resultado.TEXTO_RESULTADO ||
+        resultado.mensaje ||
+        resultado.MENSAJE ||
+        ""
+    };
+
+    console.log("Resultado asistente:", resultado);
 
     modalAsistentePasoPreguntas.style.display =
       "none";
@@ -1489,13 +1604,13 @@ console.dir(ASISTENTES["REF_CUPULA_CARENADO"].preguntas);
     modalAsistenteResultado.classList.add("open");
 
     modalAsistenteResultadoTitulo.textContent =
-      resultado.titulo;
+      resultadoAsistente.titulo;
 
     modalAsistenteResultadoTexto.textContent =
-      resultado.texto;
+      resultadoAsistente.texto;
 
     cerrarModalAsistente.textContent =
-      resultado.esReforma
+      resultadoAsistente.esReforma
         ? "Continuar"
         : "Cerrar";
   }
