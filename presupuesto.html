@@ -427,7 +427,6 @@
     .footer-brand img{width:54px}
     .contact-link{color:#ffd66d;font-weight:800}
 
-
     .category-title{
       margin:32px auto 18px;
       color:var(--accent);
@@ -756,8 +755,8 @@
     data-id-reforma="REF_SISSY_RESPALDO">
   <span class="reform-title">Sissy Bar / Respaldo</span>
 </label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de silenciadores de Escape (Sólo Colas de Escape)"><span class="reform-title">Colas de escape</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Reducción del Número de Plazas"><span class="reform-title">Modificación del número de plazas</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de silenciadores de Escape (Sólo Colas de Escape)" data-id-reforma="REF_ESCAPE"><span class="reform-title">Colas de escape</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Modificación del Número de Plazas" data-id-reforma="REF_MODIFICACION_PLAZAS"><span class="reform-title">Modificación de plazas</span></label>
               <label class="reform-card"><input type="checkbox" name="reformas" value="Instalación de Mandos Avanzados"><span class="reform-title">Mandos avanzados</span></label>
               <label class="reform-card">
   <input
@@ -776,7 +775,7 @@
             </p>
 
             <div class="reform-grid">
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución del Sistema de Escape (Tubo de Escape Completo)"><span class="reform-title">Escape completo</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución del Sistema de Escape (Tubo de Escape Completo)" data-id-reforma="REF_ESCAPE"><span class="reform-title">Escape completo</span></label>
               <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de Amortiguadores Traseros"><span class="reform-title">Amortiguadores</span></label>
               <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de Horquillas y/o Tijas"><span class="reform-title">Horquillas / Tijas</span></label>
               <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución del sistema de frenos"><span class="reform-title">Frenos</span></label>
@@ -784,8 +783,8 @@
               <label class="reform-card"><input type="checkbox" name="reformas" value="Modificación o Recorte de Subchasis"><span class="reform-title">Subchasis</span></label>
               <label class="reform-card"><input type="checkbox" name="reformas" value="Aumento de Cilindrada del Motor"><span class="reform-title">Aumento de cilindrada</span></label>
               <label class="reform-card"><input type="checkbox" name="reformas" value="Modificación de la Transmisión Secundaria"><span class="reform-title">Transmisión secundaria</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución o Modificación de Guardabarros"><span class="reform-title">Guardabarros</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución o Modificación del Depósito de Combustible"><span class="reform-title">Depósito de combustible</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución o Modificación de Guardabarros" data-id-reforma="REF_GUARDABARROS"><span class="reform-title">Guardabarros</span></label>
+              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución o Modificación del Depósito de Combustible" data-id-reforma="REF_DEPOSITO_COMBUSTIBLE"><span class="reform-title">Depósito de combustible</span></label>
             </div>
 
             <div class="special-project">
@@ -910,7 +909,7 @@
       }
     })();
   </script>
-  <script>
+<script>
 (function () {
   const form = document.getElementById("presupuestoForm");
   const counter = document.getElementById("counter");
@@ -951,35 +950,31 @@
   let reformaActualInput = null;
   let respuestasAsistente = {};
   let resultadoAsistente = null;
-
-  // Asistentes cargados dinámicamente desde Google Apps Script.
   let ASISTENTES = {};
 
   async function evaluarAsistenteServidor(idReforma, respuestas) {
     const respuesta = await fetch(URL_WEBAPP, {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain"
-      },
-      body: JSON.stringify({
-        accion: "EVALUAR_ASISTENTE",
-        idReforma: idReforma,
-        respuestas: respuestas
-      })
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    body: JSON.stringify({
+      accion: "EVALUAR_ASISTENTE",
+      idReforma: idReforma,
+      respuestas: respuestas
+    })
     });
 
     const datos = await respuesta.json();
 
     if (!datos.ok) {
-      throw new Error(
-        datos.error || "Error evaluando asistente"
-      );
+      throw new Error("Error evaluando asistente");
     }
 
     return datos.resultado;
   }
 
-async function cargarAsistentes() {
+  async function cargarAsistentes() {
     try {
       const respuesta = await fetch(
         URL_WEBAPP + "?action=OBTENER_ASISTENTES"
@@ -1111,6 +1106,8 @@ async function cargarAsistentes() {
         }
       );
 
+      console.log("Asistentes cargados:", ASISTENTES);
+
     } catch (error) {
       console.error(
         "Error cargando asistentes:",
@@ -1181,33 +1178,33 @@ async function cargarAsistentes() {
     }
 
     return opciones.map(function (opcion) {
-      if (
-        opcion &&
-        typeof opcion === "object"
-      ) {
-        return {
-          valor:
-            opcion.valor ??
-            opcion.VALOR ??
-            opcion.texto ??
-            opcion.TEXTO ??
-            "",
-
-          texto:
-            opcion.texto ??
-            opcion.TEXTO ??
-            opcion.valor ??
-            opcion.VALOR ??
-            ""
-        };
-      }
-
+    if (
+      opcion &&
+      typeof opcion === "object"
+    ) {
       return {
-        valor: String(opcion),
-        texto: String(opcion)
+        valor:
+          opcion.valor ??
+          opcion.VALOR ??
+          opcion.texto ??
+          opcion.TEXTO ??
+          "",
+
+        texto:
+          opcion.texto ??
+          opcion.TEXTO ??
+          opcion.valor ??
+          opcion.VALOR ??
+          ""
       };
-    });
-  }
+    }
+
+    return {
+      valor: String(opcion),
+      texto: String(opcion)
+    };
+  });
+}
   
   
   function getSelectedReformas() {
@@ -1548,7 +1545,6 @@ async function cargarAsistentes() {
       }
 
       mostrarResultadoAsistente(resultado);
-
     } catch (error) {
       console.error(error);
     }
@@ -1585,6 +1581,8 @@ async function cargarAsistentes() {
         resultado.MENSAJE ||
         ""
     };
+
+    console.log("Resultado asistente:", resultado);
 
     modalAsistentePasoPreguntas.style.display =
       "none";
@@ -1833,6 +1831,7 @@ async function cargarAsistentes() {
     refreshForm();
   });
 })();
-  </script>
+</script>
+ 
 </body>
 </html>
