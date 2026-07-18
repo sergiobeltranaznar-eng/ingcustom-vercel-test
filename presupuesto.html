@@ -295,7 +295,7 @@
       font-size:14px;
     }
 
-.help{
+    .help{
       color:#bdbdbd;
       font-size:14px;
       line-height:1.55;
@@ -484,7 +484,7 @@
       transform:translateY(-1px);
     }
 
-    .modal-cupula{
+    .modal-asistente{
       position:fixed;
       inset:0;
       z-index:5000;
@@ -494,16 +494,16 @@
       padding:22px;
     }
 
-    .modal-cupula.open{display:flex}
+    .modal-asistente.open{display:flex}
 
-    .modal-cupula-backdrop{
+    .modal-asistente-backdrop{
       position:absolute;
       inset:0;
       background:rgba(0,0,0,.82);
       backdrop-filter:blur(8px);
     }
 
-    .modal-cupula-card{
+    .modal-asistente-card{
       position:relative;
       z-index:1;
       width:min(620px,100%);
@@ -516,21 +516,21 @@
       box-shadow:0 28px 80px rgba(0,0,0,.68);
     }
 
-    .modal-cupula-card h2{margin:12px 0 0}
+    .modal-asistente-card h2{margin:12px 0 0}
 
-    .modal-cupula-text{
+    .modal-asistente-text{
       color:#d8d8d8;
       line-height:1.65;
       margin:16px 0 0;
     }
 
-    .modal-cupula-field{
+    .modal-asistente-field{
       display:grid;
       gap:10px;
       margin-top:24px;
     }
 
-    .modal-cupula-field select{
+    .modal-asistente-field select{
       width:100%;
       border:1px solid rgba(255,255,255,.16);
       background:#0b0b0b;
@@ -541,7 +541,7 @@
       font:inherit;
     }
 
-    .modal-cupula-options{
+    .modal-asistente-options{
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:12px;
@@ -567,10 +567,10 @@
       box-shadow:0 0 0 3px rgba(246,181,29,.10);
     }
 
-    .modal-cupula-preguntas{display:none}
-    .modal-cupula-preguntas.open{display:block}
-    .modal-cupula-resultado{display:none}
-    .modal-cupula-resultado.open{display:block}
+    .modal-asistente-preguntas{display:none}
+    .modal-asistente-preguntas.open{display:block}
+    .modal-asistente-resultado{display:none}
+    .modal-asistente-resultado.open{display:block}
 
     @media (max-width:980px){
       .form-shell{grid-template-columns:1fr}
@@ -761,7 +761,6 @@
               <label class="reform-card"><input type="checkbox" name="reformas" value="Instalación de Mandos Avanzados"><span class="reform-title">Mandos avanzados</span></label>
               <label class="reform-card">
   <input
-    id="cupulaCarenadoCheck"
     type="checkbox"
     name="reformas"
     value="Instalación de Cúpula, Parabrisas o Carenado"
@@ -831,11 +830,11 @@
     </section>
   </main>
 
-  <div class="modal-cupula" id="modalCupula" aria-hidden="true">
-  <div class="modal-cupula-backdrop"></div>
+  <div class="modal-asistente" id="modalAsistente" aria-hidden="true">
+  <div class="modal-asistente-backdrop"></div>
 
   <div
-    class="modal-cupula-card"
+    class="modal-asistente-card"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modalAsistenteTitulo"
@@ -847,7 +846,7 @@
         Antes de continuar
       </h2>
 
-      <p class="modal-cupula-text" id="modalAsistenteTexto">
+      <p class="modal-asistente-text" id="modalAsistenteTexto">
         Necesitamos comprobar si la instalación tiene consideración de reforma.
       </p>
 
@@ -858,14 +857,14 @@
 
     <div
       id="modalAsistenteResultado"
-      class="modal-cupula-resultado"
+      class="modal-asistente-resultado"
     >
       <div class="eyebrow">Resultado</div>
 
       <h2 id="modalAsistenteResultadoTitulo"></h2>
 
       <p
-        class="modal-cupula-text"
+        class="modal-asistente-text"
         id="modalAsistenteResultadoTexto"
       ></p>
 
@@ -911,14 +910,14 @@
       }
     })();
   </script>
-<script>
+  <script>
 (function () {
   const form = document.getElementById("presupuestoForm");
   const counter = document.getElementById("counter");
   const submitBtn = document.getElementById("submitBtn");
   const successScreen = document.getElementById("successScreen");
 
-  const modalAsistente = document.getElementById("modalCupula");
+  const modalAsistente = document.getElementById("modalAsistente");
   const contenidoAsistente = document.getElementById("contenidoAsistente");
 
   const modalAsistentePasoPreguntas =
@@ -953,36 +952,32 @@
   let respuestasAsistente = {};
   let resultadoAsistente = null;
 
-  /*
-   * CONFIGURACIÓN TEMPORAL DEL MOTOR
-   *
-   * Después sustituiremos este objeto por la información
-   * obtenida desde Google Apps Script y las BBDD V4.
-   */
+  // Asistentes cargados dinámicamente desde Google Apps Script.
   let ASISTENTES = {};
 
   async function evaluarAsistenteServidor(idReforma, respuestas) {
+    const respuesta = await fetch(URL_WEBAPP, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify({
+        accion: "EVALUAR_ASISTENTE",
+        idReforma: idReforma,
+        respuestas: respuestas
+      })
+    });
 
-  const respuesta = await fetch(URL_WEBAPP, {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    body: JSON.stringify({
-      accion: "EVALUAR_ASISTENTE",
-      idReforma: idReforma,
-      respuestas: respuestas
-    })
-  });
+    const datos = await respuesta.json();
 
-  const datos = await respuesta.json();
+    if (!datos.ok) {
+      throw new Error(
+        datos.error || "Error evaluando asistente"
+      );
+    }
 
-  if (!datos.ok) {
-    throw new Error("Error evaluando asistente");
+    return datos.resultado;
   }
-
-  return datos.resultado;
-}
 
 async function cargarAsistentes() {
     try {
@@ -1116,8 +1111,6 @@ async function cargarAsistentes() {
         }
       );
 
-      console.log("Asistentes cargados:", ASISTENTES);
-
     } catch (error) {
       console.error(
         "Error cargando asistentes:",
@@ -1183,38 +1176,38 @@ async function cargarAsistentes() {
   }
 
   function normalizarOpcionesAsistente(opciones) {
-  if (!Array.isArray(opciones)) {
-    return [];
-  }
-
-  return opciones.map(function (opcion) {
-    if (
-      opcion &&
-      typeof opcion === "object"
-    ) {
-      return {
-        valor:
-          opcion.valor ??
-          opcion.VALOR ??
-          opcion.texto ??
-          opcion.TEXTO ??
-          "",
-
-        texto:
-          opcion.texto ??
-          opcion.TEXTO ??
-          opcion.valor ??
-          opcion.VALOR ??
-          ""
-      };
+    if (!Array.isArray(opciones)) {
+      return [];
     }
 
-    return {
-      valor: String(opcion),
-      texto: String(opcion)
-    };
-  });
-}
+    return opciones.map(function (opcion) {
+      if (
+        opcion &&
+        typeof opcion === "object"
+      ) {
+        return {
+          valor:
+            opcion.valor ??
+            opcion.VALOR ??
+            opcion.texto ??
+            opcion.TEXTO ??
+            "",
+
+          texto:
+            opcion.texto ??
+            opcion.TEXTO ??
+            opcion.valor ??
+            opcion.VALOR ??
+            ""
+        };
+      }
+
+      return {
+        valor: String(opcion),
+        texto: String(opcion)
+      };
+    });
+  }
   
   
   function getSelectedReformas() {
@@ -1262,18 +1255,18 @@ async function cargarAsistentes() {
   }
 
   function obtenerAsistentePorReforma(input) {
-  if (!input) {
-    return null;
+    if (!input) {
+      return null;
+    }
+
+    const idReforma = input.dataset.idReforma;
+
+    if (!idReforma) {
+      return null;
+    }
+
+    return ASISTENTES[idReforma] || null;
   }
-
-  const idReforma = input.dataset.idReforma;
-
-  if (!idReforma) {
-    return null;
-  }
-
-  return ASISTENTES[idReforma] || null;
-}
 
   function abrirAsistente(input) {
     const asistente = obtenerAsistentePorReforma(input);
@@ -1417,7 +1410,7 @@ async function cargarAsistentes() {
 
       return `
         <div
-          class="modal-cupula-field"
+          class="modal-asistente-field"
           data-pregunta="${id}"
         >
           <label for="asistente_${id}">
@@ -1462,14 +1455,14 @@ async function cargarAsistentes() {
 
       return `
         <div
-          class="modal-cupula-field"
+          class="modal-asistente-field"
           data-pregunta="${id}"
         >
           <label>
             ${texto}
           </label>
 
-          <div class="modal-cupula-options">
+          <div class="modal-asistente-options">
             ${botones}
           </div>
         </div>
@@ -1544,24 +1537,21 @@ async function cargarAsistentes() {
     }
 
     try {
+      const resultado =
+        await evaluarAsistenteServidor(
+          asistenteActual.idReforma,
+          respuestasAsistente
+        );
 
-  const resultado =
-    await evaluarAsistenteServidor(
-      asistenteActual.idReforma,
-      respuestasAsistente
-    );
+      if (!resultado) {
+        return;
+      }
 
-  if (!resultado) {
-    return;
-  }
+      mostrarResultadoAsistente(resultado);
 
-  mostrarResultadoAsistente(resultado);
-
-} catch (error) {
-
-  console.error(error);
-
-}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   function mostrarResultadoAsistente(resultado) {
@@ -1595,8 +1585,6 @@ async function cargarAsistentes() {
         resultado.MENSAJE ||
         ""
     };
-
-    console.log("Resultado asistente:", resultado);
 
     modalAsistentePasoPreguntas.style.display =
       "none";
@@ -1706,7 +1694,7 @@ async function cargarAsistentes() {
 
   const fondoModal =
     modalAsistente.querySelector(
-      ".modal-cupula-backdrop"
+      ".modal-asistente-backdrop"
     );
 
   fondoModal.addEventListener(
@@ -1842,10 +1830,9 @@ async function cargarAsistentes() {
   );
 
   cargarAsistentes().then(function () {
-  refreshForm();
-});
+    refreshForm();
+  });
 })();
-</script>
- 
+  </script>
 </body>
 </html>
