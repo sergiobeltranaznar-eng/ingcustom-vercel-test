@@ -960,7 +960,7 @@
    * obtenida desde Google Apps Script y las BBDD V4.
    */
   const ASISTENTES = {
-    "Instalación de Cúpula, Parabrisas o Carenado": {
+    "REF_CUPULA_CARENADO": {
       idAsistente: "ASI_CUPULA_PARABRISAS",
 
       titulo: "Cúpula, parabrisas o carenado",
@@ -1092,7 +1092,7 @@
         return null;
       }
     },
-  "Instalación de Sissy Bar": {
+  "REF_SISSY_RESPALDO": {
   idAsistente: "ASI_SISSY_RESPALDO",
 
   titulo: "Sissy Bar / Respaldo",
@@ -1293,12 +1293,18 @@
   }
 
   function obtenerAsistentePorReforma(input) {
-    if (!input) {
-      return null;
-    }
-
-    return ASISTENTES[input.value] || null;
+  if (!input) {
+    return null;
   }
+
+  const idReforma = input.dataset.idReforma;
+
+  if (!idReforma) {
+    return null;
+  }
+
+  return ASISTENTES[idReforma] || null;
+}
 
   function abrirAsistente(input) {
     const asistente = obtenerAsistentePorReforma(input);
