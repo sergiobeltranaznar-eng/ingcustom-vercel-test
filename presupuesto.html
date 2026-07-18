@@ -984,6 +984,142 @@
   return datos.resultado;
 }
 
+async function cargarAsistentes() {
+  try {
+    const respuesta = await fetch(
+      URL_WEBAPP + "?action=OBTENER_ASISTENTES"
+    );
+
+    const datos = await respuesta.json();
+
+    if (!datos.ok) {
+      throw new Error(
+        datos.error || "No se pudieron cargar los asistentes"
+      );
+    }
+
+    ASISTENTES = {};
+
+    Object.entries(datos.asistentes || {}).forEach(
+      function ([idReforma, datosAsistente]) {
+        const configuracion =
+          datosAsistente.configuracion || {};
+
+        ASISTENTES[idReforma] = {
+          idReforma: idReforma,
+
+          titulo:
+            configuracion.titulo ||
+            configuracion.TITULO ||
+            "Antes de continuar",
+
+          texto:
+            configuracion.texto ||
+            configuracion.TEXTO ||
+            configuracion.descripcion ||
+            configuracion.DESCRIPCION ||
+            "Necesitamos comprobar si la instalación tiene consideración de reforma.",
+
+          preguntas:
+            (datosAsistente.preguntas || []).map(
+              function (pregunta) {
+                return {
+                  idPregunta:
+                    pregunta.idPregunta ||
+                    pregunta.ID_PREGUNTA,
+
+                  texto:
+                    pregunta.texto ||
+                    pregunta.TEXTO ||
+                    pregunta.pregunta ||
+                    pregunta.PREGUNTA,
+
+                  tipoRespuesta: String(
+                    pregunta.tipoRespuesta ||
+                    pregunta.TIPO_RESPUESTA ||
+                    ""
+                  ).toUpperCase(),
+
+                  opciones:
+                    normalizarOpcionesAsistente(
+                      pregunta.opciones ||
+                      pregunta.OPCIONES ||
+                      []
+                    ),
+
+                  obligatoria:
+                    pregunta.obligatoria === true ||
+                    String(
+                      pregunta.obligatoria ||
+                      pregunta.OBLIGATORIA ||
+                      ""
+                    ).toUpperCase() === "SI",
+
+                  condicionVisibilidad:
+                    pregunta.condicionVisibilidad ||
+                    pregunta.CONDICION_VISIBILIDAD ||
+                    null,
+
+                  orden: Number(
+                    pregunta.orden ||
+                    pregunta.ORDEN ||
+                    0
+                  )
+                };
+              }
+            )
+        };
+      }
+    );
+
+    console.log(
+      "Asistentes cargados:",
+      ASISTENTES
+    );
+
+  } catch (error) {
+    console.error(
+      "Error cargando asistentes:",
+      error
+    );
+  }
+}
+
+  function normalizarOpcionesAsistente(opciones) {
+  if (!Array.isArray(opciones)) {
+    return [];
+  }
+
+  return opciones.map(function (opcion) {
+    if (
+      opcion &&
+      typeof opcion === "object"
+    ) {
+      return {
+        valor:
+          opcion.valor ??
+          opcion.VALOR ??
+          opcion.texto ??
+          opcion.TEXTO ??
+          "",
+
+        texto:
+          opcion.texto ??
+          opcion.TEXTO ??
+          opcion.valor ??
+          opcion.VALOR ??
+          ""
+      };
+    }
+
+    return {
+      valor: String(opcion),
+      texto: String(opcion)
+    };
+  });
+}
+  
+  
   function getSelectedReformas() {
     return Array.from(
       document.querySelectorAll(
