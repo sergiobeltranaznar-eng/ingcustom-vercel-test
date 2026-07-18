@@ -953,6 +953,13 @@
   let ASISTENTES = {};
 
   async function evaluarAsistenteServidor(idReforma, respuestas) {
+    console.log("ID REFORMA:", idReforma);
+      console.log("RESPUESTAS:", respuestas);
+      console.log(
+        "RESPUESTAS JSON:",
+        JSON.stringify(respuestas, null, 2)
+      );
+    
     const respuesta = await fetch(URL_WEBAPP, {
     method: "POST",
     headers: {
