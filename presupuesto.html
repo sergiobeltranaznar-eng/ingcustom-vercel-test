@@ -1072,10 +1072,14 @@ async function cargarAsistentes() {
       }
     );
 
-    console.log(
-      "Asistentes cargados:",
-      ASISTENTES
-    );
+    console.log("===== ASISTENTES =====");
+console.dir(ASISTENTES);
+
+console.log("===== CUPULA =====");
+console.dir(ASISTENTES["REF_CUPULA_CARENADO"]);
+
+console.log("===== PREGUNTAS =====");
+console.dir(ASISTENTES["REF_CUPULA_CARENADO"].preguntas);
 
   } catch (error) {
     console.error(
