@@ -911,6 +911,8 @@
   </script>
 <script>
 (function () {
+  "use strict";
+
   const form = document.getElementById("presupuestoForm");
   const counter = document.getElementById("counter");
   const submitBtn = document.getElementById("submitBtn");
@@ -918,19 +920,14 @@
 
   const modalAsistente = document.getElementById("modalAsistente");
   const contenidoAsistente = document.getElementById("contenidoAsistente");
-
   const modalAsistentePasoPreguntas =
     document.getElementById("modalAsistentePasoPreguntas");
-
   const modalAsistenteResultado =
     document.getElementById("modalAsistenteResultado");
-
   const modalAsistenteResultadoTitulo =
     document.getElementById("modalAsistenteResultadoTitulo");
-
   const modalAsistenteResultadoTexto =
     document.getElementById("modalAsistenteResultadoTexto");
-
   const cerrarModalAsistente =
     document.getElementById("cerrarModalAsistente");
 
@@ -946,46 +943,245 @@
     "anio"
   ];
 
+  /*
+   * Arquitectura del motor:
+   *
+   * ID_PREGUNTA:
+   *   - identifica el control en el DOM;
+   *   - no participa en reglas ni respuestas.
+   *
+   * VARIABLE:
+   *   - identifica la respuesta lógica;
+   *   - se utiliza en visibilidad, validación y comunicación con Apps Script.
+   */
+  let ASISTENTES = {};
   let asistenteActual = null;
   let reformaActualInput = null;
   let respuestasAsistente = {};
   let resultadoAsistente = null;
-  let ASISTENTES = {};
+  let evaluacionEnCurso = false;
 
-  async function evaluarAsistenteServidor(idReforma, respuestas) {
-    console.log("ID REFORMA:", idReforma);
-      console.log("RESPUESTAS:", respuestas);
-      console.log(
-        "RESPUESTAS JSON:",
-        JSON.stringify(respuestas, null, 2)
-      );
-    
-    const respuesta = await fetch(URL_WEBAPP, {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    body: JSON.stringify({
-      accion: "EVALUAR_ASISTENTE",
-      idReforma: idReforma,
-      respuestas: respuestas
-    })
-    });
+  function textoNormalizado(valor) {
+    return String(valor ?? "").trim();
+  }
 
-    const datos = await respuesta.json();
+  function claveNormalizada(valor) {
+    return textoNormalizado(valor)
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
 
-    if (!datos.ok) {
-      throw new Error("Error evaluando asistente");
+  function esValorSi(valor) {
+    return claveNormalizada(valor) === "si";
+  }
+
+  function escaparHtml(valor) {
+    return String(valor ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function obtenerCampo(objeto, nombres, valorPorDefecto = "") {
+    if (!objeto || typeof objeto !== "object") {
+      return valorPorDefecto;
     }
 
-    return datos.resultado;
+    for (const nombre of nombres) {
+      if (
+        Object.prototype.hasOwnProperty.call(objeto, nombre) &&
+        objeto[nombre] !== undefined &&
+        objeto[nombre] !== null
+      ) {
+        return objeto[nombre];
+      }
+    }
+
+    return valorPorDefecto;
+  }
+
+  function normalizarTipoRespuesta(valor) {
+    const tipo = textoNormalizado(valor).toUpperCase();
+
+    const equivalencias = {
+      SELECCION: "SELECT",
+      DESPLEGABLE: "SELECT",
+      SI_NO: "BOTONES",
+      BOTON: "BOTONES",
+      BOTONES: "BOTONES",
+      SELECT: "SELECT"
+    };
+
+    return equivalencias[tipo] || tipo;
+  }
+
+  function normalizarOpciones(opcionesOriginales) {
+    const opciones = Array.isArray(opcionesOriginales)
+      ? opcionesOriginales
+      : textoNormalizado(opcionesOriginales)
+          .split("|")
+          .map(function (opcion) {
+            return opcion.trim();
+          })
+          .filter(Boolean);
+
+    return opciones.map(function (opcion) {
+      if (opcion && typeof opcion === "object") {
+        const valor = obtenerCampo(
+          opcion,
+          ["valor", "VALOR", "texto", "TEXTO"],
+          ""
+        );
+
+        const texto = obtenerCampo(
+          opcion,
+          ["texto", "TEXTO", "valor", "VALOR"],
+          valor
+        );
+
+        return {
+          valor: textoNormalizado(valor),
+          texto: textoNormalizado(texto)
+        };
+      }
+
+      return {
+        valor: textoNormalizado(opcion),
+        texto: textoNormalizado(opcion)
+      };
+    }).filter(function (opcion) {
+      return opcion.valor !== "";
+    });
+  }
+
+  function normalizarPregunta(pregunta) {
+    const idPregunta = textoNormalizado(
+      obtenerCampo(pregunta, ["ID_PREGUNTA", "idPregunta"])
+    );
+
+    const variable = textoNormalizado(
+      obtenerCampo(pregunta, ["VARIABLE", "variable"])
+    );
+
+    return {
+      idPregunta: idPregunta,
+      variable: variable,
+
+      texto: textoNormalizado(
+        obtenerCampo(
+          pregunta,
+          ["TEXTO_PREGUNTA", "texto", "TEXTO", "PREGUNTA"]
+        )
+      ),
+
+      tipoRespuesta: normalizarTipoRespuesta(
+        obtenerCampo(
+          pregunta,
+          ["TIPO_RESPUESTA", "tipoRespuesta"]
+        )
+      ),
+
+      opciones: normalizarOpciones(
+        obtenerCampo(pregunta, ["OPCIONES", "opciones"], [])
+      ),
+
+      obligatoria:
+        obtenerCampo(pregunta, ["OBLIGATORIA", "obligatoria"]) === true ||
+        esValorSi(
+          obtenerCampo(pregunta, ["OBLIGATORIA", "obligatoria"])
+        ),
+
+      condicionVisibilidad: textoNormalizado(
+        obtenerCampo(
+          pregunta,
+          ["CONDICION_VISIBILIDAD", "condicionVisibilidad"]
+        )
+      ),
+
+      orden: Number(
+        obtenerCampo(pregunta, ["ORDEN", "orden"], 0)
+      ) || 0,
+
+      ayuda: textoNormalizado(
+        obtenerCampo(pregunta, ["AYUDA", "ayuda"])
+      )
+    };
+  }
+
+  function normalizarAsistente(idReforma, datosAsistente) {
+    const configuracion =
+      datosAsistente && datosAsistente.configuracion
+        ? datosAsistente.configuracion
+        : {};
+
+    const preguntas = (
+      obtenerCampo(datosAsistente, ["preguntas", "PREGUNTAS"], []) || []
+    )
+      .map(normalizarPregunta)
+      .filter(function (pregunta) {
+        return Boolean(
+          pregunta.idPregunta &&
+          pregunta.variable &&
+          pregunta.texto &&
+          pregunta.tipoRespuesta
+        );
+      })
+      .sort(function (a, b) {
+        return a.orden - b.orden;
+      });
+
+    return {
+      idReforma: textoNormalizado(
+        obtenerCampo(
+          datosAsistente,
+          ["idReforma", "ID_REFORMA"],
+          idReforma
+        )
+      ),
+
+      titulo: textoNormalizado(
+        obtenerCampo(
+          datosAsistente,
+          ["titulo", "TITULO"],
+          obtenerCampo(
+            configuracion,
+            ["titulo", "TITULO"],
+            "Antes de continuar"
+          )
+        )
+      ),
+
+      texto: textoNormalizado(
+        obtenerCampo(
+          datosAsistente,
+          ["texto", "TEXTO", "descripcion", "DESCRIPCION"],
+          obtenerCampo(
+            configuracion,
+            ["texto", "TEXTO", "descripcion", "DESCRIPCION"],
+            "Necesitamos comprobar si la instalación tiene consideración de reforma."
+          )
+        )
+      ),
+
+      preguntas: preguntas
+    };
   }
 
   async function cargarAsistentes() {
     try {
       const respuesta = await fetch(
-        URL_WEBAPP + "?action=OBTENER_ASISTENTES"
+        URL_WEBAPP + "?action=OBTENER_ASISTENTES",
+        { cache: "no-store" }
       );
+
+      if (!respuesta.ok) {
+        throw new Error(
+          "El servidor devolvió el estado " + respuesta.status
+        );
+      }
 
       const datos = await respuesta.json();
 
@@ -995,225 +1191,65 @@
         );
       }
 
-      ASISTENTES = {};
+      const asistentesNormalizados = {};
 
       Object.entries(datos.asistentes || {}).forEach(
         function ([idReforma, datosAsistente]) {
-          const configuracion =
-            datosAsistente.configuracion || {};
+          const asistente = normalizarAsistente(
+            idReforma,
+            datosAsistente || {}
+          );
 
-          ASISTENTES[idReforma] = {
-            idReforma:
-              datosAsistente.idReforma ||
-              datosAsistente.ID_REFORMA ||
-              idReforma,
-
-            titulo:
-              datosAsistente.titulo ||
-              datosAsistente.TITULO ||
-              configuracion.titulo ||
-              configuracion.TITULO ||
-              "Antes de continuar",
-
-            texto:
-              datosAsistente.texto ||
-              datosAsistente.TEXTO ||
-              datosAsistente.descripcion ||
-              datosAsistente.DESCRIPCION ||
-              configuracion.texto ||
-              configuracion.TEXTO ||
-              configuracion.descripcion ||
-              configuracion.DESCRIPCION ||
-              "Necesitamos comprobar si la instalación tiene consideración de reforma.",
-
-            preguntas:
-              (datosAsistente.preguntas || [])
-                .map(function (pregunta) {
-                  let tipo = String(
-                    pregunta.tipoRespuesta ||
-                    pregunta.TIPO_RESPUESTA ||
-                    ""
-                  )
-                    .trim()
-                    .toUpperCase();
-
-                  if (tipo === "SELECCION") {
-                    tipo = "SELECT";
-                  }
-
-                  if (tipo === "SI_NO") {
-                    tipo = "BOTONES";
-                  }
-
-                  const opcionesOriginales =
-                    pregunta.opciones !== undefined
-                      ? pregunta.opciones
-                      : pregunta.OPCIONES;
-
-                  const opciones = Array.isArray(opcionesOriginales)
-                    ? opcionesOriginales
-                    : String(opcionesOriginales || "")
-                        .split("|")
-                        .map(function (opcion) {
-                          return opcion.trim();
-                        })
-                        .filter(Boolean);
-
-                  return {
-                    idPregunta:
-                      pregunta.idPregunta ||
-                      pregunta.ID_PREGUNTA ||
-                      pregunta.variable ||
-                      pregunta.VARIABLE ||
-                      "",
-
-                    texto:
-                      pregunta.texto ||
-                      pregunta.TEXTO_PREGUNTA ||
-                      pregunta.TEXTO ||
-                      pregunta.PREGUNTA ||
-                      "",
-
-                    tipoRespuesta: tipo,
-
-                    opciones:
-                      normalizarOpcionesAsistente(opciones),
-
-                    obligatoria:
-                      pregunta.obligatoria === true ||
-                      esValorSi(
-                        pregunta.obligatoria !== undefined
-                          ? pregunta.obligatoria
-                          : pregunta.OBLIGATORIA
-                      ),
-
-                    condicionVisibilidad:
-                      normalizarCondicionVisibilidad(
-                        pregunta.condicionVisibilidad !== undefined
-                          ? pregunta.condicionVisibilidad
-                          : pregunta.CONDICION_VISIBILIDAD
-                      ),
-
-                    orden: Number(
-                      pregunta.orden ||
-                      pregunta.ORDEN ||
-                      0
-                    ),
-
-                    ayuda:
-                      pregunta.ayuda ||
-                      pregunta.AYUDA ||
-                      ""
-                  };
-                })
-                .filter(function (pregunta) {
-                  return Boolean(pregunta.idPregunta);
-                })
-          };
+          if (
+            asistente.idReforma &&
+            asistente.preguntas.length > 0
+          ) {
+            asistentesNormalizados[asistente.idReforma] =
+              asistente;
+          }
         }
       );
 
-      console.log("Asistentes cargados:", ASISTENTES);
-
+      ASISTENTES = asistentesNormalizados;
     } catch (error) {
-      console.error(
-        "Error cargando asistentes:",
-        error
+      ASISTENTES = {};
+      console.error("Error cargando asistentes:", error);
+    }
+  }
+
+  async function evaluarAsistenteServidor(
+    idReforma,
+    respuestas
+  ) {
+    const respuesta = await fetch(URL_WEBAPP, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify({
+        accion: "EVALUAR_ASISTENTE",
+        idReforma: idReforma,
+        respuestas: respuestas
+      })
+    });
+
+    if (!respuesta.ok) {
+      throw new Error(
+        "El servidor devolvió el estado " + respuesta.status
       );
     }
+
+    const datos = await respuesta.json();
+
+    if (!datos.ok) {
+      throw new Error(
+        datos.error || "Error evaluando el asistente"
+      );
+    }
+
+    return datos.resultado;
   }
 
-  function esValorSi(valor) {
-    return String(valor || "")
-      .trim()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") === "si";
-  }
-
-  function normalizarCondicionVisibilidad(condicion) {
-    if (!condicion) {
-      return null;
-    }
-
-    if (typeof condicion === "object") {
-      return {
-        pregunta:
-          condicion.pregunta ||
-          condicion.PREGUNTA ||
-          condicion.idPregunta ||
-          condicion.ID_PREGUNTA ||
-          "",
-
-        operador: String(
-          condicion.operador ||
-          condicion.OPERADOR ||
-          "IGUAL"
-        ).toUpperCase(),
-
-        valor:
-          condicion.valor !== undefined
-            ? condicion.valor
-            : condicion.VALOR
-      };
-    }
-
-    const texto = String(condicion).trim();
-
-    if (!texto) {
-      return null;
-    }
-
-    const operadorDistinto = texto.includes("!=");
-    const separador = operadorDistinto ? "!=" : "=";
-    const posicion = texto.indexOf(separador);
-
-    if (posicion === -1) {
-      return null;
-    }
-
-    return {
-      pregunta: texto.slice(0, posicion).trim(),
-      operador: operadorDistinto ? "DISTINTO" : "IGUAL",
-      valor: texto.slice(posicion + separador.length).trim()
-    };
-  }
-
-  function normalizarOpcionesAsistente(opciones) {
-    if (!Array.isArray(opciones)) {
-      return [];
-    }
-
-    return opciones.map(function (opcion) {
-    if (
-      opcion &&
-      typeof opcion === "object"
-    ) {
-      return {
-        valor:
-          opcion.valor ??
-          opcion.VALOR ??
-          opcion.texto ??
-          opcion.TEXTO ??
-          "",
-
-        texto:
-          opcion.texto ??
-          opcion.TEXTO ??
-          opcion.valor ??
-          opcion.VALOR ??
-          ""
-      };
-    }
-
-    return {
-      valor: String(opcion),
-      texto: String(opcion)
-    };
-  });
-}
-  
-  
   function getSelectedReformas() {
     return Array.from(
       document.querySelectorAll(
@@ -1249,9 +1285,9 @@
       requiredFields.every(function (id) {
         const elemento = document.getElementById(id);
 
-        return (
+        return Boolean(
           elemento &&
-          elemento.value.trim() !== ""
+          textoNormalizado(elemento.value) !== ""
         );
       }) && reformas.length > 0;
 
@@ -1263,13 +1299,13 @@
       return null;
     }
 
-    const idReforma = input.dataset.idReforma;
+    const idReforma = textoNormalizado(
+      input.dataset.idReforma
+    );
 
-    if (!idReforma) {
-      return null;
-    }
-
-    return ASISTENTES[idReforma] || null;
+    return idReforma
+      ? ASISTENTES[idReforma] || null
+      : null;
   }
 
   function abrirAsistente(input) {
@@ -1283,17 +1319,16 @@
     reformaActualInput = input;
     respuestasAsistente = {};
     resultadoAsistente = null;
+    evaluacionEnCurso = false;
 
-    const titulo =
-      document.getElementById("modalAsistenteTitulo");
-
-    const texto =
-      document.getElementById("modalAsistenteTexto");
-
-    titulo.textContent =
+    document.getElementById(
+      "modalAsistenteTitulo"
+    ).textContent =
       asistente.titulo || "Antes de continuar";
 
-    texto.textContent =
+    document.getElementById(
+      "modalAsistenteTexto"
+    ).textContent =
       asistente.texto ||
       "Necesitamos comprobar si la instalación tiene consideración de reforma.";
 
@@ -1303,26 +1338,19 @@
     renderizarAsistente();
 
     modalAsistente.classList.add("open");
-    modalAsistente.setAttribute(
-      "aria-hidden",
-      "false"
-    );
+    modalAsistente.setAttribute("aria-hidden", "false");
   }
 
   function cerrarAsistente() {
     modalAsistente.classList.remove("open");
-
-    modalAsistente.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
+    modalAsistente.setAttribute("aria-hidden", "true");
     contenidoAsistente.innerHTML = "";
 
     asistenteActual = null;
     reformaActualInput = null;
     respuestasAsistente = {};
     resultadoAsistente = null;
+    evaluacionEnCurso = false;
 
     refreshForm();
   }
@@ -1335,71 +1363,173 @@
     cerrarAsistente();
   }
 
-  function preguntaVisible(pregunta) {
-    const condicion =
-      pregunta.condicionVisibilidad;
+  function quitarParentesisExternos(expresion) {
+    let texto = textoNormalizado(expresion);
 
-    if (!condicion) {
+    while (
+      texto.startsWith("(") &&
+      texto.endsWith(")")
+    ) {
+      let nivel = 0;
+      let envuelveTodo = true;
+
+      for (let i = 0; i < texto.length; i += 1) {
+        const caracter = texto[i];
+
+        if (caracter === "(") {
+          nivel += 1;
+        } else if (caracter === ")") {
+          nivel -= 1;
+
+          if (nivel === 0 && i < texto.length - 1) {
+            envuelveTodo = false;
+            break;
+          }
+        }
+      }
+
+      if (!envuelveTodo || nivel !== 0) {
+        break;
+      }
+
+      texto = texto.slice(1, -1).trim();
+    }
+
+    return texto;
+  }
+
+  function dividirExpresionNivelSuperior(
+    expresion,
+    operador
+  ) {
+    const partes = [];
+    const texto = String(expresion);
+    const token = " " + operador + " ";
+    let nivel = 0;
+    let inicio = 0;
+    let i = 0;
+
+    while (i < texto.length) {
+      if (texto[i] === "(") {
+        nivel += 1;
+        i += 1;
+        continue;
+      }
+
+      if (texto[i] === ")") {
+        nivel -= 1;
+        i += 1;
+        continue;
+      }
+
+      if (
+        nivel === 0 &&
+        texto.slice(i, i + token.length).toUpperCase() === token
+      ) {
+        partes.push(texto.slice(inicio, i).trim());
+        inicio = i + token.length;
+        i = inicio;
+        continue;
+      }
+
+      i += 1;
+    }
+
+    if (partes.length > 0) {
+      partes.push(texto.slice(inicio).trim());
+    }
+
+    return partes;
+  }
+
+  function evaluarCondicionSimple(condicion) {
+    const texto = quitarParentesisExternos(condicion);
+
+    const coincidencia = texto.match(
+      /^([A-Za-z0-9_]+)\s*(=|!=)\s*(.+)$/
+    );
+
+    if (!coincidencia) {
       return true;
     }
 
-    const respuestaDependencia =
-      respuestasAsistente[condicion.pregunta];
+    const variable = coincidencia[1].trim();
+    const operador = coincidencia[2];
+    const valorEsperado = coincidencia[3].trim();
+    const valorActual =
+      respuestasAsistente[variable];
 
-    if (condicion.operador === "IGUAL") {
-      return (
-        respuestaDependencia === condicion.valor
-      );
+    if (operador === "!=") {
+      return String(valorActual ?? "") !== valorEsperado;
     }
 
-    if (condicion.operador === "DISTINTO") {
-      return (
-        respuestaDependencia !== condicion.valor
-      );
-    }
-
-    return true;
+    return String(valorActual ?? "") === valorEsperado;
   }
 
-  function escaparHtml(valor) {
-    return String(valor)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
+  function evaluarCondicionVisibilidad(expresion) {
+    const texto = quitarParentesisExternos(expresion);
 
-  function renderizarAsistente() {
-    if (!asistenteActual) {
-      return;
+    if (!texto) {
+      return true;
     }
 
-    const preguntas =
-      [...asistenteActual.preguntas]
-        .sort(function (a, b) {
-          return Number(a.orden) - Number(b.orden);
-        })
-        .filter(preguntaVisible);
+    const partesOr =
+      dividirExpresionNivelSuperior(texto, "OR");
 
-    contenidoAsistente.innerHTML =
-      preguntas
-        .map(renderizarPregunta)
-        .join("");
+    if (partesOr.length > 0) {
+      return partesOr.some(evaluarCondicionVisibilidad);
+    }
 
-    comprobarResultadoAsistente();
+    const partesAnd =
+      dividirExpresionNivelSuperior(texto, "AND");
+
+    if (partesAnd.length > 0) {
+      return partesAnd.every(evaluarCondicionVisibilidad);
+    }
+
+    return evaluarCondicionSimple(texto);
+  }
+
+  function preguntaVisible(pregunta) {
+    return evaluarCondicionVisibilidad(
+      pregunta.condicionVisibilidad
+    );
+  }
+
+  function renderizarAyuda(pregunta) {
+    if (!pregunta.ayuda) {
+      return "";
+    }
+
+    return `
+      <p class="help">
+        ${escaparHtml(pregunta.ayuda)}
+      </p>
+    `;
   }
 
   function renderizarPregunta(pregunta) {
-    const id = escaparHtml(pregunta.idPregunta);
-    const texto = escaparHtml(pregunta.texto);
+    const idPregunta = escaparHtml(
+      pregunta.idPregunta
+    );
+
+    const variable = escaparHtml(
+      pregunta.variable
+    );
+
+    const texto = escaparHtml(
+      pregunta.texto
+    );
+
+    const ayuda = renderizarAyuda(pregunta);
+    const valorActual =
+      respuestasAsistente[pregunta.variable];
 
     if (pregunta.tipoRespuesta === "SELECT") {
       const opciones = pregunta.opciones
         .map(function (opcion) {
           const seleccionada =
-            respuestasAsistente[pregunta.idPregunta] ===
-            opcion.valor;
+            valorActual === opcion.valor;
 
           return `
             <option
@@ -1415,15 +1545,17 @@
       return `
         <div
           class="modal-asistente-field"
-          data-pregunta="${id}"
+          data-id-pregunta="${idPregunta}"
+          data-variable="${variable}"
         >
-          <label for="asistente_${id}">
+          <label for="asistente_${idPregunta}">
             ${texto}
           </label>
 
           <select
-            id="asistente_${id}"
-            data-id-pregunta="${id}"
+            id="asistente_${idPregunta}"
+            data-id-pregunta="${idPregunta}"
+            data-variable="${variable}"
           >
             <option value="">
               Selecciona una opción
@@ -1431,6 +1563,8 @@
 
             ${opciones}
           </select>
+
+          ${ayuda}
         </div>
       `;
     }
@@ -1439,8 +1573,7 @@
       const botones = pregunta.opciones
         .map(function (opcion) {
           const seleccionada =
-            respuestasAsistente[pregunta.idPregunta] ===
-            opcion.valor;
+            valorActual === opcion.valor;
 
           return `
             <button
@@ -1448,7 +1581,8 @@
               class="modal-option ${
                 seleccionada ? "selected" : ""
               }"
-              data-id-pregunta="${id}"
+              data-id-pregunta="${idPregunta}"
+              data-variable="${variable}"
               data-valor="${escaparHtml(opcion.valor)}"
             >
               ${escaparHtml(opcion.texto)}
@@ -1460,7 +1594,8 @@
       return `
         <div
           class="modal-asistente-field"
-          data-pregunta="${id}"
+          data-id-pregunta="${idPregunta}"
+          data-variable="${variable}"
         >
           <label>
             ${texto}
@@ -1469,6 +1604,8 @@
           <div class="modal-asistente-options">
             ${botones}
           </div>
+
+          ${ayuda}
         </div>
       `;
     }
@@ -1476,14 +1613,34 @@
     return "";
   }
 
-  function registrarRespuesta(
-    idPregunta,
-    valor
-  ) {
-    respuestasAsistente[idPregunta] = valor;
+  function renderizarAsistente() {
+    if (!asistenteActual) {
+      return;
+    }
+
+    const preguntasVisibles =
+      asistenteActual.preguntas.filter(
+        preguntaVisible
+      );
+
+    contenidoAsistente.innerHTML =
+      preguntasVisibles
+        .map(renderizarPregunta)
+        .join("");
+
+    comprobarResultadoAsistente();
+  }
+
+  function registrarRespuesta(variable, valor) {
+    const clave = textoNormalizado(variable);
+
+    if (!clave) {
+      return;
+    }
+
+    respuestasAsistente[clave] = valor;
 
     limpiarRespuestasOcultas();
-
     renderizarAsistente();
   }
 
@@ -1492,21 +1649,29 @@
       return;
     }
 
-    asistenteActual.preguntas.forEach(
-      function (pregunta) {
-        if (
-          !preguntaVisible(pregunta) &&
-          Object.prototype.hasOwnProperty.call(
-            respuestasAsistente,
-            pregunta.idPregunta
-          )
-        ) {
-          delete respuestasAsistente[
-            pregunta.idPregunta
-          ];
+    let huboCambios = true;
+
+    while (huboCambios) {
+      huboCambios = false;
+
+      asistenteActual.preguntas.forEach(
+        function (pregunta) {
+          if (
+            !preguntaVisible(pregunta) &&
+            Object.prototype.hasOwnProperty.call(
+              respuestasAsistente,
+              pregunta.variable
+            )
+          ) {
+            delete respuestasAsistente[
+              pregunta.variable
+            ];
+
+            huboCambios = true;
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   function respuestasObligatoriasCompletas() {
@@ -1520,80 +1685,97 @@
         return pregunta.obligatoria;
       })
       .every(function (pregunta) {
-        const valor =
-          respuestasAsistente[pregunta.idPregunta];
-
-        return (
-          valor !== undefined &&
-          valor !== null &&
-          String(valor).trim() !== ""
-        );
+        return textoNormalizado(
+          respuestasAsistente[pregunta.variable]
+        ) !== "";
       });
   }
 
   async function comprobarResultadoAsistente() {
-    if (!asistenteActual) {
+    if (
+      !asistenteActual ||
+      evaluacionEnCurso ||
+      !respuestasObligatoriasCompletas()
+    ) {
       return;
     }
 
-    if (!respuestasObligatoriasCompletas()) {
-      return;
-    }
+    evaluacionEnCurso = true;
 
     try {
       const resultado =
         await evaluarAsistenteServidor(
           asistenteActual.idReforma,
-          respuestasAsistente
+          { ...respuestasAsistente }
         );
 
-      if (!resultado) {
-        return;
+      if (resultado) {
+        mostrarResultadoAsistente(resultado);
       }
-
-      mostrarResultadoAsistente(resultado);
     } catch (error) {
-      console.error(error);
+      console.error(
+        "No se pudo evaluar el asistente:",
+        error
+      );
+    } finally {
+      evaluacionEnCurso = false;
     }
   }
 
   function mostrarResultadoAsistente(resultado) {
-    const esReformaOriginal =
-      resultado.esReforma !== undefined
-        ? resultado.esReforma
-        : resultado.ES_REFORMA;
+    const esReformaOriginal = obtenerCampo(
+      resultado,
+      ["esReforma", "ES_REFORMA"],
+      false
+    );
 
     const esReforma =
       esReformaOriginal === true ||
       esValorSi(esReformaOriginal);
 
+    const explicacion = textoNormalizado(
+      obtenerCampo(
+        resultado,
+        ["explicacion", "EXPLICACION"],
+        ""
+      )
+    );
+
     resultadoAsistente = {
       esReforma: esReforma,
 
-      titulo:
-        resultado.titulo ||
-        resultado.TITULO ||
-        resultado.tituloResultado ||
-        resultado.TITULO_RESULTADO ||
-        (esReforma
-          ? "Esta instalación tiene consideración de reforma"
-          : "Esta instalación no tiene consideración de reforma"),
+      titulo: textoNormalizado(
+        obtenerCampo(
+          resultado,
+          [
+            "titulo",
+            "TITULO",
+            "tituloResultado",
+            "TITULO_RESULTADO"
+          ],
+          esReforma
+            ? "Esta instalación tiene consideración de reforma"
+            : "Esta instalación no tiene consideración de reforma"
+        )
+      ),
 
-      texto:
-        resultado.texto ||
-        resultado.TEXTO ||
-        resultado.textoResultado ||
-        resultado.TEXTO_RESULTADO ||
-        resultado.mensaje ||
-        resultado.MENSAJE ||
-        ""
+      texto: textoNormalizado(
+        obtenerCampo(
+          resultado,
+          [
+            "texto",
+            "TEXTO",
+            "textoResultado",
+            "TEXTO_RESULTADO",
+            "mensaje",
+            "MENSAJE"
+          ],
+          explicacion
+        )
+      )
     };
 
-    console.log("Resultado asistente:", resultado);
-
-    modalAsistentePasoPreguntas.style.display =
-      "none";
-
+    modalAsistentePasoPreguntas.style.display = "none";
     modalAsistenteResultado.classList.add("open");
 
     modalAsistenteResultadoTitulo.textContent =
@@ -1624,11 +1806,8 @@
             return;
           }
 
-          const seVaASeleccionar =
-            !input.checked;
-
-          input.checked =
-            seVaASeleccionar;
+          const seVaASeleccionar = !input.checked;
+          input.checked = seVaASeleccionar;
 
           refreshForm();
 
@@ -1636,10 +1815,7 @@
             return;
           }
 
-          const asistente =
-            obtenerAsistentePorReforma(input);
-
-          if (asistente) {
+          if (obtenerAsistentePorReforma(input)) {
             abrirAsistente(input);
           }
         }
@@ -1653,11 +1829,11 @@
 
       if (
         elemento.matches(
-          "select[data-id-pregunta]"
+          "select[data-variable]"
         )
       ) {
         registrarRespuesta(
-          elemento.dataset.idPregunta,
+          elemento.dataset.variable,
           elemento.value
         );
       }
@@ -1668,7 +1844,7 @@
     "click",
     function (event) {
       const boton = event.target.closest(
-        "button[data-id-pregunta]"
+        "button[data-variable]"
       );
 
       if (!boton) {
@@ -1676,7 +1852,7 @@
       }
 
       registrarRespuesta(
-        boton.dataset.idPregunta,
+        boton.dataset.variable,
         boton.dataset.valor
       );
     }
@@ -1697,15 +1873,12 @@
     }
   );
 
-  const fondoModal =
-    modalAsistente.querySelector(
-      ".modal-asistente-backdrop"
+  modalAsistente
+    .querySelector(".modal-asistente-backdrop")
+    .addEventListener(
+      "click",
+      cancelarAsistente
     );
-
-  fondoModal.addEventListener(
-    "click",
-    cancelarAsistente
-  );
 
   document.addEventListener(
     "keydown",
@@ -1720,22 +1893,14 @@
   );
 
   requiredFields.forEach(function (id) {
-    const elemento =
-      document.getElementById(id);
+    const elemento = document.getElementById(id);
 
     if (!elemento) {
       return;
     }
 
-    elemento.addEventListener(
-      "input",
-      refreshForm
-    );
-
-    elemento.addEventListener(
-      "change",
-      refreshForm
-    );
+    elemento.addEventListener("input", refreshForm);
+    elemento.addEventListener("change", refreshForm);
   });
 
   form.addEventListener(
@@ -1743,8 +1908,7 @@
     async function (event) {
       event.preventDefault();
 
-      const reformas =
-        getSelectedReformas();
+      const reformas = getSelectedReformas();
 
       if (reformas.length === 0) {
         refreshForm();
@@ -1758,41 +1922,29 @@
       const datos = {
         accion: "FORMULARIO_1_WEB",
 
-        nombre:
-          document
-            .getElementById("nombre")
-            .value
-            .trim(),
+        nombre: textoNormalizado(
+          document.getElementById("nombre").value
+        ),
 
-        telefono:
-          document
-            .getElementById("telefono")
-            .value
-            .trim(),
+        telefono: textoNormalizado(
+          document.getElementById("telefono").value
+        ),
 
-        email:
-          document
-            .getElementById("email")
-            .value
-            .trim(),
+        email: textoNormalizado(
+          document.getElementById("email").value
+        ),
 
-        marca:
-          document
-            .getElementById("marca")
-            .value
-            .trim(),
+        marca: textoNormalizado(
+          document.getElementById("marca").value
+        ),
 
-        modelo:
-          document
-            .getElementById("modelo")
-            .value
-            .trim(),
+        modelo: textoNormalizado(
+          document.getElementById("modelo").value
+        ),
 
-        anio:
-          document
-            .getElementById("anio")
-            .value
-            .trim(),
+        anio: textoNormalizado(
+          document.getElementById("anio").value
+        ),
 
         reformas: reformas,
         otrasReformas: "",
@@ -1822,7 +1974,6 @@
           "Solicitar presupuesto gratuito";
 
         submitBtn.style.opacity = "1";
-
         refreshForm();
 
         alert(
@@ -1834,7 +1985,7 @@
     }
   );
 
-  cargarAsistentes().then(function () {
+  cargarAsistentes().finally(function () {
     refreshForm();
   });
 })();
