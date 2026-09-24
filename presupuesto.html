@@ -1003,19 +1003,22 @@
   }
 
   function normalizarTipoRespuesta(valor) {
-    const tipo = textoNormalizado(valor).toUpperCase();
+  const tipo = textoNormalizado(valor).toUpperCase();
 
-    const equivalencias = {
-      SELECCION: "SELECT",
-      DESPLEGABLE: "SELECT",
-      SI_NO: "BOTONES",
-      BOTON: "BOTONES",
-      BOTONES: "BOTONES",
-      SELECT: "SELECT"
-    };
+  const equivalencias = {
+    SELECCION: "SELECT",
+    DESPLEGABLE: "SELECT",
+    SI_NO: "BOTONES",
+    BOTON: "BOTONES",
+    BOTONES: "BOTONES",
+    SELECT: "SELECT",
+    MULTISELECCION: "MULTISELECCION_REFORMAS",
+    MULTIPLE: "MULTISELECCION_REFORMAS",
+    MULTISELECCION_REFORMAS: "MULTISELECCION_REFORMAS"
+  };
 
-    return equivalencias[tipo] || tipo;
-  }
+  return equivalencias[tipo] || tipo;
+}
 
   function normalizarOpciones(opcionesOriginales) {
     const opciones = Array.isArray(opcionesOriginales)
@@ -1260,38 +1263,48 @@
   }
 
   function refreshForm() {
-    const reformas = getSelectedReformas();
+  const reformas = getSelectedReformas();
 
-    document
-      .querySelectorAll(".reform-card")
-      .forEach(function (card) {
-        const input = card.querySelector(
-          'input[type="checkbox"]'
-        );
+  const grupoAlumbrado =
+    document.getElementById("grupoAlumbrado");
 
-        card.classList.toggle(
-          "selected",
-          Boolean(input && input.checked)
-        );
-      });
-
-    counter.textContent =
-      reformas.length === 1
-        ? "1 reforma seleccionada"
-        : reformas.length + " reformas seleccionadas";
-
-    const formularioCompleto =
-      requiredFields.every(function (id) {
-        const elemento = document.getElementById(id);
-
-        return Boolean(
-          elemento &&
-          textoNormalizado(elemento.value) !== ""
-        );
-      }) && reformas.length > 0;
-
-    submitBtn.disabled = !formularioCompleto;
+  if (grupoAlumbrado) {
+    grupoAlumbrado.checked =
+      document.querySelectorAll(
+        'input[data-grupo-alumbrado]:checked'
+      ).length > 0;
   }
+
+  document
+    .querySelectorAll(".reform-card")
+    .forEach(function (card) {
+      const input = card.querySelector(
+        'input[type="checkbox"]'
+      );
+
+      card.classList.toggle(
+        "selected",
+        Boolean(input && input.checked)
+      );
+    });
+
+  counter.textContent =
+    reformas.length === 1
+      ? "1 reforma seleccionada"
+      : reformas.length + " reformas seleccionadas";
+
+  const formularioCompleto =
+    requiredFields.every(function (id) {
+      const elemento = document.getElementById(id);
+
+      return Boolean(
+        elemento &&
+        textoNormalizado(elemento.value) !== ""
+      );
+    }) && reformas.length > 0;
+
+  submitBtn.disabled = !formularioCompleto;
+}
 
   function obtenerAsistentePorReforma(input) {
     if (!input) {
@@ -1308,37 +1321,46 @@
   }
 
   function abrirAsistente(input) {
-    const asistente = obtenerAsistentePorReforma(input);
+  const asistente = obtenerAsistentePorReforma(input);
 
-    if (!asistente) {
-      return;
-    }
-
-    asistenteActual = asistente;
-    reformaActualInput = input;
-    respuestasAsistente = {};
-    resultadoAsistente = null;
-    evaluacionEnCurso = false;
-
-    document.getElementById(
-      "modalAsistenteTitulo"
-    ).textContent =
-      asistente.titulo || "Antes de continuar";
-
-    document.getElementById(
-      "modalAsistenteTexto"
-    ).textContent =
-      asistente.texto ||
-      "Necesitamos comprobar si la instalación tiene consideración de reforma.";
-
-    modalAsistentePasoPreguntas.style.display = "block";
-    modalAsistenteResultado.classList.remove("open");
-
-    renderizarAsistente();
-
-    modalAsistente.classList.add("open");
-    modalAsistente.setAttribute("aria-hidden", "false");
+  if (!asistente) {
+    return;
   }
+
+  asistenteActual = asistente;
+  reformaActualInput = input;
+  respuestasAsistente = {};
+  resultadoAsistente = null;
+  evaluacionEnCurso = false;
+
+  if (asistente.idReforma === "UI_ALUMBRADO") {
+    respuestasAsistente.ALUMBRADO_REFORMAS =
+      obtenerReformasAlumbradoSeleccionadas();
+  }
+
+  document.getElementById(
+    "modalAsistenteTitulo"
+  ).textContent =
+    asistente.idReforma === "UI_ALUMBRADO"
+      ? "Alumbrado y señalización"
+      : asistente.titulo || "Antes de continuar";
+
+  document.getElementById(
+    "modalAsistenteTexto"
+  ).textContent =
+    asistente.idReforma === "UI_ALUMBRADO"
+      ? "Selecciona todas las modificaciones de alumbrado o señalización que hayas realizado."
+      : asistente.texto ||
+        "Necesitamos comprobar si la instalación tiene consideración de reforma.";
+
+  modalAsistentePasoPreguntas.style.display = "block";
+  modalAsistenteResultado.classList.remove("open");
+
+  renderizarAsistente();
+
+  modalAsistente.classList.add("open");
+  modalAsistente.setAttribute("aria-hidden", "false");
+}
 
   function cerrarAsistente() {
     modalAsistente.classList.remove("open");
@@ -1507,110 +1529,188 @@
     `;
   }
 
+  function textoReformaAlumbrado(idReforma) {
+  const nombres = {
+    REF_FARO_LED: "Faro delantero",
+    REF_INTERMITENTES: "Intermitentes",
+    REF_ALUMBRADO_ADICIONAL: "Alumbrado adicional",
+    REF_PILOTO_TRASERO: "Piloto trasero"
+  };
+
+  return nombres[idReforma] || idReforma;
+}
+
+function obtenerReformasAlumbradoSeleccionadas() {
+  return Array.from(
+    document.querySelectorAll(
+      'input[data-grupo-alumbrado]:checked'
+    )
+  ).map(function (input) {
+    return textoNormalizado(input.dataset.idReforma);
+  }).filter(Boolean);
+}
+
   function renderizarPregunta(pregunta) {
-    const idPregunta = escaparHtml(
-      pregunta.idPregunta
-    );
+  const idPregunta = escaparHtml(
+    pregunta.idPregunta
+  );
 
-    const variable = escaparHtml(
-      pregunta.variable
-    );
+  const variable = escaparHtml(
+    pregunta.variable
+  );
 
-    const texto = escaparHtml(
-      pregunta.texto
-    );
+  const texto = escaparHtml(
+    pregunta.texto
+  );
 
-    const ayuda = renderizarAyuda(pregunta);
-    const valorActual =
-      respuestasAsistente[pregunta.variable];
+  const ayuda = renderizarAyuda(pregunta);
+  const valorActual =
+    respuestasAsistente[pregunta.variable];
 
-    if (pregunta.tipoRespuesta === "SELECT") {
-      const opciones = pregunta.opciones
-        .map(function (opcion) {
-          const seleccionada =
-            valorActual === opcion.valor;
+  if (pregunta.tipoRespuesta === "SELECT") {
+    const opciones = pregunta.opciones
+      .map(function (opcion) {
+        const seleccionada =
+          valorActual === opcion.valor;
 
-          return `
-            <option
-              value="${escaparHtml(opcion.valor)}"
-              ${seleccionada ? "selected" : ""}
-            >
-              ${escaparHtml(opcion.texto)}
-            </option>
-          `;
-        })
-        .join("");
+        return `
+          <option
+            value="${escaparHtml(opcion.valor)}"
+            ${seleccionada ? "selected" : ""}
+          >
+            ${escaparHtml(opcion.texto)}
+          </option>
+        `;
+      })
+      .join("");
 
-      return `
-        <div
-          class="modal-asistente-field"
+    return `
+      <div
+        class="modal-asistente-field"
+        data-id-pregunta="${idPregunta}"
+        data-variable="${variable}"
+      >
+        <label for="asistente_${idPregunta}">
+          ${texto}
+        </label>
+
+        <select
+          id="asistente_${idPregunta}"
           data-id-pregunta="${idPregunta}"
           data-variable="${variable}"
         >
-          <label for="asistente_${idPregunta}">
-            ${texto}
-          </label>
+          <option value="">
+            Selecciona una opción
+          </option>
 
-          <select
-            id="asistente_${idPregunta}"
+          ${opciones}
+        </select>
+
+        ${ayuda}
+      </div>
+    `;
+  }
+
+  if (pregunta.tipoRespuesta === "BOTONES") {
+    const botones = pregunta.opciones
+      .map(function (opcion) {
+        const seleccionada =
+          valorActual === opcion.valor;
+
+        return `
+          <button
+            type="button"
+            class="modal-option ${
+              seleccionada ? "selected" : ""
+            }"
             data-id-pregunta="${idPregunta}"
             data-variable="${variable}"
+            data-valor="${escaparHtml(opcion.valor)}"
           >
-            <option value="">
-              Selecciona una opción
-            </option>
+            ${escaparHtml(opcion.texto)}
+          </button>
+        `;
+      })
+      .join("");
 
-            ${opciones}
-          </select>
+    return `
+      <div
+        class="modal-asistente-field"
+        data-id-pregunta="${idPregunta}"
+        data-variable="${variable}"
+      >
+        <label>
+          ${texto}
+        </label>
 
-          ${ayuda}
+        <div class="modal-asistente-options">
+          ${botones}
         </div>
-      `;
-    }
 
-    if (pregunta.tipoRespuesta === "BOTONES") {
-      const botones = pregunta.opciones
-        .map(function (opcion) {
-          const seleccionada =
-            valorActual === opcion.valor;
-
-          return `
-            <button
-              type="button"
-              class="modal-option ${
-                seleccionada ? "selected" : ""
-              }"
-              data-id-pregunta="${idPregunta}"
-              data-variable="${variable}"
-              data-valor="${escaparHtml(opcion.valor)}"
-            >
-              ${escaparHtml(opcion.texto)}
-            </button>
-          `;
-        })
-        .join("");
-
-      return `
-        <div
-          class="modal-asistente-field"
-          data-id-pregunta="${idPregunta}"
-          data-variable="${variable}"
-        >
-          <label>
-            ${texto}
-          </label>
-
-          <div class="modal-asistente-options">
-            ${botones}
-          </div>
-
-          ${ayuda}
-        </div>
-      `;
-    }
-
-    return "";
+        ${ayuda}
+      </div>
+    `;
   }
+
+  if (pregunta.tipoRespuesta === "MULTISELECCION_REFORMAS") {
+    const seleccionadas =
+      Array.isArray(valorActual)
+        ? valorActual
+        : [];
+
+    const botones = pregunta.opciones
+      .map(function (opcion) {
+        const seleccionada =
+          seleccionadas.includes(opcion.valor);
+
+        return `
+          <button
+            type="button"
+            class="modal-option ${
+              seleccionada ? "selected" : ""
+            }"
+            data-multiseleccion-reformas="1"
+            data-variable="${variable}"
+            data-valor="${escaparHtml(opcion.valor)}"
+          >
+            ${escaparHtml(
+              textoReformaAlumbrado(opcion.valor)
+            )}
+          </button>
+        `;
+      })
+      .join("");
+
+    return `
+      <div
+        class="modal-asistente-field"
+        data-id-pregunta="${idPregunta}"
+        data-variable="${variable}"
+      >
+        <label>
+          ${texto}
+        </label>
+
+        <div class="modal-asistente-options">
+          ${botones}
+        </div>
+
+        ${ayuda}
+
+        <button
+          type="button"
+          class="btn"
+          id="confirmarSeleccionAlumbrado"
+          ${seleccionadas.length > 0 ? "" : "disabled"}
+        >
+          Confirmar selección
+        </button>
+      </div>
+    `;
+  }
+
+  return "";
+}
 
   function renderizarAsistente() {
     if (!asistenteActual) {
@@ -1673,6 +1773,64 @@
     }
   }
 
+  function registrarRespuestaMultiple(variable, valor) {
+  const clave = textoNormalizado(variable);
+  const opcion = textoNormalizado(valor);
+
+  if (!clave || !opcion) {
+    return;
+  }
+
+  const actuales =
+    Array.isArray(respuestasAsistente[clave])
+      ? [...respuestasAsistente[clave]]
+      : [];
+
+  const posicion = actuales.indexOf(opcion);
+
+  if (posicion === -1) {
+    actuales.push(opcion);
+  } else {
+    actuales.splice(posicion, 1);
+  }
+
+  respuestasAsistente[clave] = actuales;
+
+  renderizarAsistente();
+}
+
+function aplicarSeleccionAlumbrado() {
+  const seleccionadas =
+    Array.isArray(
+      respuestasAsistente.ALUMBRADO_REFORMAS
+    )
+      ? respuestasAsistente.ALUMBRADO_REFORMAS
+      : [];
+
+  document
+    .querySelectorAll(
+      'input[data-grupo-alumbrado]'
+    )
+    .forEach(function (input) {
+      const idReforma = textoNormalizado(
+        input.dataset.idReforma
+      );
+
+      input.checked =
+        seleccionadas.includes(idReforma);
+    });
+
+  const grupoAlumbrado =
+    document.getElementById("grupoAlumbrado");
+
+  if (grupoAlumbrado) {
+    grupoAlumbrado.checked =
+      seleccionadas.length > 0;
+  }
+
+  cerrarAsistente();
+}
+
   function respuestasObligatoriasCompletas() {
     if (!asistenteActual) {
       return false;
@@ -1691,35 +1849,42 @@
   }
 
   async function comprobarResultadoAsistente() {
-    if (
-      !asistenteActual ||
-      evaluacionEnCurso ||
-      !respuestasObligatoriasCompletas()
-    ) {
-      return;
-    }
-
-    evaluacionEnCurso = true;
-
-    try {
-      const resultado =
-        await evaluarAsistenteServidor(
-          asistenteActual.idReforma,
-          { ...respuestasAsistente }
-        );
-
-      if (resultado) {
-        mostrarResultadoAsistente(resultado);
-      }
-    } catch (error) {
-      console.error(
-        "No se pudo evaluar el asistente:",
-        error
-      );
-    } finally {
-      evaluacionEnCurso = false;
-    }
+  if (!asistenteActual) {
+    return;
   }
+
+  if (asistenteActual.idReforma === "UI_ALUMBRADO") {
+    return;
+  }
+
+  if (
+    evaluacionEnCurso ||
+    !respuestasObligatoriasCompletas()
+  ) {
+    return;
+  }
+
+  evaluacionEnCurso = true;
+
+  try {
+    const resultado =
+      await evaluarAsistenteServidor(
+        asistenteActual.idReforma,
+        { ...respuestasAsistente }
+      );
+
+    if (resultado) {
+      mostrarResultadoAsistente(resultado);
+    }
+  } catch (error) {
+    console.error(
+      "No se pudo evaluar el asistente:",
+      error
+    );
+  } finally {
+    evaluacionEnCurso = false;
+  }
+}
 
   function mostrarResultadoAsistente(resultado) {
     const esReformaOriginal = obtenerCampo(
@@ -1790,36 +1955,45 @@
   }
 
   document
-    .querySelectorAll(".reform-card")
-    .forEach(function (card) {
-      card.addEventListener(
-        "click",
-        function (event) {
-          event.preventDefault();
+  .querySelectorAll(".reform-card")
+  .forEach(function (card) {
+    card.addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
 
-          const input = card.querySelector(
-            'input[type="checkbox"]'
-          );
+        const input = card.querySelector(
+          'input[type="checkbox"]'
+        );
 
-          if (!input) {
-            return;
-          }
-
-          const seVaASeleccionar = !input.checked;
-          input.checked = seVaASeleccionar;
-
-          refreshForm();
-
-          if (!seVaASeleccionar) {
-            return;
-          }
-
-          if (obtenerAsistentePorReforma(input)) {
-            abrirAsistente(input);
-          }
+        if (!input) {
+          return;
         }
-      );
-    });
+
+        const idReforma = textoNormalizado(
+          input.dataset.idReforma
+        );
+
+        if (idReforma === "UI_ALUMBRADO") {
+          abrirAsistente(input);
+          return;
+        }
+
+        const seVaASeleccionar = !input.checked;
+        input.checked = seVaASeleccionar;
+
+        refreshForm();
+
+        if (!seVaASeleccionar) {
+          return;
+        }
+
+        if (obtenerAsistentePorReforma(input)) {
+          abrirAsistente(input);
+        }
+      }
+    );
+  });
 
   contenidoAsistente.addEventListener(
     "change",
@@ -1840,22 +2014,45 @@
   );
 
   contenidoAsistente.addEventListener(
-    "click",
-    function (event) {
-      const boton = event.target.closest(
-        "button[data-variable]"
+  "click",
+  function (event) {
+    const confirmarAlumbrado =
+      event.target.closest(
+        "#confirmarSeleccionAlumbrado"
       );
 
-      if (!boton) {
-        return;
-      }
-
-      registrarRespuesta(
-        boton.dataset.variable,
-        boton.dataset.valor
-      );
+    if (confirmarAlumbrado) {
+      aplicarSeleccionAlumbrado();
+      return;
     }
-  );
+
+    const botonMultiple =
+      event.target.closest(
+        "button[data-multiseleccion-reformas]"
+      );
+
+    if (botonMultiple) {
+      registrarRespuestaMultiple(
+        botonMultiple.dataset.variable,
+        botonMultiple.dataset.valor
+      );
+      return;
+    }
+
+    const boton = event.target.closest(
+      "button[data-variable]"
+    );
+
+    if (!boton) {
+      return;
+    }
+
+    registrarRespuesta(
+      boton.dataset.variable,
+      boton.dataset.valor
+    );
+  }
+);
 
   cerrarModalAsistente.addEventListener(
     "click",
