@@ -736,13 +736,15 @@
             </p>
 
             <div class="reform-grid">
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Cambiar Faro Halógeno por LED"><span class="reform-title">Faro LED</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Recolocación de Intermitentes"><span class="reform-title">Intermitentes</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Sustitución de Piloto Trasero" data-id-reforma="REF_PILOTO_TRASERO"><span class="reform-title">PILOTO TRASERO</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Alumbrado Adicional" data-id-reforma="REF_ALUMBRADO_ADICIONAL"><span class="reform-title">Alumbrado adicional</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Cambio de Manillar"><span class="reform-title">Manillar</span></label>
-              <label class="reform-card"><input type="checkbox" name="reformas" value="Recolocación de Matrícula"><span class="reform-title">Reubicación de Matrícula</span></label>
-              <label class="reform-card">
+  <label class="reform-card"><input type="checkbox" id="grupoAlumbrado" data-id-reforma="UI_ALUMBRADO"><span class="reform-title">Alumbrado y señalización</span></label>
+  <input type="checkbox" name="reformas" value="Cambiar Faro Halógeno por LED" data-id-reforma="REF_FARO_LED" data-grupo-alumbrado hidden>
+  <input type="checkbox" name="reformas" value="Recolocación de Intermitentes" data-id-reforma="REF_INTERMITENTES" data-grupo-alumbrado hidden>
+  <input type="checkbox" name="reformas" value="Sustitución de Piloto Trasero" data-id-reforma="REF_PILOTO_TRASERO" data-grupo-alumbrado hidden>
+  <input type="checkbox" name="reformas" value="Alumbrado Adicional" data-id-reforma="REF_ALUMBRADO_ADICIONAL" data-grupo-alumbrado hidden>
+  <label class="reform-card"><input type="checkbox" name="reformas" value="Cambio de Manillar"><span class="reform-title">Manillar</span></label>
+  <label class="reform-card"><input type="checkbox" name="reformas" value="Recolocación de Matrícula"><span class="reform-title">Reubicación de Matrícula</span></label>
+  <label class="reform-card">
+            
   <input
     type="checkbox"
     name="reformas"
