@@ -1806,6 +1806,8 @@ function aplicarSeleccionAlumbrado() {
       ? respuestasAsistente.ALUMBRADO_REFORMAS
       : [];
 
+  let primerInputConAsistente = null;
+
   document
     .querySelectorAll(
       'input[data-grupo-alumbrado]'
@@ -1817,6 +1819,14 @@ function aplicarSeleccionAlumbrado() {
 
       input.checked =
         seleccionadas.includes(idReforma);
+
+      if (
+        input.checked &&
+        !primerInputConAsistente &&
+        obtenerAsistentePorReforma(input)
+      ) {
+        primerInputConAsistente = input;
+      }
     });
 
   const grupoAlumbrado =
@@ -1825,6 +1835,13 @@ function aplicarSeleccionAlumbrado() {
   if (grupoAlumbrado) {
     grupoAlumbrado.checked =
       seleccionadas.length > 0;
+  }
+
+  refreshForm();
+
+  if (primerInputConAsistente) {
+    abrirAsistente(primerInputConAsistente);
+    return;
   }
 
   cerrarAsistente();
