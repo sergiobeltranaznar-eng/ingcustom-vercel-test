@@ -2178,10 +2178,23 @@ function aplicarSeleccionAlumbrado() {
     elemento.addEventListener("change", refreshForm);
   });
 
-  form.addEventListener(
-    "submit",
-    async function (event) {
-      event.preventDefault();
+    form.addEventListener(
+      "submit",
+      async function (event) {
+        event.preventDefault();
+    
+        // INGENIERO CUSTOM
+        // Cierre de nuevas solicitudes hasta 2027.
+        // Cambiar a false para reactivar el envío.
+        const PRESUPUESTOS_CERRADOS = true;
+
+    if (PRESUPUESTOS_CERRADOS) {
+      alert(
+        "Actualmente no aceptamos nuevos presupuestos hasta enero de 2027. " +
+        "Puedes contactar con nosotros desde la página de contacto."
+      );
+      return;
+    }
 
       const reformas = getSelectedReformas();
 
