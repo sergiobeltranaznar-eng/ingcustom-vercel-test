@@ -252,7 +252,7 @@
       min-height:100%;
     }
 
-    .card h2{
+    .card h3{
       margin:0;
       font-size:30px;
       line-height:1.08;
@@ -505,6 +505,40 @@
       }
     }
 
+    .blog-category { margin-top: 44px; scroll-margin-top: 110px; }
+    .blog-category .articles { margin-top: 20px; }
+    .category-nav {
+      margin-top: 44px;
+      padding: clamp(20px, 4vw, 30px);
+      border: 1px solid rgba(246,181,29,.28);
+      border-radius: 22px;
+      background: var(--card);
+    }
+    .category-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .category-nav a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .category-nav a:hover, .category-nav a:focus-visible {
+      border-color: var(--accent);
+      background: rgba(246,181,29,.1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
   </style>
 </head>
 
@@ -548,167 +582,256 @@
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">Últimos artículos</div>
-          <h2 class="section-title">Información útil antes de modificar tu moto</h2>
+          
           <p class="section-copy">
             La mayoría de problemas en ITV empiezan mucho antes de llegar a la estación: al comprar una pieza equivocada,
             montar sin revisar criterios técnicos o asumir que una pieza homologada ya legaliza toda la reforma.
           </p>
         </div>
 
-        <div class="articles">
-          <article class="card">
+        <section class="blog-category" id="ultimos-articulos" aria-labelledby="titulo-ultimos-articulos">
+          <h2 class="section-title" id="titulo-ultimos-articulos">Últimos artículos</h2>
+          
+          <div class="articles">
+            <article class="card">
             <div class="meta">ITV · Sanciones · Reformas</div>
-            <h2>Multas por reformas de moto: cuándo puedes recurrir</h2>
+            <h3 id="titulo-reciente-multas-reformas-moto">Multas por reformas de moto: cuándo puedes recurrir</h3>
             <p>Descubre cómo revisar una multa por reformas en tu moto, qué pruebas aportar y cómo afecta el pronto pago al plazo de alegaciones.</p>
-            <a class="btn" href="/blog/multas-reformas-moto.html" aria-label="Leer Multas por reformas de moto: cuándo puedes recurrir">Leer artículo</a>
+            <a class="btn" href="/blog/multas-reformas-moto.html" aria-labelledby="titulo-reciente-multas-reformas-moto">Leer artículo</a>
           </article>
-
-          <article class="card">
+            <article class="card">
             <div class="meta">Piezas · Homologación · ITV</div>
-            <h2>¿Una pieza homologada legaliza la reforma de mi moto?</h2>
+            <h3 id="titulo-reciente-pieza-homologada-moto-itv">¿Una pieza homologada legaliza la reforma de mi moto?</h3>
             <p>Aprende a identificar un marcado de homologación, comprobar la compatibilidad de la pieza y saber cuándo hay que tramitar una reforma en ITV.</p>
-            <a class="btn" href="/blog/pieza-homologada-moto-itv.html" aria-label="Leer ¿Una pieza homologada legaliza la reforma de mi moto?">Leer artículo</a>
+            <a class="btn" href="/blog/pieza-homologada-moto-itv.html" aria-labelledby="titulo-reciente-pieza-homologada-moto-itv">Leer artículo</a>
           </article>
-
-          <article class="card">
+            <article class="card">
             <div class="meta">Precios · ITV · Homologación</div>
-            <h2>Cuánto cuesta homologar una moto custom en España</h2>
+            <h3 id="titulo-reciente-cuanto-cuesta-homologar-moto-custom">Cuánto cuesta homologar una moto custom en España</h3>
             <p>Qué incluye el precio de homologar una moto custom en España y cómo comparar presupuestos de documentación, taller, ensayos e ITV.</p>
-            <a class="btn" href="/blog/cuanto-cuesta-homologar-moto-custom.html" aria-label="Leer Cuánto cuesta homologar una moto custom en España">Leer artículo</a>
+            <a class="btn" href="/blog/cuanto-cuesta-homologar-moto-custom.html" aria-labelledby="titulo-reciente-cuanto-cuesta-homologar-moto-custom">Leer artículo</a>
           </article>
+          </div>
+        </section>
 
-          <article class="card">
-            <div class="meta">Pasajero · Portaequipajes · ITV</div>
-            <h2>Asideros y portaequipajes de moto: qué exige la ITV</h2>
-            <p>Descubre cómo revisar el asidero del pasajero, el portaequipajes y sus anclajes antes de legalizar cambios en una motocicleta.</p>
-            <a class="btn" href="/blog/asidero-portaequipajes-moto-itv.html" aria-label="Leer Asideros y portaequipajes de moto: qué exige la ITV">Leer artículo</a>
+        <nav class="category-nav" aria-labelledby="categorias-blog">
+          <h2 class="section-title" id="categorias-blog">Explora por categorías</h2>
+          <ul>
+            <li><a href="#itv-homologacion">ITV, homologación y trámites</a></li>
+            <li><a href="#iluminacion-matricula">Iluminación y matrícula</a></li>
+            <li><a href="#suspension-ruedas-frenos">Suspensión, ruedas y frenos</a></li>
+            <li><a href="#manillar-retrovisores-instrumentacion">Manillar, retrovisores e instrumentación</a></li>
+            <li><a href="#motor-escape-deposito">Motor, escape y depósito</a></li>
+            <li><a href="#chasis-asiento-accesorios">Chasis, asiento y accesorios</a></li>
+          </ul>
+        </nav>
+
+        <section class="blog-category" id="itv-homologacion" aria-labelledby="titulo-itv-homologacion">
+          <h2 class="section-title" id="titulo-itv-homologacion">ITV, homologación y trámites</h2>
+          <p class="section-copy">Empieza aquí si quieres saber qué debes legalizar, cómo preparar la ITV o cuánto puede costar.</p>
+          <div class="articles">
+            <article class="card">
+            <div class="meta">ITV · Sanciones · Reformas</div>
+            <h3 id="titulo-multas-reformas-moto">Multas por reformas de moto: cuándo puedes recurrir</h3>
+            <p>Descubre cómo revisar una multa por reformas en tu moto, qué pruebas aportar y cómo afecta el pronto pago al plazo de alegaciones.</p>
+            <a class="btn" href="/blog/multas-reformas-moto.html" aria-labelledby="titulo-multas-reformas-moto">Leer artículo</a>
           </article>
-
-          <article class="card">
+            <article class="card">
+            <div class="meta">Piezas · Homologación · ITV</div>
+            <h3 id="titulo-pieza-homologada-moto-itv">¿Una pieza homologada legaliza la reforma de mi moto?</h3>
+            <p>Aprende a identificar un marcado de homologación, comprobar la compatibilidad de la pieza y saber cuándo hay que tramitar una reforma en ITV.</p>
+            <a class="btn" href="/blog/pieza-homologada-moto-itv.html" aria-labelledby="titulo-pieza-homologada-moto-itv">Leer artículo</a>
+          </article>
+            <article class="card">
+            <div class="meta">Precios · ITV · Homologación</div>
+            <h3 id="titulo-cuanto-cuesta-homologar-moto-custom">Cuánto cuesta homologar una moto custom en España</h3>
+            <p>Qué incluye el precio de homologar una moto custom en España y cómo comparar presupuestos de documentación, taller, ensayos e ITV.</p>
+            <a class="btn" href="/blog/cuanto-cuesta-homologar-moto-custom.html" aria-labelledby="titulo-cuanto-cuesta-homologar-moto-custom">Leer artículo</a>
+          </article>
+            <article class="card">
             <div class="meta">Harley-Davidson · Custom · ITV</div>
-            <h2>Cómo homologar una Harley-Davidson modificada en España</h2>
+            <h3 id="titulo-homologar-harley-davidson-modificada">Cómo homologar una Harley-Davidson modificada en España</h3>
             <p>Guía para legalizar una Harley-Davidson modificada. Identifica las reformas, reúne la documentación y prepara tu Sportster, Dyna o Softail para la ITV.</p>
-            <a class="btn" href="/blog/homologar-harley-davidson-modificada.html" aria-label="Leer Cómo homologar una Harley-Davidson modificada en España">Leer artículo</a>
+            <a class="btn" href="/blog/homologar-harley-davidson-modificada.html" aria-labelledby="titulo-homologar-harley-davidson-modificada">Leer artículo</a>
           </article>
-
-          <article class="card">
+            <article class="card">
             <div class="meta">ITV · Reformas · Custom</div>
-            <h2>ITV y motos custom: los problemas que se repiten una y otra vez</h2>
+            <h3 id="titulo-itv-motos-custom">ITV y motos custom: los problemas que se repiten una y otra vez</h3>
             <p>
               Escapes, intermitentes, matrículas laterales, manillares, iluminación LED, suspensiones y reformas que suelen
               generar dudas antes de pasar ITV.
             </p>
-            <a class="btn" href="/blog/itv-motos-custom.html">Leer artículo</a>
+            <a class="btn" href="/blog/itv-motos-custom.html" aria-labelledby="titulo-itv-motos-custom">Leer artículo</a>
           </article>
-
-          <article class="card">
+            <article class="card">
             <div class="meta">Ingeniería · Planificación · Reformas</div>
-            <h2>La reforma empieza mucho antes de comprar la primera pieza</h2>
+            <h3 id="titulo-reforma-antes-de-comprar-piezas">La reforma empieza mucho antes de comprar la primera pieza</h3>
             <p>
               Toda transformación comienza mucho antes de instalar el primer componente. Descubre por qué una buena planificación puede evitar errores, ahorrar dinero y convertir una idea en una reforma coherente.
             </p>
-            <a class="btn" href="/blog/reforma-antes-de-comprar-piezas.html">Leer artículo</a>
+            <a class="btn" href="/blog/reforma-antes-de-comprar-piezas.html" aria-labelledby="titulo-reforma-antes-de-comprar-piezas">Leer artículo</a>
           </article>
-
-          <article class="card">
+            <article class="card">
             <div class="meta">Preguntas frecuentes</div>
-            <h2>Las 10 preguntas que todo motorista custom se hace antes de modificar su moto</h2>
+            <h3 id="titulo-10-preguntas-reformas">Las 10 preguntas que todo motorista custom se hace antes de modificar su moto</h3>
             <p>
               Las dudas más frecuentes sobre homologaciones, ITV, escapes, reformas, motos custom y legalización en España.
             </p>
-            <a class="btn" href="/blog/10-preguntas-reformas.html">Leer artículo</a>
+            <a class="btn" href="/blog/10-preguntas-reformas.html" aria-labelledby="titulo-10-preguntas-reformas">Leer artículo</a>
           </article>
+          </div>
+        </section>
 
-          <article class="card">
+        <section class="blog-category" id="iluminacion-matricula" aria-labelledby="titulo-iluminacion-matricula">
+          <h2 class="section-title" id="titulo-iluminacion-matricula">Iluminación y matrícula</h2>
+          <p class="section-copy">Guías para cambiar luces, recolocar intermitentes o modificar el soporte de matrícula.</p>
+          <div class="articles">
+            <article class="card">
             <div class="meta">Iluminación · ITV · Homologación</div>
-            <h2>Faro LED en moto: cuándo es legal y cuándo no</h2>
+            <h3 id="titulo-faro-led-moto-itv">Faro LED en moto: cuándo es legal y cuándo no</h3>
             <p>
               La historia que se repite una y otra vez: un faro espectacular en las fotos,
               una moto que parece terminada y una ITV que descubre problemas que nadie
               había explicado antes.
               </p>
 
-              <a class="btn" href="/blog/faro-led-moto-itv.html">
+              <a class="btn" href="/blog/faro-led-moto-itv.html" aria-labelledby="titulo-faro-led-moto-itv">
                   Leer artículo
               </a>
             </article>
+            <article class="card">
+  <div class="meta">Intermitentes · Reformas · Homologación</div>
 
-          <article class="card">
+  <h3 id="titulo-recolocacion-intermitentes">Los intermitentes: la reforma que nunca estaba prevista</h3>
+
+  <p>
+    Recortas el guardabarros o instalas unas alforjas y descubres que los
+    intermitentes originales ya no tienen dónde ir. Una de las reformas más
+    habituales y, al mismo tiempo, una de las más infravaloradas.
+  </p>
+
+  <a class="btn" href="/blog/recolocacion-intermitentes.html" aria-labelledby="titulo-recolocacion-intermitentes">
+    Leer artículo
+  </a>
+</article>
+            <article class="card">
+  <div class="meta">Iluminación · Custom · Homologación</div>
+  <h3 id="titulo-piloto-trasero-custom">El piloto trasero: una pequeña pieza que dice mucho sobre tu moto</h3>
+  <p>
+    Bates, Lucas, LED, Bullet o pilotos minimalistas. Descubre cómo elegir el piloto trasero que mejor encaja con el estilo de tu moto y qué aspectos técnicos debes tener en cuenta antes de instalarlo.
+  </p>
+  <a class="btn" href="/blog/piloto-trasero-custom.html" aria-labelledby="titulo-piloto-trasero-custom">Leer artículo</a>
+</article>
+            <article class="card">
             <div class="meta">Matrícula · ITV · Homologación</div>
-            <h2>La matrícula lateral: la reforma que cambió de prohibida a posible</h2>
+            <h3 id="titulo-matricula-lateral-moto">La matrícula lateral: la reforma que cambió de prohibida a posible</h3>
             <p>
               Durante años fue una de las modificaciones más discutidas entre los aficionados. Descubre qué cambió en 2025, qué dice realmente la normativa y por qué una matrícula lateral sigue necesitando estudiarse antes de instalarla.
             </p>
-            <a class="btn" href="/blog/matricula-lateral-moto.html">Leer artículo</a>
+            <a class="btn" href="/blog/matricula-lateral-moto.html" aria-labelledby="titulo-matricula-lateral-moto">Leer artículo</a>
           </article>
+          </div>
+        </section>
 
-          <article class="card">
-    <div class="meta">Motor · Escape · Homologación</div>
+        <section class="blog-category" id="suspension-ruedas-frenos" aria-labelledby="titulo-suspension-ruedas-frenos">
+          <h2 class="section-title" id="titulo-suspension-ruedas-frenos">Suspensión, ruedas y frenos</h2>
+          <p class="section-copy">Qué revisar al modificar la geometría, las ruedas o el sistema de frenado.</p>
+          <div class="articles">
+            <article class="card">
 
-    <h2>
-        Motor y línea de escape:
-        la reforma que más ilusión hace y más problemas da
-    </h2>
+    <div class="meta">Muelles · Reformas · Homologación</div>
+
+    <h3 id="titulo-amortiguadores-custom">
+        La suspensión trasera:
+        la reforma que puede cambiar una moto sin que nadie la vea
+    </h3>
 
     <p>
-        Cambiar el motor, instalar unos silenciosos diferentes o sustituir el
-        catalizador puede transformar por completo una moto custom. Descubre por
-        qué la trazabilidad, las emisiones, el ruido y la homologación son tan
-        importantes como el propio sonido de la motocicleta.
+        Cambiar los amortiguadores traseros puede transformar por completo una moto.
+        Una suspensión diferente modifica la altura, el confort, el comportamiento
+        dinámico y las sensaciones de conducción, aunque visualmente apenas se perciba.
     </p>
 
-    <a class="btn" href="/blog/motor-linea-escape-moto-custom.html">
+    <a class="btn" href="/blog/amortiguadores-custom.html" aria-labelledby="titulo-amortiguadores-custom">
+        Leer artículo
+    </a>
+
+</article>
+            <article class="card">
+
+    <div class="meta">Horquilla · Tijas · Homologación</div>
+
+    <h3 id="titulo-tijas-horquillas-custom">
+        La horquilla delantera:
+        la reforma que cambia la forma en la que una moto mira la carretera
+    </h3>
+
+    <p>
+        Cambiar horquillas o tijas puede transformar completamente la presencia
+        de una moto custom. Descubre cómo afectan a la geometría, la estabilidad,
+        la dirección y qué debes tener en cuenta antes de homologar la reforma.
+    </p>
+
+    <a class="btn" href="/blog/tijas-horquillas-custom.html" aria-labelledby="titulo-tijas-horquillas-custom">
         Leer artículo
     </a>
 </article>
-          
+            <article class="card">
 
-          <article class="card">
-    <div class="meta">Chasis · Reformas · Homologación</div>
+    <div class="meta">Llantas · Neumáticos · Homologación</div>
 
-    <h2>
-        Modificar el chasis de una moto custom:
-        el límite que no deberías cruzar nunca
-    </h2>
+    <h3 id="titulo-llantas-neumaticos-custom">
+        Llantas y neumáticos:
+        la reforma que cambia una moto sin tocar el motor
+    </h3>
 
     <p>
-        El chasis es la columna vertebral de cualquier motocicleta. Antes de
-        cortar, soldar o modificar el subchasis de una bobber, café racer o
-        Harley-Davidson, conviene conocer qué reformas son viables y cuáles
-        pueden impedir su homologación.
+        Cambiar las ruedas puede transformar por completo la estética, la postura
+        y el comportamiento de una motocicleta. Descubre qué significa realmente
+        el famoso 3%, cómo afecta a la geometría de la moto y cuándo una modificación
+        puede requerir homologación.
     </p>
 
-    <a class="btn" href="/blog/modificar-chasis-moto-custom.html">
+    <a class="btn" href="/blog/llantas-neumaticos-custom.html" aria-labelledby="titulo-llantas-neumaticos-custom">
         Leer artículo
     </a>
+
 </article>
+            <article class="card">
 
-          <article class="card">
-    <div class="meta">Depósitos · Reformas · Homologación</div>
+    <div class="meta">Frenos · ABS · Homologación</div>
 
-    <h2>
-        Elevar el depósito de combustible: la moda custom que puede complicar una homologación
-    </h2>
+    <h3 id="titulo-frenos-motos-custom">
+        Los frenos:
+        la reforma que separa una moto bonita de una moto en la que confías
+    </h3>
 
     <p>
-        Desde las Sportster con depósito elevado hasta choppers y bobbers artesanales, 
-      pocas modificaciones cambian tanto la silueta de una moto. Lo que muchos 
-      propietarios desconocen es que alterar la posición o sustitución del depósito 
-      implica mucho más que una cuestión estética.
+        Mejorar la frenada puede transformar por completo las sensaciones de conducción.
+        Descubre cómo afectan discos, pinzas, bombas, latiguillos y sistemas ABS a la
+        seguridad de la motocicleta y qué debes tener en cuenta antes de homologar una reforma.
     </p>
 
-    <a class="btn" href="/blog/depositos-combustible-moto-custom.html"> 
-      Leer artículo </a>
-</article>
+    <a class="btn" href="/blog/frenos-motos-custom.html" aria-labelledby="titulo-frenos-motos-custom">
+        Leer artículo
+    </a>
 
-          <article class="card">
+</article>
+          </div>
+        </section>
+
+        <section class="blog-category" id="manillar-retrovisores-instrumentacion" aria-labelledby="titulo-manillar-retrovisores-instrumentacion">
+          <h2 class="section-title" id="titulo-manillar-retrovisores-instrumentacion">Manillar, retrovisores e instrumentación</h2>
+          <p class="section-copy">Cambios en el puesto de conducción, la visibilidad y el velocímetro.</p>
+          <div class="articles">
+            <article class="card">
 
     <div class="meta">Manillar · Reformas · Homologación</div>
 
-    <h2>
+    <h3 id="titulo-manillar-moto-custom-homologacion">
         El manillar:
         la reforma que cambia una moto sin tocar el motor
-    </h2>
+    </h3>
 
     <p>
         Parece una pieza sencilla. Un tubo metálico destinado a sujetar los mandos
@@ -717,20 +840,19 @@
         sensaciones de conducción sin tocar una sola pieza del motor.
     </p>
 
-    <a class="btn" href="/blog/manillar-moto-custom-homologacion.html">
+    <a class="btn" href="/blog/manillar-moto-custom-homologacion.html" aria-labelledby="titulo-manillar-moto-custom-homologacion">
         Leer artículo
     </a>
 
 </article>
-
-    <article class="card">
+            <article class="card">
 
 <div class="meta">Espejos · Reformas · Homologación</div>
 
-<h2>
+<h3 id="titulo-retrovisores-moto-custom-homologacion">
     Los retrovisores:
     la guerra eterna entre la estética y la visibilidad
-</h2>
+</h3>
 
 <p>
     Pocas piezas generan tantas discusiones dentro del mundo custom como los
@@ -739,20 +861,19 @@
     para la seguridad y una de las reformas que más dudas generan en ITV.
 </p>
 
-<a class="btn" href="/blog/retrovisores-moto-custom-homologacion.html">
+<a class="btn" href="/blog/retrovisores-moto-custom-homologacion.html" aria-labelledby="titulo-retrovisores-moto-custom-homologacion">
     Leer artículo
 </a>
 
 </article>
-
-<article class="card">
+            <article class="card">
 
     <div class="meta">El cuenta · Reformas · Homologación</div>
 
-    <h2>
+    <h3 id="titulo-velocimetro-moto-custom-homologacion">
         El velocímetro:
         la pieza que nadie valora hasta que deja de funcionar correctamente
-    </h2>
+    </h3>
 
     <p>
         Durante años el mundo custom ha intentado hacer desaparecer los velocímetros.
@@ -762,19 +883,88 @@
         de homologar una reforma.
     </p>
 
-    <a class="btn" href="/blog/velocimetro-moto-custom-homologacion.html">
+    <a class="btn" href="/blog/velocimetro-moto-custom-homologacion.html" aria-labelledby="titulo-velocimetro-moto-custom-homologacion">
         Leer artículo
     </a>
 
 </article>
-          <article class="card">
+          </div>
+        </section>
+
+        <section class="blog-category" id="motor-escape-deposito" aria-labelledby="titulo-motor-escape-deposito">
+          <h2 class="section-title" id="titulo-motor-escape-deposito">Motor, escape y depósito</h2>
+          <p class="section-copy">Guías sobre la línea de escape, el motor y las modificaciones del depósito.</p>
+          <div class="articles">
+            <article class="card">
+    <div class="meta">Motor · Escape · Homologación</div>
+
+    <h3 id="titulo-motor-linea-escape-moto-custom">
+        Motor y línea de escape:
+        la reforma que más ilusión hace y más problemas da
+    </h3>
+
+    <p>
+        Cambiar el motor, instalar unos silenciosos diferentes o sustituir el
+        catalizador puede transformar por completo una moto custom. Descubre por
+        qué la trazabilidad, las emisiones, el ruido y la homologación son tan
+        importantes como el propio sonido de la motocicleta.
+    </p>
+
+    <a class="btn" href="/blog/motor-linea-escape-moto-custom.html" aria-labelledby="titulo-motor-linea-escape-moto-custom">
+        Leer artículo
+    </a>
+</article>
+            <article class="card">
+    <div class="meta">Depósitos · Reformas · Homologación</div>
+
+    <h3 id="titulo-depositos-combustible-moto-custom">
+        Elevar el depósito de combustible: la moda custom que puede complicar una homologación
+    </h3>
+
+    <p>
+        Desde las Sportster con depósito elevado hasta choppers y bobbers artesanales, 
+      pocas modificaciones cambian tanto la silueta de una moto. Lo que muchos 
+      propietarios desconocen es que alterar la posición o sustitución del depósito 
+      implica mucho más que una cuestión estética.
+    </p>
+
+    <a class="btn" href="/blog/depositos-combustible-moto-custom.html" aria-labelledby="titulo-depositos-combustible-moto-custom"> 
+      Leer artículo </a>
+</article>
+          </div>
+        </section>
+
+        <section class="blog-category" id="chasis-asiento-accesorios" aria-labelledby="titulo-chasis-asiento-accesorios">
+          <h2 class="section-title" id="titulo-chasis-asiento-accesorios">Chasis, asiento y accesorios</h2>
+          <p class="section-copy">Reformas del bastidor y la parte trasera, desde el asiento hasta los soportes de equipaje.</p>
+          <div class="articles">
+            <article class="card">
+    <div class="meta">Chasis · Reformas · Homologación</div>
+
+    <h3 id="titulo-modificar-chasis-moto-custom">
+        Modificar el chasis de una moto custom:
+        el límite que no deberías cruzar nunca
+    </h3>
+
+    <p>
+        El chasis es la columna vertebral de cualquier motocicleta. Antes de
+        cortar, soldar o modificar el subchasis de una bobber, café racer o
+        Harley-Davidson, conviene conocer qué reformas son viables y cuáles
+        pueden impedir su homologación.
+    </p>
+
+    <a class="btn" href="/blog/modificar-chasis-moto-custom.html" aria-labelledby="titulo-modificar-chasis-moto-custom">
+        Leer artículo
+    </a>
+</article>
+            <article class="card">
 
     <div class="meta">Asientos · Reformas · Homologación</div>
 
-    <h2>
+    <h3 id="titulo-asientos-motos-custom">
         El asiento monoplaza:
         la reforma que parece sencilla hasta que desaparece el pasajero
-    </h2>
+    </h3>
 
     <p>
         Transformar una moto de dos plazas en una monoplaza cambia por completo
@@ -783,115 +973,29 @@
         y otros elementos que muchos propietarios descubren demasiado tarde.
     </p>
 
-    <a class="btn" href="/blog/asientos-motos-custom.html">
+    <a class="btn" href="/blog/asientos-motos-custom.html" aria-labelledby="titulo-asientos-motos-custom">
         Leer artículo
     </a>
 
-</article>
-
-          <article class="card">
-
-    <div class="meta">Muelles · Reformas · Homologación</div>
-
-    <h2>
-        La suspensión trasera:
-        la reforma que puede cambiar una moto sin que nadie la vea
-    </h2>
-
-    <p>
-        Cambiar los amortiguadores traseros puede transformar por completo una moto.
-        Una suspensión diferente modifica la altura, el confort, el comportamiento
-        dinámico y las sensaciones de conducción, aunque visualmente apenas se perciba.
-    </p>
-
-    <a class="btn" href="/blog/amortiguadores-custom.html">
-        Leer artículo
-    </a>
-
-</article>
-
-          <article class="card">
-
-    <div class="meta">Llantas · Neumáticos · Homologación</div>
-
-    <h2>
-        Llantas y neumáticos:
-        la reforma que cambia una moto sin tocar el motor
-    </h2>
-
-    <p>
-        Cambiar las ruedas puede transformar por completo la estética, la postura
-        y el comportamiento de una motocicleta. Descubre qué significa realmente
-        el famoso 3%, cómo afecta a la geometría de la moto y cuándo una modificación
-        puede requerir homologación.
-    </p>
-
-    <a class="btn" href="/blog/llantas-neumaticos-custom.html">
-        Leer artículo
-    </a>
-
-</article>
-
-          <article class="card">
-
-    <div class="meta">Horquilla · Tijas · Homologación</div>
-
-    <h2>
-        La horquilla delantera:
-        la reforma que cambia la forma en la que una moto mira la carretera
-    </h2>
-
-    <p>
-        Cambiar horquillas o tijas puede transformar completamente la presencia
-        de una moto custom. Descubre cómo afectan a la geometría, la estabilidad,
-        la dirección y qué debes tener en cuenta antes de homologar la reforma.
-    </p>
-
-    <a class="btn" href="/blog/tijas-horquillas-custom.html">
-        Leer artículo
-    </a>
 </article>
             <article class="card">
-
-    <div class="meta">Frenos · ABS · Homologación</div>
-
-    <h2>
-        Los frenos:
-        la reforma que separa una moto bonita de una moto en la que confías
-    </h2>
-
-    <p>
-        Mejorar la frenada puede transformar por completo las sensaciones de conducción.
-        Descubre cómo afectan discos, pinzas, bombas, latiguillos y sistemas ABS a la
-        seguridad de la motocicleta y qué debes tener en cuenta antes de homologar una reforma.
-    </p>
-
-    <a class="btn" href="/blog/frenos-motos-custom.html">
-        Leer artículo
-    </a>
-
-</article>
-
-          <article class="card">
-  <div class="meta">Intermitentes · Reformas · Homologación</div>
-
-  <h2>Los intermitentes: la reforma que nunca estaba prevista</h2>
-
+  <div class="meta">Bobber · Reformas · Custom</div>
+  <h3 id="titulo-guardabarros-trasero-moto-custom">El guardabarros trasero: la reforma que cambia por completo la personalidad de una moto</h3>
   <p>
-    Recortas el guardabarros o instalas unas alforjas y descubres que los
-    intermitentes originales ya no tienen dónde ir. Una de las reformas más
-    habituales y, al mismo tiempo, una de las más infravaloradas.
+    Recortar el guardabarros trasero parece una modificación sencilla, pero suele implicar cambios en piloto, intermitentes, matrícula y catadióptrico. Descubre todo lo que debes tener en cuenta.
   </p>
-
-  <a class="btn" href="/blog/recolocacion-intermitentes.html">
-    Leer artículo
-  </a>
+  <a class="btn" href="/blog/guardabarros-trasero-moto-custom.html" aria-labelledby="titulo-guardabarros-trasero-moto-custom">Leer artículo</a>
 </article>
-
-          <article class="card">
+            <article class="card">
+            <div class="meta">Pasajero · Portaequipajes · ITV</div>
+            <h3 id="titulo-asidero-portaequipajes-moto-itv">Asideros y portaequipajes de moto: qué exige la ITV</h3>
+            <p>Descubre cómo revisar el asidero del pasajero, el portaequipajes y sus anclajes antes de legalizar cambios en una motocicleta.</p>
+            <a class="btn" href="/blog/asidero-portaequipajes-moto-itv.html" aria-labelledby="titulo-asidero-portaequipajes-moto-itv">Leer artículo</a>
+          </article>
+            <article class="card">
   <div class="meta">Viajes · Sissy Bar · Homologación</div>
 
-  <h2>El sissy bar: cuando una moto deja de ser para pasear y empieza a ser para viajar</h2>
+  <h3 id="titulo-sissybar-viaje-moto">El sissy bar: cuando una moto deja de ser para pasear y empieza a ser para viajar</h3>
 
   <p>
     Un respaldo puede parecer un simple accesorio, pero cuando empieza a sujetar equipaje
@@ -899,40 +1003,20 @@
     antes de preparar tu moto para viajar.
   </p>
 
-  <a class="btn" href="/blog/sissybar-viaje-moto.html">
+  <a class="btn" href="/blog/sissybar-viaje-moto.html" aria-labelledby="titulo-sissybar-viaje-moto">
     Leer artículo
   </a>
 </article>
-
-          <article class="card">
+            <article class="card">
   <div class="meta">Viajes · Equipaje · Custom</div>
-  <h2>Las alforjas: la reforma que convierte una salida en un viaje</h2>
+  <h3 id="titulo-alforjas-moto-custom">Las alforjas: la reforma que convierte una salida en un viaje</h3>
   <p>
     Instalar unas alforjas parece sencillo, pero puede afectar a intermitentes, matrícula, soportes y estabilidad. Todo lo que debes saber antes de preparar tu moto para viajar.
   </p>
-  <a class="btn" href="/blog/alforjas-moto-custom.html">Leer artículo</a>
+  <a class="btn" href="/blog/alforjas-moto-custom.html" aria-labelledby="titulo-alforjas-moto-custom">Leer artículo</a>
 </article>
-
-          <article class="card">
-  <div class="meta">Bobber · Reformas · Custom</div>
-  <h2>El guardabarros trasero: la reforma que cambia por completo la personalidad de una moto</h2>
-  <p>
-    Recortar el guardabarros trasero parece una modificación sencilla, pero suele implicar cambios en piloto, intermitentes, matrícula y catadióptrico. Descubre todo lo que debes tener en cuenta.
-  </p>
-  <a class="btn" href="/blog/guardabarros-trasero-moto-custom.html">Leer artículo</a>
-</article>
-
-        <article class="card">
-  <div class="meta">Iluminación · Custom · Homologación</div>
-  <h2>El piloto trasero: una pequeña pieza que dice mucho sobre tu moto</h2>
-  <p>
-    Bates, Lucas, LED, Bullet o pilotos minimalistas. Descubre cómo elegir el piloto trasero que mejor encaja con el estilo de tu moto y qué aspectos técnicos debes tener en cuenta antes de instalarlo.
-  </p>
-  <a class="btn" href="/blog/piloto-trasero-custom.html">Leer artículo</a>
-</article>  
-          
-          
-        </div>
+          </div>
+        </section>
 
         <div class="cta-panel">
           <div>
