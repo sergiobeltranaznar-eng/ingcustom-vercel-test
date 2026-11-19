@@ -22,9 +22,10 @@
   <meta property="og:title" content="Cómo homologar una Harley-Davidson modificada en España" />
   <meta property="og:description" content="Guía para legalizar una Harley-Davidson modificada. Identifica las reformas, reúne la documentación y prepara tu Sportster, Dyna o Softail para la ITV." />
   <meta property="og:url" content="https://ingenierocustom.es/blog/homologar-harley-davidson-modificada.html" />
-  <meta property="og:image" content="https://ingenierocustom.es/logo-ingeniero-custom.png" />
-  <meta name="twitter:card" content="summary" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cómo homologar una Harley-Davidson modificada en España","description":"Guía para legalizar una Harley-Davidson modificada. Identifica las reformas, reúne la documentación y prepara tu Sportster, Dyna o Softail para la ITV.","inLanguage":"es-ES","datePublished":"2026-11-20","dateModified":"2026-11-20","author":{"@type":"Organization","name":"Ingeniero Custom","url":"https://ingenierocustom.es/","logo":"https://ingenierocustom.es/logo-ingeniero-custom.png"},"publisher":{"@type":"Organization","name":"Ingeniero Custom","url":"https://ingenierocustom.es/","logo":"https://ingenierocustom.es/logo-ingeniero-custom.png"},"mainEntityOfPage":"https://ingenierocustom.es/blog/homologar-harley-davidson-modificada.html","image":"https://ingenierocustom.es/logo-ingeniero-custom.png"}</script>
+  <meta property="og:image" content="https://ingenierocustom.es/blog/homologar-harley-davidson-modificada-cabecera.jpg" />
+  <meta property="og:image:alt" content="Motocicleta tipo Harley-Davidson Sportster preparada como bobber en un taller" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cómo homologar una Harley-Davidson modificada en España","description":"Guía para legalizar una Harley-Davidson modificada. Identifica las reformas, reúne la documentación y prepara tu Sportster, Dyna o Softail para la ITV.","inLanguage":"es-ES","datePublished":"2026-11-20","dateModified":"2026-11-20","author":{"@type":"Organization","name":"Ingeniero Custom","url":"https://ingenierocustom.es/","logo":"https://ingenierocustom.es/logo-ingeniero-custom.png"},"publisher":{"@type":"Organization","name":"Ingeniero Custom","url":"https://ingenierocustom.es/","logo":"https://ingenierocustom.es/logo-ingeniero-custom.png"},"mainEntityOfPage":"https://ingenierocustom.es/blog/homologar-harley-davidson-modificada.html","image":"https://ingenierocustom.es/blog/homologar-harley-davidson-modificada-cabecera.jpg"}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -320,6 +321,19 @@
     }
   .article-card a { color: var(--accent); text-decoration: underline; text-underline-offset: .2em; }
     .article-card li, .article-card dd { margin-bottom: .7em; }
+    .hero { position: relative; isolation: isolate; overflow: hidden; min-height: 420px; display: flex; align-items: center; }
+    .hero-photo, .hero::after { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-photo { object-fit: cover; object-position: center; z-index: -2; }
+    .hero::after { content: ""; background: linear-gradient(90deg, rgba(0,0,0,.90), rgba(0,0,0,.70) 50%, rgba(0,0,0,.38)), linear-gradient(0deg, rgba(0,0,0,.46), transparent 65%); z-index: -1; }
+    .hero-inner { max-width: 760px; }
+    .hero p { color: #f3f3f3; text-align: left; }
+    @media (max-width: 640px) {
+      .hero { display: block; min-height: 0; padding: 0; background: #14120d; }
+      .hero-photo { position: static; width: 100%; height: auto; aspect-ratio: 1200 / 630; }
+      .hero::after { content: none; }
+      .hero-inner { padding: 28px 6% 34px; }
+      .hero h1 { font-size: clamp(31px, 8vw, 44px); }
+    }
   </style>
 </head>
 
@@ -347,6 +361,7 @@
   </header>
 
   <header class="hero">
+    <img class="hero-photo" src="/blog/homologar-harley-davidson-modificada-cabecera.jpg" alt="Motocicleta tipo Harley-Davidson Sportster preparada como bobber en un taller" width="1200" height="630" fetchpriority="high" />
     <div class="hero-inner">
       <div class="eyebrow">Harley-Davidson · Custom · ITV</div>
       <h1>Cómo homologar una Harley-Davidson modificada en España</h1>
@@ -365,6 +380,17 @@
 <h2>Pasos para legalizar los cambios</h2><ol><li>Haz inventario de todo lo modificado y reúne fotos, referencias y documentos de las piezas.</li><li>Identifica los códigos de reforma aplicables con el Manual y confirma con taller e ingeniería qué documentación y ensayos corresponden.</li><li>Coordina las correcciones y el certificado de taller, el informe de conformidad y, cuando se exijan, el proyecto y la certificación final de obra.</li><li>Presenta la moto y la documentación en una ITV de reforma. El Real Decreto 866/2010 establece un máximo de 15 días desde que se efectúa la reforma para presentar el vehículo a inspección. Tras un resultado favorable, revisa la anotación de las reformas en la tarjeta.</li></ol>
 <h2>Ejemplo: Sportster 883 con una trasera Bobber</h2><p>Si lleva asiento monoplaza, guardabarros corto y pilotos integrados en los intermitentes, entrega una foto lateral y otra trasera con cada función de alumbrado identificada. Confirma si el guardabarros se montó en anclajes existentes o si se modificó el bastidor. Esa diferencia puede cambiar el alcance del estudio antes de encargar la documentación.</p>
 <h2>¿Y si la Harley es importada?</h2><p>Si aún no está matriculada en España, comprueba primero la vía de matriculación y la documentación de origen. Esta guía se refiere a reformas posteriores a la matriculación.</p>
+      <h2>Cómo revisar una Harley custom antes de comprarla</h2>
+<p>Pide al vendedor imágenes de las dos caras de la tarjeta ITV y fotos actuales de ambos lados de la moto, la parte delantera y la trasera. Empieza por las reformas visibles y después compara referencias. Si quedan dudas, solicita detalles de la unión del guardabarros al bastidor, las torretas del manillar y los marcados del escape. Pregunta si conserva las piezas originales y las diligencias de ITV. Esa información permite valorar si el expediente se puede reconstruir o si hay que presupuestar correcciones.</p>
+<h2>Qué cambia si preparas una Bobber o una Club Style</h2>
+<p>En una Bobber suele concentrarse el trabajo en la zona trasera. Si cambias asiento, guardabarros y soportes de iluminación, documenta la posición final de los tres elementos y la relación con la rueda. En una preparación Club Style, el manillar elevado, la pantalla y la suspensión pueden afectar a zonas distintas. Antes de comprar, comprueba con el taller que las referencias previstas se pueden montar juntas y que se conserva el recorrido de los mandos y la dirección.</p>
+<h2>Preguntas frecuentes sobre homologar una Harley-Davidson</h2>
+<h3>¿Puedo presentar manillar, escape y asiento en una sola ITV?</h3>
+<p>Plantea desde el principio todas las intervenciones al profesional que documentará el expediente. Que se revisen juntas permite identificar los códigos y requisitos de cada actuación y preparar la inspección con la configuración real.</p>
+<h3>¿Cómo documento un escape de segunda mano?</h3>
+<p>Fotografía la referencia completa, solicita el documento de aprobación y comprueba sus condiciones con el modelo, la variante y el año. Indica también si conservas los componentes previstos para ese escape y si el montaje se ha modificado.</p>
+<h3>¿Qué hago si el taller previo ya no existe?</h3>
+<p>Reúne la documentación de la intervención y explica a un taller habilitado cómo se hizo. Tendrá que valorar qué puede identificar, verificar o ejecutar antes de certificar trabajos. Si hay soldaduras o zonas inaccesibles, muéstralas durante la consulta inicial.</p>
       <h2>Artículos relacionados</h2>
       <ul>
         <li><a href="/blog/manillar-moto-custom-homologacion.html">Homologación del manillar</a></li>
