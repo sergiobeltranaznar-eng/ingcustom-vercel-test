@@ -1,59 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://ingenierocustom.es/</loc>
-    <lastmod>2026-06-04</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/proceso.html</loc>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/contacto.html</loc>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/</loc>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/itv-motos-custom.html</loc>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/10-preguntas-reformas.html</loc>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/faro-led-moto-itv.html</loc>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/multas-reformas-moto.html</loc>
-    <lastmod>2026-11-20</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/pieza-homologada-moto-itv.html</loc>
-    <lastmod>2026-11-20</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/cuanto-cuesta-homologar-moto-custom.html</loc>
-    <lastmod>2026-11-20</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/asidero-portaequipajes-moto-itv.html</loc>
-    <lastmod>2026-11-20</lastmod>
-  </url>
-
-  <url>
-    <loc>https://ingenierocustom.es/blog/homologar-harley-davidson-modificada.html</loc>
-    <lastmod>2026-11-20</lastmod>
-  </url>
-
+  <url><loc>https://ingenierocustom.es/</loc></url>
+  <url><loc>https://ingenierocustom.es/contacto.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/10-preguntas-reformas.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/alforjas-moto-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/amortiguadores-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/asidero-portaequipajes-moto-itv.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/asientos-motos-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/cuanto-cuesta-homologar-moto-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/depositos-combustible-moto-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/faro-led-moto-itv.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/frenos-motos-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/guardabarros-trasero-moto-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/homologar-harley-davidson-modificada.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/itv-motos-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/llantas-neumaticos-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/manillar-moto-custom-homologacion.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/matricula-lateral-moto.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/modificar-chasis-moto-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/motor-linea-escape-moto-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/multas-reformas-moto.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/pieza-homologada-moto-itv.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/piloto-trasero-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/recolocacion-intermitentes.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/reforma-antes-de-comprar-piezas.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/retrovisores-moto-custom-homologacion.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/sissybar-viaje-moto.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/tijas-horquillas-custom.html</loc></url>
+  <url><loc>https://ingenierocustom.es/blog/velocimetro-moto-custom-homologacion.html</loc></url>
+  <url><loc>https://ingenierocustom.es/servicios/</loc></url>
+  <url><loc>https://ingenierocustom.es/servicios/integral.html</loc></url>
+  <url><loc>https://ingenierocustom.es/servicios/documental.html</loc></url>
+  <url><loc>https://ingenierocustom.es/servicios/homologacion-motos-extranjeras.html</loc></url>
+  <url><loc>https://ingenierocustom.es/servicios/cafe-racer.html</loc></url>
+  <url><loc>https://ingenierocustom.es/servicios/reformas.html</loc></url>
+  <url><loc>https://ingenierocustom.es/servicios/precio.html</loc></url>
 </urlset>
